@@ -1,0 +1,18 @@
+$warning: #ff6600;
+$warning-t: #ff660050;
+
+#navigation-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 30px;
+    background-color: #222;
+    box-shadow: 0 2px 30px $warning-t;
+
+    a {
+        color: snow;
+        text-decoration: none;
+        display: inline-block;
+        padding: 5px 10px;
+    }
+}
