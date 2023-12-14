@@ -1,5 +1,4 @@
-$warning: #ff6600;
-$warning-t: #ff660050;
+@import "../../assets/styles/settings";
 
 #navigation-wrapper {
     display: flex;
@@ -9,10 +8,20 @@ $warning-t: #ff660050;
     background-color: #222;
     box-shadow: 0 2px 30px $warning-t;
 
+    button {
+        @extend %warning-btn;
+    }
+
     a {
         color: snow;
         text-decoration: none;
         display: inline-block;
         padding: 5px 10px;
+    }
+
+    .right {
+        a {
+            text-decoration: underline;
+        }
     }
 }

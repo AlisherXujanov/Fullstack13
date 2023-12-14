@@ -18,7 +18,7 @@ function Navigation() {
                     <Link to="/contacts">Контакты</Link>
                 </div>
                 <div className="right">
-                    <button>Войти</button>
+                    <button className="warning-btn">Войти</button>
                     <a href="/#ru">Рус</a>
                 </div>
             </nav>
