@@ -1,11 +1,14 @@
 import "./style.scss"
 import AboutImage from "../../assets/images/about.png"
 import Licence from "../../assets/icons/licence.png"
+import Heading from "../common/Heading"
 
 function About() {
     return (
         <div className="about-wrapper">
-            <h1>О Нас</h1>
+            <Heading size={2}>О нас</Heading>
+
+
             <div className="about-content">
                 <img src={AboutImage}  alt="About" 
                     width={"100%"} height={400}
