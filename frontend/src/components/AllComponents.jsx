@@ -1,10 +1,20 @@
-import { Route, Routes } from 'react-router-dom' 
+import { Routes, Route, useLocation } from 'react-router-dom'
+import Navigation from '../components/Navigation'
+import About from '../components/About'
+import NoPage from './NoPage'
+import Blog from './Blog'
 
-function AllComponents() {
+function AllComponents(props) {
+    const location = useLocation()
     return (
-        <div className="all-components-wrapper">
-
-        </div>
+        <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Navigation />} >
+                <Route index element={<About />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="*" element={<NoPage />} />
+            </Route>
+        </Routes>
     );
 }
 
