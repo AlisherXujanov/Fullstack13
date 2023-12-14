@@ -1,4 +1,5 @@
 import "./style.scss"
+import { Outlet } from "react-router-dom"
 
 function Navigation() {
     return (
@@ -19,6 +20,10 @@ function Navigation() {
                     <a href="/#ru">Рус</a>
                 </div>
             </nav>
+
+            <div id="outlet">
+                <Outlet />
+            </div>
         </div>
     );
 }
