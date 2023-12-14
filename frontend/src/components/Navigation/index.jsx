@@ -1,19 +1,21 @@
 import "./style.scss"
-import { Outlet } from "react-router-dom"
+import { Outlet, Link } from "react-router-dom"
 
 function Navigation() {
     return (
         <div>
             <nav id="navigation-wrapper">
                 <div className="left">
-                    <h1>Fonte</h1>
+                    <h1>
+                        <Link to={"/"}>Fonte</Link>
+                    </h1>
                 </div>
                 <div className="middle">
-                    <a href="/#about">О нас</a>
-                    <a href="/#team">Команда</a>
-                    <a href="/#blog">Блог</a>
-                    <a href="/#products">Продукты</a>
-                    <a href="/#contacts">Контакты</a>
+                    <Link to="/about">О нас</Link>
+                    <Link to="/team">Команда</Link>
+                    <Link to="/blog">Блог</Link>
+                    <Link to="/products">Продукты</Link>
+                    <Link to="/contacts">Контакты</Link>
                 </div>
                 <div className="right">
                     <button>Войти</button>
