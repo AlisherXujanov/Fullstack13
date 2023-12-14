@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
-import Navigation from '../components/Navigation'
-import About from '../components/About'
+import Navigation from './Navigation'
+import About from './About'
 import NoPage from './NoPage'
 import Blog from './Blog'
 
