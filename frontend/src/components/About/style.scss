@@ -1,0 +1,28 @@
+@import "../../assets/styles/settings";
+
+.about-wrapper {
+    .about-content {
+        margin: 50px 0;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 50px;
+
+        img {
+            filter: grayscale(100%);
+        }
+        p {
+            color: lightgray;
+            line-height: 25px;
+        }
+
+        button {
+            @extend %warning-btn;
+            img {
+                margin-right: 5px;
+            }
+        }
+        div {
+            width: 80%;
+        }
+    }
+}
