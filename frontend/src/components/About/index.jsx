@@ -3,13 +3,12 @@ import AboutImage from "../../assets/images/about.png"
 import Licence from "../../assets/icons/licence.png"
 import Heading from "../common/Heading"
 import Values from "./Values.jsx"
+import Marquee from "../common/Marquee"
 
 function About() {
     return (
         <div className="about-wrapper">
             <Heading size={2}>О нас</Heading>
-
-
             <div className="about-content">
                 <img src={AboutImage}  alt="About" 
                     width={"100%"} height={400}
@@ -29,12 +28,15 @@ function About() {
                 </div>
             </div>
 
-            <hr />
+            <Marquee />
 
             <div className="values-content">
                 <Heading size={2}>Наши ценности</Heading>
                 <Values />
             </div>
+
+            <Marquee reversed={true} />
+
         </div>
     );
 }
