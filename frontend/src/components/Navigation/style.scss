@@ -4,9 +4,9 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    padding: 10px 30px;
+    padding: 25px;
     background-color: $dark;
-    box-shadow: 0 2px 30px $warning-t;
+    box-shadow: 0 2px 100px $warning-t;
 
     button {
         @extend %warning-btn;

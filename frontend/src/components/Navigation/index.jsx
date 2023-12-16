@@ -1,5 +1,6 @@
 import "./style.scss"
 import { Outlet, Link } from "react-router-dom"
+import Heading from "../common/Heading"
 
 function Navigation() {
     return (
@@ -7,7 +8,9 @@ function Navigation() {
             <nav id="navigation-wrapper">
                 <div className="left">
                     <h1>
-                        <Link to={"/"}>Fonte</Link>
+                        <Link to={"/"}>
+                            <Heading size={3}>Fonte</Heading>
+                        </Link>
                     </h1>
                 </div>
                 <div className="middle">

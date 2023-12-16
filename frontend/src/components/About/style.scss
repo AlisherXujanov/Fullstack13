@@ -25,4 +25,29 @@
             width: 80%;
         }
     }
+
+    .values-content {
+        margin: 50px 0;
+
+        .values-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+
+            .value-item {
+                padding-top: 50px;
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+                position: relative;
+
+                img {
+                    position: absolute;
+                }
+                p {
+                    color: gray;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
 }

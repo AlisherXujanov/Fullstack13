@@ -2,6 +2,7 @@ import "./style.scss"
 import AboutImage from "../../assets/images/about.png"
 import Licence from "../../assets/icons/licence.png"
 import Heading from "../common/Heading"
+import Values from "./Values.jsx"
 
 function About() {
     return (
@@ -26,6 +27,13 @@ function About() {
                         Лицензии
                     </button>
                 </div>
+            </div>
+
+            <hr />
+
+            <div className="values-content">
+                <Heading size={2}>Наши ценности</Heading>
+                <Values />
             </div>
         </div>
     );
