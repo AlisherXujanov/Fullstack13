@@ -1,0 +1,35 @@
+@import "../../assets/styles/settings";
+
+.contacts-wrapper {
+    background-color: $dark-lighter;
+    padding: 100px;
+
+    .contacts-info {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 50px;
+
+        .left {
+            .info-bar {
+                margin: 40px 0;
+                p {
+                    color: lightgray;
+                }
+            }
+        }
+        .right {
+            padding: 20px;
+
+            input,
+            button {
+                padding: 15px 20px;
+                width: 100%;
+                display: block;
+                margin-bottom: 15px;
+                outline: none;
+                border: none;
+                background-color: $dark;
+            }
+        }
+    }
+}
