@@ -4,10 +4,19 @@ import Licence from "../../assets/icons/licence.png"
 import Heading from "../common/Heading"
 import Values from "./Values.jsx"
 import Marquee from "../common/Marquee"
+import CarouselComponent from "../common/Carousel"
+
+import img1 from "../../assets/images/img-1.png"
+import img2 from "../../assets/images/img-2.png"
+import img3 from "../../assets/images/img-3.png"
+import img4 from "../../assets/images/img-4.png"
+import img5 from "../../assets/images/img-5.png"
 
 function About() {
     return (
         <div className="about-wrapper">
+
+
             <div className="about-content">
                 <Heading size={2}>О нас</Heading>
                 <div className="content-info">
