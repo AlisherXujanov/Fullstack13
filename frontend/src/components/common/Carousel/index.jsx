@@ -7,7 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 function CarouselComponent(props) {
     return (
         <div className="carousel-c-wrapper">
-            <Carousel>
+            <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}>
                 {
                     props.images && props.images.map((img, index) => {
                         return (            

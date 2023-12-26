@@ -13,8 +13,11 @@ import img4 from "../../assets/images/img-4.png"
 import img5 from "../../assets/images/img-5.png"
 
 function About() {
+    const images = [img1, img2, img3, img4, img5]
+
     return (
         <div className="about-wrapper">
+            <CarouselComponent images={images} />
 
 
             <div className="about-content">
