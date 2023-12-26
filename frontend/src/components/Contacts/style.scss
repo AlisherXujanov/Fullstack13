@@ -50,4 +50,15 @@
             }
         }
     }
+    .contact-maps {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+
+        div {
+            background-color: lightgray;
+            width: 100%;
+            height: 250px;
+        }
+    }
 }

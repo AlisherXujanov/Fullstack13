@@ -1,11 +1,11 @@
 import "./style.scss"
 import Heading from "../common/Heading";
+import MapComponent from "../common/MapComponent.jsx";
 
 function Contacts() {
     function submit(e) {
         e.preventDefault()
     }
-
     return (
         <>
             <div className="contacts-wrapper">
@@ -35,6 +35,14 @@ function Contacts() {
                                 Отправить
                             </button>
                         </form>
+                    </div>
+                </div>
+                <div className="contact-maps">
+                    <div className="left">
+                        <MapComponent />
+                    </div>
+                    <div className="right">
+                        <MapComponent />
                     </div>
                 </div>
             </div>
