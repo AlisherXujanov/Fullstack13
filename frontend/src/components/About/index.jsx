@@ -67,6 +67,7 @@ function About() {
                 </div>
             </div>
 
+            <Marquee />
         </div>
     );
 }
