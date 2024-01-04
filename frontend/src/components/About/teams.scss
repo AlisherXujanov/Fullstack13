@@ -1,0 +1,15 @@
+@import "../../assets/styles/settings";
+
+.teams-wrapper {
+    p {
+        color: darkgray;
+    }
+
+    .members {
+        .member-wrapper {
+            img {
+                border-radius: 50%;
+            }
+        }
+    }
+}
