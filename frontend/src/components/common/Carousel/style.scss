@@ -1,0 +1,16 @@
+@import "../../../assets/styles/settings";
+
+.carousel-c-wrapper {
+    position: relative;
+
+    .carousel-c-children {
+        background-color: transparent;
+        position: absolute;
+        left: 10%;
+        top: 20%;
+
+        button {
+            @extend %warning-btn;
+        }
+    }
+}
