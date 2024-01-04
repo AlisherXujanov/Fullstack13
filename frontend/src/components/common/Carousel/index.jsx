@@ -7,7 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 function CarouselComponent(props) {
 
     const imgStyle = {
-        filter: props.blurred ? "grayscale(100%) brightness(0.5)" : "none"
+        filter: props.blurred ? "grayscale(100%) brightness(0.4)" : "none"
     }
 
     return (
@@ -15,7 +15,7 @@ function CarouselComponent(props) {
             <div className="carousel-c-children">
                 {props.children}
             </div>
-            <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}>
+            <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false} showStatus={false}>
                 {
                     props.images && props.images.map((img, index) => {
                         return (            
