@@ -3,6 +3,7 @@ import AboutImage from "../../assets/images/about.png"
 import Licence from "../../assets/icons/licence.png"
 import Heading from "../common/Heading"
 import Values from "./Values.jsx"
+import Teams from "./Teams.jsx"
 import Marquee from "../common/Marquee"
 import CarouselComponent from "../common/Carousel"
 
@@ -55,6 +56,11 @@ function About() {
             </div>
 
             <Marquee reversed={true} />
+
+            <div className="teams-content">
+                <Heading size={2}>Наша команда</Heading>
+                <Teams />
+            </div>
 
         </div>
     );
