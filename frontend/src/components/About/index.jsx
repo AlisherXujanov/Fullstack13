@@ -58,8 +58,13 @@ function About() {
             <Marquee reversed={true} />
 
             <div className="teams-content">
-                <Heading size={2}>Наша команда</Heading>
+                <Heading size={2.5}>Наша команда</Heading>
                 <Teams />
+                <Heading size={2.5}>Сторонники и Партнеры</Heading>
+                <div className="партнеры">
+                    <h2>SeedBox</h2>
+                    <h2>Freedom Finance</h2>
+                </div>
             </div>
 
         </div>

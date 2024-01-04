@@ -1,14 +1,31 @@
 @import "../../assets/styles/settings";
 
 .teams-wrapper {
-    p {
+    margin-top: 50px;
+
+    p:first-child {
         color: darkgray;
+        width: 75%;
+        line-height: 25px;
     }
 
     .members {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 20px;
+        margin: 100px 0;
+
         .member-wrapper {
+            text-align: center;
+            p {
+                line-height: 25px;
+                font-size: 0.9em;
+            }
+
             img {
                 border-radius: 50%;
+                filter: grayscale(100%);
+                margin-bottom: 15px;
             }
         }
     }

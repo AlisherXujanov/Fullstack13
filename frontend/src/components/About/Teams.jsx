@@ -29,11 +29,11 @@ function Teams(props) {
                                 <img
                                     src={member.img}
                                     alt="Member"
-                                    width={100}
-                                    height={100}
+                                    width={170}
+                                    height={170}
                                 />
                                 <br />
-                                <h4>{member.fullname}</h4>
+                                <h3>{member.fullname}</h3>
                                 <p>{member.position.toUpperCase()}</p>
                             </div>
                         )
