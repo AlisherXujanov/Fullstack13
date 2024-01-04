@@ -22,8 +22,8 @@ function ContactsForm(props) {
             </div>
             <div className="right">
                 <img 
-                    src={Rectangle} 
-                    height={"100%"} width={"100%"} 
+                    src={Rectangle}
+                    width={"100%"} 
                     alt="Rectangle"
                 />
             </div>

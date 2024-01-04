@@ -4,6 +4,7 @@ import Licence from "../../assets/icons/licence.png"
 import Heading from "../common/Heading"
 import Values from "./Values.jsx"
 import Teams from "./Teams.jsx"
+import ContactsForm from "../ContactsForm"
 import Marquee from "../common/Marquee"
 import CarouselComponent from "../common/Carousel"
 
@@ -68,6 +69,8 @@ function About() {
             </div>
 
             <Marquee />
+
+            <ContactsForm />
         </div>
     );
 }

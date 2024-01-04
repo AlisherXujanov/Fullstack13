@@ -1,0 +1,14 @@
+@import "../../assets/styles/settings";
+
+.contacts-form-container {
+    background-color: $dark-darker;
+    padding: 0 200px;
+    height: 450px;
+
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+
+    img {
+        height: 450px;
+    }
+}
