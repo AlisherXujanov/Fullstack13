@@ -69,3 +69,36 @@
         }
     }
 }
+
+@media (max-width: $large-screen) {
+    .about-wrapper {
+        .about-content {
+            padding: 100px 50px;
+
+            .content-info {
+                grid-template-columns: 1fr 2fr;
+                gap: 20px;
+            }
+        }
+    }
+}
+@media (max-width: $medium-screen) {
+    .about-wrapper {
+        .about-content {
+            padding: 50px 20px;
+
+            .content-info {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
+@media (max-width: $small-screen) {
+    .about-wrapper {
+        .about-content {
+            .content-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
