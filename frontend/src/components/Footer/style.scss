@@ -28,6 +28,19 @@
                 }
             }
         }
+
+        @media (max-width: $medium-screen) {
+            grid-template-columns: 1fr 2fr;
+            .footer-logo,
+            .footer-sm {
+                padding-left: 50px;
+            }
+        }
+        @media (max-width: $small-screen) {
+            .footer-links {
+                flex-direction: column;
+            }
+        }
     }
 
     .footer-bottom {
@@ -39,6 +52,10 @@
         p {
             color: gray;
             font-size: 0.8em;
+        }
+
+        @media (max-width: $small-screen) {
+            padding: 50px 20px;
         }
     }
 }
