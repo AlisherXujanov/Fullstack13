@@ -29,7 +29,6 @@ function Teams(props) {
                                 <img
                                     src={member.img}
                                     alt="Member"
-                                    width={170}
                                     height={170}
                                 />
                                 <br />
