@@ -48,11 +48,43 @@
             }
             div {
                 display: flex;
-                gap: 5px;
-                margin: 10px 0;
+
+                input:first-child {
+                    margin-right: 5px;
+                }
             }
             button {
                 @extend %warning-btn;
+            }
+        }
+    }
+
+    @media (max-width: $large-screen) {
+        padding: 0 80px;
+    }
+    @media (max-width: $medium-screen) {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 0;
+
+        img {
+            height: 300px;
+        }
+
+        .left {
+            form {
+                padding: 30px 50px;
+            }
+        }
+    }
+    @media (max-width: $small-screen) {
+        .left {
+            form {
+                padding: 30px 10px;
+
+                div {
+                    flex-direction: column;
+                }
             }
         }
     }

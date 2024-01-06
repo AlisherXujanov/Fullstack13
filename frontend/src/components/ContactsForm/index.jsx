@@ -9,7 +9,7 @@ function ContactsForm(props) {
         <div className="contacts-form-container">
             <div className="left">
                 <form onSubmit={submit}>
-                    <input type="text" placeholder="Fullname" />
+                    <input className="name" type="text" placeholder="Fullname" />
                     <div className="contacts-details">
                         <input type="email" placeholder="Email"/>
                         <input type="text" placeholder="Phone number"/>
