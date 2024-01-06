@@ -29,4 +29,16 @@
             }
         }
     }
+
+    .footer-bottom {
+        background-color: $dark-darker;
+        padding: 50px 100px;
+        * {
+            margin-bottom: 40px;
+        }
+        p {
+            color: gray;
+            font-size: 0.8em;
+        }
+    }
 }
