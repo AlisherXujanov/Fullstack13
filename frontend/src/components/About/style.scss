@@ -80,6 +80,16 @@
                 }
             }
         }
+
+        .teams-content {
+            padding: 100px 50px;
+
+            .teams-wrapper {
+                .members {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+        }
     }
 }
 
@@ -112,6 +122,16 @@
             .values-wrapper {
                 margin-top: 30px;
                 grid-template-columns: 1fr;
+            }
+        }
+
+        .teams-content {
+            padding: 50px 20px;
+
+            .teams-wrapper {
+                .members {
+                    grid-template-columns: repeat(2, 1fr);
+                }
             }
         }
     }
