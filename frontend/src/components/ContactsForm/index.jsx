@@ -14,7 +14,7 @@ function ContactsForm(props) {
                         <input type="email" placeholder="Email"/>
                         <input type="text" placeholder="Phone number"/>
                     </div>
-                    <textarea cols="5" placeholder="Text content"></textarea>
+                    <textarea rows="5" placeholder="Text content"></textarea>
                     <button className="warning-btn">
                         Получить консультацию
                     </button>
