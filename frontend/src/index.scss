@@ -23,3 +23,7 @@ body {
     background-color: $warning;
   }
 }
+
+.warning-btn {
+  @extend %warning-btn;
+}

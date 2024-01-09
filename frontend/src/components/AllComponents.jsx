@@ -4,6 +4,7 @@ import About from './About'
 import NoPage from './NoPage'
 import Blog from './Blog'
 import Contacts from './Contacts'
+import Products from './Products'
 
 function AllComponents(props) {
     const location = useLocation()
@@ -13,6 +14,7 @@ function AllComponents(props) {
                 <Route index element={<About />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/products" element={<Products />} />
                 <Route path="/contacts" element={<Contacts />} />
                 <Route path="*" element={<NoPage />} />
             </Route>
