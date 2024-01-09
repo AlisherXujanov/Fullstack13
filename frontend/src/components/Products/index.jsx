@@ -14,14 +14,18 @@ function Products() {
         name: 'Vasya'
     })
 
-    function inc (e) {
-        setState({ ...state, counter: state.counter+1 })
+    function inc(e) {
+        setState({ ...state, counter: state.counter + 1 })
     }
-    function dec (e) {
+    function dec(e) {
+        const names = ['Alijon', "Onur", "Bemiyya", "Valodya"]
+        const colors = ['red', 'green', 'blue', 'yellow']
+        const randomNumber = Math.floor(Math.random() * names.length)
+
         setState({
-            counter: state.counter-1,
-            color: '...',
-            name: '...'
+            counter: state.counter - 1,
+            color: colors[randomNumber],
+            name: names[randomNumber]
         })
     }
 
@@ -31,8 +35,10 @@ function Products() {
             <br />
             <hr />
             <br />
-
-            <h2>{state.counter}</h2>
+            <div style={{color: state.color}}>
+                <h2>{state.counter}</h2>
+                <h2>{state.name}</h2>
+            </div>
             <br />
             <button className="warning-btn" onClick={inc}>
                 Increment
