@@ -30,7 +30,7 @@ function Products() {
     }
 
     return (
-        <div className="products-wrapper">
+        <div className="products-wrapper" style={{textAlign: "center"}}>
             <Heading size={2}>Продукты</Heading>
             <br />
             <hr />
@@ -40,12 +40,14 @@ function Products() {
                 <h2>{state.name}</h2>
             </div>
             <br />
-            <button className="warning-btn" onClick={inc}>
-                Increment
-            </button>
-            <button className="warning-btn" onClick={dec}>
-                Decrement
-            </button>
+            <button className="warning-btn" onClick={inc}>Increment</button>
+            <button className="warning-btn" onClick={dec}>Decrement</button>
+
+            <hr />
+            <br />
+            <br />
+            <button className="warning-btn" onClick={''}>Left</button>
+            <button className="warning-btn" onClick={''}>Right</button>
         </div>
     );
 }
