@@ -11,7 +11,8 @@ function Products() {
     const [state, setState] = useState({
         counter: 0,
         color: 'red',
-        name: 'Vasya'
+        name: 'Vasya',
+        translateValue: 'translateX(0)'
     })
 
     function inc(e) {
@@ -29,13 +30,25 @@ function Products() {
         })
     }
 
+    function left(e) {
+        setState({ ...state, translateValue: 'translateX(-200px)' })
+    }
+    function right(e) {
+        setState({ ...state, translateValue: 'translateX(200px)' })
+    }
+    function reset(e) {
+        setState({ ...state, translateValue: 'translateX(0)' })
+    }
+    
+
+
     return (
-        <div className="products-wrapper" style={{textAlign: "center"}}>
+        <div className="products-wrapper" style={{ textAlign: "center" }}>
             <Heading size={2}>Продукты</Heading>
             <br />
             <hr />
             <br />
-            <div style={{color: state.color}}>
+            <div style={{ color: state.color, transform: state.translateValue }}>
                 <h2>{state.counter}</h2>
                 <h2>{state.name}</h2>
             </div>
@@ -46,8 +59,9 @@ function Products() {
             <hr />
             <br />
             <br />
-            <button className="warning-btn" onClick={''}>Left</button>
-            <button className="warning-btn" onClick={''}>Right</button>
+            <button className="warning-btn" onClick={left}>Left</button>
+            <button className="warning-btn" onClick={reset}>Reset</button>
+            <button className="warning-btn" onClick={right}>Right</button>
         </div>
     );
 }
