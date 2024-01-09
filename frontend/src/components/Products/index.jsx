@@ -31,13 +31,25 @@ function Products() {
     }
 
     function left(e) {
-        setState({ ...state, translateValue: 'translateX(-200px)' })
+        setState({ 
+            ...state, 
+            translateValue: 'translateX(-200px)',
+            counter: state.counter + 1
+        })
     }
     function right(e) {
-        setState({ ...state, translateValue: 'translateX(200px)' })
+        setState({ 
+            ...state, 
+            translateValue: 'translateX(200px)', 
+            counter: state.counter - 1
+        })
     }
     function reset(e) {
-        setState({ ...state, translateValue: 'translateX(0)' })
+        setState({ 
+            ...state, translateValue: 
+            'translateX(0)',
+            counter: 0
+        })
     }
     
 
