@@ -9,6 +9,9 @@
         align-items: center;
         gap: 10px;
         padding: 25px 100px;
+        box-shadow: 1px 1px 50px 10px $warning-t;
+        position: relative;
+        z-index: 1;
 
         * {
             display: inline-block;
