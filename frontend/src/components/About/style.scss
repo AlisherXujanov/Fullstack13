@@ -1,6 +1,25 @@
+@import "../../assets/styles/settings";
+
 .about-wrapper {
+    padding: 100px;
+    background-color: $dark;
+    color: $light;
+
     .about-content {
         .container {
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 50px;
+
+            p {
+                margin-bottom: 50px;
+                line-height: 20px;
+                color: lightgray;
+            }
+            img {
+                filter: grayscale(100%);
+            }
         }
     }
 }
