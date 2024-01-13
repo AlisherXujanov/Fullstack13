@@ -1,13 +1,15 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import Navigation from "./components/Navigation"
-import About from "./components/About"
-import NoPage from "./components/NoPage"
+import Navigation from "./Navigation"
+import About from "./About"
+import NoPage from "./NoPage"
 
 function AllComponents() {
     const location = useLocation();
-
     return (
         <>
+            {/* 
+                http://localhost:3000/ 
+            */}
             <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<Navigation />} >
                     <Route index element={<About />} />
@@ -18,5 +20,4 @@ function AllComponents() {
         </>
     );
 }
-
 export default AllComponents;
