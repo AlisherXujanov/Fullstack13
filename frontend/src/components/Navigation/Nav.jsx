@@ -14,7 +14,7 @@ function Nav() {
                 <Link to={'contacts'}>Контакты</Link>
             </div>
             <div className="right">
-                <button className='btn-warning'>
+                <button className='warning-btn'>
                     Войти
                 </button>
                 <span className='lang-toggler'>
