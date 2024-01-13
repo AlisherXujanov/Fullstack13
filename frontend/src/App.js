@@ -1,7 +1,12 @@
+import { BrowserRouter } from 'react-router-dom'
+import AllComponents from './components/AllComponents.jsx'
+
 function App() {
   return (
     <div className="App">
-      <h1>Hello world</h1>
+      <BrowserRouter>
+        <AllComponents />
+      </BrowserRouter>
     </div>
   );
 }
