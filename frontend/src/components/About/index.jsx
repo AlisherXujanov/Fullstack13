@@ -1,11 +1,16 @@
 import "./style.scss"
 import AboutImage from '../../assets/images/about.png'
 import Licence from "../../assets/icons/licence.png"
+import Heading from "../common/Heading"
+import CarouselComponent from "../common/Carousel"
+
 function About() {
     return (
         <div className="about-wrapper">
+            <CarouselComponent images={[]} />
+
             <div className="about-content">
-                <h2>About</h2>
+                <Heading size={1.8}>About</Heading>
                 <div className="container">
                     <img src={AboutImage} width={"100%"} height={450} alt="Earth" />
                     <div>
