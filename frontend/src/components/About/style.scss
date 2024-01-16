@@ -1,11 +1,12 @@
 @import "../../assets/styles/settings";
 
 .about-wrapper {
-    padding: 100px;
     background-color: $dark;
     color: $light;
 
     .about-content {
+        padding: 100px;
+
         .container {
             margin: 20px 0;
             display: grid;
