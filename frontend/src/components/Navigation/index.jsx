@@ -9,7 +9,7 @@ function Navigation() {
                 <Nav />
             </header>
 
-            <Outlet />
+            <Outlet />  
 
             <footer>
                 <small>Footer</small>
