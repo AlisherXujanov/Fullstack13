@@ -1,10 +1,12 @@
 import './style.scss'
+import Rectangle from './Rectangle.png'
 
 function Heading(props) {
     const size = `${48 / props.size}px`
 
     return (
-        <h1 style={{fontSize: size}}>
+        <h1 className='heading-component' style={{fontSize: size}}>
+            <img src={Rectangle} alt="Rectangle" />
             {props.children}
         </h1>
     );

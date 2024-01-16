@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
+import Heading from '../common/Heading'
 
 function Nav() {
     return (
         <nav>
             <div className="left">
-                <h2>Fonte</h2>
+                <Heading size={1.5}>Fonte</Heading>
             </div>
             <div className="middle">
                 <Link to={'about'}>О нас</Link>
