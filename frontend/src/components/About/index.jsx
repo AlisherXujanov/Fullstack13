@@ -10,7 +10,6 @@ import Img3 from '../../assets/images/img3.png'
 import Img4 from '../../assets/images/img4.png'
 import Img5 from '../../assets/images/img5.png'
 
-
 function About() {
     const images = [Img1, Img2, Img3, Img4, Img5]
 
