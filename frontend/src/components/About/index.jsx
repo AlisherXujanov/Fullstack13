@@ -15,7 +15,7 @@ function About() {
 
     return (
         <div className="about-wrapper">
-            <CarouselComponent images={images} />
+            <CarouselComponent images={images} blurred={true}/>
 
             <div className="about-content">
                 <Heading size={1.8}>About</Heading>

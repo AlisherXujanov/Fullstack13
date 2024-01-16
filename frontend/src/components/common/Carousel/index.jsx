@@ -4,6 +4,10 @@ import './style.scss'
 
 function CarouselComponent(props) {
     // <CarouselComponent images={...} />
+
+    const imageStyle = {
+        filter: props.blurred ? `grayscale(100%) brightness(0.5)` : "none"
+    }
     return (
         <Carousel 
             showThumbs={false} 
@@ -16,6 +20,7 @@ function CarouselComponent(props) {
                     return (
                         <div key={index}>
                             <img 
+                                style={imageStyle}
                                 src={image} alt="Slide" 
                                 height={600} 
                                 width={"100%"} 
