@@ -5,7 +5,12 @@ import './style.scss'
 function CarouselComponent(props) {
     // <CarouselComponent images={...} />
     return (
-        <Carousel>
+        <Carousel 
+            showThumbs={false} 
+            autoPlay={true} 
+            infiniteLoop={true}
+            showStatus={false}
+        >
             {
                 props.images?.map((image, index) => {
                     return (
