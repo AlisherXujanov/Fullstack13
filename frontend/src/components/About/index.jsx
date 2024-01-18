@@ -3,6 +3,7 @@ import AboutImage from '../../assets/images/about.png'
 import Licence from "../../assets/icons/licence.png"
 import Heading from "../common/Heading"
 import CarouselComponent from "../common/Carousel"
+import ContactsForm from "../ContactsForm"
 
 import Img1 from '../../assets/images/img1.png'
 import Img2 from '../../assets/images/img2.png'
@@ -37,6 +38,10 @@ function About() {
                         </button>
                     </div>
                 </div>
+            </div>
+
+            <div className="contacts-content">
+                <ContactsForm />
             </div>
         </div>
     );
