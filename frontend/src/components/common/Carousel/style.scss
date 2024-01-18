@@ -1,0 +1,21 @@
+.carousel-c-wrapper {
+    position: relative;
+
+    .carousel-c-children {
+        position: absolute;
+        z-index: 1;
+        width: 40%;
+        left: 10%;
+        top: 20%;
+        padding: 50px;
+
+        p {
+            margin: 50px 0;
+            color: lightgray;
+        }
+    }
+
+    .carousel-root {
+        .
+    }
+}
