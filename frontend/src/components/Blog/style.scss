@@ -1,0 +1,28 @@
+@import "../../assets/styles/settings";
+
+#blog-wrapper {
+    padding: 100px;
+    background-color: $dark-lighter;
+    .content {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 25px;
+        font-family: cursive;
+
+        *:not(.warning-btn) {
+            margin-bottom: 20px;
+        }
+        .left,
+        .right {
+            padding: 20px;
+        }
+        .warning-btn {
+            border: 1px solid $warning-t;
+            background-color: transparent;
+        }
+        p {
+            color: darkgray;
+            font-size: 0.75em;
+        }
+    }
+}

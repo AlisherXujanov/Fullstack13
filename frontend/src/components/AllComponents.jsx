@@ -1,25 +1,35 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { useLocation, Route, Routes } from 'react-router-dom'
 import Navigation from "./Navigation"
 import About from "./About"
+import Blog from "./Blog"
 import NoPage from "./NoPage"
 import Products from "./Products"
+import Contacts from "./Contacts"
+import { useReducer } from 'react'
+import { globalContext, initialState } from '../state'
+import { globalReducerFunction } from '../state/functions.js'
 
-function AllComponents() {
-    const location = useLocation();
+function AllComponents(props) {
+    const location = useLocation()
+    const [state, dispatch] = useReducer(globalReducerFunction, initialState)
+    state.dispatch = dispatch
+
     return (
         <>
-            {/* 
-                http://localhost:3000/ 
-            */}
-            <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<Navigation />} >
-                    <Route index element={<About />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/products" element={<Products />} />
-                    <Route path="*" element={<NoPage />} />
-                </Route>
-            </Routes>
+            <globalContext.Provider value={state}>
+                <Routes location={location} key={location.pathname}>
+                    <Route path="/" element={<Navigation />} >
+                        <Route index element={<About />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/blog" element={<Blog />} />
+                        <Route path="/products" element={<Products />} />
+                        <Route path="/contacts" element={<Contacts />} />
+                        <Route path="*" element={<NoPage />} />
+                    </Route>
+                </Routes>
+            </globalContext.Provider>
         </>
     );
 }
+
 export default AllComponents;

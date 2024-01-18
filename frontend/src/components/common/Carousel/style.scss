@@ -1,36 +1,33 @@
 @import "../../../assets/styles/settings";
 
-.carousel-c-wrapper {
+.carousel-section {
+    box-shadow: 0 50px 100px -50px $warning-t;
     position: relative;
 
-    .carousel-c-children {
+    .inner-carousel {
         position: absolute;
-        z-index: 1;
-        width: 40%;
+        z-index: 5;
+        max-width: 500px;
+        min-width: 300px;
+        top: 25%;
         left: 10%;
-        top: 20%;
-        padding: 50px;
 
+        h1 {
+            font-size: 2em;
+            font-family: "Montserrat", sans-serif;
+        }
         p {
-            margin: 50px 0;
-            color: lightgray;
+            margin: 20px 0;
         }
     }
 
-    .carousel-root {
-        .carousel-slider {
-            .control-dots {
-                .dot {
-                    background-color: gray;
-                    box-shadow: 0 0 20px 1px gray;
-                    transform: scale(1.5);
-
-                    &.selected {
-                        background-color: $warning;
-                        box-shadow: 0 0 20px 1px $warning;
-                    }
-                }
-            }
+    .control-dots {
+        li.dot {
+            background-color: $warning;
+            box-shadow:
+                1px 1px 10px 1px $warning-t,
+                -1px -1px 10px 1px $warning-t;
+            transform: scale(1.5);
         }
     }
 }

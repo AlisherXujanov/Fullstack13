@@ -1,33 +1,143 @@
 @import "../../assets/styles/settings";
 
-.about-wrapper {
-    background-color: $dark;
-    color: $light;
-
-    .about-content {
+#about-wrapper {
+    .about {
         padding: 100px;
 
-        .container {
-            margin: 20px 0;
+        .about-content {
             display: grid;
-            grid-template-columns: 1fr 3fr;
+            grid-template-columns: 1fr 2.5fr;
             gap: 50px;
+            margin-top: 50px;
 
-            p {
-                margin-bottom: 50px;
-                line-height: 20px;
-                color: lightgray;
+            .left {
+                img {
+                    filter: grayscale(100%);
+                }
             }
-            img {
-                filter: grayscale(100%);
+
+            .right {
+                p {
+                    font-family: cursive;
+                    line-height: 30px;
+                    color: darkgray;
+                }
+
+                button {
+                    @extend %warning-btn;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        margin-right: 10px;
+                    }
+                }
             }
-            button {
+        }
+    }
+    .values {
+        margin-top: 50px;
+        padding: 100px;
+
+        .values-content {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+
+            .value-item {
                 display: flex;
-                align-items: center;
-                justify-content: center;
+
+                div {
+                    h2 {
+                        margin-bottom: 30px;
+                    }
+                    p {
+                        color: darkgray;
+                        font-family: cursive;
+                        line-height: 25px;
+                    }
+                    padding-top: 45px;
+                }
+            }
+        }
+    }
+    #teams {
+        padding: 100px;
+        margin: 50px 0;
+        .info {
+            color: darkgray;
+            width: 70%;
+            padding: 50px 0 50px 0;
+        }
+        .teams-wrapper {
+            .images {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                gap: 10px;
+
+                .member {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
 
                 img {
-                    margin-right: 10px;
+                    border-radius: 50%;
+                    filter: grayscale(100%);
+                }
+            }
+        }
+    }
+
+    @media (max-width: $large-screen) {
+        .values {
+            padding: 20px;
+        }
+        #teams {
+            padding: 20px;
+
+            .teams-wrapper {
+                .images {
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 20px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: $medium-screen) {
+        .about {
+            padding: 20px;
+            .about-content {
+                grid-template-columns: 0.5fr 1fr;
+                gap: 30px;
+            }
+        }
+        .values {
+            padding: 10px;
+
+            .values-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        #teams {
+        }
+    }
+
+    @media (max-width: $small-screen) {
+        .about {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+        #teams {
+            .teams-wrapper {
+                .images {
+                    grid-template-columns: repeat(2, 1fr);
                 }
             }
         }

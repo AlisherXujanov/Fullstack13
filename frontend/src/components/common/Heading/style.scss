@@ -1,10 +1,13 @@
-.heading-component {
-    position: relative;
-    display: inline-block;
+.heading-wrapper {
+    b {
+        display: inline-block;
+        position: relative;
+        font-weight: 500;
 
-    img {
-        position: absolute;
-        right: -20px;
-        top: -15px;
+        img {
+            position: absolute;
+            right: -25px;
+            top: -15px;
+        }
     }
 }
