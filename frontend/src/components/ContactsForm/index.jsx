@@ -1,9 +1,19 @@
 import "./style.scss"
 import Rectangle from "../../assets/images/Rectangle.png"
 
+
+// 1. Create a form
+// 2. connect it with useState
+// 3. collect all data into useState
+// 4. Create an account in the EmailJS.com
+// 5. Install email.js in the React project
+// 6. connect the form  with email.js
+
+
 function ContactsForm(props) {
+    
     function submit(e) {
-        e.preventDefault()
+        e.preventDefault() 
     }
     return (
         <div className="contacts-form-container">
