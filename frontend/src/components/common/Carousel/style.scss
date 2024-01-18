@@ -1,3 +1,5 @@
+@import "../../../assets/styles/settings";
+
 .carousel-c-wrapper {
     position: relative;
 
@@ -16,6 +18,19 @@
     }
 
     .carousel-root {
-        .
+        .carousel-slider {
+            .control-dots {
+                .dot {
+                    background-color: gray;
+                    box-shadow: 0 0 20px 1px gray;
+                    transform: scale(1.5);
+
+                    &.selected {
+                        background-color: $warning;
+                        box-shadow: 0 0 20px 1px $warning;
+                    }
+                }
+            }
+        }
     }
 }
