@@ -1,9 +1,6 @@
 import Heading from "../common/Heading"
 import { Link, useNavigate } from 'react-router-dom'
 
-import { useContext } from "react";
-import { globalContext } from "../../state";
-import { useTranslation } from "react-i18next";
 
 // 1. Create a burger
 // 2. Put the input checkbox onto the burger and make it invisible
@@ -11,16 +8,6 @@ import { useTranslation } from "react-i18next";
 
 function Nav(props) {
     const navigate = useNavigate();
-    const state = useContext(globalContext);
-    const { t, i18n: { changeLanguage, language } } = useTranslation();
-
-    const newLanguage = () => {
-        return language === "en" ? "ru" : "en";
-    }
-    const initiateChangeLanguage = () => {
-        state.dispatch({ type: "CHANGE_LANG", currentLanguage: newLanguage() })
-        changeLanguage(newLanguage());
-    }
 
     const goToTeamsHash = () => {
         navigate('/about');
@@ -45,28 +32,28 @@ function Nav(props) {
             <div className="menu">
                 <div className="nav-links">
                     <Link to={"/about"}>
-                        {t('about')}
+                        About
                     </Link>
                     <button onClick={goToTeamsHash}>
-                        {t('team')}
+                        Team
                     </button>
                     <Link to={"/blog"}>
-                        {t('blog')}
+                        Blog
                     </Link>
                     <Link to={"/products"}>
-                        {t('products')}
+                        Products
                     </Link>
                     <Link to={"/contacts"}>
-                        {t('contacts')}
+                        Contacts
                     </Link>
                 </div>
 
                 <div className="auth">
                     <button className="warning-btn">
-                        {t('login')}
+                        Login
                     </button>
-                    <span onClick={initiateChangeLanguage} >
-                        {newLanguage()}
+                    <span>
+                        Рус
                     </span>
                 </div>
             </div>
