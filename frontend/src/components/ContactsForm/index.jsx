@@ -28,11 +28,15 @@ function ContactsForm() {
     function submit(e) {
         e.preventDefault()
 
-        emailjs.send('...', '...', templateParams, '...')
+        emailjs.send('qwdqwdqw', 'dwdqdqdqw', templateParams, '1d912hd0-91')
             .then((response) => {
-                console.log('SUCCESS!', response.status, response.text);
+                toast.success('SUCCESS!', {
+                    theme: "dark"
+                });
             }, (err) => {
-                console.log('FAILED...', err);
+                toast.error('FAILED...', {
+                    theme: "dark"
+                });
             });
     }
 
