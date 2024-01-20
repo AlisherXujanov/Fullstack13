@@ -12,7 +12,6 @@ function ContactsForm() {
         notes: ""
     })
 
-
     const templateParams = {
         from_name: form.name,
         email: form.email,
@@ -28,6 +27,13 @@ function ContactsForm() {
 
     function submit(e) {
         e.preventDefault()
+
+        emailjs.send('...', '...', templateParams, '...')
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+            }, (err) => {
+                console.log('FAILED...', err);
+            });
     }
 
     return (
