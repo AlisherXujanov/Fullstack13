@@ -28,7 +28,7 @@ function ContactsForm() {
     function submit(e) {
         e.preventDefault()
 
-        emailjs.send('qwdqwdqw', 'dwdqdqdqw', templateParams, '1d912hd0-91')
+        emailjs.send('service_8aytxhp', 'template_dbx4qji', templateParams, 'mbcCG18ZiPltCRfB-')
             .then((response) => {
                 toast.success('SUCCESS!', {
                     theme: "dark"
