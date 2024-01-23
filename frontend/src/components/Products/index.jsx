@@ -4,7 +4,7 @@ import { initialState, globalReducer } from '../../store'
 
 
 function Products(props) {
-    // const [state, setState] = useState({})
+    // const [count, setBemiyya] = useState(0)
     const [state, dispatch] = useReducer(globalReducer, initialState)
 
     // dispatch({....}) => globalReducer(initialState, {...})
