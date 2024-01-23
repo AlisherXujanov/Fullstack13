@@ -21,6 +21,10 @@ function Products(props) {
         })
     }
 
+    function handleCounter(e) {
+        dispatch({type: e.target.name})
+    }
+
     return (
         <div id="products-wrapper">
             <h2>Products</h2>
@@ -37,6 +41,28 @@ function Products(props) {
                 onChange={handleChange}
                 name="range"
             />
+
+            <br />
+            <br />
+            <hr />
+            <br />
+            <br />
+
+
+            <h3>{state.counter}</h3>
+
+            <button className='warning-btn' name='decrement'
+                onClick={handleCounter}
+            >
+                Decrement -
+            </button>
+            <button className='warning-btn' name='increment'
+                onClick={handleCounter}
+            >
+                Increment +
+            </button>
+
+
             {/* 
                 DRY  =>  Don't Repeat Yourself
                 Не Повторяйся
