@@ -10,6 +10,9 @@ function Products(props) {
     // dispatch({....}) => globalReducer(initialState, {...})
     // state  =>  initialState
 
+    // 3x3  =>  useState
+    // 3x3  =>  useReducer
+
     function handleChange(e) {
         // e.target.value  ==  input
         const input_tag = e.target
