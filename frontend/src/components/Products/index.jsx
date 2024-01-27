@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 function Products(props) {
     const [color, setColor] = useState('red')
+    const [thisColor, setThisColor] = useState('snow')
     const [state, dispatch] = useReducer(globalReducer, initialState)
     // dispatch({....}) => globalReducer(initialState, {...})
     // state  =>  initialState
@@ -35,6 +36,9 @@ function Products(props) {
         let random_index = Math.floor(Math.random() * colors.length)
         setColor(colors[random_index])
     }
+    function handleSetThisColor(e) {
+        setThisColor(e.target.value)
+    }
 
     return (
         <div id="products-wrapper">
@@ -43,13 +47,15 @@ function Products(props) {
             <br />
 
             <div className="container">
-                <div style={{fontSize: state.fontSize+"px"}}>
+                <div style={{fontSize: state.fontSize+"px",  color:thisColor}}>
                     <button className="warning-btn" onClick={() => {
                             dispatch({type: 'text_bigger'})
                         }}
                     >
                         Make text bigger
                     </button>
+
+                    <input type="color" onChange={handleSetThisColor} />
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam molestias recusandae veritatis quas ipsum animi necessitatibus? Tempora doloribus sed repellendus neque maiores ea dolore ab quam, alias totam nobis voluptate?</p>
                 </div>
             </div>
