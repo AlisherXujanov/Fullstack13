@@ -6,6 +6,7 @@ const initialState = {
     counter: 0,
     fontSize: 16,
     thisColor: "snow",
+    thisOpacity: 100,
 }
 
 export {

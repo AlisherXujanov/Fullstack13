@@ -12,6 +12,8 @@ function globalReducer(state, payload) {
             return { ...state, fontSize: state.fontSize + 2 }
         case "thisColorType":
             return { ...state, thisColor: payload.inputColor }
+        case "thisOpacityType":
+            return { ...state, thisOpacity: payload.inputOpacity }
         default:
             return state
     }
