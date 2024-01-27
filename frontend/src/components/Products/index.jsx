@@ -32,12 +32,27 @@ function Products(props) {
             'black', 'white', 'gray', 'cyan',
             'magenta', 'lime', 'olive', 'maroon',
         ]
-        setColor("yellow")
+        let random_index = Math.floor(Math.random() * colors.length)
+        setColor(colors[random_index])
     }
 
     return (
         <div id="products-wrapper">
             <h2>Products</h2>
+            <br />
+            <br />
+
+            <div className="container">
+                <div style={{fontSize: state.fontSize+"px"}}>
+                    <button className="warning-btn" onClick={() => {
+                            dispatch({type: 'text_bigger'})
+                        }}
+                    >
+                        Make text bigger
+                    </button>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam molestias recusandae veritatis quas ipsum animi necessitatibus? Tempora doloribus sed repellendus neque maiores ea dolore ab quam, alias totam nobis voluptate?</p>
+                </div>
+            </div>
 
             <div className="container">
                 <p>{state.text}</p>

@@ -8,11 +8,12 @@ function globalReducer(state, payload) {
             return { ...state, counter: state.counter - 1 }
         case "increment":
             return { ...state, counter: state.counter + 1 }
+        case "text_bigger":
+            return { ...state, fontSize: state.fontSize + 2 }
         default:
             return state
     }
 }
-
 
 export {
     globalReducer
