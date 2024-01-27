@@ -37,7 +37,8 @@ function Products(props) {
         setColor(colors[random_index])
     }
     function handleSetThisColor(e) {
-        setThisColor(e.target.value)
+        // setThisColor(e.target.value)
+        dispatch({type:"thisColorType",    inputColor:e.target.value})
     }
 
     return (
@@ -47,7 +48,12 @@ function Products(props) {
             <br />
 
             <div className="container">
-                <div style={{fontSize: state.fontSize+"px",  color:thisColor}}>
+                <input type="range" min={20} step={5} />
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia praesentium minima ex mollitia iste, impedit reiciendis soluta consequatur explicabo culpa nostrum dolorum! Explicabo temporibus maiores vel porro ullam quia beatae!</p>
+            </div>
+
+            <div className="container">
+                <div style={{fontSize: state.fontSize+"px",  color:state.thisColor}}>
                     <button className="warning-btn" onClick={() => {
                             dispatch({type: 'text_bigger'})
                         }}

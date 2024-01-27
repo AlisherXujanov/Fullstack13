@@ -5,6 +5,7 @@ const initialState = {
     range: 0,
     counter: 0,
     fontSize: 16,
+    thisColor: "snow",
 }
 
 export {

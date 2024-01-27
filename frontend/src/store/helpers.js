@@ -10,6 +10,8 @@ function globalReducer(state, payload) {
             return { ...state, counter: state.counter + 1 }
         case "text_bigger":
             return { ...state, fontSize: state.fontSize + 2 }
+        case "thisColorType":
+            return { ...state, thisColor: payload.inputColor }
         default:
             return state
     }
