@@ -1,12 +1,11 @@
 import './style.scss'
 import { useReducer } from 'react'
 import { initialState, globalReducer } from '../../store'
-
+import { useState } from 'react'
 
 function Products(props) {
-    // const [count, setBemiyya] = useState(0)
+    const [color, setColor] = useState('red')
     const [state, dispatch] = useReducer(globalReducer, initialState)
-
     // dispatch({....}) => globalReducer(initialState, {...})
     // state  =>  initialState
 
@@ -23,53 +22,61 @@ function Products(props) {
             value: value
         })
     }
-
     function handleCounter(e) {
-        dispatch({type: e.target.name})
+        dispatch({ type: e.target.name })
+    }
+    function changeColor(e) {
+        let colors = [
+            "red", "green", "blue", "yellow",
+            "purple", "orange", "pink", "brown",
+            'black', 'white', 'gray', 'cyan',
+            'magenta', 'lime', 'olive', 'maroon',
+        ]
+        setColor("yellow")
     }
 
     return (
         <div id="products-wrapper">
             <h2>Products</h2>
 
-            <p>{state.text}</p>
-            <p>{state.range}</p>
-            <input 
-                type="text" 
-                onChange={handleChange}
-                name="text"
-            />
-            <input 
-                type="range" 
-                onChange={handleChange}
-                name="range"
-            />
+            <div className="container">
+                <p>{state.text}</p>
+                <p>{state.range}</p>
+                <input
+                    type="text"
+                    onChange={handleChange}
+                    name="text"
+                />
+                <input
+                    type="range"
+                    onChange={handleChange}
+                    name="range"
+                />
+            </div>
 
-            <br />
-            <br />
-            <hr />
-            <br />
-            <br />
+            <div className="container">
+                <h3>{state.counter}</h3>
 
+                <button className='warning-btn' name='decrement'
+                    onClick={handleCounter}
+                >
+                    Decrement -
+                </button>
+                <button className='warning-btn' name='increment'
+                    onClick={handleCounter}
+                >
+                    Increment +
+                </button>
+            </div>
 
-            <h3>{state.counter}</h3>
-
-            <button className='warning-btn' name='decrement'
-                onClick={handleCounter}
-            >
-                Decrement -
-            </button>
-            <button className='warning-btn' name='increment'
-                onClick={handleCounter}
-            >
-                Increment +
-            </button>
-
-
-            {/* 
-                DRY  =>  Don't Repeat Yourself
-                Не Повторяйся
-            */}
+            <div className="container">
+                <div style={{color:color}}>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium reprehenderit debitis, rerum fuga ad doloremque est sequi deleniti animi corporis nihil adipisci praesentium ab exercitationem alias inventore itaque commodi odio.</p>
+                    <button onClick={changeColor} className="warning-btn">
+                        Change color
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }
