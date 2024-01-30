@@ -3,12 +3,14 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { context, globalReducer, initialState } from "./store";
+import { useReducer } from "react";
 
 function App() {
+  const [state, dispatch] = useReducer(globalReducer, initialState)
 
   const contextPayload = {
-    store: initialState,
-    setStore: globalReducer
+    store: state,
+    setStore: dispatch
   }
 
   return (

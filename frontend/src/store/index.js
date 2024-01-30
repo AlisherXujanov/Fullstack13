@@ -3,6 +3,7 @@ import { createContext } from "react"
 
 const initialState = {
     lang: 'en',
+    count: 0
 }
 
 const context = createContext()
