@@ -2,8 +2,10 @@ import './style.scss'
 import { useContext, useEffect, useState } from "react"
 import { context } from "../../store"
 import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
+import Test from './Test.jsx'
 
-const URL = "https://reqres.in/api/users?page=2"
+let page = 1
+const URL = "https://reqres.in/api/users?page=" + page
 
 function Products(props) {
     const { store, setStore } = useContext(context)
@@ -23,6 +25,7 @@ function Products(props) {
 
 
             <div className="container">
+                <Test />
                 {/* {
                     users.map((user, index) => {
                         return (
@@ -35,7 +38,7 @@ function Products(props) {
                         )
                     })
                 } */}
-                <Get url={URL} params={{}}>
+                {/* <Get url={URL} params={{}}>
                     {(error, response, isLoading, makeRequest, axios) => {
                         if (error) {
                             return (
@@ -75,7 +78,7 @@ function Products(props) {
                         }
                         return (<div>Default message before request is made.</div>)
                     }}
-                </Get>
+                </Get> */}
             </div>
         </div>
     );
