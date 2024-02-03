@@ -23,7 +23,6 @@ function Products(props) {
             <h3>{store.count}</h3>
             <button className='warning-btn' onClick={(e) => { setStore({ type: 'increment' }) }}>Increment</button>
 
-
             <div className="container">
                 <Test />
                 {/* {
