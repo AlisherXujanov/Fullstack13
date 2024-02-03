@@ -1,3 +1,27 @@
 .blog-details-wrapper {
-    padding: 100px 200px;
+    padding: 50px 200px;
+
+    .blog-page-name {
+        font-size: small;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        margin-top: 50px;
+    }
+    p {
+        margin: 20px 0;
+    }
+
+    .author {
+        margin: 10px 0;
+
+        .date {
+            margin-top: 20px;
+        }
+    }
+
+    img {
+        height: 400px;
+    }
 }
