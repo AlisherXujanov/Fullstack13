@@ -2,6 +2,7 @@ import { useLocation, Route, Routes } from 'react-router-dom'
 import Navigation from "./Navigation"
 import About from "./About"
 import Blog from "./Blog"
+import Details from "./Blog/Details.jsx"
 import NoPage from "./NoPage"
 import Products from "./Products"
 import Contacts from "./Contacts"
@@ -15,6 +16,7 @@ function AllComponents(props) {
                 <Route index element={<About />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:id" element={<Details />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/contacts" element={<Contacts />} />
                 <Route path="*" element={<NoPage />} />

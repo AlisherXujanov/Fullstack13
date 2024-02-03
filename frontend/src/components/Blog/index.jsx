@@ -8,6 +8,7 @@ import Blog5 from "../../assets/images/img2.png"
 import Blog6 from "../../assets/images/img3.png"
 import BlogJSON from '../../db/blog.json'
 import { get_blog_img_index } from '../../store/helpers.js'
+import { Link } from "react-router-dom"
 
 function Blog(props) {
     const images = [Blog6, Blog1, Blog2, Blog3, Blog4, Blog5]
@@ -36,9 +37,11 @@ function Blog(props) {
                                 <p>
                                     {blog.subtitle1}
                                 </p>
-                                <button className="warning-btn">
-                                    Подробнее
-                                </button>
+                                <Link to={"/blog/" + blog.id}>
+                                    <button className="warning-btn">
+                                        Подробнее
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     )
