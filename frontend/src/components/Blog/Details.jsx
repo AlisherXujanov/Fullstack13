@@ -8,11 +8,19 @@ import Blog4 from "../../assets/images/img1.png"
 import Blog5 from "../../assets/images/img2.png"
 import Blog6 from "../../assets/images/img3.png"
 import "./details.scss"
+import { useEffect } from 'react'
 
 function Details() {
     const { id } = useParams()
-    const images = [Blog6, Blog1, Blog2, Blog3, Blog4, Blog5]
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    })
+    
+    const images = [Blog6, Blog1, Blog2, Blog3, Blog4, Blog5]
     const blog = BlogJSON.find(blog => blog.id === parseInt(id))
     const subtitle = blog.title.split(" ").slice(0, 3).join(" ")
 
