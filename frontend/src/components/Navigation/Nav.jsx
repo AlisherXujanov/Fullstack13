@@ -16,7 +16,7 @@ function Nav(props) {
 
     const handleChangeLanguage = () => {
         const newLanguage = language === "en" ? "ru" : "en";
-        state.dispatch({ type: "CHANGE_LANG", currentLanguage: newLanguage })
+        setStore({ type: "CHANGE_LANG", currentLanguage: newLanguage })
         changeLanguage(newLanguage);
     }
 
@@ -64,8 +64,8 @@ function Nav(props) {
                     <button className="warning-btn">
                         Login
                     </button>
-                    <span>
-                        Рус
+                    <span onClick={handleChangeLanguage}>
+                        { language === "en" ? "Eng" : "Рус" }
                     </span>
                 </div>
             </div>
