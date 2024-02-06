@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-      
+
       <BrowserRouter>
         <context.Provider value={contextPayload}>
           <AllComponents />
