@@ -1,8 +1,10 @@
 import './style.scss'
 import Heading from '../common/Heading';
 import MapComponent from '../common/MapComponent';
+import { useTranslation } from "react-i18next";
 
 function Contacts(props) {
+    const { t } = useTranslation();
     function submit(e) {
         e.preventDefault()
     }
@@ -11,7 +13,9 @@ function Contacts(props) {
         <div className='contacts'>
             <div id="contacts-wrapper">
                 <div className="left">
-                    <Heading size={1.6}>Контакты</Heading>
+                    <Heading size={1.6}>
+                        {t("navbar.contacts")}
+                    </Heading>
                     <div className='info'>
                         <h4>Задайте нам любой вопрос</h4>
                         <p>+998 33 4747477</p>

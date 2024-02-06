@@ -7,11 +7,17 @@ import Graph from "../../assets/icons/graph.png"
 import HandShake from "../../assets/icons/handShake.png"
 import ValueItem from "./ValueItem.jsx"
 
+import { useTranslation } from "react-i18next";
+
+
 function Values() {
+    const { t } = useTranslation();
     const imgs = [Diamond, Graph, Bag, HandShake]
     return (
         <div className="values-wrapper">
-            <Heading size={2}>Наши ценности</Heading>
+            <Heading size={2}>
+                {t("headings.ourValues")}
+            </Heading>
 
             <div className="values-content">
                 {

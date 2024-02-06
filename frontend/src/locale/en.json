@@ -1,5 +1,16 @@
 {
     "translation": {
-        "heading": "Hello {{name}}, welcome to {{appName}}"
+        "navbar": {
+            "about": "About",
+            "team": "Team",
+            "blog": "Blog",
+            "products": "Products",
+            "contacts": "Contacts",
+            "login": "Login"
+        },
+        "headings": {
+            "ourValues": "Our Values",
+            "ourTeam": "Our Team"
+        }
     }
 }

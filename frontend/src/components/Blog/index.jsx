@@ -9,14 +9,19 @@ import Blog6 from "../../assets/images/img3.png"
 import BlogJSON from '../../db/blog.json'
 import { get_blog_img_index } from '../../store/helpers.js'
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next";
+
 
 function Blog(props) {
+    const { t } = useTranslation();
     const images = [Blog6, Blog1, Blog2, Blog3, Blog4, Blog5]
 
     return (
         <div id="blog-wrapper">
             <div style={{ padding: "0 0 20px 20px" }}>
-                <Heading size={2} >Blog</Heading>
+                <Heading size={2} >
+                    {t("navbar.blog")}
+                </Heading>
             </div>
 
             {
@@ -24,14 +29,14 @@ function Blog(props) {
                     return (
                         <div className="content" key={index}>
                             <div className="left">
-                                <img src={images[get_blog_img_index(blog.id, images.length)]} 
+                                <img src={images[get_blog_img_index(blog.id, images.length)]}
                                     alt="Blog" width={"100%"} height={300} />
                             </div>
                             <div className="right">
                                 <h4>Менеджемент</h4>
                                 <h2>{blog.title}</h2>
                                 <h4 className="author">
-                                    <span className="name">{blog.author}, </span> 
+                                    <span className="name">{blog.author}, </span>
                                     <span className="date">{blog.date}</span>
                                 </h4>
                                 <p>

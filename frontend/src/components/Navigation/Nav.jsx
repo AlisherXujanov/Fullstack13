@@ -44,25 +44,25 @@ function Nav(props) {
             <div className="menu">
                 <div className="nav-links">
                     <Link to={"/about"}>
-                        About
+                        { t("navbar.about") }
                     </Link>
                     <button onClick={goToTeamsHash}>
-                        Team
+                        { t("navbar.team") }
                     </button>
                     <Link to={"/blog"}>
-                        Blog
+                        { t("navbar.blog") }
                     </Link>
                     <Link to={"/products"}>
-                        Products
+                        { t("navbar.products") }
                     </Link>
                     <Link to={"/contacts"}>
-                        Contacts
+                        { t("navbar.contacts") }
                     </Link>
                 </div>
 
                 <div className="auth">
                     <button className="warning-btn">
-                        Login
+                        { t("navbar.login") }
                     </button>
                     <span onClick={handleChangeLanguage}>
                         { language === "en" ? "Eng" : "Рус" }

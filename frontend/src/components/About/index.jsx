@@ -14,7 +14,12 @@ import Img3 from "../../assets/images/img3.png"
 import Img4 from "../../assets/images/img4.png"
 import Img5 from "../../assets/images/img5.png"
 
+import { useTranslation } from "react-i18next";
+
+
 function About() {
+    const { t } = useTranslation();
+
     const images = [Img1, Img2, Img3, Img4, Img5]
 
     return (
@@ -31,7 +36,9 @@ function About() {
 
 
             <div className="about">
-                <Heading size={2}>О нас</Heading>
+                <Heading size={2}>
+                    {t("navbar.about")}
+                </Heading>
                 <div className="about-content">
                     <div className="left">
                         <img src={AboutPic} alt="About" width="100%" height={400} />
@@ -60,7 +67,9 @@ function About() {
             <Marquee reversed={true} />
 
             <div id="teams">
-                <Heading size={2}>Наша команда</Heading>
+                <Heading size={2}>
+                    {t("headings.ourTeam")}
+                </Heading>
                 <Team />
             </div>
             
