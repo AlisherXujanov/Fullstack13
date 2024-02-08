@@ -53,6 +53,12 @@
             li.dot {
                 display: none;
             }
+            span.indicator {
+                margin-top: 5px;
+            }
+            span.indicator-hidden {
+                display: none;
+            }
         }
     }
 
