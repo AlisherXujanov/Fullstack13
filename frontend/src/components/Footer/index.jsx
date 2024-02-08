@@ -1,9 +1,20 @@
 import Heading from "../common/Heading"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import SM from "../../assets/sm.png"
 import "./style.scss"
 
 function Footer(props) {
+    const navigate = useNavigate();
+
+    const goToTeamsHash = () => {
+        navigate('/about');
+        setTimeout(() => {
+            const element = document.getElementById('teams');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 0);
+    };
     return (
         <div className="footer-wrapper">
             <div className="footer-top">
@@ -16,7 +27,7 @@ function Footer(props) {
                 <div className="footer-links">
                     <div className="left">
                         <Link to={"/about"}>О нас</Link>
-                        <Link to={"/team"}>Команда</Link>
+                        <Link onClick={goToTeamsHash}>Команда</Link>
                         <Link to={"/blog"}>Блог</Link>
                         <Link to={"/products"}>Продукты</Link>
                         <Link to={"/contacts"}>Контакты</Link>

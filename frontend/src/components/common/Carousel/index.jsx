@@ -58,7 +58,7 @@ function CarouselComponent(props) {
                         :
                         props.images.map((img, index) => {
                             return (
-                                <div key={index}>
+                                <div className="c-image-wrapper" key={index}>
                                     <img
                                         style={imgStyle}
                                         src={img}
