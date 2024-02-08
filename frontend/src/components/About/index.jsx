@@ -3,6 +3,7 @@ import AboutPic from "../../assets/images/about.png"
 import Licence from "../../assets/icons/licence.png"
 import Heading from "../common/Heading"
 import Values from "./Values.jsx"
+import CompanyBlog from "./CompanyBlog.jsx"
 import Team from "./Team.jsx"
 import Marquee from "../common/Marquee"
 import ContactsForm from "../ContactsForm"
@@ -14,12 +15,7 @@ import Img3 from "../../assets/images/img3.png"
 import Img4 from "../../assets/images/img4.png"
 import Img5 from "../../assets/images/img5.png"
 
-import { useTranslation } from "react-i18next";
-
-
 function About() {
-    const { t } = useTranslation();
-
     const images = [Img1, Img2, Img3, Img4, Img5]
 
     return (
@@ -36,9 +32,7 @@ function About() {
 
 
             <div className="about">
-                <Heading size={2}>
-                    {t("navbar.about")}
-                </Heading>
+                <Heading size={1.5}>О нас</Heading>
                 <div className="about-content">
                     <div className="left">
                         <img src={AboutPic} alt="About" width="100%" height={400} />
@@ -67,13 +61,18 @@ function About() {
             <Marquee reversed={true} />
 
             <div id="teams">
-                <Heading size={2}>
-                    {t("headings.ourTeam")}
-                </Heading>
+                <Heading size={1.5}>Наша команда</Heading>
                 <Team />
             </div>
-            
+
             <Marquee />
+
+            <div className="company-blog">
+                <Heading size={1}>Блог компании</Heading>
+                <CompanyBlog />
+            </div>
+
+            
             <ContactsForm />
         </div>
     );

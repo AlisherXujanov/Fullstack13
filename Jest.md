@@ -32,7 +32,7 @@ Which means, we can use `import` and `export` instead of `require` and `module.e
 ```javascript
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import App from './App.js'
+import App from '../App.js'
 
 test('renders component correctly', () => {
     render(<App />);

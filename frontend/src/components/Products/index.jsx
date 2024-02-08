@@ -1,53 +1,65 @@
 import './style.scss'
-import { useContext, useEffect, useState } from "react"
-import { context } from "../../store"
+import { useContext, useEffect } from 'react'
+import { globalContext } from '../../state'
 import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
-import Test from './Test.jsx'
 
-let page = 1
-const URL = "https://reqres.in/api/users?page=" + page
 
 function Products(props) {
-    const { store, setStore } = useContext(context)
-    // const [users, setUsers] = useState([])
+    const state = useContext(globalContext)
 
+    // useEffect(callback, dependencyArray)
     useEffect(() => {
-        // fetch(URL)
-        //     .then(res => res.json())
-        //     .then(data => setUsers(data.data))
+        console.log("Products component is rendered")
     }, [])
+    // 1. Every time calls callback function when the component is rendered
+    // RU: Каждый раз вызывает функцию обратного вызова при запуске компонента
+    // 2. Can (if we want it) call cb function when the state changes
+    // RU: Может (если мы хотим) вызывать функцию cb при изменении состояния памяти
+    // NOTE: 
+    // If we want to call cb function only once, 
+    // we should pass empty array as second argument
+    // RU: Если мы хотим вызвать функцию cb только один раз,
+    // мы должны передать пустой массив в качестве второго аргумента
+
+    function inc(e) { state.dispatch({ type: "increment" }) }
+    function dec(e) { state.dispatch({ type: "decrement" }) }
 
     return (
         <div id="products-wrapper">
             <h2>Products</h2>
-            <h3>{store.count}</h3>
-            <button className='warning-btn' onClick={(e) => { setStore({ type: 'increment' }) }}>Increment</button>
+            <div>
+                <p style={{
+                    color: state.color,
+                    textAlign: 'center',
+                    transform: state.transform
+                }}>
+                    {state.count} by {state.name}
+                </p>
 
-            <div className="container">
-                <Test />
-                {/* {
-                    users.map((user, index) => {
-                        return (
-                            <div key={index}>
-                                <h2>{user.first_name}</h2>
-                                <h3>Email: {user.email}</h3>
-                                <img src={user.avatar} alt="Avatar" 
-                                    width={100} height={100} />
-                            </div>
-                        )
-                    })
-                } */}
-                {/* <Get url={URL} params={{}}>
+                <br />
+                <br />
+                <button className='warning-btn' onClick={dec}>Decrement</button>
+                <button className='warning-btn' onClick={inc}>Increment</button>
+            </div>
+
+            <hr />
+            <hr />
+            <div>
+                {/* 
+                    
+                    HTTP or REQUEST METHODS
+                    RU: МЕТОДЫ ЗАПРОСОВ
+                
+                        GET     =>  Брать данные
+                        POST    =>  Создавать данные (Отправлять данные)
+                        PUT     =>  Обновлять данные (Целиком)
+                        PATCH   =>  Обновлять данные (Частично)
+                        DELETE  =>  Удалять данные
+                */}
+                <Get url="https://jsonplaceholder.typicode.com/posts" params={{}}>
                     {(error, response, isLoading, makeRequest, axios) => {
                         if (error) {
-                            return (
-                                <div>
-                                    Something bad happened: {error.message}
-                                    <button onClick={() => makeRequest({ params: { reload: true } })}>
-                                        Retry
-                                    </button>
-                                </div>
-                            )
+                            return (<div>Something bad happened: {error.message} <button onClick={() => makeRequest({ params: { reload: true } })}>Retry</button></div>)
                         }
                         else if (isLoading) {
                             return (<div>Loading...</div>)
@@ -55,19 +67,19 @@ function Products(props) {
                         else if (response !== null) {
                             return (
                                 <div>
-                                    <button className='warning-btn' 
+                                    <button 
+                                        className='warning-btn' 
                                         onClick={() => makeRequest({ params: { refresh: true } })}
                                     >
                                         Refresh
                                     </button>
                                     {
-                                        response.data.data.map((user, index) => {
+                                        response.data.map((post, index) => {
                                             return (
                                                 <div key={index}>
-                                                    <h2>{user.first_name}</h2>
-                                                    <h3>Email: {user.email}</h3>
-                                                    <img src={user.avatar} alt="Avatar"
-                                                        width={100} height={100} />
+                                                    <h2>{post.title}</h2>
+                                                    <p>{post.body}</p>
+                                                    <br />
                                                 </div>
                                             )
                                         })
@@ -77,7 +89,7 @@ function Products(props) {
                         }
                         return (<div>Default message before request is made.</div>)
                     }}
-                </Get> */}
+                </Get>
             </div>
         </div>
     );

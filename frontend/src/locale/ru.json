@@ -1,16 +1,10 @@
 {
     "translation": {
-        "navbar": {
-            "about": "О нас",
-            "team": "Команда",
-            "blog": "Блог",
-            "products": "Продукты",
-            "contacts": "Контакты",
-            "login": "Войти"
-        },
-        "headings": {
-            "ourValues": "Наши ценности",
-            "ourTeam": "Наша команда"
-        }
+        "login": "Войти",
+        "about": "О нас",
+        "team": "Команда",
+        "blog": "Блог",
+        "products": "Продукты",
+        "contacts": "Контакты"
     }
 }
