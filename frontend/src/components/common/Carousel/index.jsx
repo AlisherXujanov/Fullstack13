@@ -8,8 +8,6 @@ function CarouselComponent(props) {
         filter: props.blurred ? "grayscale(100%) brightness(0.5)" : "none"
     }
     const indicatorsAsNumbers = (onClickHandler, isSelected, index, label, maxVisibleIndicators) => {
-        const selected_index = index + 1
-
         return (
             <span
                 className={isSelected ? "indicator selected" : "indicator"}

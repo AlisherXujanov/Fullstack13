@@ -1,7 +1,7 @@
 import './style.scss'
 import { useContext, useEffect } from 'react'
 import { globalContext } from '../../state'
-import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
+import { Get } from 'react-axios'
 
 
 function Products(props) {
