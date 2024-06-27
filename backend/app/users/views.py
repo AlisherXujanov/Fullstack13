@@ -4,4 +4,8 @@ from django.shortcuts import render
 
 
 def users(request):
-    return render(request, "users.html")
+    context = {
+        "title": "Hello world from Views",
+        "content": "This is the content of the page"
+    }
+    return render(request, "users.html", context)
