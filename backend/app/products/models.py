@@ -11,8 +11,12 @@ class Cars(models.Model):
     price = models.IntegerField()
     author_of_ad = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    address = models.CharField(max_length=255)
     
     class Meta:
         verbose_name = 'Car'
         verbose_name_plural = 'Cars'
         ordering = ['-created_at']
+
+    def __str__(self):
+        return f'{self.brand} {self.model} {self.year}'
