@@ -8,6 +8,10 @@
 <body>
 
     <h1>Create new Car Post</h1>
+    <button>
+        <a href="{% url 'cars_view' %}">Cars</a>
+    </button>
+
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}

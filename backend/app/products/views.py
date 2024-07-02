@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Cars
 from .forms import CarsForm
+from django.contrib.auth.models import User
 
 # Create your views here
+admin = User.objects.get(id=1)
 
 
 def cars_view(request):
@@ -19,9 +21,8 @@ def create_car_view(request):
     if request.method == 'POST':
         form = CarsForm(request.POST)
         if form.is_valid():
-            car = form.save(commit=False)
-            # car.author = request.user
-            car.save()
+            form.instance.author_of_ad = admin
+            form.save()
             return redirect('cars_view')
     
     context = {'form': form}
