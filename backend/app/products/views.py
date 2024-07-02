@@ -9,6 +9,7 @@ admin = User.objects.get(id=1)
 
 def cars_view(request):
     context = {
+        'test': ['a', 'b', 'c'],
         "title": "Cars list",
         "cars": Cars.objects.all()  # [ {...},  {...},  ...]
     }

@@ -10,11 +10,15 @@
   <button><a href="{% url 'create_car_view' %}">Create New Car</a></button>
   {% comment %}JINJA{% endcomment %}
 
+  <hr>
+    {{ test|length_is:"4"   }}
+  <hr>
+
   <ul>
     {% for car in cars %}
       <li>
         <b>ID:</b> {{ car.id }} <br />
-        <b>Model:</b> {{ car.model }} <br />
+        <b>Model:</b> {{ car.model|title }} <br />
         <b>Brand:</b> {{ car.brand }} <br />
         <b>Year:</b> {{ car.year }} <br />
         <b>Color:</b> {{ car.color }} <br />
