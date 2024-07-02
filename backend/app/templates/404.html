@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <h1>404 - Page Not Found</h1>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}
+  <title>404 Not found</title>
+{% endblock %}
+
+{% block content %}
+  <h1>404 - Page Not Found</h1>
+{% endblock %}
