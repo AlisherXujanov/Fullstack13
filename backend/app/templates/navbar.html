@@ -1,31 +1,37 @@
 {% load static %}
 
 <header>
-    <div class="upper-nav">
-        <a href="#">Py / y.e &lBarr;</a>
-        <a href="#">Мои обявления</a>
+  <div class="upper-nav">
+    <a href="#">Py / y.e &lBarr;</a>
+    <a href="#">Мои обявления</a>
+  </div>
+
+  <nav>
+    <a href="{% url 'home' %}"><img src="https://avtoelon.uz/static/frontend/images/logos/header-logo.svg" /></a>
+
+    <div class="auto-nav-links">
+      <a href="{% url 'cars_view' %}" class="nav-link-item active">Машины</a>
+      <a href="#" class="nav-link-item">Автозапчасти и товары</a>
+      <a href="#" class="nav-link-item">Спецтехника</a>
+      <a href="#" class="nav-link-item">Ремонт и услуги</a>
+      <a href="#" class="nav-link-item">Новости</a>
     </div>
 
-    <nav>
-        <a href="{% url 'home' %}">
-            <img src="https://avtoelon.uz/static/frontend/images/logos/header-logo.svg" >
-        </a>
-
-        <div class="auto-nav-links">
-            <a href="{% url 'cars_view' %}" class="active">Машины</a>
-            <a href="#">Автозапчасти и товары</a>
-            <a href="#">Спецтехника</a>
-            <a href="#">Ремонт и услуги</a>
-            <a href="#">Новости</a>
-        </div>
-
-        <div class="auto-actions">
-            <button class="outline-info-btn">
-                <a href="{% url 'create_car_view' %}">
-                    &plus; Поставить объявление
-                </a>
-            </button>
-            <p class="muted">56 647 уже на сайте</p>
-        </div>
-    </nav>
+    <div class="auto-actions">
+      <button class="outline-info-btn"><a href="{% url 'create_car_view' %}">&plus; Поставить объявление</a></button>
+      <p class="muted">56 647 уже на сайте</p>
+    </div>
+  </nav>
 </header>
+<script>
+  const aTags = document.querySelectorAll('.nav-link-item')
+  
+  aTags.forEach((a) => {
+    a.addEventListener('click', (e) => {
+      aTags.forEach((a) => {
+        a.classList.remove('active')
+      })
+      e.target.classList.add('active')
+    })
+  })
+</script>
