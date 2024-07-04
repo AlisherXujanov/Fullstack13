@@ -1,15 +1,28 @@
 {% load static %}
 <header>
+    <div class="upper-nav">
+        <a href="#">Py / y.e &lBarr;</a>
+        <a href="#">Мои обявления</a>
+    </div>
+
     <nav>
-        <div class="left">
-            <a href="#">
-                <img src="{% static 'images/icons/logo.png' %}" width="50" height="50">
-            </a>
+        <a href="#logo">
+            <img src="https://avtoelon.uz/static/frontend/images/logos/header-logo.svg" >
+        </a>
+
+        <div class="auto-nav-links">
+            <a href="#" class="active">Машины</a>
+            <a href="#">Автозапчасти и товары</a>
+            <a href="#">Спецтехника</a>
+            <a href="#">Ремонт и услуги</a>
+            <a href="#">Новости</a>
         </div>
-        <div class="right">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Cars</a>
+
+        <div class="auto-actions">
+            <button class="outline-info-btn">
+                &plus; Поставить объявление
+            </button>
+            <p class="muted">56 647 уже на сайте</p>
         </div>
     </nav>
 </header>
