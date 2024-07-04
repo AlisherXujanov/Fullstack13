@@ -1,31 +1,32 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  <title>Cars list</title>
+<title>Cars list</title>
 {% endblock %}
 
+
 {% block content %}
-  <h1>{{ title }}</h1>
-  <button><a href="{% url 'home' %}">Home</a></button>
-  <button><a href="{% url 'create_car_view' %}">Create New Car</a></button>
-  {% comment %}JINJA{% endcomment %}
+<h1>{{ title }}</h1>
+<button><a href="{% url 'home' %}">Home</a></button>
+<button><a href="{% url 'create_car_view' %}">Create New Car</a></button>
+{% comment %}JINJA{% endcomment %}
 
-  <hr>
-    {{ test|length_is:"4"   }}
-  <hr>
+<hr>
+{{ test|length_is:"4" }}
+<hr>
 
-  <ul>
-    {% for car in cars %}
-      <li>
-        <b>ID:</b> {{ car.id }} <br />
-        <b>Model:</b> {{ car.model|title }} <br />
-        <b>Brand:</b> {{ car.brand }} <br />
-        <b>Year:</b> {{ car.year }} <br />
-        <b>Color:</b> {{ car.color }} <br />
-        <b>Price:</b> ${{ car.price }} <br />
-        <b>Address:</b> {{ car.address }} <br />
-        <hr />
-      </li>
-    {% endfor %}
-  </ul>
+<ul>
+  {% for car in cars %}
+  <li>
+    <b>ID:</b> {{ car.id }} <br />
+    <b>Model:</b> {{ car.model|title }} <br />
+    <b>Brand:</b> {{ car.brand }} <br />
+    <b>Year:</b> {{ car.year }} <br />
+    <b>Color:</b> {{ car.color }} <br />
+    <b>Price:</b> ${{ car.price }} <br />
+    <b>Address:</b> {{ car.address }} <br />
+    <hr />
+  </li>
+  {% endfor %}
+</ul>
 {% endblock %}

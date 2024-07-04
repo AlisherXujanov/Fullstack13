@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,9 +10,10 @@
       <title>Our Company</title>
     {% endblock %}
 
+    <link rel="stylesheet" href="{% static '/scss/nav/index.css' %}" />
+    
     {% block css %}
     {% endblock %}
-    <link rel="stylesheet" href="../static/scss/nav/index.css">
   </head>
 
   <body>
@@ -24,6 +24,7 @@
     {% endblock %}
 
     {% block script %}
+
     {% endblock %}
   </body>
 </html>
