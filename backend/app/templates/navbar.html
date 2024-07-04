@@ -7,12 +7,12 @@
     </div>
 
     <nav>
-        <a href="#logo">
+        <a href="{% url 'home' %}">
             <img src="https://avtoelon.uz/static/frontend/images/logos/header-logo.svg" >
         </a>
 
         <div class="auto-nav-links">
-            <a href="#" class="active">Машины</a>
+            <a href="{% url 'cars_view' %}" class="active">Машины</a>
             <a href="#">Автозапчасти и товары</a>
             <a href="#">Спецтехника</a>
             <a href="#">Ремонт и услуги</a>
@@ -21,7 +21,9 @@
 
         <div class="auto-actions">
             <button class="outline-info-btn">
-                &plus; Поставить объявление
+                <a href="{% url 'create_car_view' %}">
+                    &plus; Поставить объявление
+                </a>
             </button>
             <p class="muted">56 647 уже на сайте</p>
         </div>

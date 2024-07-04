@@ -7,13 +7,9 @@
 
 {% block content %}
 <h1>{{ title }}</h1>
-<button><a href="{% url 'home' %}">Home</a></button>
-<button><a href="{% url 'create_car_view' %}">Create New Car</a></button>
-{% comment %}JINJA{% endcomment %}
 
-<hr>
-{{ test|length_is:"4" }}
-<hr>
+<br>
+<br>
 
 <ul>
   {% for car in cars %}

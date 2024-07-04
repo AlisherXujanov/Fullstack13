@@ -5,6 +5,10 @@
   transition: 0.5s;
 }
 
+.main-container {
+  padding: 10px 250px;
+}
+
 button {
   padding: 10px 20px;
   border: 1px solid rgba(214, 236, 251, 0.6);
@@ -70,4 +74,10 @@ header nav .auto-actions {
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+header nav .auto-actions button a {
+  text-decoration: none;
+}
+header nav .auto-actions button:hover a {
+  color: #fff;
 }/*# sourceMappingURL=index.css.map */

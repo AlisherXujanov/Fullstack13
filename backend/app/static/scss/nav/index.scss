@@ -33,6 +33,18 @@ header {
 
         .auto-actions {
             @include flex($direction: column);
+
+            button {
+                a {
+                    text-decoration: none;
+                }
+
+                &:hover {
+                    a {
+                        color: $white;
+                    }
+                }
+            }
         }
     }
 }
