@@ -10,8 +10,6 @@ admin = User.objects.get(id=1)
 
 def cars_view(request):
     context = {
-        'test': ['a', 'b', 'c'],
-        "title": "Cars list",
         "cars": Cars.objects.all()  # [ {...},  {...},  ...]
     }
     return render(request, 'cars_list.html', context)
@@ -56,3 +54,16 @@ def update_car_view(request, pk:int):
     return render(request, 'update_car.html', context)
 
 
+
+def car_details_view(request, pk:int):
+    car = Cars.objects.get(id=pk)
+    context = {"car": car}
+    return render(request, 'car_details.html', context)
+
+
+
+def delete_car(request, pk:int):
+    car = Cars.objects.get(id=pk)
+    car.delete()
+    messages.success(request, "Car deleted successfully")
+    return redirect('cars_view')

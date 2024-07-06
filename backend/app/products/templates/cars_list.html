@@ -24,7 +24,7 @@
 
 
 {% block content %}
-<h1>{{ title }}</h1>
+<h1>Cars list</h1>
 
 <br>
 <br>
@@ -40,6 +40,10 @@
     <b>Price:</b> ${{ car.price }} <br />
     <b>Address:</b> {{ car.address }} <br />
     <a class="btn-link" href="{% url 'update_car_view' car.id %}">Update</a>
+    <a class="btn-link" href="{% url 'car_details_view' car.id %}">View</a>
+    <a class="btn-link" href="{% url 'delete_car' car.id %}">Delete</a>
+    <br />
+    <br />
     <hr />
   </li>
   {% endfor %}

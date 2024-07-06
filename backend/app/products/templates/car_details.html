@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Cars details</title>
+{% endblock %}
+
+
+{% block css %}
+<style>
+    .btn-link {
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: slategray;
+        color: snow;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-link:hover {
+        background-color: darkslategray;
+    }
+    .car-details-wrapper {
+        text-align: left;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .car-details-wrapper  * {
+        font-size: 1.3em;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<h1>Cars details of - {{ car }}</h1>
+
+<br>
+<br>
+
+
+<div class="car-details-wrapper">
+    <b>ID:</b> {{ car.id }} <br />
+    <b>Model:</b> {{ car.model|title }} <br />
+    <b>Brand:</b> {{ car.brand }} <br />
+    <b>Year:</b> {{ car.year }} <br />
+    <b>Color:</b> {{ car.color }} <br />
+    <b>Price:</b> ${{ car.price }} <br />
+    <b>Address:</b> {{ car.address }} <br />
+    <a class="btn-link" href="{% url 'update_car_view' car.id %}">Update</a>
+    <hr />
+</div>
+
+{% endblock %}
