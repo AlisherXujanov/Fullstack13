@@ -20,17 +20,20 @@
 <body>
   {% include 'navbar.html' %}
 
-  {% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-    <li class="{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">
-      {{ message }}
-    </li>
-    {% endfor %}
-  </ul>
-  {% endif %}
 
   <main class="main-container">
+    <div class="contaienr">
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li class="{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">
+          {{ message }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    
     {% block content %}
 
     {% endblock %}
@@ -41,7 +44,7 @@
   {% endblock %}
   <script>
     setTimeout(function () {
-      var messages = document.querySelectorAll('#messages')
+      var messages = document.querySelectorAll('.messages')
       messages.forEach(function (message) {
         message.remove()
       })

@@ -53,3 +53,30 @@ a {
 .main-container {
     padding: 10px 250px;
 }
+
+
+.messages li {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.info {
+    background-color: #d9edf7;
+    color: #31708f;
+}
+
+.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.warning {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+}
+
+.error {
+    background-color: #f2dede;
+    color: #a94442;
+}
