@@ -5,6 +5,24 @@
 {% endblock %}
 
 
+{% block css %}
+  <style>
+    .btn-link {
+      text-decoration: none;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: slategray;
+      color: snow;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-link:hover {
+      background-color: darkslategray;
+    }
+  </style>
+{% endblock %}
+
+
 {% block content %}
 <h1>{{ title }}</h1>
 
@@ -21,6 +39,7 @@
     <b>Color:</b> {{ car.color }} <br />
     <b>Price:</b> ${{ car.price }} <br />
     <b>Address:</b> {{ car.address }} <br />
+    <a class="btn-link" href="{% url 'update_car_view' car.id %}">Update</a>
     <hr />
   </li>
   {% endfor %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Cars
 from .forms import CarsForm
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here
 admin = User.objects.get(id=1)
@@ -24,9 +25,34 @@ def create_car_view(request):
         if form.is_valid():
             form.instance.author_of_ad = admin
             form.save()
+            messages.success(request, "Car created successfully")
             return redirect('cars_view')
     
     context = {'form': form}
     return render(request, 'create_car.html', context)
+
+
+def update_car_view(request, pk:int):
+    car = Cars.objects.get(id=pk)
+    form = CarsForm(instance=car)
+    
+    if request.method == 'POST':
+        form = CarsForm(request.POST)
+        if form.is_valid():
+            car.brand = form.cleaned_data.get("brand")
+            car.model = form.cleaned_data.get("model")
+            car.year = form.cleaned_data.get("year")
+            car.color = form.cleaned_data.get("color")
+            car.price = form.cleaned_data.get("price")
+            car.address = form.cleaned_data.get("address")
+            car.save()
+            messages.success(request, "Car updated successfully")
+            return redirect('cars_view')
+    
+    context = {
+        'form': form,
+        "car": car,
+    }
+    return render(request, 'update_car.html', context)
 
 

@@ -67,5 +67,10 @@
   {% csrf_token %}
 
   {{ form.as_p }}
-  <button type="submit">Submit</button>
+
+  {% if btn_text %}
+    <button type="submit">{{ btn_text }}</button>
+  {% else %}
+    <button type="submit">Submit</button>
+  {% endif %}
 </form>

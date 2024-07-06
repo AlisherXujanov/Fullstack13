@@ -703,6 +703,20 @@ And in HTML
        {% bootstrap_messages %}
     </div>
 
+    <!-- 
+     IF WE WANT CUSTOM MESSAGES
+
+     {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li class="{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">
+            {{ message }}
+          </li>
+          {% endfor %}
+        </ul>
+     {% endif %} 
+    -->
+
     <!-- Make it disappear after a while -->
     <script>
       setTimeout(function () {

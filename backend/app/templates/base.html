@@ -2,31 +2,51 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {% block title %}
-      <title>Our Company</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  {% block title %}
+  <title>Our Company</title>
+  {% endblock %}
+
+  <link rel="stylesheet" href="{% static '/scss/nav/index.css' %}" />
+
+  {% block css %}
+  {% endblock %}
+</head>
+
+<body>
+  {% include 'navbar.html' %}
+
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li class="{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">
+      {{ message }}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <main class="main-container">
+    {% block content %}
+
     {% endblock %}
+  </main>
 
-    <link rel="stylesheet" href="{% static '/scss/nav/index.css' %}" />
-    
-    {% block css %}
-    {% endblock %}
-  </head>
+  {% block script %}
 
-  <body>
-    {% include 'navbar.html' %}
+  {% endblock %}
+  <script>
+    setTimeout(function () {
+      var messages = document.querySelectorAll('#messages')
+      messages.forEach(function (message) {
+        message.remove()
+      })
+    }, 5000)
+  </script>
+</body>
 
-    <main class="main-container">
-      {% block content %}
-  
-      {% endblock %}
-    </main>
-
-    {% block script %}
-
-    {% endblock %}
-  </body>
 </html>
