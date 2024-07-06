@@ -6,20 +6,21 @@
 
 
 {% block css %}
-  <style>
-    .btn-link {
-      text-decoration: none;
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: slategray;
-      color: snow;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .btn-link:hover {
-      background-color: darkslategray;
-    }
-  </style>
+<style>
+  .btn-link {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: slategray;
+    color: snow;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn-link:hover {
+    background-color: darkslategray;
+  }
+</style>
 {% endblock %}
 
 
@@ -41,11 +42,24 @@
     <b>Address:</b> {{ car.address }} <br />
     <a class="btn-link" href="{% url 'update_car_view' car.id %}">Update</a>
     <a class="btn-link" href="{% url 'car_details_view' car.id %}">View</a>
-    <a class="btn-link" href="{% url 'delete_car' car.id %}">Delete</a>
+    <a class="btn-link" href="#" onclick="conformDeletion('{{car.id}}')">Delete</a>
     <br />
     <br />
     <hr />
   </li>
   {% endfor %}
 </ul>
+{% endblock %}
+
+
+{% block script %}
+<script>
+  function conformDeletion(carID) {
+    let url = "{% url 'delete_car' 99999999 %}"
+    if (confirm("Would you like to delete the car?")) {
+      url = url.replace('99999999', carID)
+      location.href = url
+    }
+  }
+</script>
 {% endblock %}
