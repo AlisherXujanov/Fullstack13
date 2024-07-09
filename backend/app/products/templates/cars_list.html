@@ -34,16 +34,18 @@
   }
 
   .container .left img {
-    border-radius: 50%;
+    border-radius: 10px;
+    width: 300px;
+    height: 200;
   }
 
   .container b {
     font-size: 1.5em;
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   .container span {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
 </style>
 {% endblock %}
@@ -60,7 +62,7 @@
   <li>
     <div class="container">
       <div class="left">
-        <img src="{{car.image.url}}" width="300" height="300">
+        <img src="{{car.image.url}}" >
       </div>
       <div class="right">
         <b>ID:</b>       <span>{{ car.id }}</span> <br />
@@ -68,7 +70,7 @@
         <b>Brand:</b>    <span>{{ car.brand }}</span> <br />
         <b>Year:</b>     <span>{{ car.year }}</span> <br />
         <b>Color:</b>    <span>{{ car.color }}</span> <br />
-        <b>Price:</b> $  <span>{{ car.price }}</span> <br />
+        <b>Price:</b>    <span>${{ car.price }}</span> <br />
         <b>Address:</b>  <span>{{ car.address }}</span> <br />
         <b>Category:</b> <span>{{ car.category }}</span> <br />
       </div>
