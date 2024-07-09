@@ -55,7 +55,7 @@
 {% block script %}
 <script>
   function conformDeletion(carID) {
-    let url = "{% url 'delete_car' 99999999 %}"
+    let url = `{% url 'delete_car' 99999999 %}`
     if (confirm("Would you like to delete the car?")) {
       url = url.replace('99999999', carID)
       location.href = url

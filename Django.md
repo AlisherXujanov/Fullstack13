@@ -510,18 +510,13 @@ objs = ModelName.objects.filter(field1__gt=F('field2'), field3__lt=F('field4'))
 ```python
 from django.db.models import Q
 
-Q means OR and ~Q means NOT
+Q means OR 
 
 # Q
 # Get all the objects where field1 is greater than field2 or field3 is less than field4
 objs = ModelName.objects.filter(Q(field1__gt=F('field2')) | Q(field3__lt=F('field4')))
 objs = ModelName.objects.filter(Q(field1__gt=F('field2')) | Q(field3__lt=F('field4'))).order_by('field1', 'field2', ...)
 
-
-# ~Q
-# Get all the objects where field1 is greater than field2 and field3 is less than field4
-objs = ModelName.objects.filter(~Q(field1__gt=F('field2')) & Q(field3__lt=F('field4')))
-objs = ModelName.objects.filter(~Q(field1__gt=F('field2')) & Q(field3__lt=F('field4'))).order_by('field1', 'field2', ...)
 ```
 
 
