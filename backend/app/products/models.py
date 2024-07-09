@@ -18,6 +18,10 @@ class Cars(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     address = models.CharField(max_length=255)
     likes = models.TextField(default='[]')
+    image = models.ImageField(
+        upload_to='cars/', default='cars/default.png')
+    category = models.CharField(max_length=50)
+    
 
     class Meta:
         verbose_name = 'Car'
@@ -69,7 +73,7 @@ class Cars(models.Model):
 # IceCream.objects.filter(sugar__lt=F('chocolate'), chocolate__gt=F('floor'))
 
 
-len(Cars.objects.all())  # -> 100000
+# len(Cars.objects.all())  # -> 100000
 # Cars.objects.count()    # -> 100000
 
 # Here, len works relatively slow because it fetches all the objects
