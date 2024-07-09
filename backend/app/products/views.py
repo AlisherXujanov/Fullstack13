@@ -19,7 +19,7 @@ def create_car_view(request):
     form = CarsForm()
     
     if request.method == 'POST':
-        form = CarsForm(request.POST)
+        form = CarsForm(request.POST, request.FILES)
         if form.is_valid():
             form.instance.author_of_ad = admin
             form.save()
@@ -35,7 +35,7 @@ def update_car_view(request, pk:int):
     form = CarsForm(instance=car)
     
     if request.method == 'POST':
-        form = CarsForm(request.POST)
+        form = CarsForm(request.POST, request.FILES, instance=car)
         if form.is_valid():
             car.brand = form.cleaned_data.get("brand")
             car.model = form.cleaned_data.get("model")

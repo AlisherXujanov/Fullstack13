@@ -7,6 +7,11 @@
 
 {% block css %}
 <style>
+  ul {
+    list-style-type: none;
+  }
+
+
   .btn-link {
     text-decoration: none;
     display: inline-block;
@@ -19,6 +24,26 @@
 
   .btn-link:hover {
     background-color: darkslategray;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+
+  .container .left img {
+    border-radius: 50%;
+  }
+
+  .container b {
+    font-size: 1.5em;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .container span {
+    font-size: 1.5em;
   }
 </style>
 {% endblock %}
@@ -33,13 +58,21 @@
 <ul>
   {% for car in cars %}
   <li>
-    <b>ID:</b> {{ car.id }} <br />
-    <b>Model:</b> {{ car.model|title }} <br />
-    <b>Brand:</b> {{ car.brand }} <br />
-    <b>Year:</b> {{ car.year }} <br />
-    <b>Color:</b> {{ car.color }} <br />
-    <b>Price:</b> ${{ car.price }} <br />
-    <b>Address:</b> {{ car.address }} <br />
+    <div class="container">
+      <div class="left">
+        <img src="{{car.image.url}}" width="300" height="300">
+      </div>
+      <div class="right">
+        <b>ID:</b>       <span>{{ car.id }}</span> <br />
+        <b>Model:</b>    <span>{{ car.model|title }}</span> <br />
+        <b>Brand:</b>    <span>{{ car.brand }}</span> <br />
+        <b>Year:</b>     <span>{{ car.year }}</span> <br />
+        <b>Color:</b>    <span>{{ car.color }}</span> <br />
+        <b>Price:</b> $  <span>{{ car.price }}</span> <br />
+        <b>Address:</b>  <span>{{ car.address }}</span> <br />
+        <b>Category:</b> <span>{{ car.category }}</span> <br />
+      </div>
+    </div>
     <a class="btn-link" href="{% url 'update_car_view' car.id %}">Update</a>
     <a class="btn-link" href="{% url 'car_details_view' car.id %}">View</a>
     <a class="btn-link" href="#" onclick="conformDeletion('{{car.id}}')">Delete</a>
