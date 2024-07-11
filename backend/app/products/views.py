@@ -34,9 +34,8 @@ def create_car_view(request):
             form.instance.author_of_ad = admin
             form.save()
 
-            car_object = Cars.objects.last()
             for img in images:
-                CarImage.objects.create(car=car_object, image=img)
+                CarImage.objects.create(car=form.instance, image=img)
 
             messages.success(request, "Car created successfully")
             return redirect('cars_view')
@@ -70,8 +69,10 @@ def update_car_view(request, pk: int):
 
 
 def car_details_view(request, pk: int):
-    car = Cars.objects.get(id=pk)
-    context = {"car": car}
+    context = {
+        "car": Cars.objects.get(id=pk),
+        "images": CarImage.objects.filter(car=pk)
+    }
     return render(request, 'car_details.html', context)
 
 

@@ -20,15 +20,55 @@
     .btn-link:hover {
         background-color: darkslategray;
     }
+
     .car-details-wrapper {
         text-align: left;
-        width: 80%;
         margin: 0 auto;
     }
-    .car-details-wrapper  * {
-        font-size: 1.3em;
+
+    .car-details-wrapper * {
+        font-size: 1.5em;
         display: inline-block;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+    }
+
+    .img-container {
+        display: inline-block;
+        position: relative;
+    }
+
+    .img-container a {
+        position: absolute;
+        bottom: 10px;
+        display: none;
+        left: 10%;
+        width: 80%;
+        text-align: center;
+        text-decoration: none;
+        font-size: 2em;
+        color: snow;
+        background-color: rgb(0, 0, 0, 0.6);
+        border-radius: 10px;
+    }
+
+
+    img {
+        border-radius: 10px;
+        width: 250px;
+        height: 200px;
+        margin: 5px;
+    }
+
+    .img-container:hover img {
+        filter: brightness(0.8) grayscale(0.8);
+        transform: scale(1.1);
+    }
+
+    .img-container:hover a {
+        display: block;
+    }
+    .img-container a:hover {
+        background-color: rgb(255, 0, 0, 0.6);
     }
 </style>
 {% endblock %}
@@ -40,6 +80,14 @@
 <br>
 <br>
 
+<div class="images-wrapper">
+    {% for img in images %}
+    <div class="img-container">
+        <img src="{{img.image.url}}">
+        <a href="#" class="delete">Delete</a>
+    </div>
+    {% endfor %}
+</div>
 
 <div class="car-details-wrapper">
     <b>ID:</b> {{ car.id }} <br />

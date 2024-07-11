@@ -1,109 +1,104 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Cars list</title>
+  <title>Cars list</title>
 {% endblock %}
-
 
 {% block css %}
-<style>
-  ul {
-    list-style-type: none;
-  }
-
-
-  .btn-link {
-    text-decoration: none;
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: slategray;
-    color: snow;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .btn-link:hover {
-    background-color: darkslategray;
-  }
-
-  .container {
-    margin-bottom: 20px;
-  }
-
-  .container .left img {
-    border-radius: 10px;
-    width: 200px;
-    height: 150px;
-  }
-
-  .container b {
-    font-size: 1.5em;
-    display: inline-block;
-    margin-bottom: 5px;
-  }
-
-  .container span {
-    font-size: 1.3em;
-  }
-</style>
+  <style>
+    ul {
+      list-style-type: none;
+    }
+    
+    .btn-link {
+      text-decoration: none;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: slategray;
+      color: snow;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .btn-link:hover {
+      background-color: darkslategray;
+    }
+    
+    .container {
+      margin-bottom: 20px;
+    }
+    
+    .container .left img {
+      border-radius: 10px;
+      width: 200px;
+      height: 150px;
+    }
+    
+    .container b {
+      font-size: 1.5em;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+    
+    .container span {
+      font-size: 1.3em;
+    }
+  </style>
 {% endblock %}
-
 
 {% block content %}
-<h1>Cars list</h1>
+  <h1>Cars list</h1>
 
-<br>
-<br>
+  <br />
+  <br />
 
-<ul>
-  {% for obj in cars %}
-  <!-- {car, images} == obj  in cars -->
-  <li>
-    <div class="container">
-      <div class="left">
-        {% for img in obj.images %}
-        <img src="{{img.image.url}}">
-        {% endfor %}
-      </div>
-      <div class="right">
-        <b>ID:</b> <span>{{ obj.car.id }}</span> <br />
-        <b>Model:</b> <span>{{ obj.car.model|title }}</span> <br />
-        <b>Brand:</b> <span>{{ obj.car.brand }}</span> <br />
-        <b>Year:</b> <span>{{ obj.car.year }}</span> <br />
-        <b>Color:</b> <span>{{ obj.car.color }}</span> <br />
-        <b>Price:</b> <span>${{ obj.car.price }}</span> <br />
-        <b>Address:</b> <span>{{ obj.car.address }}</span> <br />
-        <b>Category:</b> <span>{{ obj.car.category }}</span> <br />
-      </div>
-    </div>
-    <a class="btn-link" href="{% url 'update_car_view' obj.car.id %}">Update</a>
-    <a class="btn-link" href="{% url 'car_details_view' obj.car.id %}">View</a>
-    <a class="btn-link" href="#" onclick="conformDeletion('{{obj.car.id}}')">Delete</a>
-    <br />
-    <br />
-    <hr />
-  </li>
-  {% endfor %}
-</ul>
+  <ul>
+    {% for obj in cars %}
+      <!-- {car, images} == obj in cars -->
+      <li>
+        <div class="container">
+          <div class="left">
+            {% for img in obj.images %}
+              <img src="{{ img.image.url }}" />
+            {% endfor %}
+          </div>
+          <div class="right">
+            <b>ID:</b> <span>{{ obj.car.id }}</span> <br />
+            <b>Model:</b> <span>{{ obj.car.model|title }}</span> <br />
+            <b>Brand:</b> <span>{{ obj.car.brand }}</span> <br />
+            <b>Year:</b> <span>{{ obj.car.year }}</span> <br />
+            <b>Color:</b> <span>{{ obj.car.color }}</span> <br />
+            <b>Price:</b> <span>${{ obj.car.price }}</span> <br />
+            <b>Address:</b> <span>{{ obj.car.address }}</span> <br />
+            <b>Category:</b> <span>{{ obj.car.category }}</span> <br />
+          </div>
+        </div>
+        <a class="btn-link" href="{% url 'update_car_view' obj.car.id %}">Update</a>
+        <a class="btn-link" href="{% url 'car_details_view' obj.car.id %}">View</a>
+        <a class="btn-link" href="#" onclick="conformDeletion('{{ obj.car.id }}')">Delete</a>
+        <br />
+        <br />
+        <hr />
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}
 
-
 {% block script %}
-<script>
-  function conformDeletion(carID) {
-    let url = `{% url 'delete_car' 99999999 %}`
-    if (confirm("Would you like to delete the car?")) {
-      url = url.replace('99999999', carID)
-      location.href = url
+  <script>
+    function conformDeletion(carID) {
+      let url = `{% url 'delete_car' 99999999 %}`
+      if (confirm('Would you like to delete the car?')) {
+        url = url.replace('99999999', carID)
+        location.href = url
+      }
     }
-  }
-
-  const imgs = document.querySelectorAll('img')
-  imgs.forEach(img => {
-    img.addEventListener('click', (e) => {
-      e.target.requestFullscreen()
+    
+    const imgs = document.querySelectorAll('img')
+    imgs.forEach((img) => {
+      img.addEventListener('click', (e) => {
+        e.target.requestFullscreen()
+      })
     })
-  })
-
-</script>
+  </script>
 {% endblock %}
