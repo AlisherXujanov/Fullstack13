@@ -9,9 +9,17 @@ admin = User.objects.get(id=1)
 
 
 def cars_view(request):
-    context = {
-        "cars": Cars.objects.all()  # [ {...},  {...},  ...]
-    }
+    cars = Cars.objects.all()
+    images = CarImage.objects.all()
+    context = {"cars": []}
+
+    for car in cars:
+        car_images = images.filter(car=car)
+        context["cars"].append({
+            "car": car,
+            "images": car_images
+        })
+
     return render(request, 'cars_list.html', context)
 
 

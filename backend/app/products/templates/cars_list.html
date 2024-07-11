@@ -27,16 +27,13 @@
   }
 
   .container {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    gap: 30px;
     margin-bottom: 20px;
   }
 
   .container .left img {
     border-radius: 10px;
-    width: 300px;
-    height: 200;
+    width: 200px;
+    height: 150px;
   }
 
   .container b {
@@ -44,6 +41,7 @@
     display: inline-block;
     margin-bottom: 5px;
   }
+
   .container span {
     font-size: 1.3em;
   }
@@ -58,26 +56,29 @@
 <br>
 
 <ul>
-  {% for car in cars %}
+  {% for obj in cars %}
+  <!-- {car, images} == obj  in cars -->
   <li>
     <div class="container">
       <div class="left">
-        <img src="{{car.image.url}}" >
+        {% for img in obj.images %}
+        <img src="{{img.image.url}}">
+        {% endfor %}
       </div>
       <div class="right">
-        <b>ID:</b>       <span>{{ car.id }}</span> <br />
-        <b>Model:</b>    <span>{{ car.model|title }}</span> <br />
-        <b>Brand:</b>    <span>{{ car.brand }}</span> <br />
-        <b>Year:</b>     <span>{{ car.year }}</span> <br />
-        <b>Color:</b>    <span>{{ car.color }}</span> <br />
-        <b>Price:</b>    <span>${{ car.price }}</span> <br />
-        <b>Address:</b>  <span>{{ car.address }}</span> <br />
-        <b>Category:</b> <span>{{ car.category }}</span> <br />
+        <b>ID:</b> <span>{{ obj.car.id }}</span> <br />
+        <b>Model:</b> <span>{{ obj.car.model|title }}</span> <br />
+        <b>Brand:</b> <span>{{ obj.car.brand }}</span> <br />
+        <b>Year:</b> <span>{{ obj.car.year }}</span> <br />
+        <b>Color:</b> <span>{{ obj.car.color }}</span> <br />
+        <b>Price:</b> <span>${{ obj.car.price }}</span> <br />
+        <b>Address:</b> <span>{{ obj.car.address }}</span> <br />
+        <b>Category:</b> <span>{{ obj.car.category }}</span> <br />
       </div>
     </div>
-    <a class="btn-link" href="{% url 'update_car_view' car.id %}">Update</a>
-    <a class="btn-link" href="{% url 'car_details_view' car.id %}">View</a>
-    <a class="btn-link" href="#" onclick="conformDeletion('{{car.id}}')">Delete</a>
+    <a class="btn-link" href="{% url 'update_car_view' obj.car.id %}">Update</a>
+    <a class="btn-link" href="{% url 'car_details_view' obj.car.id %}">View</a>
+    <a class="btn-link" href="#" onclick="conformDeletion('{{obj.car.id}}')">Delete</a>
     <br />
     <br />
     <hr />
@@ -96,5 +97,13 @@
       location.href = url
     }
   }
+
+  const imgs = document.querySelectorAll('img')
+  imgs.forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.target.requestFullscreen()
+    })
+  })
+
 </script>
 {% endblock %}
