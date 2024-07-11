@@ -2,7 +2,7 @@
   form {
     padding: 30px 0 40px 0;
   }
-  
+
   input[type='submit'] {
     padding: 10px 20px;
     border: none;
@@ -15,39 +15,41 @@
     cursor: pointer;
     margin-bottom: 5px;
   }
-  
+
   input[type='submit']:hover {
     background-color: darkslategray;
   }
-  
+
   input:not([type='checkbox']),
   textarea {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
+    display: inline-block;
+    margin-bottom: 20px;
   }
-  
+
   input:focus,
   textarea:focus {
     border-color: orangered;
   }
-  
+
   .errorlist li {
     color: red;
   }
-  
+
   .helptext {
     color: gray;
     font-size: 12px;
   }
-  
+
   ::placeholder {
     color: gray;
     font-size: 12px;
   }
-  
+
   form button {
     padding: 10px 20px;
     width: 100%;
@@ -61,6 +63,27 @@
     cursor: pointer;
     margin-top: 20px;
   }
+
+  select,
+  option {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  input[type="image"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    display: inline-block;
+    margin: 20px 0;
+  }
 </style>
 
 <form method="post" enctype="multipart/form-data">
@@ -69,14 +92,13 @@
   {{ form.as_p }}
 
   {% if multiple_image %}
-    {% include "form_imgs_snippet.html" %}
+  {% include "form_imgs_snippet.html" %}
   {% endif %}
 
   {% if btn_text %}
-    <button type="submit">{{ btn_text }}</button>
+  <button type="submit">{{ btn_text }}</button>
   {% else %}
-    <button type="submit">Submit</button>
+  <button type="submit">Submit</button>
   {% endif %}
 
 </form>
-

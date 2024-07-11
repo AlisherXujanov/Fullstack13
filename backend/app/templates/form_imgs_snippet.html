@@ -42,8 +42,11 @@
 
             // Append the image to the uploaded images div
             uploadedImages.appendChild(img)
-            // img.addEventListener('click', () => img.remove())
-            img.addEventListener('click', () => img.requestFullscreen())
+            img.addEventListener('click', () => {
+                img.remove()
+                files[i] = null
+            })
+            // img.addEventListener('click', () => img.requestFullscreen())
         }
     })
 </script>

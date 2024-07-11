@@ -19,12 +19,10 @@ CHOICES = (
 
 
 class CarsForm(forms.ModelForm):
-    image = forms.ImageField(label='Image', required=False,
-                             widget=forms.FileInput(attrs={'class': 'form-control'}))
     category = forms.ChoiceField(
         choices=CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
 
     class Meta:
         model = Cars
         fields = ["brand", "model", "year",
-                  "color", "price", "address", "image", "category"]
+                  "color", "price", "address", "category"]

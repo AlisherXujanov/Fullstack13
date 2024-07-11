@@ -17,7 +17,7 @@ def cars_view(request):
 
 def create_car_view(request):
     form = CarsForm()
-    
+
     if request.method == 'POST':
         form = CarsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -25,15 +25,15 @@ def create_car_view(request):
             form.save()
             messages.success(request, "Car created successfully")
             return redirect('cars_view')
-    
-    context = {'form': form}
+
+    context = {'form': form, "multiple_image": True}
     return render(request, 'create_car.html', context)
 
 
-def update_car_view(request, pk:int):
+def update_car_view(request, pk: int):
     car = Cars.objects.get(id=pk)
     form = CarsForm(instance=car)
-    
+
     if request.method == 'POST':
         form = CarsForm(request.POST, request.FILES, instance=car)
         if form.is_valid():
@@ -46,7 +46,7 @@ def update_car_view(request, pk:int):
             car.save()
             messages.success(request, "Car updated successfully")
             return redirect('cars_view')
-    
+
     context = {
         'form': form,
         "car": car,
@@ -54,15 +54,13 @@ def update_car_view(request, pk:int):
     return render(request, 'update_car.html', context)
 
 
-
-def car_details_view(request, pk:int):
+def car_details_view(request, pk: int):
     car = Cars.objects.get(id=pk)
     context = {"car": car}
     return render(request, 'car_details.html', context)
 
 
-
-def delete_car(request, pk:int):
+def delete_car(request, pk: int):
     car = Cars.objects.get(id=pk)
     car.delete()
     messages.success(request, "Car deleted successfully")
