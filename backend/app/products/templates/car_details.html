@@ -49,6 +49,7 @@
         color: snow;
         background-color: rgb(0, 0, 0, 0.6);
         border-radius: 10px;
+        cursor: pointer;
     }
 
 
@@ -67,6 +68,7 @@
     .img-container:hover a {
         display: block;
     }
+
     .img-container a:hover {
         background-color: rgb(255, 0, 0, 0.6);
     }
@@ -84,7 +86,7 @@
     {% for img in images %}
     <div class="img-container">
         <img src="{{img.image.url}}">
-        <a href="#" class="delete">Delete</a>
+        <a class="delete" onclick="deleteCarImage('{{img.id}}')">Delete</a>
     </div>
     {% endfor %}
 </div>
@@ -100,5 +102,17 @@
     <a class="btn-link" href="{% url 'update_car_view' car.id %}">Update</a>
     <hr />
 </div>
+{% endblock %}
 
+
+{% block script %}
+<script>
+    function deleteCarImage(imageId) {
+        let url = `{% url 'delete_car_img' 99999999999999 %}`
+        if (confirm('Would you like to delete this image?')) {
+            url = url.replace('99999999999999', imageId)
+            location.href = url
+        }
+    }
+</script>
 {% endblock %}

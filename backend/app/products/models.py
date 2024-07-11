@@ -2,13 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 import json
 from PIL import Image
+import os
+import sys
+
 
 class CarImage(models.Model):
     car = models.ForeignKey('Cars', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='cars/', default='cars/default.png')
 
     def __str__(self):
-        return f'Image of {self.car.brand} {self.car.model}'
+        return f'{self.id}. Image of {self.car.brand} {self.car.model}'
     
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -18,6 +21,17 @@ class CarImage(models.Model):
             output_size = (500, 500)
             img.thumbnail(output_size)
             img.save(self.image.path)
+            
+    def delete(self, *args, **kwargs):
+        # DELETE ACTUAL FILE
+        if os.path.isfile(self.image.path):
+            os.remove(self.image.path)
+        else:
+            print("Error: %s file not found" % self.image.path)
+            sys.exit(1)
+
+        super().delete(*args, **kwargs)
+
 
 
 # Create your models here.

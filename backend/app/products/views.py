@@ -81,3 +81,13 @@ def delete_car(request, pk: int):
     car.delete()
     messages.success(request, "Car deleted successfully")
     return redirect('cars_view')
+
+
+def delete_car_img(request, pk:int):
+    img = CarImage.objects.get(id=pk)
+    img.delete()
+    messages.success(request, "Image deleted successfully")
+    referee = request.META.get('HTTP_REFERER')
+    return redirect(referee)
+    
+    

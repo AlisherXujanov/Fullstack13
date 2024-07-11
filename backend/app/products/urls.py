@@ -7,6 +7,7 @@ urlpatterns = [
     path("update-car/<int:pk>", update_car_view, name='update_car_view'),
     path("car-details/<int:pk>", car_details_view, name='car_details_view'),
     path("delete-car/<int:pk>", delete_car, name='delete_car'),
+    path("delete_car_img/<int:pk>", delete_car_img, name='delete_car_img'),
 ]
 
 
