@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Cars
+from .models import Cars, CarImage
 from .forms import CarsForm
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -20,9 +20,16 @@ def create_car_view(request):
 
     if request.method == 'POST':
         form = CarsForm(request.POST, request.FILES)
+        images = request.FILES.getlist('images')
+
         if form.is_valid():
             form.instance.author_of_ad = admin
             form.save()
+
+            car_object = Cars.objects.last()
+            for img in images:
+                CarImage.objects.create(car=car_object, image=img)
+
             messages.success(request, "Car created successfully")
             return redirect('cars_view')
 
