@@ -40,6 +40,10 @@ def create_car_view(request):
             messages.success(request, "Car created successfully")
             return redirect('cars_view')
 
+        else:
+            context = {'form': form}
+            messages.error(request, "Car creation failed")
+
     context = {'form': form, "multiple_image": True}
     return render(request, 'create_car.html', context)
 
@@ -83,11 +87,9 @@ def delete_car(request, pk: int):
     return redirect('cars_view')
 
 
-def delete_car_img(request, pk:int):
+def delete_car_img(request, pk: int):
     img = CarImage.objects.get(id=pk)
     img.delete()
     messages.success(request, "Image deleted successfully")
     referee = request.META.get('HTTP_REFERER')
     return redirect(referee)
-    
-    

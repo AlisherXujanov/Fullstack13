@@ -33,7 +33,7 @@
 
   input:focus,
   textarea:focus {
-    border-color: orangered;
+    border-color: indigo;
   }
 
   .errorlist li {
@@ -75,7 +75,7 @@
     margin-top: 10px;
   }
 
-  input[type="image"] {
+  input[type='image'] {
     width: 100%;
     padding: 15px;
     border: 1px solid #ccc;
@@ -84,15 +84,38 @@
     display: inline-block;
     margin: 20px 0;
   }
+
+  .errrorlist {
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    border-radius: 4px;
+    color: #a94442;
+    margin: 20px 0;
+    padding: 15px;
+  }
 </style>
+
 
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
 
-  {{ form.as_p }}
+  {% for field in form %}
+  <div>
+    {{ field.label_tag }}
+    {{ field }}
+    {% if field.help_text %}
+    <p class="helptext">{{ field.help_text }}</p>
+    {% endif %}
+    {% for error in field.errors %}
+    <ul class="errorlist">
+      <li>{{ error }}</li>
+    </ul>
+    {% endfor %}
+  </div>
+  {% endfor %}
 
   {% if multiple_image %}
-  {% include "form_imgs_snippet.html" %}
+  {% include 'form_imgs_snippet.html' %}
   {% endif %}
 
   {% if btn_text %}
@@ -100,5 +123,47 @@
   {% else %}
   <button type="submit">Submit</button>
   {% endif %}
-
 </form>
+
+
+
+{% block script %}
+<script>
+  const formDivs = document.querySelectorAll('form > div')
+
+  formDivs.forEach(div => {
+    const errorLi = div.querySelector('.errorlist li')
+    if (errorLi) {
+      const input = div.querySelector('input, textarea, select')
+      input.style.border = '1px solid red'
+
+      const error = div.querySelector('.errorlist')
+
+      if (input.name == 'brand') {
+        input.addEventListener('input', () => {
+          let brand_pattern = /^[a-zA-Z]*$/
+          if (brand_pattern.test(input.value)) {
+            input.style.border = '1px solid green'
+            error.style.display = 'none'
+          } else {
+            input.style.border = '1px solid red'
+            error.style.display = 'block'
+          }
+        })
+      }
+      if (input.name == 'model') {
+        input.addEventListener('input', () => {
+          let model_pattern = /^[a-zA-Z0-9]*$/
+          if (model_pattern.test(input.value)) {
+            input.style.border = '1px solid green'
+            error.style.display = 'none'
+          } else {
+            input.style.border = '1px solid red'
+            error.style.display = 'block'
+          }
+        })
+      }
+    }
+  })
+</script>
+{% endblock %}
