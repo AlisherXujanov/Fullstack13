@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 django = "*"
 pillow = "*"
+django-allauth = "*"
+requests = "*"
+jwt = "*"
 
 [dev-packages]
 
