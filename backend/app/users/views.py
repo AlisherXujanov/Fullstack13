@@ -9,3 +9,8 @@ def users(request):
         "content": "This is the content of the page"
     }
     return render(request, "users.html", context)
+
+
+def profile_page(request, pk):
+    ...
+    

@@ -3,11 +3,9 @@ from .models import Cars, CarImage
 from .forms import CarsForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-# Create your views here
-admin = User.objects.get(id=1)
-
-
+@login_required
 def cars_view(request):
     cars = Cars.objects.all()
     images = CarImage.objects.all()
@@ -23,6 +21,7 @@ def cars_view(request):
     return render(request, 'cars_list.html', context)
 
 
+@login_required
 def create_car_view(request):
     form = CarsForm()
 
@@ -31,7 +30,7 @@ def create_car_view(request):
         images = request.FILES.getlist('images')
 
         if form.is_valid():
-            form.instance.author_of_ad = admin
+            form.instance.author_of_ad = request.user
             form.save()
 
             for img in images:
@@ -48,6 +47,7 @@ def create_car_view(request):
     return render(request, 'create_car.html', context)
 
 
+@login_required
 def update_car_view(request, pk: int):
     car = Cars.objects.get(id=pk)
     form = CarsForm(instance=car)
@@ -72,6 +72,7 @@ def update_car_view(request, pk: int):
     return render(request, 'update_car.html', context)
 
 
+@login_required
 def car_details_view(request, pk: int):
     context = {
         "car": Cars.objects.get(id=pk),
@@ -80,6 +81,7 @@ def car_details_view(request, pk: int):
     return render(request, 'car_details.html', context)
 
 
+@login_required
 def delete_car(request, pk: int):
     car = Cars.objects.get(id=pk)
     car.delete()
@@ -87,6 +89,7 @@ def delete_car(request, pk: int):
     return redirect('cars_view')
 
 
+@login_required
 def delete_car_img(request, pk: int):
     img = CarImage.objects.get(id=pk)
     img.delete()
