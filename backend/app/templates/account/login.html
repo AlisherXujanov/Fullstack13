@@ -2,6 +2,27 @@
 {% load socialaccount %}
 {% load account %}
 
+{% block css %}
+    <style>
+        .panel {
+            margin-top: 20px 0;
+        }
+        .panel .panel-heading {
+            font-size: 2em;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+        }
+        button,
+        input:not([type="checkbox"]) {
+            padding: 10px 20px;
+            margin: 10px 0;
+            display: block;
+            width: 100%;
+        }
+    </style>
+{% endblock %}
 
 {% block content %}
 <div class="container">
