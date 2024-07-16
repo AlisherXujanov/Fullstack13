@@ -3,7 +3,21 @@
 <header>
   <div class="upper-nav">
     <a href="#">Py / y.e &lBarr;</a>
-    <a href="#">Мои обявления</a>
+
+    <div>
+      {% if request.user.is_authenticated %}
+      
+        <h3>{{ request.user.username }}</h3>
+        <a href="#">Мои обявления</a>   
+        <a href="#">Profile</a>   
+        <a href="{% url 'account_logout' %}">Logout</a>
+
+      {% else %}
+
+        <a href="{% url 'account_login' %}">Login</a>
+      
+      {% endif %}
+    </div>
   </div>
 
   <nav>
@@ -25,7 +39,7 @@
 </header>
 <script>
   const aTags = document.querySelectorAll('.nav-link-item')
-  
+
   aTags.forEach((a) => {
     a.addEventListener('click', (e) => {
       aTags.forEach((a) => {
