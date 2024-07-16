@@ -1,6 +1,6 @@
 from django.shortcuts import render
-
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from .models import Profile
 
 
 def users(request):
@@ -11,6 +11,7 @@ def users(request):
     return render(request, "users.html", context)
 
 
-def profile_page(request, pk):
-    ...
-    
+@login_required
+def profile_page(request, pk=None):
+    obj = Profile.objects.get(pk=pk)
+    return render(request, "profile_page.html", {"obj": obj})

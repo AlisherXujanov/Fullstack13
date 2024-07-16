@@ -1,0 +1,21 @@
+<!-- obj  ==  profile object -->
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="profile-container" style="display: flex; gap:50px;">
+    <div class="left">
+        <img src="{{obj.image.url}}" width="300" height="300" style="border-radius: 50%;">
+    </div>
+    <div class="right">
+        <h2>{{obj.user.username}}</h2>
+        {% if obj.user.email %}
+        <a href="mailto:{{obj.user.email}}">
+            {{obj.user.email}}
+        </a>
+        {% else %}
+        <p>No email</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
