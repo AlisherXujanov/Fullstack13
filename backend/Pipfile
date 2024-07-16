@@ -9,7 +9,7 @@ pillow = "*"
 django-allauth = "*"
 requests = "*"
 jwt = "*"
-decouple = "*"
+python-decouple = "*"
 
 [dev-packages]
 
