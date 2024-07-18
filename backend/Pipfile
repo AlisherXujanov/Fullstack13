@@ -10,6 +10,7 @@ django-allauth = "*"
 requests = "*"
 jwt = "*"
 python-decouple = "*"
+pyjwt = "*"
 
 [dev-packages]
 
