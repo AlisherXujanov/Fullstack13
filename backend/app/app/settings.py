@@ -14,11 +14,11 @@ from pathlib import Path
 import os
 from decouple import config
 
-# CLIENT_ID = ""
-# CLIENT_SECRET = ""
+CLIENT_ID = ""
+CLIENT_SECRET = ""
 
-CLIENT_ID = config('Client_ID')
-CLIENT_SECRET = config('Client_SECRET')
+# CLIENT_ID = config('Client_ID')
+# CLIENT_SECRET = config('Client_SECRET')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
