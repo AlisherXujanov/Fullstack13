@@ -4,13 +4,17 @@
   <div class="upper-nav">
     <a href="#">Py / y.e &lBarr;</a>
 
-    <div>
+    <div class="nav-right-side">
       {% if request.user.is_authenticated %}
 
-      <h3>{{ request.user.username }}</h3>
-      <a href="#">Мои обявления</a>
-      <a href="{% url 'profile_page' request.user.id %}">Profile</a>
-      <a href="{% url 'account_logout' %}">Logout</a>
+      <div class="dropdown">
+        <h3>{{ request.user.username }}</h3>
+        <div class="drp-content">
+          <a href="#">Мои обявления</a>
+          <a href="{% url 'profile_page' request.user.id %}">Profile</a>
+          <a href="{% url 'account_logout' %}">Logout</a>
+        </div>
+      </div>
 
       {% else %}
 

@@ -12,6 +12,50 @@ header {
         a {
             text-decoration: none;
         }
+
+        .nav-right-side {
+            display: inline-block;
+
+            .dropdown {
+                display: inline-block;
+                position: relative;
+                padding: 10px 20px;
+                cursor: pointer;
+
+                .drp-content {
+                    width: 200px;
+                    box-shadow: 0 16px 32px lightgray;
+                    position: absolute;
+                    top: 40px;
+                    display: none;
+
+                    a {
+                        display: block;
+                        padding: 10px 20px;
+                        text-decoration: none;
+                        width: 100%;
+                        background-color: $light-bg;
+
+                        &:hover {
+                            background-color: $blue;
+                            color: $light-bg;
+                        }
+
+                        &:first-child {
+                            border-radius: 5px 5px 0 0;
+                        }
+
+                        &:last-child {
+                            border-radius: 0 0 5px 5px;
+                        }
+                    }
+                }
+
+                &:hover .drp-content {
+                    display: block;
+                }
+            }
+        }
     }
 
     nav {

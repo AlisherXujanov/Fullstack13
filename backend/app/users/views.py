@@ -14,4 +14,4 @@ def users(request):
 @login_required
 def profile_page(request, pk=None):
     obj = Profile.objects.get(pk=pk)
-    return render(request, "profile_page.html", {"obj": obj})
+    return render(request, "profile_page.html", {"obj": obj})   
