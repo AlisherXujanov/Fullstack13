@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load socialaccount %}
 {% load account %}
+{% load static %}
 
 {% block css %}
     <style>
@@ -21,6 +22,33 @@
             display: block;
             width: 100%;
         }
+
+        .row.social {
+            width: 50%;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .row.social .social-accounts {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .row.social .social-accounts a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 5px;
+            background-color: #eee;
+            padding: 5px 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        .row.social .social-accounts a:hover {
+            box-shadow: 0 8px 16px darkgray;
+        }
+
     </style>
 {% endblock %}
 
@@ -48,6 +76,20 @@
                 Don't have an account? 
                 <a href="{% url 'account_signup' %}">Sign up</a>
             </small>
+        </div>
+    </div>
+
+    <div class="row social">
+        <h2>Login with:</h2>
+        <div class="social-accounts">
+            <a href="#" class="social-login-link">
+                <img src="{% static 'images/icons/github.png' %}" alt="Github register" width="50" height="50">
+                Github
+            </a>
+            <a href="#" class="social-login-link">
+                <img src="{% static 'images/icons/google.png' %}" alt="Google register" width="62" height="62">
+                Google
+            </a>
         </div>
     </div>
 </div>
