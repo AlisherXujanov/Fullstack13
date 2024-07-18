@@ -14,11 +14,17 @@ from pathlib import Path
 import os
 from decouple import config
 
-CLIENT_ID = ""
-CLIENT_SECRET = ""
+GOOGLE_CLIENT_ID = ""
+GOOGLE_CLIENT_SECRET = ""
 
-# CLIENT_ID = config('Client_ID')
-# CLIENT_SECRET = config('Client_SECRET')
+# GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID')
+# GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET')
+
+GITHUB_CLIENT_ID = ""
+GITHUB_CLIENT_SECRET = ""
+
+# GITHUB_CLIENT_ID = config('GITHUB_CLIENT_ID')
+# GITHUB_CLIENT_SECRET = config('GITHUB_CLIENT_SECRET')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -116,8 +122,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': CLIENT_ID,
-            'secret': CLIENT_SECRET,
+            'client_id': GOOGLE_CLIENT_ID,
+            'secret': GOOGLE_CLIENT_SECRET,
             'key': ''
         }
     },
@@ -125,8 +131,8 @@ SOCIALACCOUNT_PROVIDERS = {
     # site for creating github auth service https://github.com/settings/developers
     'github': {
         'APP': {
-            'client_id': '...',
-            'secret': '...',
+            'client_id': GITHUB_CLIENT_ID,
+            'secret': GITHUB_CLIENT_SECRET,
             'key': ''
         }
     }
