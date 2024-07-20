@@ -1174,7 +1174,7 @@ def profile(request):
 
 
 
-# CVB
+# CBV
 # Class Based Views (intermediate)
 Class-based views are an alternative to function-based views. They provide a lot of functionality out of the box, and they are easier to extend and customize.
 

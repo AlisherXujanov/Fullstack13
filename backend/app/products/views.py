@@ -4,21 +4,41 @@ from .forms import CarsForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
 
-@login_required
-def cars_view(request):
-    cars = Cars.objects.all()
-    images = CarImage.objects.all()
-    context = {"cars": []}
 
-    for car in cars:
-        car_images = images.filter(car=car)
-        context["cars"].append({
-            "car": car,
-            "images": car_images
-        })
+# @login_required
+# def cars_view(request):
+#     cars = Cars.objects.all()
+#     images = CarImage.objects.all()
+#     context = {"cars": []}
 
-    return render(request, 'cars_list.html', context)
+#     for car in cars:
+#         car_images = images.filter(car=car)
+#         context["cars"].append({
+#             "car": car,
+#             "images": car_images
+#         })
+
+#     return render(request, 'cars_list.html', context)
+
+
+class CarsListView(ListView):
+    model = Cars
+    template_name = 'cars_list.html'
+    context_object_name = 'cars'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cars"] = []
+        for car in Cars.objects.all():
+            car_images = CarImage.objects.filter(car=car)
+            context["cars"].append({
+                "car": car,
+                "images": car_images
+            })
+        return context
+    
 
 
 @login_required
