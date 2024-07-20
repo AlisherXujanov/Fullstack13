@@ -31,13 +31,14 @@ class CarsListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["cars"] = []
-        for car in Cars.objects.all():
+        objects = []
+        for car in context.get("cars", []):
             car_images = CarImage.objects.filter(car=car)
-            context["cars"].append({
+            objects.append({
                 "car": car,
                 "images": car_images
             })
+        context["cars"] = objects
         return context
     
 
