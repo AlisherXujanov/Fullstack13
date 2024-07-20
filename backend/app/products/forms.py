@@ -36,12 +36,12 @@ class CarsForm(forms.ModelForm):
         #     return False
         self.form_valid = True
 
-        brand_pattern = r'^[a-zA-Z]$'
+        brand_pattern = r'^[a-zA-Z]*$'
         if not re.match(brand_pattern, self.brand):
             self.add_error('brand', 'Слово должно состоять только из букв')
             self.form_valid = False
 
-        model_pattern = r'^[a-zA-Z0-9]$'
+        model_pattern = r'^[a-zA-Z0-9]*$'
         if not re.match(model_pattern, self.model):
             self.add_error('model', 'Слово должно состоять только из букв и цифр')
             self.form_valid = False
