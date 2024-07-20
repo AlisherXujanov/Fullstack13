@@ -86,7 +86,9 @@
     {% for img in images %}
     <div class="img-container">
         <img src="{{img.image.url}}">
+        {% if request.user.is_authenticated and request.user == car.author_of_ad %}
         <a class="delete" onclick="deleteCarImage('{{img.id}}')">Delete</a>
+        {% endif %}
     </div>
     {% endfor %}
 </div>
@@ -99,7 +101,10 @@
     <b>Color:</b> {{ car.color }} <br />
     <b>Price:</b> ${{ car.price }} <br />
     <b>Address:</b> {{ car.address }} <br />
+
+    {% if request.user.is_authenticated and request.user == car.author_of_ad %}
     <a class="btn-link" href="{% url 'update_car_view' car.id %}">Update</a>
+    {% endif %}
     <hr />
 </div>
 {% endblock %}

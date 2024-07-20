@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from products.models import Cars, CarImage
 
 
 def users(request):
@@ -14,4 +15,8 @@ def users(request):
 @login_required
 def profile_page(request, pk=None):
     obj = Profile.objects.get(user__pk=pk)
-    return render(request, "profile_page.html", {"obj": obj})   
+    context = {
+        "obj": obj,
+        "cars": Cars.objects.filter(author_of_ad=obj.user)
+    }
+    return render(request, "profile_page.html", context)
