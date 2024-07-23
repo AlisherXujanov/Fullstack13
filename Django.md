@@ -5,7 +5,7 @@
 5. [Querysets](#querysets)
 6. [Forms](#forms)
 7. [Sign In/Out](#sign-inout)
-8. [CVB](#cvb)
+8. [CBV](#cbv)
 9. [Middleware](#middleware)
 10. [Django-allauth](#📚django-allauth)
 11. [Permissions](#permissions)

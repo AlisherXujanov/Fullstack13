@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
+from .usecases import add_to_favorites_fn, remove_from_favorites_fn
 
 
 # @login_required
@@ -23,6 +24,25 @@ from django.views.generic import ListView
 #     return render(request, 'cars_list.html', context)
 
 
+def add_to_favorites(request, product_id: int):
+    if add_to_favorites_fn(request, product_id):
+        messages.success(request, "Successfully added to favorites")
+    else:
+        messages.warning(request, "You already have this product in your favorites")
+
+    referee = request.META.get('HTTP_REFERER')
+    return redirect(referee)
+
+def remove_from_favorites(request, product_id: int):
+    if remove_from_favorites_fn(request, product_id):
+        messages.success(request, "Successfully removed from favorites")
+    else:
+        messages.error(request, "You don't have this product in your favorites")
+
+    referee = request.META.get('HTTP_REFERER')
+    return redirect(referee)
+
+
 class CarsListView(ListView):
     model = Cars
     template_name = 'cars_list.html'
@@ -39,8 +59,8 @@ class CarsListView(ListView):
                 "images": car_images
             })
         context["cars"] = objects
+        context["favorites"] = self.request.session.get("favorites", [])
         return context
-    
 
 
 @login_required
