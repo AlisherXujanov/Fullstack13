@@ -12,13 +12,15 @@
   </head>
 
   <body>
-
+    <header>
+        {% include 'navbar.html' %}
+    </header>
 
     <div class="base-container">
         {% block content %}{% endblock %}
     </div>
         
-    
+
     {% block js %}{% endblock %}
   </body>
 </html>
