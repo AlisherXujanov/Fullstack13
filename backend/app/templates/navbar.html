@@ -31,30 +31,12 @@
     nav a.selected {
         font-weight: bold;
     }
-
-    .searchbox {
-        background-color: #F3F3F3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 10px;
-        gap: 5px;
-        border-radius: 20px;
-    }
-    .searchbox input {
-        background-color: #F3F3F3;
-        padding: 10px 0;
-    }
-
 </style>
 
 <nav>
     <div class="left">
         <a href="{% url 'landing_page' %}" id="logo">💥</a>
-        <div class="searchbox">
-            <span class="icon">🔍</span>
-            <input type="search" placeholder="Search" />
-        </div>
+        {% include 'searchbar.html' %}
     </div>
     <div class="right">
         <a href="#explore" class="selected">Explore</a>
