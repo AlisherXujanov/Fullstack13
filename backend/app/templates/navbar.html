@@ -7,7 +7,7 @@
         justify-content: center;
         align-items: center;
         gap: 20px;
-        padding: 20px 50px 10px 50px;
+        padding: 20px 100px 10px 100px;
     }
 
     a,
@@ -34,12 +34,32 @@
         font-family: sans-serif;
         padding: 10px 20px;
     }
+
     nav a.selected {
         font-weight: bold;
     }
+
     .searchbar-warpper-parent {
         width: 300px;
     }
+    #sign-in-link {
+        font-size: 1.2em;
+        border: solid 1px gray;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    #sign-in-link:hover {
+        background-color: #222;
+        color: snow;
+    }
+    #sign-in-link:active {
+        transform: scale(0.8);
+    }
+    #sign-in-link svg {
+        position: relative;
+        top: 2px;
+    }   
+
 </style>
 
 <nav>
@@ -55,5 +75,11 @@
         <a href="#explore" class="selected">Explore</a>
         <a href="#trending">Trending🔥</a>
         <a href="#faq">FAQ</a>
+        <a id="sign-in-link" href="{% url 'account_login' %}">Sign in
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill"
+                viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+            </svg>
+        </a>
     </div>
 </nav>
