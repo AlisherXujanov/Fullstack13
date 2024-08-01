@@ -27,7 +27,8 @@
   </header>
 
   <div class="base-container">
-    {% block content %}{% endblock %}
+    {% block content %}
+    {% endblock %}
   </div>
 
   <footer>
@@ -85,11 +86,11 @@
       </div>
     </div>
   </div>
-  </div>
 
   {% block js %}
 
   {% endblock %}
+  
   <script>
     const signInBlock = document.querySelector('#sign-in-block')
     const signUpBlock = document.querySelector('#sign-up-block')
