@@ -1,7 +1,11 @@
+{% load static %}
+
 <style>
     nav {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
         gap: 20px;
         padding: 20px 50px 10px 50px;
     }
@@ -15,6 +19,8 @@
 
     nav .left {
         display: flex;
+        justify-content: flex-start;
+        align-items: center;
         gap: 20px;
     }
 
@@ -31,12 +37,19 @@
     nav a.selected {
         font-weight: bold;
     }
+    .searchbar-warpper-parent {
+        width: 300px;
+    }
 </style>
 
 <nav>
     <div class="left">
-        <a href="{% url 'landing_page' %}" id="logo">💥</a>
-        {% include 'searchbar.html' %}
+        <a href="{% url 'landing_page' %}" id="logo">
+            <img src="{% static 'icons/logo.png' %}" alt="logo">
+        </a>
+        <div class="searchbar-warpper-parent">
+            {% include 'searchbar.html' %}
+        </div>
     </div>
     <div class="right">
         <a href="#explore" class="selected">Explore</a>
