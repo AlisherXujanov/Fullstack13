@@ -19,7 +19,7 @@
   <div class="right">
     <a href="#explore" class="selected">Explore</a>
     <a href="#trending">Trending🔥</a>
-    <a href="#faq">FAQ</a>
+    <a href="{% url 'faq' %}">FAQ</a>
 
     <button class="open-modal">
       {% if request.user.is_authenticated %}
