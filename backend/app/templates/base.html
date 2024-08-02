@@ -23,7 +23,11 @@
 
     <div class="base-container">
         {% block content %}{% endblock %}
+        {% include "footer.html" %}
     </div>
+    <footer>
+      {% include "switcher.html" %}
+    </footer>
         
 
     {% block js %}{% endblock %}
