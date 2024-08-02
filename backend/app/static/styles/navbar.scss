@@ -1,0 +1,188 @@
+@use './resets';
+@import './settings';
+
+nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 100px 10px 100px;
+
+    a,
+    input {
+        display: inline-block;
+        border: none;
+        outline: none;
+    }
+
+    .left {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+
+        .searchbar-warpper-parent {
+            width: 300px;
+        }
+    }
+
+    .burger-menu-container {
+        width: 100%;
+        display: flex;
+        justify-content: right;
+        display: none;
+
+        .burger-menu {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            background-color: transparent;
+            padding: 0;
+            cursor: pointer;
+
+            div {
+                background-color: #222;
+                width: 100%;
+                height: 4px;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .right {
+        text-align: right;
+
+        .open-modal {
+            font-size: 1.2em;
+            border: solid 2px gray;
+            border-radius: 5px;
+            padding: 10px 20px;
+            transition: 0.3s;
+            background-color: transparent;
+            cursor: pointer;
+            color: #222;
+            outline: none;
+
+            &:hover {
+                background-color: #222;
+                color: snow;
+            }
+
+            &:active {
+                transform: scale(0.8);
+            }
+
+            svg {
+                position: relative;
+                top: 2px;
+            }
+
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: #444;
+        font-family: sans-serif;
+        padding: 10px 20px;
+
+        &.selected {
+            font-weight: bold;
+        }
+    }
+
+}
+
+@media(max-width: 1130px) {
+    nav { 
+        .burger-menu-container { 
+            display: flex; 
+            align-items: center; 
+ 
+            .burger-menu { 
+                cursor: pointer; 
+                transition: transform 0.3s ease; 
+                position: relative; 
+                width: 30px; 
+                height: 25px; 
+    
+                div { 
+                    position: absolute; 
+                    width: 100%;  
+                    height: 3px;  
+                    background-color: #333;  
+                    transition: transform 0.3s ease, opacity 0.3s ease; 
+ 
+                    &:nth-child(1) { 
+                        top: 0; 
+                    } 
+ 
+                    &:nth-child(2) {  
+                        top: 50%;  
+                        transform: translateY(-50%);  
+                    }  
+
+                    &:nth-child(3) { 
+                        bottom: 0;
+                    } 
+                }
+ 
+                &.open { 
+                    position: fixed; 
+                    z-index: 12; 
+                    top: 10px; 
+                    right: 250px; 
+                    div { 
+                        &:nth-child(1) { 
+                            transform: rotate(45deg); 
+                            top: 50%; 
+                            transform: translateY(-50%) rotate(45deg); 
+                        } 
+ 
+                        &:nth-child(2) { 
+                            opacity: 0; 
+                        } 
+ 
+                        &:nth-child(3) { 
+                            transform: rotate(-45deg);  
+                            bottom: 50%;  
+                            transform: translateY(50%) rotate(-45deg); 
+                        } 
+                    } 
+                } 
+            } 
+ 
+        } 
+ 
+        .right { 
+            position: fixed; 
+            height: 100vh; 
+            right: -300px; 
+            top: 0; 
+            display: flex; 
+            background-color: #fff;  
+            flex-direction: column;  
+            width: 300px;  
+            padding: 50px 0;  
+            z-index: 10;  
+            box-shadow: 5px 5px 20px #555;  
+            transition: right 0.3s ease;  
+            align-items: end;
+            padding-right: 20px;
+            gap: 10px;
+            &.open { 
+                right: 0; 
+            } 
+            .open-modal{
+                width: 150px;
+                padding: 10px;
+                
+            }
+        } 
+    } 
+}
