@@ -173,8 +173,24 @@
       @media screen and (min-width: 24.375em) {
         .legal .legal__links {
           margin-left: auto;
+          .footer__nav > * {
+            flex: 1;
+          }
+          
+          .nav__item--extra {
+            flex-grow: 1;
+          }
+          
+          .footer__addr {
+            flex: 1 0px;
+          }
+          
+          .footer__nav {
+            flex: 1 0px;
+          }
         }
-      }
+        }
+      
       
       @media screen and (min-width: 40.375em) {
         .footer__nav > * {
@@ -182,7 +198,7 @@
         }
         
         .nav__item--extra {
-          flex-grow: 2;
+          flex-grow: 1;
         }
         
         .footer__addr {
@@ -190,8 +206,47 @@
         }
         
         .footer__nav {
-          flex: 2 0px;
+          flex: 1 0px;
         }
+      }
+      @media screen and (max-width:1200px){
+        .footer{ 
+          padding-left: 0px;
+          display: grid;
+          grid-template-columns: 1fr 3fr;
+          gap: 5px;
+        } 
+        .footer__nav{
+          display: flex;
+          flex-direction: column-reverse;
+          margin-left: 20px;
+          gap: 10px;
+          padding-right: 0px;
+          display: inline-block;
+        } 
+        .footer .nav__item{
+          display: block;
+          margin-left: auto;
+          margin-right: 0;
+          text-align: left;
+          padding-top: 20px;
+        }
+      }
+      @media screen and (max-width:600px){
+        .footer{
+          padding-left: 0px;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 5px;
+        }
+        .footer .footer__nav{
+          display: flex;
+          flex-direction: column;
+          margin-left: 0px;
+          gap: 10px;
+          padding-left: 0px;
+          display: inline-block;
+        } 
       }
 </style>
 
@@ -237,7 +292,7 @@
         
         <ul class="nav__ul nav__ul">
           <li>
-            <a href="#">FAQ</a>
+            <a href="{% url 'faq' %}">FAQ</a>
         </li> 
         <li>
           <a href="#">Become Artist</a>
