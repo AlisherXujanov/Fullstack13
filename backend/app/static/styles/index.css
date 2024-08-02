@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+:root {
+  font-family: "DM Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.2s ease-out;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font: inherit;
+}
+
+a {
+  font-weight: 500;
+  color: #6b6b6b;
+  text-decoration: none;
+}
+a:hover {
+  color: #191919;
+}
+a.active {
+  color: #000000;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.5em;
+  line-height: 1.1;
+  font-family: "Roboto Serif", sans-serif;
+  font-weight: 500;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  color: snow;
+  font-weight: bold;
+  font-family: sans-serif;
+  border-radius: 10px;
+}
+button span {
+  margin-right: 10px;
+}
+
+button.red-btn {
+  background: linear-gradient(to right, #ff56bb, #ff8f77);
+}
+
+button.purple-btn {
+  background: linear-gradient(to right, #6e56ff, #b073ff);
+}
+
+button.green-btn {
+  background: linear-gradient(to right, #56c2ff, #48fe9c);
+}
+
+body .base-container .modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.4666666667);
+  z-index: 20;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: none;
+}
+body .base-container .modal-bg.open {
+  display: flex;
+}
+body .base-container .modal-bg .cancel {
+  width: 500px;
+  display: flex;
+  justify-content: right;
+}
+body .base-container .modal-bg .cancel button {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+body .base-container .modal-bg .modal-content {
+  background-color: #fff;
+  width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  height: auto;
+}
+body .base-container .modal-bg .modal-content .top h1 {
+  text-align: center;
+}
+body .base-container .modal-bg .modal-content .middle {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+body .base-container .modal-bg .modal-content .middle .logout-content p {
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+body .base-container .modal-bg .modal-content .middle .logout-content .logout {
+  margin: 20px 0;
+  width: 100%;
+  background: linear-gradient(to right, #6e56ff, #b073ff);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-btn {
+  width: 100%;
+  height: 30px;
+  margin: 10px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-btn button {
+  background-color: transparent;
+  color: #000000;
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-btn button.active {
+  border-bottom: 3px solid #000000;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form a {
+  display: none;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form input {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: rgb(235, 235, 235);
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 5px;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form input[type=checkbox] {
+  display: none;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form p label {
+  display: none;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form button {
+  background: linear-gradient(to right, #ff56bb, #ff8f77);
+  width: 100%;
+  cursor: pointer;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form a {
+  display: none;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form input {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: rgb(235, 235, 235);
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 5px;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form input[type=checkbox] {
+  display: none;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form p label {
+  display: none;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form p:nth-child(6) {
+  display: none;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form ul {
+  display: none;
+}
+body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form button {
+  background: linear-gradient(to right, #56c2ff, #48fe9c);
+  width: 100%;
+  cursor: pointer;
+}/*# sourceMappingURL=index.css.map */
