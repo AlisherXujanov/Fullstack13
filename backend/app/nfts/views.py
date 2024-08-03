@@ -17,3 +17,7 @@ def landing_page(request):
         'signin_form':signin_form,
         'signup_form':signup_form
     })
+
+
+def create_nft(request):
+    return render(request, 'create_nft.html')
