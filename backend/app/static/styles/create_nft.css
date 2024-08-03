@@ -1,0 +1,193 @@
+.nft-form-wrapper {
+  padding: 120px 100px;
+}
+.nft-form-wrapper h1 {
+  position: absolute;
+  left: 0;
+  top: 200px;
+  width: 100%;
+  height: 80vh;
+  z-index: -1;
+  text-align: center;
+}
+.nft-form-wrapper div.form {
+  display: grid;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 100px;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 50px;
+}
+.nft-form-wrapper div.form form {
+  padding: 0 20px;
+  width: 600px;
+}
+.nft-form-wrapper div.form form .form-control {
+  margin: 20px 0;
+}
+.nft-form-wrapper div.form form .form-control label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.nft-form-wrapper div.form form .form-control small {
+  display: block;
+  margin: 10px 0;
+  color: #6b6b6b;
+}
+.nft-form-wrapper div.form form .form-control input,
+.nft-form-wrapper div.form form .form-control textarea {
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: #f3f3f3;
+  margin-bottom: 5px;
+}
+.nft-form-wrapper div.form form .form-control input::-moz-placeholder, .nft-form-wrapper div.form form .form-control textarea::-moz-placeholder {
+  color: #6b6b6b;
+  font-family: sans-serif;
+}
+.nft-form-wrapper div.form form .form-control input::placeholder,
+.nft-form-wrapper div.form form .form-control textarea::placeholder {
+  color: #6b6b6b;
+  font-family: sans-serif;
+}
+.nft-form-wrapper div.form form .form-control textarea {
+  height: 150px;
+}
+.nft-form-wrapper div.form form .form-control .nft-image-wrapper {
+  position: relative;
+  background-color: #f3f3f3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  border-radius: 10px;
+  padding: 50px 0;
+}
+.nft-form-wrapper div.form form .form-control .nft-image-wrapper input[type=file] {
+  cursor: pointer;
+  height: 150px;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+}
+.nft-form-wrapper div.form form .form-control .nft-image-wrapper small {
+  color: #6b6b6b;
+}
+.nft-form-wrapper div.form form .form-control .options-wrapper {
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}
+.nft-form-wrapper div.form form .form-control .options-wrapper img {
+  position: relative;
+  top: 3px;
+}
+.nft-form-wrapper div.form form .form-control .options-wrapper .option-value img {
+  position: absolute;
+  right: 20px;
+  top: 30px;
+}
+.nft-form-wrapper div.form form .form-control .options-wrapper .drp-content {
+  position: absolute;
+  z-index: 10;
+  top: 65px;
+  left: 0;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(107, 107, 107, 0.1882352941);
+  display: none;
+}
+.nft-form-wrapper div.form form .form-control .options-wrapper .drp-content div {
+  padding: 10px 20px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  width: 100%;
+  width: 560px;
+}
+.nft-form-wrapper div.form form .form-control .options-wrapper .drp-content div:hover {
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+}
+.nft-form-wrapper div.form form .form-control button {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  font-size: 1.6em;
+  cursor: pointer;
+}
+.nft-form-wrapper div.form form .name-and-cost {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  grid-template-columns: 4fr 1fr;
+}
+.nft-form-wrapper div.form .demonstration {
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 50px rgba(107, 107, 107, 0.1882352941);
+}
+.nft-form-wrapper div.form .demonstration h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.nft-form-wrapper div.form .demonstration img {
+  border-radius: 20px 20px 0 0;
+}
+.nft-form-wrapper div.form .demonstration .content {
+  margin-top: 25px;
+  display: grid;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.nft-form-wrapper div.form .demonstration .content .left b {
+  display: block;
+  text-align: left;
+  font-size: 2em;
+}
+.nft-form-wrapper div.form .demonstration .content .left h2.author-info {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.nft-form-wrapper div.form .demonstration .content .right {
+  padding-right: 20px;
+}
+.nft-form-wrapper div.form .demonstration .content .right div,
+.nft-form-wrapper div.form .demonstration .content .right p {
+  margin: 15px 0;
+  text-align: right;
+}
+.nft-form-wrapper div.form .demonstration .content .right p {
+  color: #6b6b6b;
+}
+.nft-form-wrapper div.form .demonstration .content .right div {
+  padding: 20px 10px 0 0;
+  font-size: 1.6em;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.nft-form-wrapper div.form .demonstration .content .right div img {
+  margin-right: 10px;
+  transform: scale(1.5);
+}/*# sourceMappingURL=create_nft.css.map */
