@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+:root {
+  font-family: "DM Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.2s ease-out;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font: inherit;
+}
+
+a {
+  font-weight: 500;
+  color: #6b6b6b;
+  text-decoration: none;
+}
+a:hover {
+  color: #191919;
+}
+a.active {
+  color: #000000;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.5em;
+  line-height: 1.1;
+  font-family: "Roboto Serif", sans-serif;
+  font-weight: 500;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  color: snow;
+  font-weight: bold;
+  font-family: sans-serif;
+  border-radius: 10px;
+}
+button span {
+  margin-right: 10px;
+}
+
+button.red-btn {
+  background: linear-gradient(to right, #ff56bb, #ff8f77);
+}
+
+button.purple-btn {
+  background: linear-gradient(to right, #6e56ff, #b073ff);
+}
+
+button.green-btn {
+  background: linear-gradient(to right, #56c2ff, #48fe9c);
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 100px 10px 100px;
+}
+nav a,
+nav input {
+  display: inline-block;
+  border: none;
+  outline: none;
+}
+nav .left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+nav .left .searchbar-warpper-parent {
+  width: 300px;
+}
+nav .burger-menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  display: none;
+}
+nav .burger-menu-container .burger-menu {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+nav .burger-menu-container .burger-menu div {
+  background-color: #222;
+  width: 100%;
+  height: 4px;
+  border-radius: 5px;
+}
+nav .right {
+  text-align: right;
+}
+nav .right .open-modal {
+  font-size: 1.2em;
+  border: solid 2px gray;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: 0.3s;
+  background-color: transparent;
+  cursor: pointer;
+  color: #222;
+  outline: none;
+}
+nav .right .open-modal:hover {
+  background-color: #222;
+  color: snow;
+}
+nav .right .open-modal:active {
+  transform: scale(0.8);
+}
+nav .right .open-modal svg {
+  position: relative;
+  top: 2px;
+}
+nav a {
+  text-decoration: none;
+  color: #444;
+  font-family: sans-serif;
+  padding: 10px 20px;
+}
+nav a.selected {
+  font-weight: bold;
+}
+
+@media (max-width: 1130px) {
+  nav .burger-menu-container {
+    display: flex;
+    align-items: center;
+  }
+  nav .burger-menu-container .burger-menu {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
+    width: 30px;
+    height: 25px;
+  }
+  nav .burger-menu-container .burger-menu div {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  nav .burger-menu-container .burger-menu div:nth-child(1) {
+    top: 0;
+  }
+  nav .burger-menu-container .burger-menu div:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  nav .burger-menu-container .burger-menu div:nth-child(3) {
+    bottom: 0;
+  }
+  nav .burger-menu-container .burger-menu.open {
+    position: fixed;
+    z-index: 12;
+    top: 10px;
+    right: 250px;
+  }
+  nav .burger-menu-container .burger-menu.open div:nth-child(1) {
+    transform: rotate(45deg);
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  nav .burger-menu-container .burger-menu.open div:nth-child(2) {
+    opacity: 0;
+  }
+  nav .burger-menu-container .burger-menu.open div:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
+  nav .right {
+    position: fixed;
+    height: 100vh;
+    right: -300px;
+    top: 0;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    width: 300px;
+    padding: 50px 0;
+    z-index: 10;
+    box-shadow: 5px 5px 20px #555;
+    transition: right 0.3s ease;
+    align-items: end;
+    padding-right: 20px;
+    gap: 10px;
+  }
+  nav .right.open {
+    right: 0;
+  }
+  nav .right .open-modal {
+    width: 150px;
+    padding: 10px;
+  }
+}/*# sourceMappingURL=navbar.css.map */

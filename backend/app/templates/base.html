@@ -1,35 +1,147 @@
 {% load static %}
-
+{% load account %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {% block title %}
-      <title>NFTs</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+  {% block title %}
+  <title>NFTs</title>
+  {% endblock %}
+
+  {% block css %}
+
+  {% endblock %}
+  <style>
+    .base-container {
+      padding: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    {% include 'navbar.html' %}
+  </header>
+
+  <div class="base-container">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <footer>
+    {% include "switcher.html" %}
+  </footer>
+
+  <div class="modal-bg">
+    <div class="cancel">
+      <button class="close-modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#fff" class="bi bi-x" viewBox="0 0 16 16">
+          <path
+            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+        </svg>
+      </button>
+      <div class="modal-content">
+        <div class="top">
+          <h1>Authorization</h1>
+        </div>
+        <div class="middle">
+          {% if request.user.is_authenticated %}
+          <div class="logout-content">
+            <p>Hi, {{ request.user.username }}👋</p>
+            <a href="{% url 'custom_logout' %}" class="logout">Log out</a>
+          </div>
+          {% else %}
+          <div class="sign-in-sign-up-btn">
+            <button class="sign-in-btn">Sign in</button>
+            <button class="sign-up-btn">Sign up</button>
+          </div>
+
+          <div class="sign-in-sign-up-content">
+            <div class="sign-in" id="sign-in-block" style="display: none;">
+              <form method="POST" action="{% url 'account_login' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ signin_form.as_p }}
+                <div class="btns">
+                  <button type="submit" class="sign-in-btn">Sign in</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="sign-up" id="sign-up-block" style="display: none;">
+              <form method="POST" action="{% url 'account_signup' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ signup_form.as_p }}
+                <div class="btns">
+                  <button type="submit" class="sign-in-btn">Sign up</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+
+    {% block js %}
     {% endblock %}
 
-    {% block css %}{% endblock %}
-    <style>
-        .base-container { padding: 50px; }
-    </style>
-  </head>
+    <script>
+      const signInBlock = document.querySelector('#sign-in-block')
+      const signUpBlock = document.querySelector('#sign-up-block')
+      const signInBtn = document.querySelector('.sign-in-btn')
+      const signUpBtn = document.querySelector('.sign-up-btn')
+      const modalWindow = document.querySelector('.modal-bg')
+      const openModalBtn = document.querySelector('.open-modal')
+      const closeModalBtn = document.querySelector('.close-modal')
 
-  <body>
-    <header>
-        {% include 'navbar.html' %}
-    </header>
+      if (signInBlock) {
+        signInBlock.style.display = 'block'
+      }
+      if (signInBtn) {
+        signInBtn.classList.add('active')
+      }
 
-    <div class="base-container">
-        {% block content %}{% endblock %}
+      function showSignIn() {
+        if (signInBlock && signUpBlock && signInBtn && signUpBtn) {
+          signInBlock.style.display = 'block'
+          signUpBlock.style.display = 'none'
+          signInBtn.classList.add('active')
+          signUpBtn.classList.remove('active')
+        }
+      }
 
-    </div>
-    <footer>
-      {% include "switcher.html" %}
-    </footer>
-        
+      function showSignUp() {
+        if (signInBlock && signUpBlock && signInBtn && signUpBtn) {
+          signInBlock.style.display = 'none'
+          signUpBlock.style.display = 'block'
+          signInBtn.classList.remove('active')
+          signUpBtn.classList.add('active')
+        }
+      }
 
-    {% block js %}{% endblock %}
-  </body>
+      function openModal() {
+        modalWindow.classList.add('open')
+
+      }
+
+      function closeModal() {
+        modalWindow.classList.remove('open')
+
+      }
+
+      if (signInBtn) {
+        signInBtn.addEventListener('click', showSignIn)
+      }
+      if (signUpBtn) {
+        signUpBtn.addEventListener('click', showSignUp)
+      }
+      openModalBtn.addEventListener('click', openModal)
+      closeModalBtn.addEventListener('click', closeModal)
+    </script>
+</body>
+
 </html>
