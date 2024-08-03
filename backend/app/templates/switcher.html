@@ -1,326 +1,341 @@
 <style>
-    *, *:before, *:after {
-        box-sizing: border-box;
-      }
-      
-      html {
-        font-size: 100%;
-      }
-      
-      
-      .footer {
-        display: flex;
-        flex-flow: row wrap;
-        padding: 30px 30px 20px 30px;
-        color: #2f2f2f;
-        background-color: #fff;
-        padding-right: 100px;
-        margin-left: 150px;
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
 
-      }
-      
-      .footer > * {
-        flex:  1 100%;
-        input {
-           border-radius: 50px;
-           width: 300px;
-           height: 60px;
-           padding: 30px;
-           border:1px solid black;
+  html {
+    font-size: 100%;
+  }
 
-      
-        }
+
+  .footer {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 30px 30px 20px 30px;
+    color: #2f2f2f;
+    background-color: #fff;
+    padding-right: 100px;
+    margin-left: 150px;
+
+  }
+
+  .footer>* {
+    flex: 1 100%;
+
+    input {
+      border-radius: 50px;
+      width: 300px;
+      height: 60px;
+      padding: 30px;
+      border: 1px solid black;
+
+
+    }
+  }
+
+  .footer__addr {
+    margin-right: 3em;
+    margin-bottom: 2em;
+  }
+
+
+
+  .footer__addr h2 {
+    margin-top: 1.3em;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  .nav__title {
+    font-weight: 400;
+    font-size: 15px;
+  }
+
+  .footer address {
+    font-style: normal;
+    color: #999;
+  }
+
+
+  .footer ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .footer li {
+    line-height: 2em;
+  }
+
+  .footer a {
+    text-decoration: none;
+  }
+
+  .footer__nav {
+    padding-left: 200px;
+    display: flex;
+    flex-flow: row wrap;
+    padding-right: 50px;
+  }
+
+  .footer__nav>* {
+    flex: 1 50%;
+    margin-right: 1.25em;
+  }
+
+  .nav__ul a {
+    color: #999;
+  }
+
+  .nav__ul--extra {
+    column-count: 2;
+    column-gap: 1.25em;
+  }
+
+  .legal {
+    display: flex;
+    flex-wrap: wrap;
+    color: #999;
+
+    span {
+      display: flex;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 100px;
+      background-color: lightgray;
+    }
+  }
+
+  .legal__links {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-right: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+  }
+
+  .heart {
+    color: #2f2f2f;
+  }
+
+  label {
+    width: 50px;
+    height: 25px;
+    display: block;
+    background-color: #000;
+    border-radius: 100px;
+    cursor: pointer;
+    position: relative;
+    bottom: 10px;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .moving_circle {
+    position: absolute;
+    left: 0px;
+    width: 20px;
+    height: 19px;
+    background: linear-gradient(108.39deg, #FF56BB 6.99%, #FF8F77 119.86%);
+    border-radius: 100px;
+    margin: 3px;
+    transition: 0.2s;
+  }
+
+  input[type="checkbox"]:checked+.moving_circle {
+    transform: translateX(23px);
+  }
+
+  .switcher {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .moon {
+      position: relative;
+      left: 45px;
+      bottom: 32px;
+    }
+
+    .sun {
+      position: relative;
+      right: 45px;
+      top: 25px;
+    }
+  }
+
+
+  @media screen and (min-width: 24.375em) {
+    .legal .legal__links {
+      margin-left: auto;
+
+      .footer__nav>* {
+        flex: 1;
       }
-      
+
+      .nav__item--extra {
+        flex-grow: 1;
+      }
+
       .footer__addr {
-        margin-right: 3em;
-        margin-bottom: 2em;
+        flex: 1 0px;
       }
-      
-    
-      
-      .footer__addr h2 {
-        margin-top: 1.3em;
-        font-size: 15px;
-        font-weight: 400;
-      }
-      
-      .nav__title {
-        font-weight: 400;
-        font-size: 15px;
-      }
-      
-      .footer address {
-        font-style: normal;
-        color: #999;
-      }
-      
-      
-      .footer ul {
-        list-style: none;
-        padding-left: 0;
-      }
-      
-      .footer li {
-        line-height: 2em;
-      }
-      
-      .footer a {
-        text-decoration: none;
-      }
-      
-      .footer__nav {
-        padding-left: 200px;
-        display: flex;
-          flex-flow: row wrap;
-        padding-right: 50px;
-      }
-      
-      .footer__nav > * {
-        flex: 1 50%;
-        margin-right: 1.25em;
-      }
-      
-      .nav__ul a {
-        color: #999;
-      }
-      
-      .nav__ul--extra {
-        column-count: 2;
-        column-gap: 1.25em;
-      }
-      
-      .legal {
-        display: flex;
-        flex-wrap: wrap;
-        color: #999;
-        span {
-            display: flex;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 100px;
-            background-color: lightgray ;
-        }
-      }
-        
-      .legal__links {
-        display: flex;
-        align-items: center;
-        span {
-            margin-right: 20px;
-            justify-content: center;
-            align-items: center;
-        }
 
+      .footer__nav {
+        flex: 1 0px;
       }
-      
-      .heart {
-        color: #2f2f2f;
-      }
-    
-    label{
-        width: 50px;
-        height: 25px;
-        display: block;
-        background-color: #000;
-        border-radius: 100px;
-        cursor: pointer;
-        position: relative;
-        bottom: 10px;
     }
-    input[type="checkbox"]{
-        display: none;
+  }
+
+
+  @media screen and (min-width: 40.375em) {
+    .footer__nav>* {
+      flex: 1;
     }
-    .moving_circle{
-        position: absolute;
-        left: 0px;
-        width: 20px;
-        height: 19px;
-        background: linear-gradient(108.39deg, #FF56BB 6.99%, #FF8F77 119.86%);
-        border-radius: 100px;
-        margin: 3px;
-        transition: 0.2s;
+
+    .nav__item--extra {
+      flex-grow: 1;
     }
-    input[type="checkbox"]:checked + .moving_circle{
-        transform: translateX(23px);
+
+    .footer__addr {
+      flex: 1 0px;
     }
-    
-    .switcher {
-        width: 100px;
-        height: 100px;
-        background-color: #fff;
-        border-radius: 10px;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        
-        .moon {
-            position: relative;
-            left: 45px;
-            bottom:32px;
-        }
-        .sun {
-            position: relative;
-            right: 45px;
-            top: 25px;
-        }
+
+    .footer__nav {
+      flex: 1 0px;
     }
-    
-      
-      @media screen and (min-width: 24.375em) {
-        .legal .legal__links {
-          margin-left: auto;
-          .footer__nav > * {
-            flex: 1;
-          }
-          
-          .nav__item--extra {
-            flex-grow: 1;
-          }
-          
-          .footer__addr {
-            flex: 1 0px;
-          }
-          
-          .footer__nav {
-            flex: 1 0px;
-          }
-        }
-        }
-      
-      
-      @media screen and (min-width: 40.375em) {
-        .footer__nav > * {
-          flex: 1;
-        }
-        
-        .nav__item--extra {
-          flex-grow: 1;
-        }
-        
-        .footer__addr {
-          flex: 1 0px;
-        }
-        
-        .footer__nav {
-          flex: 1 0px;
-        }
-      }
-      @media screen and (max-width:1200px){
-        .footer{ 
-          padding-left: 0px;
-          display: grid;
-          grid-template-columns: 1fr 3fr;
-          gap: 5px;
-        } 
-        .footer__nav{
-          display: flex;
-          flex-direction: column-reverse;
-          margin-left: 20px;
-          gap: 10px;
-          padding-right: 0px;
-          display: inline-block;
-        } 
-        .footer .nav__item{
-          display: block;
-          margin-left: auto;
-          margin-right: 0;
-          text-align: left;
-          padding-top: 20px;
-        }
-      }
-      @media screen and (max-width:600px){
-        .footer{
-          padding-left: 0px;
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 5px;
-        }
-        .footer .footer__nav{
-          display: flex;
-          flex-direction: column;
-          margin-left: 0px;
-          gap: 10px;
-          padding-left: 0px;
-          display: inline-block;
-        } 
-      }
+  }
+
+  @media screen and (max-width:1200px) {
+    .footer {
+      padding-left: 0px;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 5px;
+    }
+
+    .footer__nav {
+      display: flex;
+      flex-direction: column-reverse;
+      margin-left: 20px;
+      gap: 10px;
+      padding-right: 0px;
+      display: inline-block;
+    }
+
+    .footer .nav__item {
+      display: block;
+      margin-left: auto;
+      margin-right: 0;
+      text-align: left;
+      padding-top: 20px;
+    }
+  }
+
+  @media screen and (max-width:600px) {
+    .footer {
+      padding-left: 0px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 5px;
+    }
+
+    .footer .footer__nav {
+      display: flex;
+      flex-direction: column;
+      margin-left: 0px;
+      gap: 10px;
+      padding-left: 0px;
+      display: inline-block;
+    }
+  }
 </style>
 
 {% load static %}
 <footer class="footer">
-    <div class="footer__addr">
-      <img src="{% static 'icons/logo.png' %}" alt="logo">
-          
-      <h1>NFT Distro</h1>
-      
-      <address>
-        Experience the Revolutionary World of Non-Fungible Tokens on Our Exclusive NFT Marketplace<br>
-            
-        <div class="switcher">
-          <span class="sun">☀️</span>
-          <label>
-              <input type="checkbox">
-              <div class="moving_circle"></div>
-          </label>
-          <span class="moon">🌙</span>
+  <div class="footer__addr">
+    <img src="{% static 'icons/logo.png' %}" alt="logo">
+
+    <h1>NFT Distro</h1>
+
+    <address>
+      Experience the Revolutionary World of Non-Fungible Tokens on Our Exclusive NFT Marketplace<br>
+
+      <div class="switcher">
+        <span class="sun">☀️</span>
+        <label>
+          <input type="checkbox">
+          <div class="moving_circle"></div>
+        </label>
+        <span class="moon">🌙</span>
       </div>
-  
-      </address>
-    </div>
-    
-    <ul class="footer__nav">
-      <li class="nav__item">
-        <h2 class="nav__title">Company</h2>
-  
-        <ul class="nav__ul">
-          <li>
-            <a href="#">Explore</a>
-          </li>
-  
-          <li>
-            <a href="#">About</a>
-          </li>
-        </ul>
-      </li>
-      
-      <li class="nav__item nav__item--extra">
-        <h2 class="nav__title">Creator</h2>
-        
-        <ul class="nav__ul nav__ul">
-          <li>
-            <a href="{% url 'faq' %}">FAQ</a>
-        </li> 
+
+    </address>
+  </div>
+
+  <ul class="footer__nav">
+    <li class="nav__item">
+      <h2 class="nav__title">Company</h2>
+
+      <ul class="nav__ul">
+        <li>
+          <a href="#">Explore</a>
+        </li>
+
+        <li>
+          <a href="#">About</a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav__item nav__item--extra">
+      <h2 class="nav__title">Creator</h2>
+
+      <ul class="nav__ul nav__ul">
+        <li>
+          <a href="{% url 'faq' %}">FAQ</a>
+        </li>
         <li>
           <a href="#">Become Artist</a>
-         </li>
-        
-         
-        </ul>
-      </li>
-      
-      <li class="nav__item">
-        <h2 class="nav__title">Join Community</h2>
-        <ul class="nav__ul">
-          <li>
-            <input type="email" placeholder="Enter Your email addres">
-          </li>
-        </ul>
-      </li>
+        </li>
 
-    </ul>
-    
-    <div class="legal">
-      <p>©️ Company NFT Distro 2023</p>
-      
-      <div class="legal__links">
-        <span><img src="{% static 'icons/Facebook.png' %}" alt="" width="30px"></span>
-        <span><img src="{% static 'icons/Google.png' %}" alt="" width="30px"></span>
-        <span><img src="{% static 'icons/Twiter.png' %}" alt="" width="30px"></span>
-        <span><img src="{% static 'icons/Apple.png' %}" alt="" width="50px"></span>
-      </div>
+
+      </ul>
+    </li>
+
+    <li class="nav__item">
+      <h2 class="nav__title">Join Community</h2>
+      <ul class="nav__ul">
+        <li>
+          <input type="email" placeholder="Enter Your email addres">
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+
+  <div class="legal">
+    <p>©️ Company NFT Distro 2023</p>
+
+    <div class="legal__links">
+      <span><img src="{% static 'icons/Facebook.png' %}" alt="" width="30px"></span>
+      <span><img src="{% static 'icons/Google.png' %}" alt="" width="30px"></span>
+      <span><img src="{% static 'icons/Twiter.png' %}" alt="" width="30px"></span>
+      <span><img src="{% static 'icons/Apple.png' %}" alt="" width="50px"></span>
     </div>
-  </footer>
+  </div>
+</footer>

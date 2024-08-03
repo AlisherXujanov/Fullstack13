@@ -13,7 +13,7 @@
     margin-top: 200px;
     margin-bottom: 200px;
   }
-  
+
   .app p {
     display: inline-block;
     width: 400px;
@@ -23,6 +23,7 @@
     font-weight: 500;
     font-family: sans-serif;
   }
+
   .app button {
     width: 207px;
     height: 50px;
@@ -30,16 +31,18 @@
     border-radius: 13px;
     background-color: transparent;
   }
+
   .app a {
     color: #fff;
   }
+
   .app button {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
   }
-  
+
   .app button a {
     text-decoration: none;
     font-size: 18px;
@@ -49,81 +52,102 @@
     border: none;
     outline: none;
   }
+
   .app .phone-img {
     margin-top: -210px;
     margin-right: 170px;
   }
+
   .app .leftside-img {
     position: absolute;
     margin-left: -220px;
     margin-top: -150px;
   }
-  @media screen and (max-width: 1200px){
-    .app .phone-img, .leftside-img{
+
+  @media screen and (max-width: 1200px) {
+
+    .app .phone-img,
+    .leftside-img {
       display: none;
     }
-    .app{
+
+    .app {
       width: 60%;
       height: auto;
       margin: 0 auto;
     }
-    .app div{
+
+    .app div {
       flex-direction: column;
       align-items: center;
       gap: 10px;
     }
-    .app p{
+
+    .app p {
       width: 100%;
       left: 0px;
     }
   }
-  @media screen and (max-width: 800px){
-    .app{
+
+  @media screen and (max-width: 800px) {
+    .app {
       width: 100%;
       margin: 0 auto;
     }
-    .app div{
+
+    .app div {
       flex-direction: column;
       align-items: center;
       gap: 10px;
     }
-    .app p{
+
+    .app p {
       width: 100%;
       left: 0px;
     }
-    .app button{
+
+    .app button {
       width: 100%;
     }
-    .app.phone-img{
+
+    .app.phone-img {
       display: none;
     }
-    .app.leftside-img{
+
+    .app.leftside-img {
       display: none;
     }
   }
-  @media screen and (max-width: 450px){
-    .app{
+
+  @media screen and (max-width: 450px) {
+    .app {
       width: 100%;
       margin: 0 auto;
     }
-    .app div{
+
+    .app div {
       flex-direction: column;
       align-items: center;
       gap: 10px;
     }
-    .app p{
+
+    .app p {
       width: 100%;
       left: 0px;
     }
-    .app button{
+
+    .app button {
       width: 100%;
     }
-    .app.phone-img{
+
+    .app.phone-img {
       display: none;
     }
-    .app.leftside-img{
+
+    .app.leftside-img {
       display: none;
     }
+
     .app p {
       font-size: 48px;
       line-height: 60px;
@@ -138,7 +162,7 @@
   <div>
     <p>Try our App Mobile NFT</p>
     <button>
-      <img src="{% static 'icons/download.png' %}" alt=""/>
+      <img src="{% static 'icons/download.png' %}" alt="" />
       <a href="#download">Download Now</a>
     </button>
   </div>
