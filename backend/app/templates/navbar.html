@@ -25,7 +25,10 @@
     
     <button class="open-modal">
       {% if request.user.is_authenticated %}
-      {% endif %}Account
+      {{request.user.username}}
+      {% else %}
+      Account
+      {% endif %}
     </button>
   </div>
 </nav>

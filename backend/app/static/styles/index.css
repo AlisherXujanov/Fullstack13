@@ -66,7 +66,7 @@ button.green-btn {
   background: linear-gradient(to right, #56c2ff, #48fe9c);
 }
 
-body .base-container .modal-bg {
+body .modal-bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -81,42 +81,42 @@ body .base-container .modal-bg {
   flex-direction: column;
   display: none;
 }
-body .base-container .modal-bg.open {
+body .modal-bg.open {
   display: flex;
 }
-body .base-container .modal-bg .cancel {
+body .modal-bg .cancel {
   width: 500px;
   display: flex;
   justify-content: right;
 }
-body .base-container .modal-bg .cancel button {
+body .modal-bg .cancel button {
   width: 40px;
   height: 40px;
   background-color: transparent;
   padding: 0;
   cursor: pointer;
 }
-body .base-container .modal-bg .modal-content {
+body .modal-bg .modal-content {
   background-color: #fff;
   width: 500px;
   padding: 20px;
   border-radius: 10px;
   height: auto;
 }
-body .base-container .modal-bg .modal-content .top h1 {
+body .modal-bg .modal-content .top h1 {
   text-align: center;
 }
-body .base-container .modal-bg .modal-content .middle {
+body .modal-bg .modal-content .middle {
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
-body .base-container .modal-bg .modal-content .middle .logout-content p {
+body .modal-bg .modal-content .middle .logout-content p {
   padding: 20px;
   font-size: 20px;
   text-align: center;
 }
-body .base-container .modal-bg .modal-content .middle .logout-content .logout {
+body .modal-bg .modal-content .middle .logout-content .logout {
   margin: 20px 0;
   width: 100%;
   background: linear-gradient(to right, #6e56ff, #b073ff);
@@ -125,14 +125,14 @@ body .base-container .modal-bg .modal-content .middle .logout-content .logout {
   border-radius: 5px;
   text-align: center;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-btn {
+body .modal-bg .modal-content .middle .sign-in-sign-up-btn {
   width: 100%;
   height: 30px;
   margin: 10px 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-btn button {
+body .modal-bg .modal-content .middle .sign-in-sign-up-btn button {
   background-color: transparent;
   color: #000000;
   font-size: 20px;
@@ -140,65 +140,65 @@ body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-btn butto
   height: 100%;
   border-radius: 0px;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-btn button.active {
+body .modal-bg .modal-content .middle .sign-in-sign-up-btn button.active {
   border-bottom: 3px solid #000000;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form a {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form a {
   display: none;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form input {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form input {
   width: 100%;
   padding: 10px 20px;
   background-color: rgb(235, 235, 235);
   border: 1px solid rgb(179, 179, 179);
   border-radius: 5px;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form input[type=checkbox] {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form input[type=checkbox] {
   display: none;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form p label {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form p label {
   display: none;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form button {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form button {
   background: linear-gradient(to right, #ff56bb, #ff8f77);
   width: 100%;
   cursor: pointer;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form a {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form a {
   display: none;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form input {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form input {
   width: 100%;
   padding: 10px 20px;
   background-color: rgb(235, 235, 235);
   border: 1px solid rgb(179, 179, 179);
   border-radius: 5px;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form input[type=checkbox] {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form input[type=checkbox] {
   display: none;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form p label {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form p label {
   display: none;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form p:nth-child(6) {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form p:nth-child(6) {
   display: none;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form ul {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form ul {
   display: none;
 }
-body .base-container .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form button {
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form button {
   background: linear-gradient(to right, #56c2ff, #48fe9c);
   width: 100%;
   cursor: pointer;
