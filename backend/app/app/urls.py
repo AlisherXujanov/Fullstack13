@@ -19,14 +19,13 @@ from django.urls import path, include
 from django.conf.urls import handler404
 from nfts import views
 
-from .views import * 
+from .views import *
 handler404 = views.custom_404
 
-from .views import * 
 urlpatterns = [
     path("", include("nfts.urls")),
     path("faq/", include("faq.urls")),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('about-us/',about_us, name='about_us')
+    path('about-us/', about_us, name='about_us')
 ]
