@@ -16,19 +16,16 @@ def custom_404(request, exception):
 def landing_page(request):
     signin_form = LoginForm(request.POST or None)
     signup_form = SignupForm(request.POST or None)
-
     if request.method == 'POST':
         if signin_form.is_valid():
             return redirect('landing_page')
         else:
             messages.error(request, 'Error')
             return redirect('landing_page')
-
     return render(request, 'landing_page.html', {
         'signin_form': signin_form,
         'signup_form': signup_form
     })
-
 
 def create_nft(request):
     return render(request, 'create_nft.html')
