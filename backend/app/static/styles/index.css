@@ -111,6 +111,10 @@ body .modal-bg .modal-content .middle {
   flex-direction: column;
   gap: 50px;
 }
+body .modal-bg .modal-content .middle .logout-content {
+  display: flex;
+  flex-direction: column;
+}
 body .modal-bg .modal-content .middle .logout-content p {
   padding: 20px;
   font-size: 20px;

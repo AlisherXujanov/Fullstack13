@@ -56,6 +56,8 @@ body {
                 gap: 50px;
 
                 .logout-content {
+                    display: flex;
+                    flex-direction: column;
                     p {
                         padding: 20px;
                         font-size: 20px;
