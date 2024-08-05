@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>About US</title>
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'styles/about_us.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <div class="card-header2">
+    <h2>About US</h2>
+  </div>
+
+  <div class="video-container">
+    <iframe width="570" height="409" src="https://www.youtube.com/embed/MWkIxYtB8Ag?si=hoUESAizI-x5XHxa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <div class="video-info">
+      <h2>Название видео</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laborum temporibus ratione, est animi, aliquam corrupti reprehenderit molestiae blanditiis eos enim iste vero aspernatur neque debitis ullam sapiente corporis sunt! Deserunt sapiente tempore velit minima odit necessitatibus, unde reiciendis alias eius laudantium. In vero blanditiis repellat quas ducimus! Temporibus dignissimos quidem iusto deleniti quis reiciendis rerum praesentium ducimus! Deserunt quam itaque aliquid repellat! Hic et ducimus vero natus consectetur debitis iste accusamus, molestias nulla laborum blanditiis voluptates temporibus facilis nesciunt odit excepturi aperiam eaque nam! Omnis, hic expedita repellendus saepe labore aperiam iure corrupti maiores quis eaque fuga corporis accusamus.</p>
+      <button class="watch-button">Contact us</button>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="card-header2">
+    <h2>Our Features</h2>
+  </div>
+  <br />
+  <br />
+  <br />
+
+  <div class="card-container">
+    <div class="card">
+      <img src="{% static 'images/21.png' %}" />
+      <h2>Название Фото 1</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, vel?</p>
+    </div>
+
+    <div class="card">
+      <img src="{% static 'images/cashback 1.png' %}" />
+      <h2>Название Фото 2</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, vel?</p>
+    </div>
+
+    <div class="card">
+      <img src="{% static 'images/Group (1).png' %}" />
+      <h2>Название Фото 3</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, vel?</p>
+    </div>
+
+    <div class="card">
+      <img src="{% static 'images/Group.png' %}" />
+      <h2>Название Фото 4</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, vel?</p>
+    </div>
+  </div>
+
+  <br />
+  <br />
+  <div class="card-header2">
+    <h2>Our Client Say!</h2>
+  </div>
+  <br />
+  <br />
+  <br />
+
+  <div class="card-container1">
+    <div class="card-header1">
+      <p>Здесь текст, который будет</p>
+    </div>
+    <div class="image-grid1">
+      <img src="image1.jpg" />
+      <img class="main-image" src="image3.jpg" />
+      <img src="image2.jpg" />
+    </div>
+    <div class="card-description1">
+      <p>Описание карточки. Здесь можно разместить более подробную информацию о представленном контенте.</p>
+    </div>
+  </div>
+{% endblock %}
