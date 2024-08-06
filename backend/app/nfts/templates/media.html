@@ -1,6 +1,6 @@
 {% load static %}
 <style>
-    .block {
+    .lyosha-media-wrapper .block {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -10,18 +10,18 @@
         margin: 0 auto;
     }
 
-    .first-container {
+    .lyosha-media-wrapper .first-container {
         max-width: 50%;
     }
 
-    .text {
+    .lyosha-media-wrapper .text {
         font-size: 16px;
         color: #888;
         letter-spacing: 1.5px;
         margin-bottom: 10px;
     }
 
-    .text-2 {
+    .lyosha-media-wrapper .text-2 {
         margin: 20px 0;
 
         h1 {
@@ -32,7 +32,7 @@
         }
     }
 
-    .text-3 {
+    .lyosha-media-wrapper .text-3 {
         font-size: 20px;
         color: #555;
         margin-bottom: 30px;
@@ -43,7 +43,7 @@
         }
     }
 
-    .btn-wallet {
+    .lyosha-media-wrapper .btn-wallet {
         button {
             display: flex;
             align-items: center;
@@ -73,12 +73,12 @@
         }
     }
 
-    .second-container {
+    .lyosha-media-wrapper .second-container {
         max-width: 50%;
         position: relative;
     }
 
-    .second-container img {
+    .lyosha-media-wrapper .second-container img {
         width: 100%;
         border-radius: 10px;
         position: relative;
@@ -86,42 +86,30 @@
     }
 
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-
-    body {
-        font-family: Arial, sans-serif;
-    }
-
-
-    .block {
+    .lyosha-media-wrapper .block {
         display: flex;
         justify-content: space-between;
         padding: 20px;
     }
 
 
-    .first-container {
+    .lyosha-media-wrapper .first-container {
         max-width: 50%;
     }
 
 
-    .text p,
-    .text-2 h1,
-    .text-3 p {
+    .lyosha-media-wrapper .text p,
+    .lyosha-media-wrapper .text-2 h1,
+    .lyosha-media-wrapper .text-3 p {
         margin: 10px 0;
     }
 
 
-    .btn-wallet {
+    .lyosha-media-wrapper .btn-wallet {
         margin-top: 20px;
     }
 
-    #open-modal {
+    .lyosha-media-wrapper #open-modal {
         background: linear-gradient(90deg, #FF56BB, #FF8F77);
         border: none;
         color: white;
@@ -132,19 +120,19 @@
         transition: background 0.3s, transform 0.3s;
     }
 
-    #open-modal:hover {
+    .lyosha-media-wrapper #open-modal:hover {
         background: linear-gradient(90deg, #FF8F77, #FF56BB);
         transform: scale(1.05);
     }
 
 
-    .second-container img {
+    .lyosha-media-wrapper .second-container img {
         max-width: 100%;
         height: auto;
     }
 
 
-    .modal {
+    .lyosha-media-wrapper .modal {
         display: none;
         position: fixed;
         z-index: 1;
@@ -156,7 +144,7 @@
         background-color: rgba(0, 0, 0, 0.5);
     }
 
-    .modal-content {
+    .lyosha-media-wrapper .modal-content {
         background-color: #fff;
         margin: 10% auto;
         padding: 20px;
@@ -169,7 +157,7 @@
         animation: fadeIn 0.3s ease-out;
     }
 
-    @keyframes fadeIn {
+    .lyosha-media-wrapper @keyframes fadeIn {
         from {
             opacity: 0;
         }
@@ -179,29 +167,29 @@
         }
     }
 
-    .close-button {
+    .lyosha-media-wrapper .close-button {
         color: #aaa;
         float: right;
         font-size: 24px;
         font-weight: bold;
     }
 
-    .close-button:hover,
-    .close-button:focus {
+    .lyosha-media-wrapper .close-button:hover,
+    .lyosha-media-wrapper .close-button:focus {
         color: black;
         text-decoration: none;
         cursor: pointer;
     }
 
 
-    #wallet-form {
+    .lyosha-media-wrapper #wallet-form {
         display: flex;
         flex-direction: column;
         gap: 10px;
         margin-top: 20px;
     }
 
-    #wallet-address {
+    .lyosha-media-wrapper #wallet-address {
         padding: 10px;
         font-size: 16px;
         border: 1px solid #ddd;
@@ -211,11 +199,11 @@
         transition: border-color 0.3s;
     }
 
-    #wallet-address:focus {
+    .lyosha-media-wrapper #wallet-address:focus {
         border-color: #FF56BB;
     }
 
-    #connect-wallet {
+    .lyosha-media-wrapper #connect-wallet {
         background: linear-gradient(90deg, #FF56BB, #FF8F77);
         border: none;
         color: white;
@@ -226,83 +214,84 @@
         transition: background 0.3s, transform 0.3s;
     }
 
-    #connect-wallet:hover {
+    .lyosha-media-wrapper #connect-wallet:hover {
         background: linear-gradient(90deg, #FF8F77, #FF56BB);
         transform: scale(1.05);
     }
 
 
-    #status-message {
+    .lyosha-media-wrapper #status-message {
         color: #333;
         font-size: 14px;
         margin-top: 10px;
     }
 
 
-    .info {
+    .lyosha-media-wrapper .info {
         margin-top: 20px;
         font-size: 14px;
     }
 
-    .info a {
+    .lyosha-media-wrapper .info a {
         color: #FF56BB;
         text-decoration: none;
     }
 
-    .info a:hover {
+    .lyosha-media-wrapper .info a:hover {
         text-decoration: underline;
     }
 </style>
 
-<div class="block">
-    <div class="first-container">
-        <div class="text">
-            <p>WEB 3 NON - FUNGIBLE TOKENS</p>
-        </div>
 
-        <div class="text-2">
-            <h1>Unlock Unique </h1>
-            <h1>Digital Ownership</h1>
-            <h1>with NFTs</h1>
+<div class="lyosha-media-wrapper">
+    <div class="block">
+        <div class="first-container">
+            <div class="text">
+                <p>WEB 3 NON - FUNGIBLE TOKENS</p>
+            </div>
+    
+            <div class="text-2">
+                <h1>Unlock Unique </h1>
+                <h1>Digital Ownership</h1>
+                <h1>with NFTs</h1>
+            </div>
+            <div class="text-3">
+                <p>Experience the Revolutionary World of Non-Fungible <br>
+                    Tokens on Our Exclusive NFT Marketplace</p>
+            </div>
+    
+            <div class="btn-wallet">
+                <button id="open-modal"> <img src="{% static 'icons/wallet.svg' %}"> Connect Wallet</p>
+                </button>
+            </div>
         </div>
-        <div class="text-3">
-            <p>Experience the Revolutionary World of Non-Fungible <br>
-                Tokens on Our Exclusive NFT Marketplace</p>
-        </div>
-
-        <div class="btn-wallet">
-            <button id="open-modal"> <img src="{% static 'icons/wallet.svg' %}"> Connect Wallet</p>
-            </button>
+        <div class="second-container">
+            <img src="{% static 'images/salin_merged_1.png' %}" alt="left-image">
         </div>
     </div>
-    <div class="second-container">
-        <img src="{% static 'images/salin_merged_1.png' %}" alt="left-image">
+    
+    
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Connect Your Wallet</h2>
+            <p>Please enter your wallet address:</p>
+    
+    
+            <form id="wallet-form">
+                <input type="text" id="wallet-address" name="wallet-address" placeholder="Enter wallet address" required>
+                <button type="submit" id="connect-wallet">Connect</button>
+            </form>
+            <p id="status-message">Please enter your wallet address.</p>
+    
+    
+            <div class="info">
+                <p>Need help? Check out our <a href="#">FAQ</a> or <a href="#">Support</a>.</p>
+            </div>
+        </div>
     </div>
 </div>
-
-
-
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Connect Your Wallet</h2>
-        <p>Please enter your wallet address:</p>
-
-
-        <form id="wallet-form">
-            <input type="text" id="wallet-address" name="wallet-address" placeholder="Enter wallet address" required>
-            <button type="submit" id="connect-wallet">Connect</button>
-        </form>
-        <p id="status-message">Please enter your wallet address.</p>
-
-
-        <div class="info">
-            <p>Need help? Check out our <a href="#">FAQ</a> or <a href="#">Support</a>.</p>
-        </div>
-    </div>
-</div>
-
-<script src="script.js"></script>
 
 
 <script>

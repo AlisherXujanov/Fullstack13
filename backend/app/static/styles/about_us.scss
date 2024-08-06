@@ -1,117 +1,120 @@
 @use './resets';
 @import './settings';
 
-   .video-container {
-       display: grid;
-       width: 100%;
-        grid-template-columns: 570px 1fr;
-        iframe {
-            width: 570px;
-            height: 409px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+.video-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 570px 1fr;
+
+    iframe {
+        width: 570px;
+        height: 409px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-info {
+        margin-left: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+        h2 {
+            margin-bottom: 10px;
         }
-     
-        .video-info {
-            margin-left: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            h2 {
-                margin-bottom: 10px;
-            }
-            p {
-                color: #555;
-            }
+
+        p {
+            color: #555;
         }
-   }
+    }
+}
 
-   .card-container {
-       display: flex;
-       justify-content: space-between;
-       margin: 20px;
-   }
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
 
-   .watch-button {
-       background-color: #4CAF50;
-       border: none;
-       color: white;
-       padding: 15px 32px;
-       text-align: center;
-       display: flex;
-       justify-content: center;
-       font-size: 16px;
-       margin: 4px 2px;
-       cursor: pointer;
-       border-radius: 5px;
-   }
+.watch-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
 
-   .card {
-       width: calc(25% - 10px);
-       border: 1px solid #ddd;
-       border-radius: 5px;
-       padding: 10px;
-       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-       text-align: center;
-   }
+.card {
+    width: calc(25% - 10px);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
-   .card img {
-       width: 100%;
-       height: auto;
-       border-radius: 5px;
-       margin-bottom: 10px;
-   }
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
 
-   .card-container1 {
-       text-align: center;
-       background-color: white;
-       padding: 20px;
-       border-radius: 10px;
-       width: 300px;
-   }
+.card-container1 {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+}
 
-   .card-header {
-       margin-bottom: 20px;
-   }
+.card-header {
+    margin-bottom: 20px;
+}
 
-   .card-container1 {
-       text-align: center;
-       background-color: white;
-       padding: 20px;
-       border-radius: 10px;
-       width: 600px;
-   }
+.card-container1 {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 600px;
+}
 
-   .card-header1 {
-       margin-bottom: 20px;
-   }
+.card-header1 {
+    margin-bottom: 20px;
+}
 
-   .card-header2 {
-       margin-bottom: 20px;
-       display: flex;
-       justify-content: center;
-       align-items: center;
-   }
+.card-header2 {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-   .image-grid1 {
-       display: flex;
-       justify-content: space-around;
-       margin-bottom: 20px;
-   }
+.image-grid1 {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
 
-   .image-grid1 img {
-       width: 150px;
-       height: auto;
-   }
+.image-grid1 img {
+    width: 150px;
+    height: auto;
+}
 
-   .image-grid1 .main-image {
-       width: 300px;
-       height: auto;
-   }
+.image-grid1 .main-image {
+    width: 300px;
+    height: auto;
+}
 
-   .card-description1 {
-       margin-top: 10px;
-   }
+.card-description1 {
+    margin-top: 10px;
+}
