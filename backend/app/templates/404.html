@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Rubik+Scribble&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Scribble&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rubik+Scribble&display=swap');
+
+    .error-container {
+        width: 106.25%;
+        height: 200px;
+        background-color: #f6f5ff;
+        padding: 80px 0 150px 250px;
+        margin: -50px;
+        margin-bottom: 50px;
+    }
+
+    .error-container h1 {
+        color: #101750;
+        font-family: 'Josefin Sans';
+        margin: 0;
+    }
+
+    .error-container div {
+        font-family: 'Lato';
+        font-size: 16px;
+    }
+
+    .error-container div p {
+        color: #fb2e86;
+        display: inline;
+    }
+
+    .oops {
+        color: #101750;
+        font-family: 'Josefin Sans';
+        margin: 10px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+    }
+
+    .btn-home {
+        width: 166px;
+        border-radius: 10px;
+        background: linear-gradient(108.39deg, #ff56bb 6.99%, #ff8f77 119.86%);
+        border: none;
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        gap: 10px;
+        cursor: pointer;
+        margin: 0 auto;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    .div-image {
+        width: 300px;
+        height: 200px;
+        background-image: url('C:\Users\RT\Documents\islom\Fullstack13\backend\app\static\images\phone.png');
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div>
+    <div class="error-container">
+        <h1>404 Not Found</h1>
+        <div>
+            Home . Pages .<p>404 Not Found</p>
+        </div>
+    </div>
+    <div class="div-image"></div>
+    <h1 class="oops">oops!The page you requested was not found!</h1>
+    <a href="{% url 'landing_page' %}" class="btn-home">Back To Home</a>
+</div>
+{% endblock %}
