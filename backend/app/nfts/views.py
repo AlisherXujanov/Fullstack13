@@ -18,3 +18,4 @@ def landing_page(request):
 
 def create_nft(request):
     return render(request, 'create_nft.html')
+

@@ -3,176 +3,178 @@
 
 body {
     .base-container {
-        .modal-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            backdrop-filter: blur(10px);
-            background-color: #00000077;
-            z-index: 20;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            display: none;
+    }
+    .modal-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        backdrop-filter: blur(10px);
+        background-color: #00000077;
+        z-index: 20;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        display: none;
 
-            &.open {
-                display: flex;
+        &.open {
+            display: flex;
 
+        }
+
+        .cancel {
+            width: 500px;
+            display: flex;
+            justify-content: right;
+
+            button {
+                width: 40px;
+                height: 40px;
+                background-color: transparent;
+                padding: 0;
+                cursor: pointer;
             }
+        }
 
-            .cancel {
-                width: 500px;
-                display: flex;
-                justify-content: right;
+        .modal-content {
+            background-color: #fff;
+            width: 500px;
+            padding: 20px;
+            border-radius: 10px;
+            height: auto;
 
-                button {
-                    width: 40px;
-                    height: 40px;
-                    background-color: transparent;
-                    padding: 0;
-                    cursor: pointer;
+            .top {
+                h1 {
+                    text-align: center;
                 }
             }
 
-            .modal-content {
-                background-color: #fff;
-                width: 500px;
-                padding: 20px;
-                border-radius: 10px;
-                height: auto;
+            .middle {
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
 
-                .top {
-                    h1 {
+                .logout-content {
+                    display: flex;
+                    flex-direction: column;
+                    p {
+                        padding: 20px;
+                        font-size: 20px;
+                        text-align: center;
+                    }
+
+                    .logout {
+                        margin: 20px 0;
+                        width: 100%;
+                        background: $purple;
+                        color: #fff;
+                        padding: 10px 20px;
+                        border-radius: 5px;
                         text-align: center;
                     }
                 }
 
-                .middle {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 50px;
+                .sign-in-sign-up-btn {
+                    width: 100%;
+                    height: 30px;
+                    margin: 10px 0;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
 
-                    .logout-content {
-                        p {
-                            padding: 20px;
-                            font-size: 20px;
-                            text-align: center;
-                        }
-
-                        .logout {
-                            margin: 20px 0;
-                            width: 100%;
-                            background: $purple;
-                            color: #fff;
-                            padding: 10px 20px;
-                            border-radius: 5px;
-                            text-align: center;
-                        }
-                    }
-
-                    .sign-in-sign-up-btn {
+                    button {
+                        background-color: transparent;
+                        color: $black;
+                        font-size: 20px;
                         width: 100%;
-                        height: 30px;
-                        margin: 10px 0;
-                        display: grid;
-                        grid-template-columns: 1fr 1fr;
+                        height: 100%;
+                        border-radius: 0px;
 
-                        button {
-                            background-color: transparent;
-                            color: $black;
-                            font-size: 20px;
-                            width: 100%;
-                            height: 100%;
-                            border-radius: 0px;
+                        &.active {
+                            border-bottom: 3px solid $black;
+                        }
+                    }
+                }
 
-                            &.active {
-                                border-bottom: 3px solid $black;
+                .sign-in-sign-up-content {
+                    .sign-in {
+                        form {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            gap: 10px;
+
+                            a {
+                                display: none;
+                            }
+
+                            input {
+                                width: 100%;
+                                padding: 10px 20px;
+                                background-color: rgb(235, 235, 235);
+                                border: 1px solid rgb(179, 179, 179);
+                                border-radius: 5px;
+
+                                &[type='checkbox'] {
+                                    display: none;
+                                }
+                            }
+
+                            p {
+                                label {
+                                    display: none;
+                                }
+                            }
+
+                            button {
+                                background: $red;
+                                width: 100%;
+                                cursor: pointer;
                             }
                         }
                     }
 
-                    .sign-in-sign-up-content {
-                        .sign-in {
-                            form {
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: center;
-                                gap: 10px;
+                    .sign-up {
+                        form {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            gap: 10px;
 
-                                a {
+                            a {
+                                display: none;
+                            }
+
+                            input {
+                                width: 100%;
+                                padding: 10px 20px;
+                                background-color: rgb(235, 235, 235);
+                                border: 1px solid rgb(179, 179, 179);
+                                border-radius: 5px;
+
+                                &[type='checkbox'] {
                                     display: none;
-                                }
-
-                                input {
-                                    width: 100%;
-                                    padding: 10px 20px;
-                                    background-color: rgb(235, 235, 235);
-                                    border: 1px solid rgb(179, 179, 179);
-                                    border-radius: 5px;
-
-                                    &[type='checkbox'] {
-                                        display: none;
-                                    }
-                                }
-
-                                p {
-                                    label {
-                                        display: none;
-                                    }
-                                }
-
-                                button {
-                                    background: $red;
-                                    width: 100%;
-                                    cursor: pointer;
                                 }
                             }
-                        }
 
-                        .sign-up {
-                            form {
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: center;
-                                gap: 10px;
-
-                                a {
+                            p {
+                                label {
                                     display: none;
                                 }
 
-                                input {
-                                    width: 100%;
-                                    padding: 10px 20px;
-                                    background-color: rgb(235, 235, 235);
-                                    border: 1px solid rgb(179, 179, 179);
-                                    border-radius: 5px;
-
-                                    &[type='checkbox'] {
-                                        display: none;
-                                    }
-                                }
-
-                                p {
-                                    label {
-                                        display: none;
-                                    }
-
-                                    &:nth-child(6) {
-                                        display: none;
-                                    }
-                                }
-
-                                ul {
+                                &:nth-child(6) {
                                     display: none;
                                 }
+                            }
 
-                                button {
-                                    background: $green;
-                                    width: 100%;
-                                    cursor: pointer;
-                                }
+                            ul {
+                                display: none;
+                            }
+
+                            button {
+                                background: $green;
+                                width: 100%;
+                                cursor: pointer;
                             }
                         }
                     }
@@ -180,4 +182,4 @@ body {
             }
         }
     }
-}
+}     
