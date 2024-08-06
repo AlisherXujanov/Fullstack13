@@ -9,10 +9,6 @@ def custom_logout(request):
     return redirect('landing_page')
 
 
-def custom_404(request, exception):
-    return render(request, '404.html', status=404)
-
-
 def landing_page(request):
     signin_form = LoginForm(request.POST or None)
     signup_form = SignupForm(request.POST or None)

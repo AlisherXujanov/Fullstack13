@@ -6,28 +6,32 @@
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Scribble&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rubik+Scribble&display=swap');
     
-    .error-container {
-      width: 106.25%;
+    .not-found-page-wrapper{
+        margin-bottom: 100px;
+    }
+
+    .not-found-page-wrapper .error-container {
+      width: 100%;
       height: 200px;
       background-color: #f6f5ff;
       padding: 80px 0 150px 250px;
       margin: -50px;
       margin-bottom: 50px;
     }
-    .error-container h1 {
+    .not-found-page-wrapper .error-container h1 {
       color: #101750;
       font-family: 'Josefin Sans';
       margin: 0;
     }
-    .error-container div {
+    .not-found-page-wrapper .error-container div {
       font-family: 'Lato';
       font-size: 16px;
     }
-    .error-container div p {
+    .not-found-page-wrapper .error-container div p {
       color: #fb2e86;
       display: inline;
     }
-    .oops {
+    .not-found-page-wrapper .oops {
       color: #101750;
       font-family: 'Josefin Sans';
       margin: 10px auto;
@@ -36,7 +40,7 @@
       align-items: center;
       font-size: 24px;
     }
-    .btn-home {
+    .not-found-page-wrapper .btn-home {
       width: 166px;
       border-radius: 10px;
       background: linear-gradient(108.39deg, #ff56bb 6.99%, #ff8f77 119.86%);
@@ -54,20 +58,19 @@
       font-weight: 700;
       font-family: 'DM Sans', sans-serif;
     }
-    .div-image {
-      width: 300px;
-      height: 200px;
-      background-image: url('C:\Users\RT\Documents\islom\Fullstack13\backend\app\static\images\phone.png');
+    .not-found-page-wrapper .div-image {
+      width: 626px;
+      height: 417px;
+      background-image: url('https://img.freepik.com/free-vector/404-error-with-landscape-concept-illustration_114360-7898.jpg?t=st=1722956052~exp=1722956652~hmac=bd73a8e855bc26e708c0326a6969ba2f1e28754b1f9d34fa0401594391dd642a');
       background-size: cover;
       background-position: center;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       margin: 20px auto;
-  }
+    }
   </style>
 {% endblock %}
 {% block content %}
-  <div>
+  <div class="not-found-page-wrapper">
     <div class="error-container">
       <h1>404 Not Found</h1>
       <div>
