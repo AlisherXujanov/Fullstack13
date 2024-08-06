@@ -8,7 +8,7 @@
 
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'styles/create_nft.css' %}" >    
+    
 {% endblock %}
     
 
@@ -16,78 +16,11 @@
 
 <div class="nft-form-wrapper">
     <h1>Create new NFT</h1>
-    <div class="form">
-        <form method="POST">
-            <div class="form-control">
-                <label for="nft-image">Upload your NFT</label>
-                <small>File types supported: JPG, PNG, GIF, SVG, MP4</small>
-                <div class="nft-image-wrapper">
-                    <input id="nft-image" type="file" placeholder="Upload or drag here" name="image" />
-                    <img src="{% static 'icons/addImage.png' %}" alt="addImage" />
-                    <small>Upload or drag here</small>
-                </div>
-            </div>
-            <div class="form-control name-and-cost">
-                <div>
-                    <label for="name-nft">Name NFT</label>
-                    <input id="name-nft" type="text" placeholder="Name NFT" name="name" />
-                </div>
-                <div>
-                    <label for="cost-nft">Price</label>
-                    <input id="cost-nft" type="number" placeholder="Price" name="price" />
-                </div>
-            </div>
-            <div class="form-control">
-                <label for="description-nft">Description</label>
-                <textarea placeholder="Description" name="description"></textarea>
-            </div>
-            <div class="form-control">
-                <label for="collections">Collections</label>
     
-                <div class="options-wrapper" onclick="">
-                    <div class="option-image">
-                        <img src="{% static 'icons/Salin5.jpg' %}" alt="Collection-image" />
-                    </div>
-                    <div class="option-value">
-                        ExBook collection
-                        &bottom;
-                    </div>
-                    <div class="drp-content">
-                        <div data-option="option">ExBoot Collection</div>
-                        <div data-option="option">Etherium Collection</div>
-                        <div data-option="option">Bitcoin Collection</div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-control">
-                <button type="submit" class="red-btn">
-                    Create
-                </button>
-            </div>
-        </form>
-        <div class="demonstration">
-            <h2>Preview</h2>
-            <div class="container">
-                <img src="{% static 'images/Salin.jpg' %}" alt="NFT image" width="100%" height="450" />
-            </div>
-            <div class="content">
-                <div class="left">
-                    <b>ExBoot</b>
-                    <h2 class="author-info">
-                        <img src="{% static 'icons/avatar.png' %}" alt="Auth Default Img" />
-                        Antonson
-                    </h2>
-                </div>
-                <div class="right">
-                    <p>Current Bid</p>
-                    <div>
-                        <img src="{% static 'icons/etherium.png' %}" alt="Etherium Img" />
-                        3.421
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <form>
+        
+    </form>
+
 </div>
 
 {% endblock content %}

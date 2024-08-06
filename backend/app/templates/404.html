@@ -73,15 +73,17 @@
 </style>
 {% endblock %}
 {% block content %}
-<div>
-    <div class="error-container">
-        <h1>404 Not Found</h1>
-        <div>
-            Home . Pages .<p>404 Not Found</p>
+<div class="error-page-wrapper">
+    <div class="not-found-wrapper">
+        <div class="error-container">
+            <h1>404 Not Found</h1>
+            <div>
+                Home . Pages .<p>404 Not Found</p>
+            </div>
         </div>
+        <div class="div-image"></div>
+        <h1 class="oops">oops!The page you requested was not found!</h1>
+        <a href="{% url 'landing_page' %}" class="btn-home">Back To Home</a>
     </div>
-    <div class="div-image"></div>
-    <h1 class="oops">oops!The page you requested was not found!</h1>
-    <a href="{% url 'landing_page' %}" class="btn-home">Back To Home</a>
 </div>
 {% endblock %}
