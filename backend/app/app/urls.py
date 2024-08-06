@@ -22,6 +22,7 @@ from nfts import views
 from .views import * 
 handler404 = views.custom_404
 
+from .views import * 
 urlpatterns = [
     path("", include("nfts.urls")),
     path("faq/", include("faq.urls")),
