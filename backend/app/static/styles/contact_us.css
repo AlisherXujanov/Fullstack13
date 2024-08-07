@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Rubik+Scribble&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Scribble&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rubik+Scribble&display=swap");
+.contact-page-wrapper #h1 {
+  color: #101750;
+  font-family: "Josefin Sans";
+  font-size: 36px;
+  margin: 0 0 10px 0;
+}
+.contact-page-wrapper .link-container {
+  width: 106.25%;
+  height: 200px;
+  background-color: #f6f5ff;
+  padding: 80px 0 150px 250px;
+  margin: -50px;
+  margin-bottom: 50px;
+}
+.contact-page-wrapper .link-container div {
+  font-family: "Lato";
+  font-size: 16px;
+}
+.contact-page-wrapper .link-container div p {
+  color: #fb2e86;
+  display: inline;
+}
+.contact-page-wrapper .contact-us-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 50px 200px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lato";
+  font-size: 16px;
+  color: #8a8fb9;
+}
+.contact-page-wrapper .contact-us-wrapper .info-div p {
+  margin-bottom: 25px;
+}
+.contact-page-wrapper .contact-us-wrapper .c-way-div .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-bottom: 10px;
+}
+.contact-page-wrapper .contact-us-wrapper .c-way-div .container div {
+  display: grid;
+  grid-template-columns: 0.6fr 2fr;
+}
+.contact-page-wrapper .contact-us-wrapper div #form-mail {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+.contact-page-wrapper .contact-us-wrapper div #form-mail div input {
+  width: 255px;
+  height: 45px;
+  border: 1px solid rgba(164, 182, 200, 0.6980392157);
+  border-radius: 3px;
+  padding: 10px;
+  margin-right: 20px;
+}
+.contact-page-wrapper .contact-us-wrapper div #form-mail #subject {
+  width: 534px;
+  height: 45px;
+  border: 1px solid rgba(164, 182, 200, 0.6980392157);
+  border-radius: 3px;
+  padding: 10px;
+}
+.contact-page-wrapper .contact-us-wrapper div #form-mail input::-moz-placeholder {
+  color: #8a8fb9;
+  font-size: 16px;
+  font-family: "Lato";
+}
+.contact-page-wrapper .contact-us-wrapper div #form-mail input::placeholder {
+  color: #8a8fb9;
+  font-size: 16px;
+  font-family: "Lato";
+}
+.contact-page-wrapper .contact-us-wrapper div #form-mail textarea {
+  width: 534px;
+  height: 166px;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid rgba(164, 182, 200, 0.6980392157);
+}
+.contact-page-wrapper .contact-us-wrapper div #form-mail textarea::-moz-placeholder {
+  color: #8a8fb9;
+  font-size: 16px;
+  font-family: "Lato";
+}
+.contact-page-wrapper .contact-us-wrapper div #form-mail textarea::placeholder {
+  color: #8a8fb9;
+  font-size: 16px;
+  font-family: "Lato";
+}
+.contact-page-wrapper .contact-us-wrapper div #form-mail .btn-send {
+  width: 157px;
+  height: 44px;
+  background-color: #fb2e86;
+  color: snow;
+  border-radius: 3px;
+  font-family: "Josefin Sans";
+}/*# sourceMappingURL=contact_us.css.map */

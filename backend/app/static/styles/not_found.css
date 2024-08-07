@@ -1,0 +1,59 @@
+@charset "UTF-8";
+.error-page-wrapper .not-found-wrapper .error-container {
+  width: 106.25%;
+  height: 200px;
+  background-color: #f6f5ff;
+  padding: 80px 0 150px 250px;
+  margin: -50px;
+  margin-bottom: 50px;
+}
+.error-page-wrapper .not-found-wrapper .error-container h1 {
+  color: #101750;
+  font-family: "Josefin Sans";
+  margin: 0;
+}
+.error-page-wrapper .not-found-wrapper .error-container div {
+  font-family: "Lato";
+  font-size: 16px;
+}
+.error-page-wrapper .not-found-wrapper .error-container div p {
+  color: #fb2e86;
+  display: inline;
+}
+.error-page-wrapper .not-found-wrapper .e-massage {
+  color: #101750;
+  font-family: "Josefin Sans";
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+.error-page-wrapper .not-found-wrapper .btn-hb {
+  width: 166px;
+  border-radius: 10px;
+  background: linear-gradient(108.39deg, #ff56bb 6.99%, #ff8f77 119.86%);
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  gap: 10px;
+  cursor: pointer;
+  margin: 0 auto;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: "DM Sans", sans-serif;
+}
+.error-page-wrapper .not-found-wrapper .div-image {
+  width: 300px;
+  height: 200px;
+  background-image: url("s:Visual Studio\fullstack13஬kend\appstaticimagesЄ.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+}/*# sourceMappingURL=not_found.css.map */
