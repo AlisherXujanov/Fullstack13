@@ -307,10 +307,17 @@
             modal.style.display = 'block';
         }
 
-
-        span.onclick = function () {
+        function closeModal() {
             modal.style.display = 'none';
         }
+        span.addEventListener('click', closeModal)
+        
+        // Close modal when escape key is pressed
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
 
 
         window.onclick = function (event) {
