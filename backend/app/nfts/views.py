@@ -17,32 +17,53 @@ def landing_page(request):
 
 
 def create_nft(request):
-    
     if request.method == "POST":
-        print("-----------------------------------------")
-        print(request.POST)
-        print(request.FILES)
-        print("-----------------------------------------")
-        
         name = request.POST['name']
-        description = request.POST['description']
+        description = request.POST['description'].strip()
         price = request.POST['price']
         img = request.FILES['image']
         # collection = request.POST['collection']
 
-        nft_obj = NFTs.objects.create(
+        NFTs.objects.create(
             name = name,
             description = description,
             price = price,
             image = img,
             owner = request.user
         )
-        nft_obj.save()
         messages.success(request, 'NFT created successfully')
-        return redirect('landing_page')
+        return redirect('explore')
     
-    return render(request, 'create_nft.html')
+    context = {
+        'length_of_nfts': NFTs.objects.all().count()+1
+    }
+    return render(request, 'create_nft.html', context)
 
+
+
+def update_nft(request, pk:int):
+    nft = NFTs.objects.get(id=pk)
+
+    if request.method == "POST":
+        name = request.POST['name']
+        description = request.POST['description'].strip()
+        price = request.POST['price']
+        img = request.FILES['image']
+        
+        nft.name = name
+        nft.description = description
+        nft.price = price
+        nft.image = img
+        nft.save()
+        messages.success(request, 'NFT updated successfully')
+
+        # Go to details page
+        return redirect('nft_page', pk=pk) 
+
+    context = {'nft_obj':nft}
+    return render(request, 'update_nft.html', context)
+
+    
 
 
 def explore(request):
