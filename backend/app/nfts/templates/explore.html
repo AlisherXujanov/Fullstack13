@@ -24,7 +24,7 @@
           <div class="nfts">
             {% for nft in nfts %}
               <div class="nft active">
-                <a href="{% url "nft_page" nft.id %}">
+                <a href="{% url 'nft_details' nft.id %}">
                     <img class="nft-image" src="{{ nft.image.url }}" alt="{{ nft.title }}" />
                     <div class="details">
                       <h3>{{ nft.name }}</h3>

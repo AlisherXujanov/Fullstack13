@@ -58,7 +58,7 @@ def update_nft(request, pk:int):
         messages.success(request, 'NFT updated successfully')
 
         # Go to details page
-        return redirect('nft_page', pk=pk) 
+        return redirect('nft_details', pk=pk) 
 
     context = {'nft_obj':nft}
     return render(request, 'update_nft.html', context)
@@ -72,6 +72,6 @@ def explore(request):
     }
     return render(request,'explore.html', context)
 
-def nft_page(request, pk:int):
+def nft_details(request, pk:int):
     nft = NFTs.objects.get(id=pk)
-    return render(request, 'nft_page.html', {'nft':nft})
+    return render(request, 'nft_details.html', {'nft':nft})

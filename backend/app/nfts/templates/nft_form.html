@@ -39,11 +39,9 @@
             <label for="description-nft">Description</label>
             {% if nft_obj %}
             <textarea id="description-nft" placeholder="Description" name="description"
-                value="{{ nft_obj.description }}">
-                    {{ nft_obj.description }}
-                </textarea>
+                value="{{ nft_obj.description }}">{{ nft_obj.description }}</textarea>
             {% else %}
-            <textarea id="description-nft" placeholder="Description" name="description"></textarea>
+            <textarea id="description-nft" placeholder="Description" name="description" /></textarea>
             {% endif %}
         </div>
         <div class="form-control">
@@ -113,12 +111,7 @@
 
             <div class="footer">
                 <h3 class="collection-text"></h3>
-                <div class="description">
-                    {% if nft_obj %}
-                    {{ nft_obj.description }}
-                    {% else %}
-                    {% endif %}
-                </div>
+                <div class="description">{% if nft_obj %}{{ nft_obj.description }}{% else %}{% endif %}</div>
             </div>
         </div>
     </div>
