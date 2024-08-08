@@ -115,6 +115,12 @@ nav .burger-menu-container .burger-menu div {
 }
 nav .right {
   text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .right a {
+  text-wrap: nowrap;
 }
 nav .right .open-modal {
   font-size: 1.2em;
@@ -137,6 +143,33 @@ nav .right .open-modal:active {
 nav .right .open-modal svg {
   position: relative;
   top: 2px;
+}
+nav .right .dropdown-container {
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 50px;
+}
+nav .right .dropdown-container .user {
+  width: 100%;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 20px;
+}
+nav .right .dropdown-container .dropdown {
+  position: absolute;
+  bottom: -35px;
+  display: none;
+  color: #222;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(117, 117, 117, 0.5);
+  z-index: 1;
+}
+nav .right .dropdown-container:hover .dropdown {
+  display: block;
 }
 nav a {
   text-decoration: none;
@@ -203,7 +236,7 @@ nav a.selected {
     top: 0;
     display: flex;
     background-color: #fff;
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 300px;
     padding: 50px 0;
     z-index: 10;
@@ -212,6 +245,7 @@ nav a.selected {
     align-items: end;
     padding-right: 20px;
     gap: 10px;
+    padding-bottom: 50vh;
   }
   nav .right.open {
     right: 0;

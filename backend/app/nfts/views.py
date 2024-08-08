@@ -1,5 +1,4 @@
 from django.shortcuts import render,redirect
-from allauth.account.forms import LoginForm, SignupForm
 from django.contrib.auth import logout
 from .models import NFTs
 from django.contrib import messages
@@ -14,12 +13,7 @@ def custom_404(request, exception):
 
 
 def landing_page(request):
-    signin_form = LoginForm()
-    signup_form = SignupForm()
-    return render(request, 'landing_page.html',{
-        'signin_form':signin_form,
-        'signup_form':signup_form
-    })
+    return render(request, 'landing_page.html')
 
 
 def create_nft(request):
@@ -50,3 +44,13 @@ def create_nft(request):
     return render(request, 'create_nft.html')
 
 
+
+def explore(request):
+    context = {
+        'nfts':NFTs.objects.all()
+    }
+    return render(request,'explore.html', context)
+
+def nft_page(request, pk:int):
+    nft = NFTs.objects.get(id=pk)
+    return render(request, 'nft_page.html', {'nft':nft})

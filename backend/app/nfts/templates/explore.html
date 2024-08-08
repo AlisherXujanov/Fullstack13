@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>Explore</title>
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'styles/explore.css' %}" />
+{% endblock %}
+{% block content %}
+  <div class="explore-wrapper">
+    <div class="explore-content">
+      <div class="title">
+        <h1>Discover Amazing NFT’s</h1>
+        {% include 'searchbar.html' %}
+      </div>
+      <div class="explore-body">
+        <div class="top">
+          <h2>Explore</h2>
+          <button>Recently Added</button>
+        </div>
+        <div class="middle">
+          <div class="nfts">
+            {% for nft in nfts %}
+              <div class="nft active">
+                <a href="{% url "nft_page" nft.id %}">
+                    <img class="nft-image" src="{{ nft.image.url }}" alt="{{ nft.title }}" />
+                    <div class="details">
+                      <h3>{{ nft.name }}</h3>
+                      <div class="info">
+                        <div class="owner">
+                          <img src="{% static 'icons/avatar.png' %}" alt="" />
+                          <p>{{ nft.owner }}</p>
+                        </div>
+                        <div class="price">
+                          <p>Current Bid</p>
+                          <span><img src="{% static 'icons/ethereum.svg' %}" alt="" /> <p class="price">{{ nft.price }}</p></span>
+                        </div>
+                      </div>
+                    </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  <script>
+    const explore = document.querySelector('.explore-wrapper')
+    const searchInput = explore.querySelector('.searchbar .right input')
+    const nfts = explore.querySelectorAll('.nfts .nft')
+    
+    function search(val) {
+      nfts.forEach((nft) => {
+        nft.classList.remove('active')
+        if (nft.querySelector('.details h3').innerText.toLowerCase().includes(val.toLowerCase())) {
+          nft.classList.add('active')
+        } else {
+          nft.classList.remove('active')
+        }
+      })
+    }
+    searchInput.addEventListener('input', () => search(searchInput.value))
+  </script>
+{% endblock %}
