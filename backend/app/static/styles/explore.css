@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+:root {
+  font-family: "DM Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.2s ease-out;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font: inherit;
+}
+
+a {
+  font-weight: 500;
+  color: #6b6b6b;
+  text-decoration: none;
+}
+a:hover {
+  color: #191919;
+}
+a.active {
+  color: #000000;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.5em;
+  line-height: 1.1;
+  font-family: "Roboto Serif", sans-serif;
+  font-weight: 500;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  color: snow;
+  font-weight: bold;
+  font-family: sans-serif;
+  border-radius: 10px;
+}
+button span {
+  margin-right: 10px;
+}
+
+button.red-btn {
+  background: linear-gradient(to right, #ff56bb, #ff8f77);
+}
+
+button.purple-btn {
+  background: linear-gradient(to right, #6e56ff, #b073ff);
+}
+
+button.green-btn {
+  background: linear-gradient(to right, #56c2ff, #48fe9c);
+}
+
+.explore-wrapper .explore-content {
+  width: 150vh;
+  margin: 0 auto;
+}
+.explore-wrapper .explore-content .title {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 100px;
+}
+.explore-wrapper .explore-content .title h1 {
+  font-family: "DM Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 60px;
+}
+.explore-wrapper .explore-content .title .searchbar {
+  width: 30%;
+}
+.explore-wrapper .explore-content .title .searchbar .right input {
+  border: none;
+  outline: none;
+}
+.explore-wrapper .explore-content .explore-body .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.explore-wrapper .explore-content .explore-body .top button {
+  background-color: transparent;
+  border: 1px solid #000;
+  color: #000;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  display: none;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft.active {
+  display: block;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .nft-image {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .details h3 {
+  margin: 20px 0;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .details .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .details .info .owner {
+  display: flex;
+  align-items: center;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .details .info .price p {
+  color: gray;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .details .info .price span {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .details .info .price span p {
+  color: #000;
+  font-weight: 600;
+}/*# sourceMappingURL=explore.css.map */

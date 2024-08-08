@@ -8,6 +8,8 @@ django = "*"
 django-allauth = "*"
 requests = "*"
 jwt = "*"
+django-cleanup = "*"
+pillow = "*"
 
 [dev-packages]
 

@@ -1,0 +1,106 @@
+@use './resets';
+@import './settings';
+
+.explore-wrapper {
+    .explore-content {
+        width: 150vh;
+        margin: 0 auto;
+
+        .title {
+            height: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 100px;
+
+            h1 {
+                font-family: "DM Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
+                font-size: 60px;
+            }
+
+            .searchbar {
+                width: 30%;
+
+                .right {
+                    input {
+                        border: none;
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        .explore-body {
+            .top {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                button {
+                    background-color: transparent;
+                    border: 1px solid #000;
+                    color: #000;
+                }
+            }
+
+            .middle {
+                .nfts {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                    gap: 20px;
+
+                    .nft {
+                        width: 100%;
+                        background-color: #fff;
+                        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+                        cursor: pointer;
+                        padding: 10px;
+                        border-radius: 10px;
+                        display: none;
+                        &.active{
+                            display: block;
+                        }
+                        .nft-image {
+                            width: 100%;
+                            height: 300px;
+                            object-fit: cover;
+                            border-radius: 10px;
+                        }
+
+                        .details {
+                            h3{
+                                margin:20px 0;
+                            }
+                            .info {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                margin-bottom: 10px;
+                                .owner {
+                                    display: flex;
+                                    align-items: center;
+                                }
+
+                                .price {
+                                        p{
+                                            color: gray;
+                                        }
+                                    span{
+                                        display: flex;
+                                        align-items: center;
+                                        text-align: center;
+                                        p{
+                                            color: #000;
+                                            font-weight: 600;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

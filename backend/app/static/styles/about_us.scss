@@ -2,6 +2,7 @@
 @import './settings';
 
    .video-container {
+        
        display: grid;
        width: 100%;
         grid-template-columns: 570px 1fr;
@@ -12,10 +13,18 @@
             border-radius: 5px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
+        .video-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
      
         .video-info {
-            margin-left: 20px;
-            padding: 15px;
+            
+            width: 350px;
+            height: 100%;
+            margin-left: 10px;
+            padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -27,6 +36,7 @@
             }
         }
    }
+   
 
    .card-container {
        display: flex;
@@ -50,7 +60,6 @@
 
 
    .card {
-       width: calc(25% - 10px);
        border: 1px solid #ddd;
        border-radius: 5px;
        padding: 10px;
@@ -59,59 +68,47 @@
    }
 
    .card img {
-       width: 100%;
+       width: 15%;
        height: auto;
        border-radius: 5px;
        margin-bottom: 10px;
    }
-
-   .card-container1 {
-       text-align: center;
-       background-color: white;
-       padding: 20px;
-       border-radius: 10px;
-       width: 300px;
-   }
-
-   .card-header {
-       margin-bottom: 20px;
-   }
-
-   .card-container1 {
-       text-align: center;
-       background-color: white;
-       padding: 20px;
-       border-radius: 10px;
-       width: 600px;
-   }
-
-   .card-header1 {
-       margin-bottom: 20px;
-   }
-
-   .card-header2 {
-       margin-bottom: 20px;
-       display: flex;
-       justify-content: center;
-       align-items: center;
-   }
-
-   .image-grid1 {
-       display: flex;
-       justify-content: space-around;
-       margin-bottom: 20px;
-   }
-
-   .image-grid1 img {
-       width: 150px;
-       height: auto;
-   }
-
-   .image-grid1 .main-image {
-       width: 300px;
-       height: auto;
-   }
-
-   .card-description1 {
-       margin-top: 10px;
-   }
+   .new-card-container { 
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 600px; 
+    margin: 0 auto; 
+  }
+  
+  
+  .new-card-header { 
+    margin-bottom: 20px;
+  }
+  
+  .new-image-grid { 
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .new-image-grid img { 
+    width: 100px;
+    height: auto;
+  }
+  
+  .new-image-grid .main-image { 
+    width: 100px;
+    height: auto;
+  }
+  
+  .new-card-description { 
+    margin-top: 10px;
+  }
+  .card-header2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

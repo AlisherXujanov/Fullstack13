@@ -1,39 +1,39 @@
 {% load static %}
 <style>
-    .block {
+    .lyosha-media-wrapper .block {
         display: flex;
         justify-content: space-between;
         align-items: center;
         max-width: 1200px;
         width: 100%;
         padding: 20px;
-        margin: 0 auto; 
+        margin: 0 auto;
     }
 
-    .first-container {
+    .lyosha-media-wrapper .first-container {
         max-width: 50%;
     }
 
-    .text {
-        font-size: 16px; 
+    .lyosha-media-wrapper .text {
+        font-size: 16px;
         color: #888;
         letter-spacing: 1.5px;
         margin-bottom: 10px;
     }
 
-    .text-2 {
+    .lyosha-media-wrapper .text-2 {
         margin: 20px 0;
 
         h1 {
-            font-size: 64px; 
+            font-size: 64px;
             line-height: 1.1;
             margin: 0;
             color: #000;
         }
     }
 
-    .text-3 {
-        font-size: 20px; 
+    .lyosha-media-wrapper .text-3 {
+        font-size: 20px;
         color: #555;
         margin-bottom: 30px;
 
@@ -43,7 +43,7 @@
         }
     }
 
-    .btn-wallet {
+    .lyosha-media-wrapper .btn-wallet {
         button {
             display: flex;
             align-items: center;
@@ -51,7 +51,7 @@
             border: none;
             border-radius: 20px;
             padding: 15px 40px;
-            font-size: 18px; 
+            font-size: 18px;
             font-family: sans-serif;
             color: #fff;
             cursor: pointer;
@@ -62,7 +62,7 @@
             }
 
             img {
-                width: 28px; 
+                width: 28px;
                 height: 28px;
                 margin-right: 10px;
             }
@@ -73,265 +73,267 @@
         }
     }
 
-    .second-container {
-        max-width: 50%; 
-        position: relative; 
+    .lyosha-media-wrapper .second-container {
+        max-width: 50%;
+        position: relative;
     }
 
-    .second-container img {
-        width: 100%; 
-        border-radius: 10px; 
-        position: relative; 
-        z-index: 1; 
+    .lyosha-media-wrapper .second-container img {
+        width: 100%;
+        border-radius: 10px;
+        position: relative;
+        z-index: 1;
     }
-    
-    
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 
-body {
-    font-family: Arial, sans-serif;
-}
+    .lyosha-media-wrapper .block {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+    }
 
 
-.block {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
+    .lyosha-media-wrapper .first-container {
+        max-width: 50%;
+    }
 
 
-.first-container {
-    max-width: 50%;
-}
+    .lyosha-media-wrapper .text p,
+    .lyosha-media-wrapper .text-2 h1,
+    .lyosha-media-wrapper .text-3 p {
+        margin: 10px 0;
+    }
 
 
-.text p, .text-2 h1, .text-3 p {
-    margin: 10px 0;
-}
+    .lyosha-media-wrapper .btn-wallet {
+        margin-top: 20px;
+    }
+
+    .lyosha-media-wrapper #open-modal {
+        background: linear-gradient(90deg, #FF56BB, #FF8F77);
+        border: none;
+        color: white;
+        padding: 15px 25px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.3s, transform 0.3s;
+    }
+
+    .lyosha-media-wrapper #open-modal:hover {
+        background: linear-gradient(90deg, #FF8F77, #FF56BB);
+        transform: scale(1.05);
+    }
 
 
-.btn-wallet {
-    margin-top: 20px;
-}
-
-#open-modal {
-    background: linear-gradient(90deg, #FF56BB, #FF8F77);
-    border: none;
-    color: white;
-    padding: 15px 25px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s, transform 0.3s;
-}
-
-#open-modal:hover {
-    background: linear-gradient(90deg, #FF8F77, #FF56BB);
-    transform: scale(1.05);
-}
+    .lyosha-media-wrapper .second-container img {
+        max-width: 100%;
+        height: auto;
+    }
 
 
-.second-container img {
-    max-width: 100%;
-    height: auto;
-}
+    .lyosha-media-wrapper .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .lyosha-media-wrapper .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .lyosha-media-wrapper .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .lyosha-media-wrapper .close-button:hover,
+    .lyosha-media-wrapper .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
 
-.modal {
-    display: none; 
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+    .lyosha-media-wrapper #wallet-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
 
-.modal-content {
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    animation: fadeIn 0.3s ease-out;
-}
+    .lyosha-media-wrapper #wallet-address {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+    }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+    .lyosha-media-wrapper #wallet-address:focus {
+        border-color: #FF56BB;
+    }
 
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 24px;
-    font-weight: bold;
-}
+    .lyosha-media-wrapper #connect-wallet {
+        background: linear-gradient(90deg, #FF56BB, #FF8F77);
+        border: none;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.3s, transform 0.3s;
+    }
 
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+    .lyosha-media-wrapper #connect-wallet:hover {
+        background: linear-gradient(90deg, #FF8F77, #FF56BB);
+        transform: scale(1.05);
+    }
 
 
-#wallet-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-#wallet-address {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 100%;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-}
-
-#wallet-address:focus {
-    border-color: #FF56BB;
-}
-
-#connect-wallet {
-    background: linear-gradient(90deg, #FF56BB, #FF8F77);
-    border: none;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s, transform 0.3s;
-}
-
-#connect-wallet:hover {
-    background: linear-gradient(90deg, #FF8F77, #FF56BB);
-    transform: scale(1.05);
-}
+    .lyosha-media-wrapper #status-message {
+        color: #333;
+        font-size: 14px;
+        margin-top: 10px;
+    }
 
 
-#status-message {
-    color: #333;
-    font-size: 14px;
-    margin-top: 10px;
-}
+    .lyosha-media-wrapper .info {
+        margin-top: 20px;
+        font-size: 14px;
+    }
 
+    .lyosha-media-wrapper .info a {
+        color: #FF56BB;
+        text-decoration: none;
+    }
 
-.info {
-    margin-top: 20px;
-    font-size: 14px;
-}
-.info a {
-    color: #FF56BB;
-    text-decoration: none;
-}
-
-.info a:hover {
-    text-decoration: underline;
-}
+    .lyosha-media-wrapper .info a:hover {
+        text-decoration: underline;
+    }
 </style>
 
-<div class="block">
-    <div class="first-container">
-        <div class="text">
-            <p>WEB 3 NON - FUNGIBLE TOKENS</p>
-        </div>
 
-        <div class="text-2">
-            <h1>Unlock Unique </h1>
-            <h1>Digital Ownership</h1>
-            <h1>with NFTs</h1>
+<div class="lyosha-media-wrapper">
+    <div class="block">
+        <div class="first-container">
+            <div class="text">
+                <p>WEB 3 NON - FUNGIBLE TOKENS</p>
+            </div>
+    
+            <div class="text-2">
+                <h1>Unlock Unique </h1>
+                <h1>Digital Ownership</h1>
+                <h1>with NFTs</h1>
+            </div>
+            <div class="text-3">
+                <p>Experience the Revolutionary World of Non-Fungible <br>
+                    Tokens on Our Exclusive NFT Marketplace</p>
+            </div>
+    
+            <div class="btn-wallet">
+                <button id="open-modal"> <img src="{% static 'icons/wallet.svg' %}"> Connect Wallet</p>
+                </button>
+            </div>
         </div>
-        <div class="text-3">
-            <p>Experience the Revolutionary World of Non-Fungible <br>
-                Tokens on Our Exclusive NFT Marketplace</p>
-        </div>
-
-        <div class="btn-wallet">
-            <button id="open-modal"> <img src="{% static 'icons/wallet.svg' %}"> Connect Wallet</p>
-            </button>
+        <div class="second-container">
+            <img src="{% static 'images/salin_merged_1.png' %}" alt="left-image">
         </div>
     </div>
-    <div class="second-container">
-        <img src="{% static 'images/salin_merged_1.png' %}" alt="left-image">
-    </div>
-</div>
-
-
-
+    
+    
+    
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>Connect Your Wallet</h2>
             <p>Please enter your wallet address:</p>
-            
-
             <form id="wallet-form">
                 <input type="text" id="wallet-address" name="wallet-address" placeholder="Enter wallet address" required>
                 <button type="submit" id="connect-wallet">Connect</button>
             </form>
             <p id="status-message">Please enter your wallet address.</p>
-
-
+    
+    
             <div class="info">
                 <p>Need help? Check out our <a href="#">FAQ</a> or <a href="#">Support</a>.</p>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="script.js"></script>
 
-
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', (event) => {
         var modal = document.getElementById('modal');
         var btn = document.getElementById('open-modal');
         var span = document.getElementsByClassName('close-button')[0];
         var form = document.getElementById('wallet-form');
         var statusMessage = document.getElementById('status-message');
-    
-        
-        btn.onclick = function() {
+
+
+        btn.onclick = function () {
             modal.style.display = 'block';
         }
-    
 
-        span.onclick = function() {
+        function closeModal() {
             modal.style.display = 'none';
         }
-    
+        span.addEventListener('click', closeModal)
+        
+        // Close modal when escape key is pressed
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
 
-        window.onclick = function(event) {
+
+        window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = 'none';
             }
         }
-    
-        
-        form.onsubmit = function(event) {
-            event.preventDefault(); 
-    
+
+
+        form.onsubmit = function (event) {
+            event.preventDefault();
+
             var walletAddress = document.getElementById('wallet-address').value;
-    
+
             if (walletAddress) {
                 statusMessage.textContent = 'Connecting wallet: ' + walletAddress + '...';
                 statusMessage.style.color = 'green';
-    
+
 
                 setTimeout(() => {
                     statusMessage.textContent = 'Wallet connected successfully!';
@@ -343,5 +345,5 @@ body {
             }
         }
     });
-    
-  </script>
+
+</script>
