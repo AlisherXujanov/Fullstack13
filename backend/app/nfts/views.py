@@ -75,3 +75,10 @@ def explore(request):
 def nft_details(request, pk:int):
     nft = NFTs.objects.get(id=pk)
     return render(request, 'nft_details.html', {'nft':nft})
+
+
+def delete_nft(request, pk:int):
+    nft = NFTs.objects.get(id=pk)
+    nft.delete()
+    messages.success(request, 'NFT deleted successfully')
+    return redirect('explore')
