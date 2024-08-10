@@ -66,6 +66,184 @@ button.green-btn {
   background: linear-gradient(to right, #56c2ff, #48fe9c);
 }
 
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.content-section {
+  padding: 60px 0;
+}
+.content-section .first-div {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+}
+.content-section .first-div .text-content1 {
+  width: 60%;
+  padding: 30px;
+}
+.content-section .first-div .text-content1 h1 {
+  font-size: 3em;
+  margin: 0;
+  color: #111;
+}
+.content-section .first-div .text-content1 p {
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #555;
+}
+.content-section .second-div {
+  display: flex;
+  align-items: center;
+}
+.content-section .second-div .text-content2 {
+  max-width: 60%;
+}
+.content-section .second-div .text-content2 h2 {
+  font-size: 4em;
+  margin-top: 20px;
+  color: #111;
+}
+.content-section .second-div .text-content2 p {
+  font-size: 1.2em;
+  color: #555;
+  margin-top: 10px;
+}
+
+.stats-section {
+  color: #111;
+  padding: 60px 0;
+  text-align: center;
+}
+.stats-section .stats {
+  display: flex;
+  justify-content: space-around;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.stats-section .stats div {
+  text-align: center;
+}
+.stats-section .stats div h3 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.stats-section .stats div p {
+  font-size: 18px;
+}
+
+.video-section {
+  padding: 60px 0;
+  text-align: center;
+  background-color: #333;
+  width: 100%;
+}
+.video-section h2 {
+  font-size: 4em;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: snow;
+}
+.video-section .video-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  top: 100px;
+}
+.video-section .video-wrapper video {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.partners-section {
+  margin-top: 150px;
+  padding: 20px;
+  text-align: center;
+}
+.partners-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #111;
+}
+.partners-section .partners-container a {
+  padding: 5px;
+}
+
+.team-section {
+  padding: 60px 0;
+  text-align: center;
+}
+.team-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #111;
+}
+.team-section .team {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.team-section .team .team-member {
+  text-align: center;
+  max-width: 200px;
+}
+.team-section .team .team-member img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 10px;
+}
+.team-section .team .team-member h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #111;
+}
+.team-section .team .team-member p {
+  font-size: 14px;
+  color: #555;
+}
+
+.join-section {
+  background-color: #111;
+  color: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+.join-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.join-section p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+.join-section button {
+  background-color: #ff6584;
+  border: none;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+}
+.join-section button:hover {
+  background-color: #ff4a6e;
+}
+
 .video-container {
   display: grid;
   width: 100%;
@@ -172,4 +350,57 @@ button.green-btn {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    grid-template-columns: 1fr;
+  }
+  .video-container iframe {
+    width: 100%;
+  }
+  .video-container .video-info {
+    margin-top: 20px;
+  }
+  .team .team-member {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  .card-container {
+    flex-direction: column;
+  }
+  .new-card-container {
+    width: 90%;
+  }
+}
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 3em;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  .stats {
+    flex-direction: column;
+  }
+  .video-section .video-wrapper {
+    max-width: 90%;
+  }
+  .team {
+    justify-content: flex-start;
+  }
+  .team .team-member {
+    margin-bottom: 20px;
+  }
+  .new-card-container {
+    width: 95%;
+  }
+}
+@media (max-width: 320px) {
+  .new-card-container {
+    width: 100%;
+  }
 }/*# sourceMappingURL=about_us.css.map */
