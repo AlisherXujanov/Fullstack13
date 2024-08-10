@@ -112,9 +112,36 @@ button.green-btn {
   padding: 10px;
   border-radius: 10px;
   display: none;
+  position: relative;
 }
 .explore-wrapper .explore-content .explore-body .middle .nfts .nft.active {
   display: block;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .like {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: rgba(56, 56, 0, 0.5);
+  color: snow;
+  display: none;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .like svg {
+  transform: scale(1.5);
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .like:hover {
+  background-color: rgba(83, 83, 0, 0.8);
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft:hover .like {
+  display: flex;
 }
 .explore-wrapper .explore-content .explore-body .middle .nfts .nft .nft-image {
   width: 100%;
