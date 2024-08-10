@@ -3,6 +3,7 @@ from django.contrib.auth import logout
 from .models import NFTs
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .usecases import *
 
 
 
@@ -17,6 +18,26 @@ def custom_404(request, exception):
 
 def landing_page(request):
     return render(request, 'landing_page.html')
+
+
+def add_to_favorites(request, pk:int):
+    if add_to_favorites_fn(request, pk):
+        messages.success(request, 'NFT added to favorites')
+    else:
+        messages.warning(request, 'Already in favorites')
+
+    return redirect('explore')
+
+
+def remove_from_favorites(request, pk:int):
+    if remove_from_favorites_fn(request, pk):
+        messages.success(request, 'NFT removed from favorites')
+    else:
+        messages.warning(request, 'This NFT is not in favorites')
+
+    return redirect('explore')
+
+
 
 
 def create_nft(request):
@@ -43,7 +64,6 @@ def create_nft(request):
     return render(request, 'create_nft.html', context)
 
 
-
 def update_nft(request, pk:int):
     nft = NFTs.objects.get(id=pk)
 
@@ -67,13 +87,13 @@ def update_nft(request, pk:int):
     return render(request, 'update_nft.html', context)
 
     
-
-
 def explore(request):
     context = {
-        'nfts':NFTs.objects.all()
+        'nfts':NFTs.objects.all(),
+        'favorites': request.session.get('favorites', [])
     }
     return render(request,'explore.html', context)
+
 
 def nft_details(request, pk:int):
     nft = NFTs.objects.get(id=pk)
