@@ -70,12 +70,16 @@ def update_nft(request, pk: int):
         name = request.POST['name']
         description = request.POST['description'].strip()
         price = request.POST['price']
-        img = request.FILES['image']
+        
+        if img := request.FILES.get('image', None):
+            nft.image = img
+        # img = request.FILES.get('image', None)
+        # if img:
+        #     nft.image = img
 
         nft.name = name
         nft.description = description
         nft.price = price
-        nft.image = img
         nft.save()
         messages.success(request, 'NFT updated successfully')
 
