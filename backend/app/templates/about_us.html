@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% load static %}
 
@@ -10,6 +11,131 @@
 {% endblock %}
 
 {% block content %}
+  
+  <section class="content-section">
+    <div class="first-div">
+      <div class="text-content1">
+        <h1>About our Company <br> NFT Distro</h1>
+        <p>We are a cutting-edge company focused on the creation, promotion, and sale of non-fungible tokens (NFTs). Our marketplace offers a wide range of NFTs, from digital art and collectibles to gaming items and virtual real estate.</p>  
+      </div>
+      <img src={% static 'images/aboutpageImgs/MainRobot.png' %}>
+    </div>
+    <div class="second-div">
+      <img src={% static 'images/aboutpageImgs/Astronaut.png'%} alt="NFT Image" class="left-image" width="550px"/>
+      <div class="text-content2">
+        <h2>NFT Represent <br> the future</h2>
+        <p>We believe that NFTs represent the future of digital ownership and are excited to provide our customers with access to this revolutionary new market. Our platform is user-friendly and easy to navigate, making it simple for creators to upload and sell their NFTs and for buyers to discover and purchase unique digital assets.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="stats">
+      <div>
+        <img src={% static 'images/aboutpageImgs/Rocket.png' %} alt="" width="70px" height="80px">
+        <h3>23,400</h3>
+        <p>NFTs</p>
+      </div>
+      <div>
+        <img src={% static 'images/aboutpageImgs/Chest.png' %} alt="" width="70px" height="80px">
+        <h3>8,000</h3>
+        <p>Collections</p>
+      </div>
+      <div>
+        <img src={% static 'images/aboutpageImgs/Hand.png' %} alt="" width="70px" height="80px">
+        <h3>3,400</h3>
+        <p>Creators</p>
+      </div>
+      <div>
+        <img src={% static 'images/aboutpageImgs/Upgrade.png' %} alt="" width="70px" height="80px">
+        <h3>$21B+</h3>
+        <p>Volume</p>
+      </div>
+    </div>
+  </section>
+
+ <section class="video-section">
+    <h2>NFT Distro</h2>
+    <div class="video-wrapper">
+      <iframe width="570" height="409" src="https://www.youtube.com/embed/MWkIxYtB8Ag?si=hoUESAizI-x5XHxa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="partners-section">
+    <h2>Our partners</h2>
+    <div class="partner-container">
+
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner1.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner2.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner3.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner4.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner5.png" %} alt="">
+      </a> <br>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner1.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner2.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner3.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner4.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner5.png" %} alt="">
+      </a>
+    </div>
+  </section>
+
+
+<section class="team-section">
+    <h2>Our Team</h2>
+    <div class="team">
+      <div class="team-member">
+        <img src={% static 'images/aboutpageImgs/Picture1.png' %} alt="Floyd Miles" />
+        <h3>Floyd Miles</h3>
+        <p>Founder</p>
+      </div>
+      <div class="team-member">
+        <img src={% static 'images/aboutpageImgs/Picture2.png' %} alt="Eleanor Pena" />
+        <h3>Eleanor Pena</h3>
+        <p>UI/UX Designer</p>
+      </div>
+      <div class="team-member">
+        <img src={% static 'images/aboutpageImgs/Picture3.png' %} alt="Kiss Dorka" />
+        <h3>Kiss Dorka</h3>
+        <p>UX Architect</p>
+      </div>
+      <div class="team-member">
+        <img src={% static 'images/aboutpageImgs/Picture4.png' %} alt="Nagy Timea" />
+        <h3>Nagy Timea</h3>
+        <p>Project Manager</p>
+      </div>
+      <div class="team-member">
+        <img src={% static 'images/aboutpageImgs/Picture4.png' %} alt="William Loko" />
+        <h3>William Loko</h3>
+        <p>Software Developer</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="join-section">
+    <h2>Interested in joining us?</h2>
+    <p>We’re always looking for passionate individuals to help us achieve our goals. Apply today and let’s build a better future together.</p>
+    <button>Join us</button>
+  </section>
+
   <div class="card-header2">
     <h2>About US</h2>
   </div>
@@ -27,14 +153,14 @@
   </div>
   <br />
   <br />
-  <br>
+  <br />
   <br />
   <div class="card-header2">
     <h2>Our Features</h2>
   </div>
   <br />
   <br />
-  
+
   <div class="card-container">
     <div class="card">
       <img src="{% static 'images/21.png' %}" />
@@ -61,28 +187,204 @@
     </div>
   </div>
 
+  
+  <section class="content-section">
+    <div class="first-div">
+      <div class="text-content1">
+        <h1>About our Company <br> NFT Distro</h1>
+        <p>We are a cutting-edge company focused on the creation, promotion, and sale of non-fungible tokens (NFTs). Our marketplace offers a wide range of NFTs, from digital art and collectibles to gaming items and virtual real estate.</p>  
+      </div>
+      <img src={% static 'images/aboutpageImgs/MainRobot.png' %}>
+    </div>
+    <div class="second-div">
+      <img src={% static 'images/aboutpageImgs/Astronaut.png'%} alt="NFT Image" class="left-image" width="550px"/>
+      <div class="text-content2">
+        <h2>NFT Represent <br> the future</h2>
+        <p>We believe that NFTs represent the future of digital ownership and are excited to provide our customers with access to this revolutionary new market. Our platform is user-friendly and easy to navigate, making it simple for creators to upload and sell their NFTs and for buyers to discover and purchase unique digital assets.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="stats">
+      <div>
+        <img src={% static 'images/aboutpageImgs/Rocket.png' %} alt="" width="70px" height="80px">
+        <h3>23,400</h3>
+        <p>NFTs</p>
+      </div>
+      <div>
+        <img src={% static 'images/aboutpageImgs/Chest.png' %} alt="" width="70px" height="80px">
+        <h3>8,000</h3>
+        <p>Collections</p>
+      </div>
+      <div>
+        <img src={% static 'images/aboutpageImgs/Hand.png' %} alt="" width="70px" height="80px">
+        <h3>3,400</h3>
+        <p>Creators</p>
+      </div>
+      <div>
+        <img src={% static 'images/aboutpageImgs/Upgrade.png' %} alt="" width="70px" height="80px">
+        <h3>$21B+</h3>
+        <p>Volume</p>
+      </div>
+    </div>
+  </section>
+
+ <section class="video-section">
+    <h2>NFT Distro</h2>
+    <div class="video-wrapper">
+      <iframe width="570" height="409" src="https://www.youtube.com/embed/MWkIxYtB8Ag?si=hoUESAizI-x5XHxa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="partners-section">
+    <h2>Our partners</h2>
+    <div class="partner-container">
+
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner1.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner2.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner3.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner4.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner5.png" %} alt="">
+      </a> <br>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner1.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner2.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner3.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner4.png" %} alt="">
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Lorem_ipsum">
+        <img src={% static "images/aboutpageImgs/Partner5.png" %} alt="">
+      </a>
+    </div>
+  </section>
+
+Sardorbek, [09.08.2024 15:09]
+<section class="team-section">
+    <h2>Our Team</h2>
+    <div class="team">
+      <div class="team-member">
+        <img src={% static 'images/aboutpageImgs/Picture1.png' %} alt="Floyd Miles" />
+        <h3>Floyd Miles</h3>
+        <p>Founder</p>
+      </div>
+      <div class="team-member">
+        <img src={% static 'images/aboutpageImgs/Picture2.png' %} alt="Eleanor Pena" />
+        <h3>Eleanor Pena</h3>
+        <p>UI/UX Designer</p>
+      </div>
+      <div class="team-member">
+        <img src={% static 'images/aboutpageImgs/Picture3.png' %} alt="Kiss Dorka" />
+        <h3>Kiss Dorka</h3>
+        <p>UX Architect</p>
+      </div>
+      <div class="team-member">
+        <img src={% static 'images/aboutpageImgs/Picture4.png' %} alt="Nagy Timea" />
+        <h3>Nagy Timea</h3>
+        <p>Project Manager</p>
+      </div>
+      <div class="team-member">
+        <img src={% static 'images/aboutpageImgs/Picture4.png' %} alt="William Loko" />
+        <h3>William Loko</h3>
+        <p>Software Developer</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="join-section">
+    <h2>Interested in joining us?</h2>
+    <p>We’re always looking for passionate individuals to help us achieve our goals. Apply today and let’s build a better future together.</p>
+    <button>Join us</button>
+  </section>
+
+  <div class="card-header2">
+    <h2>About US</h2>
+  </div>
   <br />
   <br />
+
+  <div class="video-container">
+    <iframe width="570" height="409" src="https://www.youtube.com/embed/MWkIxYtB8Ag?si=hoUESAizI-x5XHxa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <div class="video-info">
+      <h2>Cryptocurrency News</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic placeat fugiat rem illo ipsa, temporibus doloremque officiis non, maiores saepe, minus quasi. Esse modi, explicabo incidunt eum doloremque asperiores, dolores hic vero mollitia dignissimos dicta dolore optio ex. Sint culpa eaque quos earum dolores totam nobis rem sed magni modi qui, iusto porro recusandae, iure quae! Ipsa, vitae est. Cumque aspernatur quo earum eveniet eaque tempore consectetur suscipit dolorum itaque!</p>
+      <button class="watch-button">Contact us</button>
+    </div>
+  </div>
   <br />
   <br />
   <br />
   <br />
   <div class="card-header2">
-    <h2>Our Client Say!</h2>
+    <h2>Our Features</h2>
   </div>
-  <div class="new-card-container"> 
-    <div class="new-card-header">
+  <br />
+  <br />
+
+  <div class="card-container">
+    <div class="card">
+      <img src="{% static 'images/21.png' %}" />
+      <h2>Название Фото 1</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, vel?</p>
     </div>
-    <div class="new-image-grid">
-      <img src="{% static 'images/OhKElOkQ3RE.png' %}" />
-      <img class="main-image" src="{% static 'images/Mask Group.png' %}"  />
-      <img src="{% static 'images/Mask Group (1).png' %}"/>
+
+    <div class="card">
+      <img src="{% static 'images/cashback 1.png' %}" />
+      <h2>Название Фото 2</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, vel?</p>
     </div>
-    <div class="new-card-description">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ea nisi, facilis laudantium saepe ipsam vero a quasi qui doloribus hic natus dicta eligendi omnis nobis repellendus. At, minus praesentium.</p>
+
+    <div class="card">
+      <img src="{% static 'images/Group (1).png' %}" />
+      <h2>Название Фото 3</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, vel?</p>
+    </div>
+
+    <div class="card">
+      <img src="{% static 'images/Group.png' %}" />
+      <h2>Название Фото 4</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, vel?</p>
     </div>
   </div>
-  <br>
-  <br>
-  <br>
-{% endblock %}
+
+
+  <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="card-header2">
+      <h2>Our Client Say!</h2>
+    </div>
+    <div class="new-card-container">
+      <div class="new-card-header"></div>
+      <div class="new-image-grid">
+        <img src="{% static 'images/OhKElOkQ3RE.png' %}" />
+        <img class="main-image" src="{% static 'images/Mask Group.png' %}" />
+        <img src="{% static 'images/Mask Group (1).png' %}" />
+      </div>
+      <div class="new-card-description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ea nisi, facilis laudantium saepe ipsam vero a quasi qui doloribus hic natus dicta eligendi omnis nobis repellendus. At, minus praesentium.</p>
+      </div>
+    </div>
+    <br />
+    <br />
+    <br />
+  {% endblock %}

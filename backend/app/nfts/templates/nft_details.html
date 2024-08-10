@@ -2,81 +2,122 @@
 {% load static %}
 
 {% block title %}
-<title>NFT - {{nft.name}}</title>
-{% endblock title %}
+  <title>NFT - {{ nft.name }}</title>
+{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'styles/nft_details.css' %}">
-<style>
-    .right .title .action-btns button {
-        cursor: pointer;
-        padding: 10px;
-    }
-
-    .right .title .action-btns button.update {
-        background-color: green;
-    }
-
-    .right .title .action-btns button.delete {
-        background-color: red;
-    }
-</style>
-{% endblock css %}
-
+  <link rel="stylesheet" href="{% static 'styles/nft_details.css' %}" />
+{% endblock %}
 
 {% block content %}
-<div class="nft-wrapper">
+  <div class="nft-wrapper">
     <div class="nft-content">
-        <div class="left">
-            <img src="{{nft.image.url}}" alt="">
-        </div>
-        <div class="right">
-            <div class="title">
-                <div class="content">
-                    <h1>{{nft.name}}</h1>
-                    <p class="created_at">Minted on {{nft.created_at}}</p>
+      <div class="left">
+        <img src="{{ nft.image.url }}" alt="" />
+      </div>
+      <div class="right">
+        <div class="title">
+          <div class="content">
+            <h1>{{ nft.name }}</h1>
+            <p class="created_at">Minted on {{ nft.created_at }}</p>
+          </div>
+          {% if request.user.is_authenticated %}
+            {% if request.user == nft.owner or request.user.username == 'admin' %}
+              <div class="action-btns">
+                <a href="{% url 'update_nft' nft.id %}">
+                  <button class="update">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                    </svg>
+                  </button>
+                </a>
+                <button id="open-modal" class="delete">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                  </svg>
+                </button>
+                <div class="modal-confirm">
+                  <div class="modal-confirm-content">
+                    <span id="close-modal">&times;</span>
+
+                    <div class="form-data">
+                      <h2>Вы уверены, что хотите удалить?</h2>
+                      <a href="{% url 'delete_nft' nft.id %}"><button class="create_A">Да</button></a>
+                    </div>
+                    <div class="form-data">
+                      <button id="cancell-modal" class="create_B">Отмена</button>
+                    </div>
+                  </div>
                 </div>
-                {% if request.user.is_authenticated %}
-                    {% if request.user == nft.owner or request.user.username == 'admin' %}
-                        <div class="action-btns">
-                            <a href="{% url 'update_nft' nft.id %}">
-                                <button class="update">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                        <path
-                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                        <path fill-rule="evenodd"
-                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
-                                    </svg>
-                                </button>
-                            </a>
-                            <a href="{% url 'delete_nft' nft.id %}">
-                                <button class="delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                        <path
-                                            d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
-                                    </svg>
-                                </button>
-                            </a>
-                        </div>
-                    {% endif %}
-                {% endif %}
-            </div>
-            <div class="price">
-                <img src="{% static 'icons/ethereum.svg' %}" alt="">
-                <p>{{nft.price}}</p>
-            </div>
-            <div class="owner">
-                <img src="{% static 'icons/avatar.png' %}" alt="">
-                <p> {{nft.owner}}</p>
-            </div>
-            <div class="description">
-                <p class="title">Description</p>
-                <p class="desc">{{nft.description}}</p>
-            </div>
+              </div>
+            {% endif %}
+          {% endif %}
         </div>
+        <div class="price">
+          <img src="{% static 'icons/ethereum.svg' %}" alt="" />
+          <p>{{ nft.price }}</p>
+        </div>
+        <div class="owner">
+          <img src="{% static 'icons/avatar.png' %}" alt="" />
+          <p>{{ nft.owner }}</p>
+        </div>
+        <div class="description">
+          <p class="title">Description</p>
+          <p class="desc">{{ nft.description }}</p>
+        </div>
+      </div>
     </div>
     <div class="wave"></div>
-</div>
-{% endblock content %}
+  </div>
+  {% if request.user %}
+    {% if request.user == nft.owner %}
+      <script>
+        const modalDiv = document.querySelector('.modal-confirm')
+        const modalContent = modalDiv.querySelector('.modal-confirm-content')
+        const openModalBtn = document.querySelector('#open-modal')
+        const closeModalBtn = document.querySelector('#close-modal')
+        const cancellModal = document.querySelector('#cancell-modal')
+        
+        modalDiv.style.display = 'none'
+        modalDiv.style.opacity = '0'
+        modalContent.style.transform = 'scale(0.5) translateY(-1000px)'
+        
+        function delCard(e) {
+          e.target.parentElement.remove()
+        }
+        
+        function openModalFn() {
+          modalDiv.style.display = 'flex'
+          setTimeout(() => {
+            modalDiv.style.opacity = '1'
+            modalContent.style.transform = 'scale(1) translateY(0)'
+          }, 200)
+        }
+        function closeModalFn() {
+          modalDiv.style.opacity = '0'
+          modalContent.style.transform = 'scale(0.5) translateY(1000px)'
+          setTimeout(() => {
+            modalDiv.style.display = 'none'
+            modalContent.style.transform = 'translateY(-1000px)'
+          }, 500)
+        }
+        function cancellModalFn() {
+          modalDiv.style.opacity = '0'
+          modalContent.style.transform = 'scale(0.5) translateY(1000px)'
+          setTimeout(() => {
+            modalDiv.style.display = 'none'
+            modalContent.style.transform = 'translateY(-1000px)'
+          }, 500)
+        }
+        openModalBtn.addEventListener('click', openModalFn)
+        closeModalBtn.addEventListener('click', closeModalFn)
+        cancellModal.addEventListener('click', cancellModalFn)
+      </script>
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
