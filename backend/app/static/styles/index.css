@@ -163,6 +163,16 @@ body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form inp
   border: 1px solid rgb(179, 179, 179);
   border-radius: 5px;
 }
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form input.error {
+  border: 1px solid red;
+  outline: 1px solid red;
+  box-shadow: 0 0 5px red;
+}
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form input.success {
+  border: 1px solid green;
+  outline: 1px solid green;
+  box-shadow: 0 0 5px green;
+}
 body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form input[type=checkbox] {
   display: none;
 }
@@ -189,6 +199,16 @@ body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form inp
   background-color: rgb(235, 235, 235);
   border: 1px solid rgb(179, 179, 179);
   border-radius: 5px;
+}
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form input.error {
+  border: 1px solid red;
+  outline: 1px solid red;
+  box-shadow: 0 0 5px red;
+}
+body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form input.success {
+  border: 1px solid green;
+  outline: 1px solid green;
+  box-shadow: 0 0 5px green;
 }
 body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form input[type=checkbox] {
   display: none;

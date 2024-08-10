@@ -2,8 +2,8 @@
 @import './settings';
 
 body {
-    .base-container {
-    }
+    .base-container {}
+
     .modal-bg {
         position: fixed;
         top: 0;
@@ -58,6 +58,7 @@ body {
                 .logout-content {
                     display: flex;
                     flex-direction: column;
+
                     p {
                         padding: 20px;
                         font-size: 20px;
@@ -115,6 +116,19 @@ body {
                                 border: 1px solid rgb(179, 179, 179);
                                 border-radius: 5px;
 
+                                &.error {
+                                    border: 1px solid red;
+                                    outline: 1px solid red;
+                                    box-shadow: 0 0 5px red;
+                                }
+
+                                &.success {
+                                    border: 1px solid green;
+                                    outline: 1px solid green;
+                                    box-shadow: 0 0 5px green;
+
+                                }
+
                                 &[type='checkbox'] {
                                     display: none;
                                 }
@@ -152,6 +166,19 @@ body {
                                 border: 1px solid rgb(179, 179, 179);
                                 border-radius: 5px;
 
+                                &.error {
+                                    border: 1px solid red;
+                                    outline: 1px solid red; 
+                                    box-shadow: 0 0 5px red;
+                                }
+
+                                &.success {
+                                    border: 1px solid green; 
+                                    outline: 1px solid green;
+                                    box-shadow: 0 0 5px green;
+
+                                }
+
                                 &[type='checkbox'] {
                                     display: none;
                                 }
@@ -182,4 +209,4 @@ body {
             }
         }
     }
-}     
+}

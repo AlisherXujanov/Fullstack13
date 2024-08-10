@@ -24,7 +24,7 @@
 
         <div class="sign-in-sign-up-content">
           <div class="sign-in" id="sign-in-block" style="display: none;">
-            <form method="POST" action="{% url 'account_login' %}" enctype="multipart/form-data">
+            <form id="sign-in-form" method="POST" action="{% url 'account_login' %}" enctype="multipart/form-data">
               {% csrf_token %}
               {{ signin_form.as_p }}
               <div class="btns">
@@ -34,7 +34,7 @@
           </div>
 
           <div class="sign-up" id="sign-up-block" style="display: none;">
-            <form method="POST" action="{% url 'account_signup' %}" enctype="multipart/form-data">
+            <form id="sign-up-form" method="POST" action="{% url 'account_signup' %}" enctype="multipart/form-data">
               {% csrf_token %}
               {{ signup_form.as_p }}
               <div class="btns">
@@ -96,5 +96,138 @@
     }
     openModalBtn.addEventListener('click', openModal)
     closeModalBtn.addEventListener('click', closeModal)
-  </script> 
+    
+    //* validation
+    
+    const signinForm = document.querySelector('#sign-in-form')
+    const signupForm = document.querySelector('#sign-up-form')
+    const loginUsername = document.querySelector('#id_login')
+    const loginPassword = document.querySelector('#id_password')
+    const signupUsername = document.querySelector('#id_username')
+    const signupEmail = document.querySelector('#id_email')
+    const signupPassword = document.querySelector('#id_password1')
+    const signupPasswordConfirm = document.querySelector('#id_password2')
+    
+    const usernamePattern = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/
+    const passwordPattern = /^(?!.*\s).{6,}$/
+    const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
+    
+    signinForm.addEventListener('submit', function (event) {
+      if (!loginValidation()) {
+        event.preventDefault()
+      }
+    })
+    loginUsername.addEventListener('input', function (event) {
+      loginUsername.classList.remove('error')
+    })
+    loginPassword.addEventListener('input', function (event) {
+      loginPassword.classList.remove('error')
+    })
+    
+    signupForm.addEventListener('submit', function (event) {
+      if (!signupValidation()) {
+        event.preventDefault()
+      }
+    })
+    
+    function loginValidation() {
+      let isValid = true
+      if (usernamePattern.test(loginUsername.value)) {
+        loginUsername.classList.remove('error')
+      } else {
+        loginUsername.classList.add('error')
+        isValid = false
+      }
+      if (passwordPattern.test(loginPassword.value)) {
+        loginPassword.classList.remove('error')
+      } else {
+        loginPassword.classList.add('error')
+        isValid = false
+      }
+      return isValid
+    }
+    function signupValidation() {
+      let isValid = true
+      if (usernamePattern.test(signupUsername.value)) {
+        signupUsername.classList.remove('error')
+      } else {
+        signupUsername.classList.add('error')
+        isValid = false
+      }
+      if (emailPattern.test(signupEmail.value)) {
+        signupEmail.classList.remove('error')
+      } else {
+        signupEmail.classList.add('error')
+        isValid = false
+      }
+      if (passwordPattern.test(signupPassword.value) && signupPassword.value === signupPasswordConfirm.value) {
+        signupPassword.classList.remove('error')
+        signupPasswordConfirm.classList.remove('error')
+      } else {
+        signupPassword.classList.add('error')
+        signupPasswordConfirm.classList.add('error')
+        isValid = false
+      }
+      return isValid
+    }
+    signinForm.addEventListener('submit', function (event) {
+      if (!loginValidation()) {
+        event.preventDefault()
+      }
+    })
+    loginUsername.addEventListener('input', function (event) {
+      if (usernamePattern.test(event.target.value)) {
+        loginUsername.classList.remove('error')
+        loginUsername.classList.add('success')
+      } else {
+        loginUsername.classList.add('error')
+        loginUsername.classList.remove('success')
+      }
+    })
+    loginPassword.addEventListener('input', function (event) {
+      if (passwordPattern.test(event.target.value)) {
+        loginPassword.classList.remove('error')
+        loginPassword.classList.add('success')
+      } else {
+        loginPassword.classList.add('error')
+        loginPassword.classList.remove('success')
+      }
+    })
+    signupUsername.addEventListener('input', function (event) {
+      if (usernamePattern.test(event.target.value)) {
+        signupUsername.classList.remove('error')
+        signupUsername.classList.add('success')
+      } else {
+        signupUsername.classList.add('error')
+        signupUsername.classList.remove('success')
+      }
+    })
+    signupEmail.addEventListener('input', function (event) {
+      if (emailPattern.test(event.target.value)) {
+        signupEmail.classList.remove('error')
+        signupEmail.classList.add('success')
+      } else {
+        signupEmail.classList.add('error')
+        signupEmail.classList.remove('success')
+      }
+    })
+    signupPassword.addEventListener('input', function (event) {
+      if (passwordPattern.test(event.target.value)) {
+        signupPassword.classList.remove('error')
+        signupPassword.classList.add('success')
+      } else {
+        signupPassword.classList.add('error')
+        signupPassword.classList.remove('success')
+      }
+    })
+    signupPasswordConfirm.addEventListener('input', function (event) {
+      if (signupPassword.value === event.target.value) {
+        signupPasswordConfirm.classList.remove('error')
+        signupPasswordConfirm.classList.add('success')
+      } else {
+        signupPasswordConfirm.classList.add('error')
+        signupPasswordConfirm.classList.remove('success')
+      }
+    })
+  </script>
 </div>
