@@ -92,6 +92,95 @@ button.green-btn {
   flex-direction: column;
   gap: 5px;
 }
+.nft-wrapper .nft-content .right .title {
+  display: flex;
+  justify-content: space-between;
+}
+.nft-wrapper .nft-content .right .title .action-btns button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 0;
+  border: 1px solid #000;
+  background-color: transparent;
+}
+.nft-wrapper .nft-content .right .title .action-btns .modal-confirm {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
+}
+.nft-wrapper .nft-content .right .title .action-btns .modal-confirm .modal-confirm-content {
+  width: 430px;
+  height: 240px;
+  border-radius: 20px;
+  background: #333333;
+}
+.nft-wrapper .nft-content .right .title .action-btns .modal-confirm .modal-confirm-content #close-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin-top: -30px;
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  cursor: pointer;
+}
+.nft-wrapper .nft-content .right .title .action-btns .modal-confirm .modal-confirm-content .form-data {
+  margin: 10px 0;
+}
+.nft-wrapper .nft-content .right .title .action-btns .modal-confirm .modal-confirm-content .form-data h2 {
+  font-family: DM Sans;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 38px;
+  text-align: center;
+  color: #ffffff;
+}
+.nft-wrapper .nft-content .right .title .action-btns .modal-confirm .modal-confirm-content .form-data a .create_A {
+  width: 260px;
+  height: 50px;
+  padding: 19.01px 0px 0px 0px;
+  gap: 30px;
+  background: linear-gradient(108.39deg, #ff56bb 6.99%, #ff8f77 119.86%);
+  color: #ffffff;
+  border: none;
+  padding: 15px 100px;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+  margin: 0 auto;
+}
+.nft-wrapper .nft-content .right .title .action-btns .modal-confirm .modal-confirm-content .form-data .create_B {
+  width: 260px;
+  height: 50px;
+  padding: 19.01px 0px 0px 0px;
+  gap: 30px;
+  border-radius: 20px 0px 0px 0px;
+  background: linear-gradient(108.39deg, #6e56ff 6.99%, #b073ff 119.86%);
+  color: #ffffff;
+  border: none;
+  padding: 15px 100px;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+  margin: 0 auto;
+}
 .nft-wrapper .nft-content .right .price {
   display: flex;
   align-items: center;

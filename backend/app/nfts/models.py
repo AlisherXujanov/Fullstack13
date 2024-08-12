@@ -15,7 +15,11 @@ class NFTs(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    # liked_people = [person1_id, ...]
     image = models.ImageField(upload_to='nfts/', default='nfts/Salin1.png')
+
+    # IN PROFILE
+    # liked_nfts = [nft1_id, ...]
 
     class Meta:
         db_table = 'nfts'

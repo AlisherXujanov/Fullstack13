@@ -1,0 +1,404 @@
+@use './resets';
+@import './settings';
+
+
+.explore-wrapper {
+    .content-header {
+        margin-top: 180px;
+        text-align: center;
+
+        .img-left1 {
+            position: absolute;
+            left: 160px;
+            top: 105px;
+        }
+
+        .img-left2 {
+            position: absolute;
+            left: 250px;
+            top: 317px;
+        }
+
+        .img-right1 {
+            position: absolute;
+            top: 121px;
+            right: 206px;
+
+        }
+
+        .img-right2 {
+            position: absolute;
+            top: 329px;
+            right: 90px;
+        }
+
+
+        h1 {
+            font-size: 68.89px;
+            font-weight: 500;
+            line-height: 84.5px;
+            letter-spacing: -0.003em;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 26px;
+            margin-top: 20px;
+        }
+
+        .red-btn {
+            width: 244px;
+            height: 60px;
+            border-radius: 16px;
+            padding: 15px;
+            margin-top: 54px;
+
+            a {
+                font-weight: 700;
+                font-size: 18px;
+                color: snow;
+            }
+        }
+    }
+
+    .main-content {
+        margin-top: 280px;
+        margin: 0 auto;
+        padding: 0px 285px 0px 285px;
+
+        .create-nft {
+            margin-top: 120px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            .block-img {
+                width: 385px;
+                height: 360px;
+                box-shadow: 0px 4.11px 49.29px 0px #C5C5C540;
+
+                .img {
+                    background-color: #faf6f3;
+                    border-radius: 50%;
+                    width: 135px;
+                    height: 135px;
+                    text-align: center;
+                    margin: 0 auto;
+                    margin-top: 97px;
+
+                    .img-icon2 {
+                        margin-top: 20px;
+                    }
+
+                    .img-icon3 {
+                        margin-top: 20px;
+                    }
+                }
+
+                p {
+                    margin-top: 50px;
+                    font-size: 26px;
+                    font-weight: 500;
+                    letter-spacing: -0.003em;
+                    text-align: center;
+                }
+            }
+
+            .block-info {
+                h1 {
+                    margin-top: 65px;
+                    font-size: 44px;
+                    font-weight: 500;
+                    line-height: 55px;
+                    letter-spacing: -0.003em;
+
+                }
+
+                p {
+
+                    font-size: 18px;
+                    font-weight: 400;
+                    line-height: 26px;
+                    margin-top: 22px;
+                }
+
+                .purple-btn {
+                    margin-top: 10px;
+                    width: 185px;
+                    height: 44px;
+                    border-radius: 20px;
+                    text-align: center;
+
+                    a {
+                        font-size: 14px;
+                        font-weight: 700;
+                        color: snow;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                .share-btn-container {
+                    margin-top: 20px;
+
+                    .purple-btn {
+                        margin-top: 10px;
+                        width: 185px;
+                        height: 44px;
+                        border-radius: 20px;
+                        text-align: center;
+                        font-size: 14px;
+                        font-weight: 700;
+                        color: snow;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+
+                    }
+
+
+                }
+
+                /* Styles for the modal */
+                .modal {
+                    display: none;
+                    position: fixed;
+                    z-index: 1;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    background-color: rgb(0, 0, 0);
+                    background-color: rgba(0, 0, 0, 0.4);
+                    padding-top: 60px;
+
+                    .modal-content {
+                        background-color: #fefefe;
+                        margin: 5% auto;
+                        padding: 20px;
+                        border: 1px solid #888;
+                        width: 80%;
+                        max-width: 500px;
+                        border-radius: 10px;
+
+                        .close {
+                            color: #aaa;
+                            float: right;
+                            font-size: 28px;
+                            font-weight: bold;
+
+                            &:hover,
+                            &:focus {
+                                color: black;
+                                text-decoration: none;
+                                cursor: pointer;
+                            }
+                        }
+
+
+                        .share-icons {
+                            display: flex;
+                            justify-content: center;
+                            gap: 20px;
+
+                            img {
+                                width: 40px;
+                                height: 40px;
+                                cursor: pointer;
+                                transition: transform 0.2s;
+
+                                &:hover {
+                                    transform: scale(1.1);
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+
+
+                }
+
+
+            }
+        }
+
+        .btn-gen-idea {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+
+            .purple-btn {
+                font-size: 16px;
+                cursor: pointer;
+                padding: 20px;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        .nft-modal {
+            display: none; // Hidden by default
+            position: fixed; // Stay in place
+            z-index: 1000; // Sit on top
+            left: 0;
+            top: 0;
+            width: 100%; // Full width
+            height: 100%; // Full height
+            overflow: auto; // Enable scroll if needed
+            background-color: rgba(0, 0, 0, 0.5); // Dark overlay
+            transition: opacity 0.3s ease; // Smooth transition for opacity
+
+
+            .nft-modal-content {
+                background-color: #fff;
+                margin: 10% auto; // Centered vertically and horizontally
+                padding: 20px;
+                border-radius: 8px; // Rounded corners
+                width: 90%; // Responsive width
+                max-width: 500px; // Max width for large screens
+                position: relative;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Shadow effect
+                animation: fadeIn 0.3s ease; // Fade in animation
+                min-height: 200px; // Minimum height for modal content
+
+
+                .nft-idea {
+                    display: flex;
+                    justify-content: center;
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+
+                .nft-spinner {
+                    border: 16px solid #f3f3f3;
+                    border-top: 16px solid #463d95;
+                    border-radius: 50%;
+                    width: 80px;
+                    height: 80px;
+                    animation: nft-spin 2s linear infinite;
+                    margin: 0 auto;
+                    display: none;
+                    /* Скрыть по умолчанию */
+                }
+
+
+                .nft-close-button {
+                    display: flex;
+                    justify-content: right;
+                    color: #aaa;
+                    text-align: right;
+                    font-size: 28px;
+                    font-weight: bold;
+
+                    &:hover,
+                    &:focus {
+                        color: black;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+
+
+
+            }
+        }
+
+
+
+
+        /* Спиннер */
+
+
+        @keyframes nft-spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+
+
+        @media (max-width: 1200px) {
+            .explore-wrapper .main-content {
+                padding: 0px 100px;
+            }
+
+            .explore-wrapper .content-header .img-left1,
+            .explore-wrapper .content-header .img-left2,
+            .explore-wrapper .content-header .img-right1,
+            .explore-wrapper .content-header .img-right2 {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .explore-wrapper .content-header h1 {
+                font-size: 2em;
+            }
+
+            .explore-wrapper .content-header p {
+                font-size: 16px;
+            }
+
+            .explore-wrapper .main-content {
+                margin-top: 50px;
+                padding: 0px 20px;
+            }
+
+            .explore-wrapper .main-content .create-nft {
+                grid-template-columns: 1fr;
+                margin-top: 60px;
+            }
+
+            .explore-wrapper .main-content .create-nft .block-img {
+                width: 100%;
+                height: auto;
+            }
+
+            .explore-wrapper .main-content .create-nft .block-info h1 {
+                font-size: 1.5em;
+            }
+
+            .explore-wrapper .main-content .create-nft .block-info p {
+                font-size: 14px;
+            }
+
+            .explore-wrapper .main-content .create-nft .block-info .purple-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .explore-wrapper .content-header h1 {
+                font-size: 1.5em;
+            }
+
+            .explore-wrapper .content-header p {
+                font-size: 14px;
+            }
+
+            .explore-wrapper .main-content .create-nft .block-img {
+                width: 100%;
+            }
+
+            .explore-wrapper .main-content .create-nft .block-info h1 {
+                font-size: 1.2em;
+            }
+
+            .explore-wrapper .main-content .create-nft .block-info p {
+                font-size: 12px;
+            }
+        }
+    }
+}

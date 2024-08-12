@@ -2,8 +2,8 @@
 @import './settings';
 
 body {
-    .base-container {
-    }
+    .base-container {}
+
     .modal-bg {
         position: fixed;
         top: 0;
@@ -58,6 +58,7 @@ body {
                 .logout-content {
                     display: flex;
                     flex-direction: column;
+
                     p {
                         padding: 20px;
                         font-size: 20px;
@@ -116,4 +117,4 @@ body {
             }
         }
     }
-}     
+}
