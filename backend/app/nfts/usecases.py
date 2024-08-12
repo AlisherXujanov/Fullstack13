@@ -1,37 +1,30 @@
+# usecases.py
 from .models import NFTs
 
+def add_to_favorites_fn(request, pk: int) -> bool:
+    """ Adds an NFT object to favorites for the current user """
+    try:
+        nft = NFTs.objects.get(pk=pk)
+    except NFTs.DoesNotExist:
+        return False
 
-def add_to_favorites_fn(request, pk:int) -> bool:
-    """ This function is used to add an NFT object into favorites
-    Args:
-        request (_type_): request object for using session storage
-        pk (int): primary key of the NFT object that is going to be added into favorites
-    """
-    session = request.session
-    favorites = session.get('favorites', [])
-    if pk in favorites:
+    user = request.user
+    if user in nft.liked_by.all():
         return False
     
-    favorites.append(pk)
-    session['favorites'] = favorites
+    nft.liked_by.add(user)
     return True
-    
 
-def remove_from_favorites_fn(request, pk:int) -> bool:
-    """ This function is used to remove an NFT object from favorites
-
-    Args:
-        request (_type_): request object for using session storage
-        pk (int): primary key of the NFT object that is going to be removed from favorites
-
-    Returns:
-        bool: _description_
-    """
-    session = request.session
-    favorites = session.get('favorites', [])
-    if pk not in favorites:
+def remove_from_favorites_fn(request, pk: int) -> bool:
+    """ Removes an NFT object from favorites for the current user """
+    try:
+        nft = NFTs.objects.get(pk=pk)
+    except NFTs.DoesNotExist:
         return False
 
-    favorites.remove(pk)
-    session['favorites'] = favorites
+    user = request.user
+    if user not in nft.liked_by.all():
+        return False
+
+    nft.liked_by.remove(user)
     return True

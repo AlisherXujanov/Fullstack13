@@ -21,6 +21,7 @@
           <button>Recently Added</button>
         </div>
         <div class="middle">
+          {% include 'pagination.html' with page_obj=page_obj is_paginated=is_paginated paginator=paginator %}
           <div class="nfts">
             {% for nft in nfts %}
               <div class="nft active">
@@ -73,7 +74,7 @@
     const explore = document.querySelector('.explore-wrapper')
     const searchInput = explore.querySelector('.searchbar .right input')
     const nfts = explore.querySelectorAll('.nfts .nft')
-    
+    const searchBarInput = document.querySelector('body > header:nth-child(1) > nav:nth-child(2) > div.left:nth-child(1) > div.searchbar-warpper-parent:nth-child(2) > div.searchbar:nth-child(2) > div.right:nth-child(2) > input')
     function search(val) {
       nfts.forEach((nft) => {
         nft.classList.remove('active')
@@ -84,6 +85,13 @@
         }
       })
     }
-    searchInput.addEventListener('input', () => search(searchInput.value))
+    {% comment %} searchBarInput.addEventListener('input', () => search(searchBarInput.value)) {% endcomment %}
+    searchBarInput.addEventListener('input', () => {
+      searchInput.value = searchBarInput.value;
+      search(searchBarInput.value);
+  });
+    searchInput.addEventListener('input', () => {
+      searchBarInput.value = searchInput.value ;
+      search(searchInput.value)})
   </script>
 {% endblock %}
