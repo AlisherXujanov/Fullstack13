@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import logout
 from .models import NFTs
 from django.contrib import messages
-
+from django.views.generic import ListView
 def custom_logout(request):
     logout(request)
     return redirect('landing_page')
@@ -64,13 +64,18 @@ def update_nft(request, pk:int):
     return render(request, 'update_nft.html', context)
 
     
+    
+class ExploreView(ListView):
+    model = NFTs
+    template_name = 'explore.html'
+    context_object_name = 'nfts'
+    paginate_by = 4
 
-
-def explore(request):
-    context = {
-        'nfts':NFTs.objects.all()
-    }
-    return render(request,'explore.html', context)
+# def explore(request):
+#     context = {
+#         'nfts':NFTs.objects.all()
+#     }
+#     return render(request,'explore.html', context)
 
 def nft_details(request, pk:int):
     nft = NFTs.objects.get(id=pk)

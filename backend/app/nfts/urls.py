@@ -10,6 +10,7 @@ urlpatterns = [
     path('create-nft/', create_nft, name='create_nft'),
     path('update-nft/<int:pk>/', update_nft, name='update_nft'),
     path('delete-nft/<int:pk>/', delete_nft, name='delete_nft'),
-    path('explore', explore, name='explore'),
+    # path('explore', explore, name='explore'),
+    path('explore', ExploreView.as_view(), name='explore'),
     path('explore/nft/<int:pk>', nft_details, name='nft_details')
 ]

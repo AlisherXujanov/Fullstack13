@@ -37,8 +37,7 @@ a.active {
 h1 {
   font-size: 2.5em;
   line-height: 1.1;
-  font-family: "Roboto Serif", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 button {
@@ -119,4 +118,4 @@ button.green-btn {
   width: 100%;
   height: 90vh;
   z-index: -1;
-}/*# sourceMappingURL=nft_page.css.map */
+}/*# sourceMappingURL=nft_details.css.map */

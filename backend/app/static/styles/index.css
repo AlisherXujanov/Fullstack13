@@ -37,8 +37,7 @@ a.active {
 h1 {
   font-size: 2.5em;
   line-height: 1.1;
-  font-family: "Roboto Serif", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 button {
@@ -129,81 +128,42 @@ body .modal-bg .modal-content .middle .logout-content .logout {
   border-radius: 5px;
   text-align: center;
 }
-body .modal-bg .modal-content .middle .sign-in-sign-up-btn {
+body .modal-bg .modal-content .middle .links {
   width: 100%;
-  height: 30px;
-  margin: 10px 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-btn button {
-  background-color: transparent;
-  color: #000000;
-  font-size: 20px;
-  width: 100%;
-  height: 100%;
-  border-radius: 0px;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-btn button.active {
-  border-bottom: 3px solid #000000;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  text-align: center;
   gap: 10px;
 }
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form a {
-  display: none;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form input {
+body .modal-bg .modal-content .middle .links a {
   width: 100%;
-  padding: 10px 20px;
-  background-color: rgb(235, 235, 235);
-  border: 1px solid rgb(179, 179, 179);
-  border-radius: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
 }
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form input[type=checkbox] {
-  display: none;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form p label {
-  display: none;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-in form button {
+body .modal-bg .modal-content .middle .links a.login {
   background: linear-gradient(to right, #ff56bb, #ff8f77);
-  width: 100%;
-  cursor: pointer;
 }
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form a {
-  display: none;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form input {
-  width: 100%;
-  padding: 10px 20px;
-  background-color: rgb(235, 235, 235);
-  border: 1px solid rgb(179, 179, 179);
-  border-radius: 5px;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form input[type=checkbox] {
-  display: none;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form p label {
-  display: none;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form p:nth-child(6) {
-  display: none;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form ul {
-  display: none;
-}
-body .modal-bg .modal-content .middle .sign-in-sign-up-content .sign-up form button {
+body .modal-bg .modal-content .middle .links a.signup {
   background: linear-gradient(to right, #56c2ff, #48fe9c);
-  width: 100%;
-  cursor: pointer;
+}
+body .modal-bg .modal-content .middle .links a.github {
+  background-color: #1b1f23;
+  padding: 0;
+}
+body .modal-bg .modal-content .middle .links a.github img {
+  width: 40px;
+}
+body .modal-bg .modal-content .middle .links a.google {
+  background-color: #fff;
+  padding: 0;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+body .modal-bg .modal-content .middle .links a.google img {
+  width: 30px;
 }/*# sourceMappingURL=index.css.map */

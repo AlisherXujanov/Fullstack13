@@ -74,107 +74,41 @@ body {
                         text-align: center;
                     }
                 }
-
-                .sign-in-sign-up-btn {
+                .links{
                     width: 100%;
-                    height: 30px;
-                    margin: 10px 0;
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-
-                    button {
-                        background-color: transparent;
-                        color: $black;
-                        font-size: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    gap: 10px;
+                    a{
                         width: 100%;
-                        height: 100%;
-                        border-radius: 0px;
-
-                        &.active {
-                            border-bottom: 3px solid $black;
+                        padding: 10px;
+                        border-radius: 10px;
+                        color: #fff;
+                        &.login{
+                            background:$red;
                         }
-                    }
-                }
-
-                .sign-in-sign-up-content {
-                    .sign-in {
-                        form {
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            gap: 10px;
-
-                            a {
-                                display: none;
-                            }
-
-                            input {
-                                width: 100%;
-                                padding: 10px 20px;
-                                background-color: rgb(235, 235, 235);
-                                border: 1px solid rgb(179, 179, 179);
-                                border-radius: 5px;
-
-                                &[type='checkbox'] {
-                                    display: none;
-                                }
-                            }
-
-                            p {
-                                label {
-                                    display: none;
-                                }
-                            }
-
-                            button {
-                                background: $red;
-                                width: 100%;
-                                cursor: pointer;
+                        &.signup{
+                            background: $green;
+                        }
+                        &.github{
+                            background-color: #1b1f23;
+                            padding: 0;
+                            img{
+                                width: 40px;
                             }
                         }
-                    }
-
-                    .sign-up {
-                        form {
+                        &.google{
+                            background-color: #fff;
+                            padding: 0;
+                            border: 1px solid #000;
                             display: flex;
-                            flex-direction: column;
                             justify-content: center;
-                            gap: 10px;
-
-                            a {
-                                display: none;
-                            }
-
-                            input {
-                                width: 100%;
-                                padding: 10px 20px;
-                                background-color: rgb(235, 235, 235);
-                                border: 1px solid rgb(179, 179, 179);
-                                border-radius: 5px;
-
-                                &[type='checkbox'] {
-                                    display: none;
-                                }
-                            }
-
-                            p {
-                                label {
-                                    display: none;
-                                }
-
-                                &:nth-child(6) {
-                                    display: none;
-                                }
-                            }
-
-                            ul {
-                                display: none;
-                            }
-
-                            button {
-                                background: $green;
-                                width: 100%;
-                                cursor: pointer;
+                            align-items: center;
+                            height: 40px;
+                            img{
+                                width: 30px;
                             }
                         }
                     }
