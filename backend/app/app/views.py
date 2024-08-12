@@ -6,3 +6,5 @@ def about_us(request):
 
 def custom_404(request, exception):
     return render(request, '404.html', status=404)
+def contact_us(request):
+    return render(request, 'contact_us.html')

@@ -25,5 +25,7 @@ urlpatterns = [
     path("faq/", include("faq.urls")),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('about-us/',about_us, name='about_us')
+    path('about-us/',about_us, name='about_us'),
+    path('about-us/',about_us, name='about_us'),
+    path('contact_us/', contact_us, name='contact_us'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
