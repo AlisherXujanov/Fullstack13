@@ -1,8 +1,9 @@
+Сардор3, [09.08.2024 23:47]
 {% load static %}
 
 <div class="form">
     <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+        {% csrf_token %} 
         <div class="form-control">
             <label for="nft-image">Upload your NFT</label>
             <small>File types supported: JPG, PNG, GIF, SVG, MP4</small>
@@ -44,24 +45,11 @@
             <textarea id="description-nft" placeholder="Description" name="description" /></textarea>
             {% endif %}
         </div>
-        <div class="form-control">
-            <label for="collections">Collections</label>
-
-            <div class="options-wrapper">
-                <div class="option-image">
-                    <img id="collections-so-avatar" src="{% static 'images/Salin5.jpg' %}" alt="Collection-image" />
-                </div>
-                <div class="option-value">
-                    ExBook collection
-                    &bottom;
-                </div>
-                <div class="drp-content">
-                    <div data-option="option">ExBoot Collection</div>
-                    <div data-option="option">Etherium Collection</div>
-                    <div data-option="option">Bitcoin Collection</div>
-                </div>
-            </div>
-        </div>
+        <select id="select" name="select">
+            <option class="option" value="value1">Exboot Collection</option>
+            <option class="option" value="value2">Etherium Collection</option>
+            <option class="option" value="value3">Bitcoin Collection</option>
+         </select>
         <div class="form-control">
             <button type="submit" class="red-btn">
                 Create
@@ -73,19 +61,20 @@
         <div class="screen">
             <h2>Preview</h2>
             {% if nft_obj %}
-            <img id="preview-image" src="{{ nft_obj.image.url }}" width="100%" height="550">
+            <img id="preview-image" src="{{ nft_obj.image.url }}" width="100%" height="440">
             {% else %}
-            <img id="preview-image" src="{% static 'images/Salin1.png' %}" width="100%" height="550">
+            <img id="preview-image" src="{% static 'images/Salin5.jpg' %}" width="100%" height="440">
             {% endif %}
 
-            <div class="content">
+Сардор3, [09.08.2024 23:47]
+<div class="content">
                 <div class="col">
                     <h1 class="title">
                         {% if nft_obj %}
-                        <span>{{ nft_obj.name }}</span>
+                        <span class="col_f">{{ nft_obj.name }}</span>
                         #{{ nft_obj.id }}
                         {% else %}
-                        <span>ExBoot NFT</span>
+                        <span class="col_f">ExBoot NFT</span>
                         #{{ length_of_nfts }}
                         {% endif %}
                     </h1>
@@ -93,7 +82,6 @@
                 </div>
                 <div class="col">
                     <div class="author-info">
-                        <img src="{% static 'icons/avatar.png' %}" width="30" height="30">
                         <span class="name">{{ request.user.username }}</span>
                     </div>
                     <p class="price">
@@ -218,35 +206,21 @@
         top: 3px;
     }
 
-    .nft-form-wrapper div.form form .form-control .options-wrapper .option-value img {
+Сардор3, [09.08.2024 23:47]
+.nft-form-wrapper div.form form .form-control .options-wrapper .option-value img {
         position: absolute;
         right: 20px;
         top: 30px;
     }
 
-    .nft-form-wrapper div.form form .form-control .options-wrapper .drp-content {
-        position: absolute;
-        z-index: 10;
-        top: 65px;
-        left: 0;
-        background-color: #f3f3f3;
-        border-radius: 10px;
-        box-shadow: 0 10px 20px rgba(107, 107, 107, 0.1882352941);
-        display: none;
-    }
-
-    .nft-form-wrapper div.form form .form-control .options-wrapper .drp-content div {
+    select {
         padding: 10px 20px;
         background-color: #f3f3f3;
+        color:#333;
         border-radius: 10px;
+        font-size:20px;
         width: 100%;
         width: 560px;
-    }
-
-    .nft-form-wrapper div.form form .form-control .options-wrapper .drp-content div:hover {
-        background-color: #ffffff;
-        color: #000000;
-        cursor: pointer;
     }
 
     .nft-form-wrapper div.form form .form-control button {
@@ -276,18 +250,20 @@
         text-align: center;
         margin-bottom: 10px;
     }
-
-    .nft-form-wrapper div.form .demonstration img {
-        border-radius: 20px 20px 0 0;
+    .nft-form-wrapper div.form .demonstration .content .col{
+        padding-top: 10px;
     }
-
+    .nft-form-wrapper div.form .demonstration .content .col .col_f{
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 30px;
+    }
     .nft-form-wrapper div.form .demonstration .content {
         margin-top: 25px;
         display: grid;
         justify-content: center;
         align-items: flex-start;
         gap: 20px;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 3fr);
     }
 
     .nft-form-wrapper div.form .demonstration .content .left b {
@@ -302,7 +278,7 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        gap: 10px;
+        gap: 20px;
     }
 
     .nft-form-wrapper div.form .demonstration .content .right {
@@ -330,11 +306,71 @@
         margin-right: 10px;
         transform: scale(1.5);
     }
+    .nft-form-wrapper div.form .demonstration .footer {
+        left:0px;
+    }
 
     #collections-so-avatar {
         width: 50px;
         height: 50px;
         border-radius: 50%;
+    }
+    
+    @media screen and (max-width:1200px){
+        .nft-form-wrapper div.form{
+            display:grid;
+            grid-template-columns: 2fr 2fr;
+            gap: 0px;
+            padding-left: 100px;
+        }
+
+        .nft-form-wrapper div.form form .form-control input,
+        .nft-form-wrapper div.form form .form-control textarea{
+        width: 70%;
+        padding: 10px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        background-color: #f3f3f3;
+        margin-bottom: 5px;
+        }
+
+        .nft-form-wrapper div.form form .form-control .nft-image-wrapper{
+        width: 70%;
+        gap: 0;
+        border-radius: 10px;
+        padding: 30px 0;
+        }
+
+        .nft-form-wrapper div.form form .name-and-cost{
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        select {
+            width: 70%;
+        }
+
+        .nft-form-wrapper div.form form .form-control button{
+            width: 70%;
+        }
+    }
+
+Сардор3, [09.08.2024 23:47]
+@media screen and (max-width:900px){
+        .nft-form-wrapper div.form{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap: 0px;
+            padding-left: 0px;
+            justify-content: left;
+            align-items: left;
+        }
+
+        .nft-form-wrapper div.form .demonstration{
+            width: 70%;
+            height: auto;
+        }
     }
 </style>
 
@@ -360,8 +396,8 @@
         reader.readAsDataURL(file);
     });
 
-    const optionsWrapper = document.querySelector('.options-wrapper');
-    const drpContent = document.querySelector('.drp-content');
+    const optionsWrapper = document.querySelector('select');
+    const drpContent = document.querySelector('option');
 
     optionsWrapper.addEventListener('click', () => {
         drpContent.style.display = drpContent.style.display === 'block' ? 'none' : 'block';
@@ -370,8 +406,7 @@
     drpContent.addEventListener('click', (e) => {
         const option = e.target.dataset.option;
         if (option) {
-            collText.innerHTML = `<span id='preview-collection'>Collection: ${e.target.textContent}</span>`;
-            optionsWrapper.querySelector('.option-value').textContent = e.target.textContent;
+            optionsWrapper.querySelector('option').textContent = e.target.textContent;
             drpContent.style.display = 'none';
         }
     });
@@ -384,9 +419,11 @@
     const formName = document.querySelector("#name-nft")
     const formCost = document.querySelector("#cost-nft")
     const formDesc = document.querySelector("#description-nft")
+    const formCol = document.querySelector("#select")
     const descName = document.querySelector(".demonstration .content .title span")
     const descPreview = document.querySelector(".demonstration .footer .description")
     const descPrice = document.querySelector(".demonstration .content .price span")
+    const descCol = document.querySelector(".demonstration .footer .collection-text")
 
 
     formName.addEventListener('input', (e) => {
@@ -397,5 +434,8 @@
     })
     formDesc.addEventListener('input', (e) => {
         descPreview.textContent = e.target.value
+    })
+    formCol.addEventListener('select', (e) => {
+        descCol.textContent = e.target.value
     })
 </script>
