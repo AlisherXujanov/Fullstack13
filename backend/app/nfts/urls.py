@@ -12,7 +12,7 @@ urlpatterns = [
     path('delete-nft/<int:pk>/', delete_nft, name='delete_nft'),
     # path('explore', explore, name='explore'),
     path('explore', ExploreView.as_view(), name='explore'),
-    path('explore/nft/<int:pk>', nft_details, name='nft_details')
+    path('explore/nft/<int:pk>', nft_details, name='nft_details'),
 
     path("add-to-favorites/<int:pk>/", add_to_favorites, name="add_to_favorites"),
     path("remove-from-favorites/<int:pk>/", remove_from_favorites, name="remove_from_favorites"),

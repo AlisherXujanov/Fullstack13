@@ -8,7 +8,7 @@ class CustomLoginView(LoginView):
     template_name = 'account/login.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_nfts'] = NFTs.objects.order_by('-created_at')[:10]  
+        context['latest_nfts'] = NFTs.objects.order_by('-created_at')[:4]  
         return context
     
     
@@ -17,5 +17,5 @@ class CustomSignupView(SignupView):
     template_name = 'account/signup.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_nfts'] = NFTs.objects.order_by('-created_at')[:10]  
+        context['latest_nfts'] = NFTs.objects.order_by('-created_at')[:4]  
         return context

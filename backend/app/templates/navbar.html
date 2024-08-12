@@ -22,7 +22,7 @@
     <a href="#trending">Trending🔥</a>
     <a href="{% url 'faq' %}">FAQ</a>
     <a href="{% url 'about_us' %}">About us</a>
-    <a href="{% url "become" %}">Become artist</a>
+    {% comment %} <a href="{% url "become" %}">Become artist</a> {% endcomment %}
 
     {% if request.user.is_authenticated %}
       <div class="dropdown-container">

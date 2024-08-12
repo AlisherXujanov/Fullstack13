@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from .models import NFTs
+from django.db.models import Count
 from django.contrib import messages
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
@@ -17,27 +18,36 @@ def custom_404(request, exception):
 
 
 def landing_page(request):
-    return render(request, 'landing_page.html')
+    context = {
+        'most_liked':NFTs.objects.annotate(num_likes=Count('liked_by')).filter(num_likes__gt=0).order_by('-num_likes')
+    
+    }
+    return render(request, 'landing_page.html', context)
 
 
 def add_to_favorites(request, pk: int):
+    if not request.user.is_authenticated:
+        messages.warning(request, 'You need to be logged in to add favorites')
+        return redirect(request.META.get('HTTP_REFERER'))
+
     if add_to_favorites_fn(request, pk):
         messages.success(request, 'NFT added to favorites')
     else:
         messages.warning(request, 'Already in favorites')
 
-    referee = request.META.get('HTTP_REFERER')
-    return redirect(referee)
-
+    return redirect(request.META.get('HTTP_REFERER'))
 
 def remove_from_favorites(request, pk: int):
+    if not request.user.is_authenticated:
+        messages.warning(request, 'You need to be logged in to remove favorites')
+        return redirect(request.META.get('HTTP_REFERER'))
+
     if remove_from_favorites_fn(request, pk):
         messages.success(request, 'NFT removed from favorites')
     else:
         messages.warning(request, 'This NFT is not in favorites')
 
-    referee = request.META.get('HTTP_REFERER')
-    return redirect(referee)
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
 def create_nft(request):
