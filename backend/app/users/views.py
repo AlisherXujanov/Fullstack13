@@ -33,3 +33,13 @@ def profile_page(request, pk):
         "obj": obj,
     }
     return render(request, "profile_page.html", context)
+
+
+
+@login_required
+def messages(request, pk:int):
+    target_user = Profile.objects.get(user__pk=pk)
+    context = {
+        "target_user": target_user,
+    }
+    return render(request, "messages.html", context)

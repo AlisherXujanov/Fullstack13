@@ -4,29 +4,22 @@
 
 {% block css %}
 <style>
-    .cars-container {
-        margin-top: 50px;
+    .profile-container {
+        padding: 100px;
     }
 
-    .cars-container .content {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+    .send-message-btn {
+        float: right;
+        background-color: green;
+        cursor: pointer;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: snow;
     }
 
-    .car-info {
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
-
-    .car-info a {
-        color: blue;
-        text-decoration: none;
-    }
-
-    .car-info a:hover {
-        text-decoration: underline;
+    .send-message-btn:hover {
+        background-color: darkgreen;
+        color: snow;
     }
 </style>
 {% endblock %}
@@ -34,6 +27,10 @@
 
 
 {% block content %}
+<a href="#" class="send-message-btn">
+    Send Message
+</a>
+
 <div class="profile-container" style="display: flex; gap:50px;">
     <div class="left">
         <img src="{{obj.image.url}}" width="300" height="300" style="border-radius: 50%;">
@@ -51,18 +48,4 @@
 </div>
 
 
-<div class="cars-container">
-    <h2>Обявление</h2>
-
-    <div class="content">
-        {% for car in cars %}
-        <div class="car-info">
-            <h3><b>Brand: </b>{{car.brand}}</h3>
-            <p><b>Model: </b>{{car.model}}</p>
-            <p><b>Price: </b>{{car.price}}</p>
-            <a href="{% url 'car_details_view' car.id %}">Подробнее</a>
-        </div>
-        {% endfor %}
-    </div>
-</div>
 {% endblock %}
