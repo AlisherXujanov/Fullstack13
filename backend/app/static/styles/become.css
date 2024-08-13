@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
-
 :root {
   font-family: "DM Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;
@@ -28,11 +27,9 @@ a {
   color: #6b6b6b;
   text-decoration: none;
 }
-
 a:hover {
   color: #191919;
 }
-
 a.active {
   color: #000000;
   font-weight: bold;
@@ -41,8 +38,7 @@ a.active {
 h1 {
   font-size: 2.5em;
   line-height: 1.1;
-  font-family: "Roboto Serif", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 button {
@@ -54,7 +50,6 @@ button {
   font-family: sans-serif;
   border-radius: 10px;
 }
-
 button span {
   margin-right: 10px;
 }
@@ -75,45 +70,38 @@ button.green-btn {
   margin-top: 180px;
   text-align: center;
 }
-
 .explore-wrapper .content-header .img-left1 {
   position: absolute;
   left: 160px;
   top: 105px;
 }
-
 .explore-wrapper .content-header .img-left2 {
   position: absolute;
   left: 250px;
   top: 317px;
 }
-
 .explore-wrapper .content-header .img-right1 {
   position: absolute;
   top: 121px;
   right: 206px;
 }
-
 .explore-wrapper .content-header .img-right2 {
   position: absolute;
   top: 329px;
   right: 90px;
 }
-
 .explore-wrapper .content-header h1 {
   font-size: 68.89px;
   font-weight: 500;
   line-height: 84.5px;
   letter-spacing: -0.003em;
 }
-
 .explore-wrapper .content-header p {
   font-size: 18px;
   font-weight: 400;
   line-height: 26px;
   margin-top: 20px;
 }
-
 .explore-wrapper .content-header .red-btn {
   width: 244px;
   height: 60px;
@@ -121,32 +109,27 @@ button.green-btn {
   padding: 15px;
   margin-top: 54px;
 }
-
 .explore-wrapper .content-header .red-btn a {
   font-weight: 700;
   font-size: 18px;
   color: snow;
 }
-
 .explore-wrapper .main-content {
   margin-top: 280px;
   margin: 0 auto;
   padding: 0px 285px 0px 285px;
   /* Спиннер */
 }
-
 .explore-wrapper .main-content .create-nft {
   margin-top: 120px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-
 .explore-wrapper .main-content .create-nft .block-img {
   width: 385px;
   height: 360px;
   box-shadow: 0px 4.11px 49.29px 0px rgba(197, 197, 197, 0.2509803922);
 }
-
 .explore-wrapper .main-content .create-nft .block-img .img {
   background-color: #faf6f3;
   border-radius: 50%;
@@ -156,15 +139,12 @@ button.green-btn {
   margin: 0 auto;
   margin-top: 97px;
 }
-
 .explore-wrapper .main-content .create-nft .block-img .img .img-icon2 {
   margin-top: 20px;
 }
-
 .explore-wrapper .main-content .create-nft .block-img .img .img-icon3 {
   margin-top: 20px;
 }
-
 .explore-wrapper .main-content .create-nft .block-img p {
   margin-top: 50px;
   font-size: 26px;
@@ -172,11 +152,9 @@ button.green-btn {
   letter-spacing: -0.003em;
   text-align: center;
 }
-
 .explore-wrapper .main-content .create-nft .block-info {
   /* Styles for the modal */
 }
-
 .explore-wrapper .main-content .create-nft .block-info h1 {
   margin-top: 65px;
   font-size: 44px;
@@ -184,14 +162,12 @@ button.green-btn {
   line-height: 55px;
   letter-spacing: -0.003em;
 }
-
 .explore-wrapper .main-content .create-nft .block-info p {
   font-size: 18px;
   font-weight: 400;
   line-height: 26px;
   margin-top: 22px;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .purple-btn {
   margin-top: 10px;
   width: 185px;
@@ -199,21 +175,17 @@ button.green-btn {
   border-radius: 20px;
   text-align: center;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .purple-btn a {
   font-size: 14px;
   font-weight: 700;
   color: snow;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .purple-btn:hover {
   cursor: pointer;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .share-btn-container {
   margin-top: 20px;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .share-btn-container .purple-btn {
   margin-top: 10px;
   width: 185px;
@@ -224,11 +196,9 @@ button.green-btn {
   font-weight: 700;
   color: snow;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .share-btn-container .purple-btn:hover {
   cursor: pointer;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .modal {
   display: none;
   position: fixed;
@@ -242,7 +212,6 @@ button.green-btn {
   background-color: rgba(0, 0, 0, 0.4);
   padding-top: 60px;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .modal .modal-content {
   background-color: #fefefe;
   margin: 5% auto;
@@ -252,56 +221,46 @@ button.green-btn {
   max-width: 500px;
   border-radius: 10px;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-
-.explore-wrapper .main-content .create-nft .block-info .modal .modal-content .close:hover,
-.explore-wrapper .main-content .create-nft .block-info .modal .modal-content .close:focus {
+.explore-wrapper .main-content .create-nft .block-info .modal .modal-content .close:hover, .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .share-icons {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .share-icons img {
   width: 40px;
   height: 40px;
   cursor: pointer;
   transition: transform 0.2s;
 }
-
 .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .share-icons img:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
-
 .explore-wrapper .main-content .btn-gen-idea {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 300px;
 }
-
 .explore-wrapper .main-content .btn-gen-idea .purple-btn {
   font-size: 16px;
   cursor: pointer;
   padding: 20px;
 }
-
 .explore-wrapper .main-content .btn-gen-idea .purple-btn:hover {
   transform: scale(1.1);
 }
-
 .explore-wrapper .main-content .nft-modal {
   display: none;
   position: fixed;
@@ -314,7 +273,6 @@ button.green-btn {
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 0.3s ease;
 }
-
 .explore-wrapper .main-content .nft-modal .nft-modal-content {
   background-color: #fff;
   margin: 10% auto;
@@ -327,14 +285,12 @@ button.green-btn {
   animation: fadeIn 0.3s ease;
   min-height: 200px;
 }
-
 .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-idea {
   display: flex;
   justify-content: center;
   font-size: 18px;
   font-weight: 600;
 }
-
 .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-spinner {
   border: 16px solid #f3f3f3;
   border-top: 16px solid #463d95;
@@ -346,7 +302,6 @@ button.green-btn {
   display: none;
   /* Скрыть по умолчанию */
 }
-
 .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-close-button {
   display: flex;
   justify-content: right;
@@ -355,29 +310,23 @@ button.green-btn {
   font-size: 28px;
   font-weight: bold;
 }
-
-.explore-wrapper .main-content .nft-modal .nft-modal-content .nft-close-button:hover,
-.explore-wrapper .main-content .nft-modal .nft-modal-content .nft-close-button:focus {
+.explore-wrapper .main-content .nft-modal .nft-modal-content .nft-close-button:hover, .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-close-button:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
-
 @keyframes nft-spin {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
 }
-
 @media (max-width: 1200px) {
   .explore-wrapper .main-content .explore-wrapper .main-content {
     padding: 0px 100px;
   }
-
   .explore-wrapper .main-content .explore-wrapper .content-header .img-left1,
   .explore-wrapper .main-content .explore-wrapper .content-header .img-left2,
   .explore-wrapper .main-content .explore-wrapper .content-header .img-right1,
@@ -385,62 +334,49 @@ button.green-btn {
     display: none;
   }
 }
-
 @media (max-width: 768px) {
   .explore-wrapper .main-content .explore-wrapper .content-header h1 {
     font-size: 2em;
   }
-
   .explore-wrapper .main-content .explore-wrapper .content-header p {
     font-size: 16px;
   }
-
   .explore-wrapper .main-content .explore-wrapper .main-content {
     margin-top: 50px;
     padding: 0px 20px;
   }
-
   .explore-wrapper .main-content .explore-wrapper .main-content .create-nft {
     grid-template-columns: 1fr;
     margin-top: 60px;
   }
-
   .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-img {
     width: 100%;
     height: auto;
   }
-
   .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info h1 {
     font-size: 1.5em;
   }
-
   .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info p {
     font-size: 14px;
   }
-
   .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info .purple-btn {
     width: 100%;
   }
 }
-
 @media (max-width: 480px) {
   .explore-wrapper .main-content .explore-wrapper .content-header h1 {
     font-size: 1.5em;
   }
-
   .explore-wrapper .main-content .explore-wrapper .content-header p {
     font-size: 14px;
   }
-
   .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-img {
     width: 100%;
   }
-
   .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info h1 {
     font-size: 1.2em;
   }
-
   .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info p {
     font-size: 12px;
   }
-}
+}/*# sourceMappingURL=become.css.map */

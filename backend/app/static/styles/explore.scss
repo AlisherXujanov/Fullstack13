@@ -111,14 +111,17 @@
                             }
 
                             .info {
-                                display: flex;
-                                align-items: center;
-                                justify-content: space-between;
+                                a:first-child {
+                                    display: none
+                                }
+
+                                @include flex(row, space-between);
                                 margin-bottom: 10px;
 
                                 .owner {
-                                    display: flex;
-                                    align-items: center;
+                                    a {
+                                        @include flex($gap: 0);
+                                    }
                                 }
 
                                 .price {

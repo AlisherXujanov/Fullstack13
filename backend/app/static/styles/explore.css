@@ -161,13 +161,21 @@ button.green-btn {
 }
 .explore-wrapper .explore-content .explore-body .middle .nfts .nft .details .info {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 10px;
 }
-.explore-wrapper .explore-content .explore-body .middle .nfts .nft .details .info .owner {
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .details .info a:first-child {
+  display: none;
+}
+.explore-wrapper .explore-content .explore-body .middle .nfts .nft .details .info .owner a {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  gap: 0;
 }
 .explore-wrapper .explore-content .explore-body .middle .nfts .nft .details .info .price p {
   color: gray;
