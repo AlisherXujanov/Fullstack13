@@ -2,545 +2,621 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% block title %}
-      <title>Explore</title>
-    {% endblock %}
-  </head>
-  {% block content %}
-    <body>
-      <div class="explore-wrapper">
-        <div class="content-header">
-          <img src="{% static 'images/Sali1Card.png' %}" alt="Sali1Card" class="img-left1" />
-          <img src="{% static 'images/Sali2Card.png' %}" alt="Sali2Card" class="img-left2" />
 
-          <h1>Become Artist</h1>
-          <p>
-            Welcome to the world of NFTs, Creator! We're excited to see your unique <br /> digital assets come to life. Create, share, and let your imagination run wild.
-          </p>
-          <button class="red-btn"><a href="{% url 'create_nft' %}">Upload</a></button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% block title %}
+  <title>Explore</title>
+  {% endblock %}
+</head>
+{% block content %}
 
-          <img src="{% static 'images/Sali5Card.png' %}" alt="Sali5Card" class="img-right1" />
-          <img src="{% static 'images/JupiterCard.png' %}" alt="JupiterCard" class="img-right2" />
+<body>
+  <div class="explore-wrapper">
+    <div class="content-header">
+      <img src="{% static 'images/Sali1Card.png' %}" alt="Sali1Card" class="img-left1" />
+      <img src="{% static 'images/Sali2Card.png' %}" alt="Sali2Card" class="img-left2" />
+
+      <h1>Become Artist</h1>
+      <p>
+        Welcome to the world of NFTs, Creator! We're excited to see your unique <br /> digital assets come to life.
+        Create, share, and let your imagination run wild.
+      </p>
+      <a href="{% url 'create_nft' %}">
+        <button class="red-btn">
+          Upload
+        </button>
+      </a>
+
+      <img src="{% static 'images/Sali5Card.png' %}" alt="Sali5Card" class="img-right1" />
+      <img src="{% static 'images/JupiterCard.png' %}" alt="JupiterCard" class="img-right2" />
+    </div>
+    <div class="main-content">
+      <div class="create-nft">
+        <div class="block-img">
+          <div class="img">
+            <img src="{% static 'icons/tassel.png' %}" alt="tassel" class="img-icon1" />
+          </div>
+          <p>Create your NFT</p>
         </div>
-        <div class="main-content">
-          <div class="create-nft">
-            <div class="block-img">
-              <div class="img">
-                <img src="{% static 'icons/tassel.png' %}" alt="tassel" class="img-icon1" />
-              </div>
-              <p>Create your NFT</p>
-            </div>
-            <div class="block-info">
-              <h1>Create your NFT</h1>
-              <p>
-                Use a program such as Adobe Photoshop, <br /> Illustrator, or Procreate to create a digital asset. <br /> Make sure the image is in a supported file <br /> format (e.g. JPEG, PNG, GIF).
-              </p>
-              <button class="purple-btn"><a href="{% url 'create_nft' %}">Explore Now</a></button>
-            </div>
+        <div class="block-info">
+          <h1>Create your NFT</h1>
+          <p>
+            Use a program such as Adobe Photoshop, <br /> Illustrator, or Procreate to create a digital asset. <br />
+            Make sure the image is in a supported file <br /> format (e.g. JPEG, PNG, GIF).
+          </p>
+          <a href="{% url 'create_nft' %}">
+            <button class="purple-btn">
+              Explore Now
+            </button>
+          </a>
+        </div>
+      </div>
+      <div class="create-nft">
+        <div class="block-info">
+          <h1>Upload your NFT</h1>
+          <p>
+            Once you've chosen a marketplace, sign up for <br /> an account and upload your NFT. You will likely <br />
+            need to provide a title, description, and tags for <br /> your asset, as well as set a price.
+          </p>
+          <button class="purple-btn"><a href="{% url 'create_nft' %}">Explore Now</a></button>
+        </div>
+        <div class="block-img">
+          <div class="img">
+            <img src="{% static 'icons/Cloud.png' %}" alt="Cloud" class="img-icon2" />
           </div>
-          <div class="create-nft">
-            <div class="block-info">
-              <h1>Upload your NFT</h1>
-              <p>
-                Once you've chosen a marketplace, sign up for <br /> an account and upload your NFT. You will likely <br /> need to provide a title, description, and tags for <br /> your asset, as well as set a price.
-              </p>
-              <button class="purple-btn"><a href="{% url 'create_nft' %}">Explore Now</a></button>
-            </div>
-            <div class="block-img">
-              <div class="img">
-                <img src="{% static 'icons/Cloud.png' %}" alt="Cloud" class="img-icon2" />
-              </div>
-              <p>Upload your NFT</p>
-            </div>
+          <p>Upload your NFT</p>
+        </div>
+      </div>
+      <div class="create-nft">
+        <div class="block-img">
+          <div class="img">
+            <img src="{% static 'icons/shareicon.png' %}" alt="shareicon" class="img-icon3" />
           </div>
-          <div class="create-nft">
-            <div class="block-img">
-              <div class="img">
-                <img src="{% static 'icons/shareicon.png' %}" alt="shareicon" class="img-icon3" />
-              </div>
-              <p>Create your NFT</p>
-            </div>
-            <div class="block-info">
-              <h1>Share your NFT</h1>
-              <p>
-                After your NFT is uploaded and for sale, <br /> share it on social media and other platforms to help <br /> promote it and attract buyers.
-              </p>
+          <p>Create your NFT</p>
+        </div>
+        <div class="block-info">
+          <h1>Share your NFT</h1>
+          <p>
+            After your NFT is uploaded and for sale, <br /> share it on social media and other platforms to help <br />
+            promote it and attract buyers.
+          </p>
 
-              <div class="share-btn-container">
-                <button class="purple-btn" id="share-button">Explore Now</button>
-              </div>
-
-              <!-- The Modal -->
-              <div id="shareModal" class="modal">
-                <div class="modal-content">
-                  <span class="close" id="closeModal">&times;</span>
-                  <h2>Select a platform to share</h2>
-                  <div class="share-icons">
-                    <img src="{% static 'icons/Facebook.png' %}" alt="Facebook" id="share-facebook" />
-                    <img src="{% static 'icons/Twiter.png' %}" alt="Twitter" id="share-twitter" />
-                    <img src="{% static 'icons/whatsapp.svg' %}" alt="WhatsApp" id="share-whatsapp" />
-                    <img src="{% static 'icons/telegram.svg' %}" alt="Telegram" id="share-telegram" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="btn-gen-idea">
-            <button id="generate-nft-button" class="purple-btn">Идея для создания NFTs</button>
+          <div class="share-btn-container">
+            <button class="purple-btn" id="share-button">Explore Now</button>
           </div>
 
-          <!-- Модальное окно -->
-          <div id="nft-modal" class="nft-modal">
-            <div class="nft-modal-content">
-              <span class="nft-close-button">&times;</span>
-              <div id="nft-spinner" class="nft-spinner"></div>
-              <p id="nft-idea" class="nft-idea"></p>
+          <!-- The Modal -->
+          <div id="shareModal" class="modal">
+            <div class="modal-content">
+              <span class="close" id="closeShareModal">&times;</span>
+              <h2>Select a platform to share</h2>
+              <div class="share-icons">
+                <img src="{% static 'icons/Facebook.png' %}" alt="Facebook" id="share-facebook" />
+                <img src="{% static 'icons/Twiter.png' %}" alt="Twitter" id="share-twitter" />
+                <img src="{% static 'icons/whatsapp.svg' %}" alt="WhatsApp" id="share-whatsapp" />
+                <img src="{% static 'icons/telegram.svg' %}" alt="Telegram" id="share-telegram" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      {% block style %}
-        <style>
+      <div class="btn-gen-idea">
+        <button id="generate-nft-button" class="purple-btn">Идея для создания NFTs</button>
+      </div>
 
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: 0.2s ease-out;
-          }
-          
-          body {
-            min-width: 320px;
-            min-height: 100vh;
-            font: inherit;
-          }
-          
-          a {
-            font-weight: 500;
-            color: #6b6b6b;
-            text-decoration: none;
-          }
-          a:hover {
-            color: #191919;
-          }
-          a.active {
-            color: #000000;
-            font-weight: bold;
-          }
-          
-          h1 {
-            font-size: 2.5em;
-            line-height: 1.1;
-            font-family: 'Roboto Serif', sans-serif;
-            font-weight: 500;
-          }
-          
-          button {
-            padding: 10px 20px;
-            border: none;
-            outline: none;
-            color: snow;
-            font-weight: bold;
-            font-family: sans-serif;
-            border-radius: 10px;
-          }
-          button span {
-            margin-right: 10px;
-          }
-          
-          button.red-btn {
-            background: linear-gradient(to right, #ff56bb, #ff8f77);
-          }
-          
-          button.purple-btn {
-            background: linear-gradient(to right, #6e56ff, #b073ff);
-          }
-          
-          button.green-btn {
-            background: linear-gradient(to right, #56c2ff, #48fe9c);
-          }
-          
-          .explore-wrapper .content-header {
-            margin-top: 180px;
-            text-align: center;
-          }
-          .explore-wrapper .content-header .img-left1 {
-            position: absolute;
-            left: 160px;
-            top: 105px;
-          }
-          .explore-wrapper .content-header .img-left2 {
-            position: absolute;
-            left: 250px;
-            top: 317px;
-          }
-          .explore-wrapper .content-header .img-right1 {
-            position: absolute;
-            top: 121px;
-            right: 206px;
-          }
-          .explore-wrapper .content-header .img-right2 {
-            position: absolute;
-            top: 329px;
-            right: 90px;
-          }
-          .explore-wrapper .content-header h1 {
-            font-size: 68.89px;
-            font-weight: 500;
-            line-height: 84.5px;
-            letter-spacing: -0.003em;
-          }
-          .explore-wrapper .content-header p {
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 26px;
-            margin-top: 20px;
-          }
-          .explore-wrapper .content-header .red-btn {
-            width: 244px;
-            height: 60px;
-            border-radius: 16px;
-            padding: 15px;
-            margin-top: 54px;
-          }
-          .explore-wrapper .content-header .red-btn a {
-            font-weight: 700;
-            font-size: 18px;
-            color: snow;
-          }
-          .explore-wrapper .main-content {
-            margin-top: 280px;
-            margin: 0 auto;
-            padding: 0px 285px 0px 285px;
-            /* Спиннер */
-          }
-          .explore-wrapper .main-content .create-nft {
-            margin-top: 120px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-          }
-          .explore-wrapper .main-content .create-nft .block-img {
-            width: 385px;
-            height: 360px;
-            box-shadow: 0px 4.11px 49.29px 0px rgba(197, 197, 197, 0.2509803922);
-          }
-          .explore-wrapper .main-content .create-nft .block-img .img {
-            background-color: #faf6f3;
-            border-radius: 50%;
-            width: 135px;
-            height: 135px;
-            text-align: center;
-            margin: 0 auto;
-            margin-top: 97px;
-          }
-          .explore-wrapper .main-content .create-nft .block-img .img .img-icon2 {
-            margin-top: 20px;
-          }
-          .explore-wrapper .main-content .create-nft .block-img .img .img-icon3 {
-            margin-top: 20px;
-          }
-          .explore-wrapper .main-content .create-nft .block-img p {
-            margin-top: 50px;
-            font-size: 26px;
-            font-weight: 500;
-            letter-spacing: -0.003em;
-            text-align: center;
-          }
-          .explore-wrapper .main-content .create-nft .block-info {
-            /* Styles for the modal */
-          }
-          .explore-wrapper .main-content .create-nft .block-info h1 {
-            margin-top: 65px;
-            font-size: 44px;
-            font-weight: 500;
-            line-height: 55px;
-            letter-spacing: -0.003em;
-          }
-          .explore-wrapper .main-content .create-nft .block-info p {
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 26px;
-            margin-top: 22px;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .purple-btn {
-            margin-top: 10px;
-            width: 185px;
-            height: 44px;
-            border-radius: 20px;
-            text-align: center;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .purple-btn a {
-            font-size: 14px;
-            font-weight: 700;
-            color: snow;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .purple-btn:hover {
-            cursor: pointer;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .share-btn-container {
-            margin-top: 20px;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .share-btn-container .purple-btn {
-            margin-top: 10px;
-            width: 185px;
-            height: 44px;
-            border-radius: 20px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 700;
-            color: snow;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .share-btn-container .purple-btn:hover {
-            cursor: pointer;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
-            padding-top: 60px;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .modal .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
-            border-radius: 10px;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .close:hover,
-          .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .share-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .share-icons img {
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition: transform 0.2s;
-          }
-          .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .share-icons img:hover {
-            transform: scale(1.1);
-            cursor: pointer;
-          }
-          .explore-wrapper .main-content .btn-gen-idea {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 300px;
-          }
-          .explore-wrapper .main-content .btn-gen-idea .purple-btn {
-            font-size: 16px;
-            cursor: pointer;
-            padding: 20px;
-          }
-          .explore-wrapper .main-content .btn-gen-idea .purple-btn:hover {
-            transform: scale(1.1);
-          }
-          .explore-wrapper .main-content .nft-modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            transition: opacity 0.3s ease;
-          }
-          .explore-wrapper .main-content .nft-modal .nft-modal-content {
-            background-color: #fff;
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 0.3s ease;
-            min-height: 200px;
-          }
-          .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-idea {
-            display: flex;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: 600;
-          }
-          .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-spinner {
-            border: 16px solid #f3f3f3;
-            border-top: 16px solid #463d95;
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            animation: nft-spin 2s linear infinite;
-            margin: 0 auto;
-            display: none;
-            /* Скрыть по умолчанию */
-          }
-          .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-close-button {
-            display: flex;
-            justify-content: right;
-            color: #aaa;
-            text-align: right;
-            font-size: 28px;
-            font-weight: bold;
-          }
-          .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-close-button:hover,
-          .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-close-button:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-          }
-          @keyframes nft-spin {
-            0% {
-              transform: rotate(0deg);
-            }
-            100% {
-              transform: rotate(360deg);
-            }
-          }
-          @media (max-width: 1200px) {
-            .explore-wrapper .main-content .explore-wrapper .main-content {
-              padding: 0px 100px;
-            }
-            .explore-wrapper .main-content .explore-wrapper .content-header .img-left1,
-            .explore-wrapper .main-content .explore-wrapper .content-header .img-left2,
-            .explore-wrapper .main-content .explore-wrapper .content-header .img-right1,
-            .explore-wrapper .main-content .explore-wrapper .content-header .img-right2 {
-              display: none;
-            }
-          }
-          @media (max-width: 768px) {
-            .explore-wrapper .main-content .explore-wrapper .content-header h1 {
-              font-size: 2em;
-            }
-            .explore-wrapper .main-content .explore-wrapper .content-header p {
-              font-size: 16px;
-            }
-            .explore-wrapper .main-content .explore-wrapper .main-content {
-              margin-top: 50px;
-              padding: 0px 20px;
-            }
-            .explore-wrapper .main-content .explore-wrapper .main-content .create-nft {
-              grid-template-columns: 1fr;
-              margin-top: 60px;
-            }
-            .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-img {
-              width: 100%;
-              height: auto;
-            }
-            .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info h1 {
-              font-size: 1.5em;
-            }
-            .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info p {
-              font-size: 14px;
-            }
-            .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info .purple-btn {
-              width: 100%;
-            }
-          }
-          @media (max-width: 480px) {
-            .explore-wrapper .main-content .explore-wrapper .content-header h1 {
-              font-size: 1.5em;
-            }
-            .explore-wrapper .main-content .explore-wrapper .content-header p {
-              font-size: 14px;
-            }
-            .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-img {
-              width: 100%;
-            }
-            .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info h1 {
-              font-size: 1.2em;
-            }
-            .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info p {
-              font-size: 12px;
-            }
-          }
-        </style>
-      {% endblock %}
-    </body>
-  {% endblock %}
+      <!-- Модальное окно -->
+      <div id="nft-modal" class="nft-modal">
+        <div class="nft-modal-content">
+          <span class="nft-close-button">&times;</span>
+          <div id="nft-spinner" class="nft-spinner"></div>
+          <p id="nft-idea" class="nft-idea"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% block style %}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: 0.2s ease-out;
+    }
 
-  {% block js %}
-    <script>
-      const modal = document.getElementById('shareModal')
-      const btn = document.getElementById('share-button')
-      const closeModal = document.getElementById('closeModal')
-      const shareIcons = document.querySelectorAll('.share-icons img')
-      btn.onclick = function () {
-        modal.style.display = 'block'
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      font: inherit;
+    }
+
+    a {
+      font-weight: 500;
+      color: #6b6b6b;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #191919;
+    }
+
+    a.active {
+      color: #000000;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      line-height: 1.1;
+      font-family: 'Roboto Serif', sans-serif;
+      font-weight: 500;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      outline: none;
+      color: snow;
+      font-weight: bold;
+      font-family: sans-serif;
+      border-radius: 10px;
+    }
+
+    button span {
+      margin-right: 10px;
+    }
+
+    button.red-btn {
+      background: linear-gradient(to right, #ff56bb, #ff8f77);
+    }
+
+    button.purple-btn {
+      background: linear-gradient(to right, #6e56ff, #b073ff);
+    }
+
+    button.green-btn {
+      background: linear-gradient(to right, #56c2ff, #48fe9c);
+    }
+
+    .explore-wrapper .content-header {
+      margin-top: 180px;
+      text-align: center;
+    }
+
+    .explore-wrapper .content-header .img-left1 {
+      position: absolute;
+      left: 160px;
+      top: 105px;
+    }
+
+    .explore-wrapper .content-header .img-left2 {
+      position: absolute;
+      left: 250px;
+      top: 317px;
+    }
+
+    .explore-wrapper .content-header .img-right1 {
+      position: absolute;
+      top: 121px;
+      right: 206px;
+    }
+
+    .explore-wrapper .content-header .img-right2 {
+      position: absolute;
+      top: 329px;
+      right: 90px;
+    }
+
+    .explore-wrapper .content-header h1 {
+      font-size: 68.89px;
+      font-weight: 500;
+      line-height: 84.5px;
+      letter-spacing: -0.003em;
+    }
+
+    .explore-wrapper .content-header p {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 26px;
+      margin-top: 20px;
+    }
+
+    .explore-wrapper .content-header .red-btn {
+      width: 244px;
+      height: 60px;
+      border-radius: 16px;
+      padding: 15px;
+      margin-top: 54px;
+    }
+
+    .explore-wrapper .content-header .red-btn a {
+      font-weight: 700;
+      font-size: 18px;
+      color: snow;
+    }
+
+    .explore-wrapper .main-content {
+      margin-top: 280px;
+      margin: 0 auto;
+      padding: 0px 285px 0px 285px;
+      /* Спиннер */
+    }
+
+    .explore-wrapper .main-content .create-nft {
+      margin-top: 120px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-img {
+      width: 385px;
+      height: 360px;
+      box-shadow: 0px 4.11px 49.29px 0px rgba(197, 197, 197, 0.2509803922);
+    }
+
+    .explore-wrapper .main-content .create-nft .block-img .img {
+      background-color: #faf6f3;
+      border-radius: 50%;
+      width: 135px;
+      height: 135px;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 97px;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-img .img .img-icon2 {
+      margin-top: 20px;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-img .img .img-icon3 {
+      margin-top: 20px;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-img p {
+      margin-top: 50px;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: -0.003em;
+      text-align: center;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info {
+      /* Styles for the modal */
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info h1 {
+      margin-top: 65px;
+      font-size: 44px;
+      font-weight: 500;
+      line-height: 55px;
+      letter-spacing: -0.003em;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info p {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 26px;
+      margin-top: 22px;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .purple-btn {
+      margin-top: 10px;
+      width: 185px;
+      height: 44px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .purple-btn a {
+      font-size: 14px;
+      font-weight: 700;
+      color: snow;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .purple-btn:hover {
+      cursor: pointer;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .share-btn-container {
+      margin-top: 20px;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .share-btn-container .purple-btn {
+      margin-top: 10px;
+      width: 185px;
+      height: 44px;
+      border-radius: 20px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: snow;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .share-btn-container .purple-btn:hover {
+      cursor: pointer;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .modal .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .close:hover,
+    .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .share-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .share-icons img {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .explore-wrapper .main-content .create-nft .block-info .modal .modal-content .share-icons img:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
+    .explore-wrapper .main-content .btn-gen-idea {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+    }
+
+    .explore-wrapper .main-content .btn-gen-idea .purple-btn {
+      font-size: 16px;
+      cursor: pointer;
+      padding: 20px;
+    }
+
+    .explore-wrapper .main-content .btn-gen-idea .purple-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .explore-wrapper .main-content .nft-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: opacity 0.3s ease;
+    }
+
+    .explore-wrapper .main-content .nft-modal .nft-modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease;
+      min-height: 200px;
+    }
+
+    .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-idea {
+      display: flex;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-spinner {
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #463d95;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: nft-spin 2s linear infinite;
+      margin: 0 auto;
+      display: none;
+      /* Скрыть по умолчанию */
+    }
+
+    .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-close-button {
+      display: flex;
+      justify-content: right;
+      color: #aaa;
+      text-align: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-close-button:hover,
+    .explore-wrapper .main-content .nft-modal .nft-modal-content .nft-close-button:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    @keyframes nft-spin {
+      0% {
+        transform: rotate(0deg);
       }
-      closeModal.onclick = function () {
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .explore-wrapper .main-content .explore-wrapper .main-content {
+        padding: 0px 100px;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .content-header .img-left1,
+      .explore-wrapper .main-content .explore-wrapper .content-header .img-left2,
+      .explore-wrapper .main-content .explore-wrapper .content-header .img-right1,
+      .explore-wrapper .main-content .explore-wrapper .content-header .img-right2 {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .explore-wrapper .main-content .explore-wrapper .content-header h1 {
+        font-size: 2em;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .content-header p {
+        font-size: 16px;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .main-content {
+        margin-top: 50px;
+        padding: 0px 20px;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .main-content .create-nft {
+        grid-template-columns: 1fr;
+        margin-top: 60px;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-img {
+        width: 100%;
+        height: auto;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info h1 {
+        font-size: 1.5em;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info p {
+        font-size: 14px;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info .purple-btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .explore-wrapper .main-content .explore-wrapper .content-header h1 {
+        font-size: 1.5em;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .content-header p {
+        font-size: 14px;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-img {
+        width: 100%;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info h1 {
+        font-size: 1.2em;
+      }
+
+      .explore-wrapper .main-content .explore-wrapper .main-content .create-nft .block-info p {
+        font-size: 12px;
+      }
+    }
+  </style>
+  {% endblock %}
+</body>
+{% endblock %}
+
+{% block js %}
+<script>
+  const modal = document.getElementById('shareModal')
+  const btn = document.getElementById('share-button')
+  const closeShareModal = document.getElementById('closeShareModal')
+  const shareIcons = document.querySelectorAll('.share-icons img')
+  btn.onclick = function () {
+    modal.style.display = 'block'
+  }
+  closeShareModal.onclick = function () {
+    modal.style.display = 'none'
+  }
+  window.onclick = function (event) {
+    if (event.target === modal) {
+      modal.style.display = 'none'
+    }
+  }
+  shareIcons.forEach((icon) => {
+    icon.onclick = function () {
+      const url = encodeURIComponent(window.location.href)
+      const text = encodeURIComponent('Check out this awesome content!')
+      const platforms = {
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+        twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
+        whatsapp: `https://wa.me/?text=${text}%20${url}`,
+        telegram: `https://t.me/share/url?url=${url}&text=${text}`
+      }
+
+      const platform = icon.id.split('-')[1]
+      if (platforms[platform]) {
+        window.open(platforms[platform], '_blank')
         modal.style.display = 'none'
       }
-      window.onclick = function (event) {
-        if (event.target === modal) {
-          modal.style.display = 'none'
-        }
-      }
-      shareIcons.forEach((icon) => {
-        icon.onclick = function () {
-          const url = encodeURIComponent(window.location.href)
-          const text = encodeURIComponent('Check out this awesome content!')
-          const platforms = {
-            facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
-            twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
-            whatsapp: `https://wa.me/?text=${text}%20${url}`,
-            telegram: `https://t.me/share/url?url=${url}&text=${text}`
-          }
-      
-          const platform = icon.id.split('-')[1]
-          if (platforms[platform]) {
-            window.open(platforms[platform], '_blank')
-            modal.style.display = 'none'
-          }
-        }
-      })
-      //////////////////////////////////////////////
-      document.addEventListener('DOMContentLoaded', () => {
-        const modal = document.getElementById('nft-modal')
-        const btn = document.getElementById('generate-nft-button')
-        const closeBtn = document.querySelector('.nft-close-button')
-        const spinner = document.getElementById('nft-spinner')
-      
-        btn.onclick = async function () {
-          modal.style.display = 'block'
-          nftIdeaText.textContent = ''
-          spinner.style.display = 'block' // Показать спиннер
-      
-        closeBtn.onclick = function () {
-          modal.style.display = 'none'
-        }
-      
-        window.onclick = function (event) {
-          if (event.target == modal) {
-            modal.style.display = 'none'
-          }
-        }
-      })
-    </script>
-  {% endblock %}
+    }
+  })
+  //////////////////////////////////////////////
+  // document.addEventListener('DOMContentLoaded', () => {
+  //   const modal = document.getElementById('nft-modal')
+  //   const btn = document.getElementById('generate-nft-button')
+  //   const closeBtn = document.querySelector('.nft-close-button')
+  //   const spinner = document.getElementById('nft-spinner')
+// 
+  //   btn.onclick = async function () {
+  //     modal.style.display = 'block'
+  //     nftIdeaText.textContent = ''
+  //     spinner.style.display = 'block' // Показать спиннер
+// 
+  //     closeBtn.onclick = function () {
+  //       modal.style.display = 'none'
+  //     }
+// 
+  //     window.onclick = function (event) {
+  //       if (event.target == modal) {
+  //         modal.style.display = 'none'
+  //       }
+  //     }
+  //   }
+  // })
+
+</script>
+{% endblock %}
+
 </html>
