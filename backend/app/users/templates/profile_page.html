@@ -1,51 +1,74 @@
-<!-- obj  ==  profile object -->
+<!-- obj == profile object -->
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block css %}
-<style>
+  <style>
     .profile-container {
-        padding: 100px;
+      padding: 100px;
     }
-
+    
     .send-message-btn {
-        float: right;
-        background-color: green;
-        cursor: pointer;
-        padding: 10px 20px;
-        border-radius: 10px;
-        color: snow;
+      float: right;
+      background-color: green;
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: snow;
     }
-
+    
     .send-message-btn:hover {
-        background-color: darkgreen;
-        color: snow;
+      background-color: darkgreen;
+      color: snow;
     }
-</style>
+  </style>
 {% endblock %}
 
-
-
 {% block content %}
-<a href="#" class="send-message-btn">
-    Send Message
-</a>
+  <a href="{% url 'messages_page' obj.id %}" class="send-message-btn">Send Message</a>
 
-<div class="profile-container" style="display: flex; gap:50px;">
+  <div class="profile-container" style="display: flex; gap:50px;">
     <div class="left">
-        <img src="{{obj.image.url}}" width="300" height="300" style="border-radius: 50%;">
+      <img src="{{ obj.image.url }}" width="300" height="300" style="border-radius: 50%;" />
     </div>
     <div class="right">
-        <h2>{{obj.user.username}}</h2>
-        {% if obj.user.email %}
-        <a href="mailto:{{obj.user.email}}">
-            {{obj.user.email}}
-        </a>
-        {% else %}
+      <h2>{{ obj.user.username }}</h2>
+      {% if obj.user.email %}
+        <a href="mailto:{{ obj.user.email }}">{{ obj.user.email }}</a>
+      {% else %}
         <p>No email</p>
-        {% endif %}
+      {% endif %}
     </div>
-</div>
+  </div>
+  <hr>
+  <div class="container">
+    <button id="ajax-call" style="background-color: green; cursor:pointer;">AJAX call</button>
+    <div id="response"></div>
+  </div>
+{% endblock %}
 
+{% block js %}
+  <script>
+    document.querySelector('#ajax-call').addEventListener('click', ajaxCall)
+    let response = document.querySelector('#response')
 
+    function ajaxCall() {
+      fetch('{% url "ajax_view" %}', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify('data')
+      })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            response.innerHTML += `<p>${data.message}</p>`
+        })
+        .catch((error) => {
+          console.log('An error occurred: ' + error)
+        })
+    }
+  </script>
 {% endblock %}

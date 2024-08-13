@@ -101,32 +101,24 @@ def update_nft(request, pk: int):
     return render(request, 'update_nft.html', context)
 
     
-    
 class ExploreView(ListView):
     model = NFTs
     template_name = 'explore.html'
     context_object_name = 'nfts'
     paginate_by = 4
 
-# def explore(request):
-#     context = {
-#         'nfts':NFTs.objects.all()
-#     }
-#     return render(request,'explore.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['favorites'] = NFTs.objects.filter(liked_by=self.request.user).values_list('id', flat=True)
+        return context
 
-def explore(request):
-    context = {
-        'nfts': NFTs.objects.all(),
-        'favorites': request.session.get('favorites', [])
-    }
-    return render(request, 'explore.html', context)
 
 
 def nft_details(request, pk: int):
     nft = NFTs.objects.get(id=pk)
     context = {
         'nft': nft,
-        'favorites': request.session.get('favorites', [])
+        'favorites':  NFTs.objects.filter(liked_by=request.user).values_list('id', flat=True)
     }
     return render(request, 'nft_details.html', context)
 

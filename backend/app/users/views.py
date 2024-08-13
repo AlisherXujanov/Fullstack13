@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from django.shortcuts import render
@@ -43,3 +44,13 @@ def messages(request, pk:int):
         "target_user": target_user,
     }
     return render(request, "messages.html", context)
+
+
+def ajax_view(request):
+    if request.headers.get('X-CSRFToken') and request.method == "POST":
+        # Process the request and prepare the response
+        data = {
+            'message': 'This is the response from the server!'
+        }
+        return JsonResponse(data)
+    return JsonResponse({'error': 'Invalid request'}, status=400)

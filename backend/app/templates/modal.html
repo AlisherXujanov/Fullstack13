@@ -3,7 +3,8 @@
   <div class="cancel">
     <button class="close-modal">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#fff" class="bi bi-x" viewBox="0 0 16 16">
-        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+        <path
+          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
       </svg>
     </button>
   </div>
@@ -13,23 +14,23 @@
     </div>
     <div class="middle">
       {% if request.user.is_authenticated %}
-        <div class="logout-content">
-          <p>Hi, {{ request.user.username }}👋</p>
-          <a href="{% url 'custom_logout' %}" class="logout">Log out</a>
-        </div>
+      <div class="logout-content">
+        <p>Hi, {{ request.user.username }}👋</p>
+        <a href="{% url 'custom_logout' %}" class="logout">Log out</a>
+      </div>
       {% else %}
-        <div class="links">
-          <a class="login" href="{% url "login" %}">Sign in</a>
-          <a class="signup" href="{% url "signup" %}">Sign up</a>
-          <p>Or</p>
-          <a class="github" href="#github">
-            <img src="{% static 'icons/gtihub.webp' %}" alt="">
-          </a>
-          <a href="#google" class="google">
-            <img src="{% static 'icons/google.png' %}" alt="">
-            
-          </a>
-        </div>
+      <div class="links">
+        <a class="login" href="{% url 'login' %}">Sign in</a>
+        <a class="signup" href="{% url 'signup' %}">Sign up</a>
+        <p>Or</p>
+        <a class="github" href="#github">
+          <img src="{% static 'icons/gtihub.webp' %}" alt="">
+        </a>
+        <a href="#google" class="google">
+          <img src="{% static 'icons/google.png' %}" alt="">
+
+        </a>
+      </div>
       {% endif %}
     </div>
   </div>
@@ -37,7 +38,29 @@
     const modalWindow = document.querySelector('.modal-bg')
     const openModalBtn = document.querySelector('.open-modal')
     const closeModalBtn = document.querySelector('.close-modal')
-    
+    const loginUsername = document.querySelector('#id_login')
+    const loginPassword = document.querySelector('#id_password')
+    const signupUsername = document.querySelector('#id_username')
+    const signupEmail = document.querySelector('#id_email')
+    const signupPassword = document.querySelector('#id_password1')
+    const signupPasswordConfirm = document.querySelector('#id_password2')
+
+    const usernamePattern = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/
+    const passwordPattern = /^(?!.*\s).{6,}$/
+    const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
+
+    function openModal() {
+      modalWindow.classList.add('open')
+    }
+
+    function closeModal() {
+      modalWindow.classList.remove('open')
+    }
+
+    openModalBtn ? openModalBtn.addEventListener('click', openModal) : null
+    closeModalBtn.addEventListener('click', closeModal)
+
+
     function showSignUp() {
       if (signInBlock && signUpBlock && signInBtn && signUpBtn) {
         signInBlock.style.display = 'none'
@@ -46,149 +69,116 @@
         signUpBtn.classList.add('active')
       }
     }
-    
-    function openModal() {
-      modalWindow.classList.add('open')
-    }
-    
-    function closeModal() {
-      modalWindow.classList.remove('open')
-    }
-    
-    openModalBtn.addEventListener('click', openModal)
-    closeModalBtn.addEventListener('click', closeModal)
 
-    //* validation
-    
-    const signinForm = document.querySelector('#sign-in-form')
-    const signupForm = document.querySelector('#sign-up-form')
-    const loginUsername = document.querySelector('#id_login')
-    const loginPassword = document.querySelector('#id_password')
-    const signupUsername = document.querySelector('#id_username')
-    const signupEmail = document.querySelector('#id_email')
-    const signupPassword = document.querySelector('#id_password1')
-    const signupPasswordConfirm = document.querySelector('#id_password2')
-    
-    const usernamePattern = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/
-    const passwordPattern = /^(?!.*\s).{6,}$/
-    const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
-    
-    signinForm.addEventListener('submit', function (event) {
-      if (!loginValidation()) {
-        event.preventDefault()
-      }
-    })
-    loginUsername.addEventListener('input', function (event) {
-      loginUsername.classList.remove('error')
-    })
-    loginPassword.addEventListener('input', function (event) {
-      loginPassword.classList.remove('error')
-    })
-    
-    signupForm.addEventListener('submit', function (event) {
-      if (!signupValidation()) {
-        event.preventDefault()
-      }
-    })
-    
-    function loginValidation() {
-      let isValid = true
-      if (usernamePattern.test(loginUsername.value)) {
-        loginUsername.classList.remove('error')
-      } else {
-        loginUsername.classList.add('error')
-        isValid = false
-      }
-      if (passwordPattern.test(loginPassword.value)) {
-        loginPassword.classList.remove('error')
-      } else {
-        loginPassword.classList.add('error')
-        isValid = false
-      }
-      return isValid
-    }
-    function signupValidation() {
-      let isValid = true
-      if (usernamePattern.test(signupUsername.value)) {
-        signupUsername.classList.remove('error')
-      } else {
-        signupUsername.classList.add('error')
-        isValid = false
-      }
-      if (emailPattern.test(signupEmail.value)) {
-        signupEmail.classList.remove('error')
-      } else {
-        signupEmail.classList.add('error')
-        isValid = false
-      }
-      if (passwordPattern.test(signupPassword.value) && signupPassword.value === signupPasswordConfirm.value) {
-        signupPassword.classList.remove('error')
-        signupPasswordConfirm.classList.remove('error')
-      } else {
-        signupPassword.classList.add('error')
-        signupPasswordConfirm.classList.add('error')
-        isValid = false
-      }
-      return isValid
-    }
-    signinForm.addEventListener('submit', function (event) {
-      if (!loginValidation()) {
-        event.preventDefault()
-      }
-    })
-    loginUsername.addEventListener('input', function (event) {
-      if (usernamePattern.test(event.target.value)) {
-        loginUsername.classList.remove('error')
-        loginUsername.classList.add('success')
-      } else {
-        loginUsername.classList.add('error')
-        loginUsername.classList.remove('success')
-      }
-    })
-    loginPassword.addEventListener('input', function (event) {
-      if (passwordPattern.test(event.target.value)) {
-        loginPassword.classList.remove('error')
-        loginPassword.classList.add('success')
-      } else {
-        loginPassword.classList.add('error')
-        loginPassword.classList.remove('success')
-      }
-    })
-    signupUsername.addEventListener('input', function (event) {
-      if (usernamePattern.test(event.target.value)) {
-        signupUsername.classList.remove('error')
-        signupUsername.classList.add('success')
-      } else {
-        signupUsername.classList.add('error')
-        signupUsername.classList.remove('success')
-      }
-    })
-    signupEmail.addEventListener('input', function (event) {
-      if (emailPattern.test(event.target.value)) {
-        signupEmail.classList.remove('error')
-        signupEmail.classList.add('success')
-      } else {
-        signupEmail.classList.add('error')
-        signupEmail.classList.remove('success')
-      }
-    })
-    signupPassword.addEventListener('input', function (event) {
-      if (passwordPattern.test(event.target.value)) {
-        signupPassword.classList.remove('error')
-        signupPassword.classList.add('success')
-      } else {
-        signupPassword.classList.add('error')
-        signupPassword.classList.remove('success')
-      }
-    })
-    signupPasswordConfirm.addEventListener('input', function (event) {
-      if (signupPassword.value === event.target.value) {
-        signupPasswordConfirm.classList.remove('error')
-        signupPasswordConfirm.classList.add('success')
-      } else {
-        signupPasswordConfirm.classList.add('error')
-        signupPasswordConfirm.classList.remove('success')
-      }
-    })
+    /*
+const signinForm = document.querySelector('#sign-in-form')
+const signupForm = document.querySelector('#sign-up-form')
+
+
+signinForm.addEventListener('submit', function (event) {
+  if (!loginValidation()) {
+    event.preventDefault()
+  }
+})
+signupForm.addEventListener('submit', function (event) {
+  if (!signupValidation()) {
+    event.preventDefault()
+  }
+})
+function loginValidation() {
+  let isValid = true
+  if (usernamePattern.test(loginUsername.value)) {
+    loginUsername.classList.remove('error')
+  } else {
+    loginUsername.classList.add('error')
+    isValid = false
+  }
+  if (passwordPattern.test(loginPassword.value)) {
+    loginPassword.classList.remove('error')
+  } else {
+    loginPassword.classList.add('error')
+    isValid = false
+  }
+  return isValid
+}
+function signupValidation() {
+  let isValid = true
+  if (usernamePattern.test(signupUsername.value)) {
+    signupUsername.classList.remove('error')
+  } else {
+    signupUsername.classList.add('error')
+    isValid = false
+  }
+  if (emailPattern.test(signupEmail.value)) {
+    signupEmail.classList.remove('error')
+  } else {
+    signupEmail.classList.add('error')
+    isValid = false
+  }
+  if (passwordPattern.test(signupPassword.value) && signupPassword.value === signupPasswordConfirm.value) {
+    signupPassword.classList.remove('error')
+    signupPasswordConfirm.classList.remove('error')
+  } else {
+    signupPassword.classList.add('error')
+    signupPasswordConfirm.classList.add('error')
+    isValid = false
+  }
+  return isValid
+}
+loginUsername.addEventListener('input', function (event) {
+  if (usernamePattern.test(event.target.value)) {
+    loginUsername.classList.remove('error')
+    loginUsername.classList.add('success')
+  } else {
+    loginUsername.classList.add('error')
+    loginUsername.classList.remove('success')
+  }
+})
+loginPassword.addEventListener('input', function (event) {
+  if (passwordPattern.test(event.target.value)) {
+    loginPassword.classList.remove('error')
+    loginPassword.classList.add('success')
+  } else {
+    loginPassword.classList.add('error')
+    loginPassword.classList.remove('success')
+  }
+})
+signupUsername.addEventListener('input', function (event) {
+  if (usernamePattern.test(event.target.value)) {
+    signupUsername.classList.remove('error')
+    signupUsername.classList.add('success')
+  } else {
+    signupUsername.classList.add('error')
+    signupUsername.classList.remove('success')
+  }
+})
+signupEmail.addEventListener('input', function (event) {
+  if (emailPattern.test(event.target.value)) {
+    signupEmail.classList.remove('error')
+    signupEmail.classList.add('success')
+  } else {
+    signupEmail.classList.add('error')
+    signupEmail.classList.remove('success')
+  }
+})
+signupPassword.addEventListener('input', function (event) {
+  if (passwordPattern.test(event.target.value)) {
+    signupPassword.classList.remove('error')
+    signupPassword.classList.add('success')
+  } else {
+    signupPassword.classList.add('error')
+    signupPassword.classList.remove('success')
+  }
+})
+signupPasswordConfirm.addEventListener('input', function (event) {
+  if (signupPassword.value === event.target.value) {
+    signupPasswordConfirm.classList.remove('error')
+    signupPasswordConfirm.classList.add('success')
+  } else {
+    signupPasswordConfirm.classList.add('error')
+    signupPasswordConfirm.classList.remove('success')
+  }
+})
+        */
   </script>
 </div>
