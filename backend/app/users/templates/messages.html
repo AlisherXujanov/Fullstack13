@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block css %}
-
+  <link rel="stylesheet" href="{% static 'styles/messages.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -24,7 +24,7 @@
           </h2>
         </div>
         <div class="searchbox">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="gray" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
           </svg>
           <input type="search" placeholder="Search here ..." />
@@ -32,50 +32,117 @@
       </div>
       <div class="other-profiles">
         {% comment %}TODO: SHOW ALL USERS{% endcomment %}
+        <div class="user">
+          <div class="left">
+            <img src="{% static 'icons/avatar.png' %}" alt="" />
+          </div>
+          <div class="right">
+            <div class="top">
+              <p class="fullname">John Smith</p>
+            </div>
+            <div class="bottom">
+              <div class="message">
+                <p class="last-message">Lorem Ipsum</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="user">
+          <div class="left">
+            <img src="{% static 'icons/avatar.png' %}" alt="" />
+          </div>
+          <div class="right">
+            <div class="top">
+              <p class="fullname">John Smith</p>
+            </div>
+            <div class="bottom">
+              <div class="message">
+                <p class="last-message">Lorem Ipsum</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="user">
+          <div class="left">
+            <img src="{% static 'icons/avatar.png' %}" alt="" />
+          </div>
+          <div class="right">
+            <div class="top">
+              <p class="fullname">John Smith</p>
+            </div>
+            <div class="bottom">
+              <div class="message">
+                <p class="last-message">Lorem Ipsum</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="user">
+          <div class="left">
+            <img src="{% static 'icons/avatar.png' %}" alt="" />
+          </div>
+          <div class="right">
+            <div class="top">
+              <p class="fullname">John Smith</p>
+            </div>
+            <div class="bottom">
+              <div class="message">
+                <p class="last-message">Lorem Ipsum</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="middle-content-wrapper">
       <div class="companion-profile-info">
         <div class="content">
-          <img src="{{ target_user.profile.image.url }}" alt="" />
+          {% if target_user.profile.image.url %}
+            <img src="{{ target_user.profile.image.url }}" alt="" />
+          {% else %}
+            <img src="{% static 'icons/avatar.png' %}" alt="" />
+          {% endif %}
           <h2 class="target-user-fullname">
             {% if target_user.first_name and target_user.last_name %}
               {{ target_user.first_name }} {{ target_user.last_name }}
             {% else %}
               {{ target_user.username }}
             {% endif %}
-            <span class="is-online">
-                {% comment %} 
-                    TODO:
-                        implement if he is online or not
-                    RU: реализовать проверку онлайн ли пользователь
-                {% endcomment %}
-            </span>
+            <span class="is-online">{% comment %}TODO: implement if he is online or not RU: реализовать проверку онлайн ли пользователь{% endcomment %}</span>
           </h2>
         </div>
       </div>
       <div class="messages-content">
-        {% comment %} 
-            TODO:
-                IMPLEMENT AJAX call to load all messages between the two users
-            RU: Реализовать AJAX запрос для загрузки всех сообщений между двумя пользователями
-        {% endcomment %}
+        {% comment %}TODO: IMPLEMENT AJAX call to load all messages between the two users RU: Реализовать AJAX запрос для загрузки всех сообщений между двумя пользователями{% endcomment %}
 
-        {% comment %} 
-            {% for message in messages %}
-                <span class="my-message"></span>
-                <span class="companion-message"></span>
-            {% endfor %}
+        {% comment %}
+        {% for message in messages %}
+          <span class="my-message">My message</span>
+          <span class="companion-message">Companion message</span>
+        {% endfor %}
         {% endcomment %}
+        <span class="my-message">My message</span>
+        <span class="my-message">My message</span>
+        <span class="companion-message">Companion message</span>
+        <span class="my-message">My message</span>
+        <span class="companion-message">Companion message</span>
+        <span class="companion-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quaerat cupiditate architecto temporibus officiis, in pariatur. Impedit, eveniet asperiores! Eius, repellat! Facere at aliquid quisquam. Asperiores modi doloremque recusandae deserunt!</span>
+        <span class="my-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias distinctio quae voluptate ducimus blanditiis hic debitis, quia labore nihil. Voluptatem explicabo libero accusantium vitae ipsum placeat laboriosam reiciendis ex iure!</span>
+        <span class="my-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, explicabo!</span>
       </div>
       <div class="form-content">
         <form action="">
-            {% comment %} TODO {% endcomment %}
+          {% comment %}TODO{% endcomment %}
+          <input type="text" placeholder="Write Something" /> <button type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+              <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z" />
+            </svg>
+          </button>
         </form>
       </div>
     </div>
     <div class="right-profile-wrapper">
-
+        
     </div>
   </main>
 {% endblock %}
