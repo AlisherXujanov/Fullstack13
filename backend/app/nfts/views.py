@@ -19,8 +19,8 @@ def custom_404(request, exception):
 
 def landing_page(request):
     context = {
-        'most_liked':NFTs.objects.annotate(num_likes=Count('liked_by')).filter(num_likes__gt=0).order_by('-num_likes')
-    
+        'most_liked': NFTs.objects.annotate(num_likes=Count('liked_by')).filter(num_likes__gt=0).order_by('-num_likes')
+
     }
     return render(request, 'landing_page.html', context)
 
@@ -37,9 +37,11 @@ def add_to_favorites(request, pk: int):
 
     return redirect(request.META.get('HTTP_REFERER'))
 
+
 def remove_from_favorites(request, pk: int):
     if not request.user.is_authenticated:
-        messages.warning(request, 'You need to be logged in to remove favorites')
+        messages.warning(
+            request, 'You need to be logged in to remove favorites')
         return redirect(request.META.get('HTTP_REFERER'))
 
     if remove_from_favorites_fn(request, pk):
@@ -81,7 +83,7 @@ def update_nft(request, pk: int):
         name = request.POST['name']
         description = request.POST['description'].strip()
         price = request.POST['price']
-        
+
         if img := request.FILES.get('image', None):
             nft.image = img
         # img = request.FILES.get('image', None)
@@ -100,7 +102,7 @@ def update_nft(request, pk: int):
     context = {'nft_obj': nft}
     return render(request, 'update_nft.html', context)
 
-    
+
 class ExploreView(ListView):
     model = NFTs
     template_name = 'explore.html'
@@ -109,16 +111,22 @@ class ExploreView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['favorites'] = NFTs.objects.filter(liked_by=self.request.user).values_list('id', flat=True)
+        if self.request.user.is_authenticated:
+            context['favorites'] = NFTs.objects.filter(
+                liked_by=self.request.user).values_list('id', flat=True)
         return context
-
 
 
 def nft_details(request, pk: int):
     nft = NFTs.objects.get(id=pk)
+    favorites = []
+    if request.user.is_authenticated:
+        favorites = NFTs.objects.filter(
+            liked_by=request.user).values_list('id', flat=True)
+
     context = {
         'nft': nft,
-        'favorites':  NFTs.objects.filter(liked_by=request.user).values_list('id', flat=True)
+        'favorites': favorites
     }
     return render(request, 'nft_details.html', context)
 
