@@ -97,18 +97,26 @@
     <div class="middle-content-wrapper">
       <div class="companion-profile-info">
         <div class="content">
-          {% if target_user.profile.image.url %}
-            <img src="{{ target_user.profile.image.url }}" alt="" />
+          {% if target_user_profile.image.url %}
+            <img src="{{ target_user_profile.image.url }}" width="70" height="70" style="border-radius: 50%; margin-right: 10px;" />
           {% else %}
-            <img src="{% static 'icons/avatar.png' %}" alt="" />
+            <img src="{% static 'icons/avatar.png' %}" width="70" height="70" style="border-radius: 50%; margin-right: 10px;" />
           {% endif %}
           <h2 class="target-user-fullname">
-            {% if target_user.first_name and target_user.last_name %}
-              {{ target_user.first_name }} {{ target_user.last_name }}
-            {% else %}
-              {{ target_user.username }}
-            {% endif %}
-            <span class="is-online">{% comment %}TODO: implement if he is online or not RU: реализовать проверку онлайн ли пользователь{% endcomment %}</span>
+            <p>
+              {% if target_user_profile.user.first_name and target_user_profile.user.last_name %}
+                {{ target_user_profile.user.first_name }} {{ target_user_profile.user.last_name }}
+              {% else %}
+                {{ target_user_profile.user.username }}
+              {% endif %}
+            </p>
+            <p>
+              {% if target_user_is_active %}
+                <span class="is-online">is online</span>
+              {% else %}
+                <span class="last-login">{{ target_user_last_login }}</span>
+              {% endif %}
+            </p>
           </h2>
         </div>
       </div>
@@ -141,8 +149,6 @@
         </form>
       </div>
     </div>
-    <div class="right-profile-wrapper">
-        
-    </div>
+    <div class="right-profile-wrapper"></div>
   </main>
 {% endblock %}

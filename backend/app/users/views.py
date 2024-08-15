@@ -57,8 +57,12 @@ def messages(request, pk: int):
     #     },
     # ]
 
+    formatted_last_login = target_user.user.last_login.strftime("%d %b %Y, %H:%M:%S")
+
     context = {
-        "target_user": target_user,
+        "target_user_profile": target_user,
+        "target_user_is_active": False,
+        "target_user_last_login": formatted_last_login
     }
     return render(request, "messages.html", context)
 

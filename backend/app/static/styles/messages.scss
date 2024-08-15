@@ -104,9 +104,30 @@
             .content {
                 height: inherit;
                 display: flex;
-                align-items: center;
+                justify-content: flex-start;
+                align-items: flex-start;
                 padding: 0 20px;
+
+
+                .target-user-fullname {
+                    @include flex(column, flex-start, flex-start, 0);
+
+                    .is-online {
+                        display: inline-block;
+                        border-radius: 50%;
+                        font-size: 0.7em;
+                        color: greenyellow;
+                    }
+
+                    .last-login {
+                        display: block;
+                        font-size: 0.5em;
+                        color: gray;
+                    }
+                }
+
             }
+
 
             border-bottom: 1px solid #eee;
         }

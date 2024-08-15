@@ -149,8 +149,27 @@ button.green-btn {
 .messages-page-wrapper .middle-content-wrapper .companion-profile-info .content {
   height: inherit;
   display: flex;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding: 0 20px;
+}
+.messages-page-wrapper .middle-content-wrapper .companion-profile-info .content .target-user-fullname {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0;
+}
+.messages-page-wrapper .middle-content-wrapper .companion-profile-info .content .target-user-fullname .is-online {
+  display: inline-block;
+  border-radius: 50%;
+  font-size: 0.7em;
+  color: greenyellow;
+}
+.messages-page-wrapper .middle-content-wrapper .companion-profile-info .content .target-user-fullname .last-login {
+  display: block;
+  font-size: 0.5em;
+  color: gray;
 }
 .messages-page-wrapper .middle-content-wrapper .messages-content {
   height: calc(70vh - 100px - 70px);
