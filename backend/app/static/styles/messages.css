@@ -71,6 +71,7 @@ button.green-btn {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  margin-bottom: 50px;
 }
 .messages-page-wrapper .left-sidebar-wrapper {
   background-color: rgba(211, 211, 211, 0.384);

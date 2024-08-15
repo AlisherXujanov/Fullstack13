@@ -7,6 +7,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 2fr;
+    margin-bottom: 50px;
 
     .left-sidebar-wrapper {
         background-color: rgba(211, 211, 211, 0.384);
@@ -159,13 +160,15 @@
         .form-content {
             height: 100px;
             background-color: #dbe8ff;
-            form{
+
+            form {
                 height: inherit;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 gap: 20px;
-                input{
+
+                input {
                     width: 80%;
                     height: 40px;
                     padding: 10px;
@@ -173,7 +176,8 @@
                     outline: none;
                     border-radius: 30px;
                 }
-                button{
+
+                button {
                     width: 40px;
                     height: 40px;
                     border-radius: 50%;

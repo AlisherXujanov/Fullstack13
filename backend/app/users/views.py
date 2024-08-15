@@ -36,10 +36,27 @@ def profile_page(request, pk):
     return render(request, "profile_page.html", context)
 
 
-
 @login_required
-def messages(request, pk:int):
+def messages(request, pk: int):
     target_user = Profile.objects.get(user__pk=pk)
+
+    # TODO:
+    # companion = user-object
+    # messages = [
+    #     {
+    #         "day": 20, "month": 5, "year": 2021,
+    #         "messages": {
+    #             "companion": {"time": "12:00", "content": ["Hello", "Hi", "How are you?"]}},
+    #         "myself": {"time": "12:05", "content": ["I'm fine", "How about you?"]},
+    #     },
+    #     {
+    #         "day": 21, "month": 5, "year": 2021,
+    #         "messages": {
+    #             "companion": {"time": "12:00", "content": ["Hello", "Hi", "How are you?"]}},
+    #             "myself": {"time": "12:05", "content": ["I'm fine", "How about you?"]},
+    #     },
+    # ]
+
     context = {
         "target_user": target_user,
     }
