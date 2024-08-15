@@ -31,67 +31,33 @@
         </div>
       </div>
       <div class="other-profiles">
-        {% comment %}TODO: SHOW ALL USERS{% endcomment %}
-        <div class="user">
-          <div class="left">
-            <img src="{% static 'icons/avatar.png' %}" alt="" />
-          </div>
-          <div class="right">
-            <div class="top">
-              <p class="fullname">John Smith</p>
+        {% for friend_profile in friends %}
+          <div class="user">
+            <div class="left">
+              <img src="{{ friend_profile.image.url }}" alt="Friend profile image"
+                width="50" height="50" style="border-radius: 50%;"
+              />
             </div>
-            <div class="bottom">
-              <div class="message">
-                <p class="last-message">Lorem Ipsum</p>
+            <div class="right">
+              <div class="top">
+                <p class="fullname">
+                  {% if friend_profile.user.first_name and friend_profile.user.last_name %}
+                    {{ friend_profile.user.first_name }} {{ friend_profile.user.last_name }}
+                  {% else %}
+                    {{ friend_profile.user.username }}
+                  {% endif %}
+                </p>
+              </div>
+              <div class="bottom">
+                <div class="message">
+                  <p class="last-message">
+                    {{ friend_profile.get_last_message }}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="user">
-          <div class="left">
-            <img src="{% static 'icons/avatar.png' %}" alt="" />
-          </div>
-          <div class="right">
-            <div class="top">
-              <p class="fullname">John Smith</p>
-            </div>
-            <div class="bottom">
-              <div class="message">
-                <p class="last-message">Lorem Ipsum</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="user">
-          <div class="left">
-            <img src="{% static 'icons/avatar.png' %}" alt="" />
-          </div>
-          <div class="right">
-            <div class="top">
-              <p class="fullname">John Smith</p>
-            </div>
-            <div class="bottom">
-              <div class="message">
-                <p class="last-message">Lorem Ipsum</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="user">
-          <div class="left">
-            <img src="{% static 'icons/avatar.png' %}" alt="" />
-          </div>
-          <div class="right">
-            <div class="top">
-              <p class="fullname">John Smith</p>
-            </div>
-            <div class="bottom">
-              <div class="message">
-                <p class="last-message">Lorem Ipsum</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
     <div class="middle-content-wrapper">

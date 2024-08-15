@@ -56,13 +56,13 @@ def messages(request, pk: int):
     #             "myself": {"time": "12:05", "content": ["I'm fine", "How about you?"]},
     #     },
     # ]
-
     formatted_last_login = target_user.user.last_login.strftime("%d %b %Y, %H:%M:%S")
 
     context = {
         "target_user_profile": target_user,
         "target_user_is_active": False,
-        "target_user_last_login": formatted_last_login
+        "target_user_last_login": formatted_last_login,
+        "friends": Profile.objects.all()
     }
     return render(request, "messages.html", context)
 

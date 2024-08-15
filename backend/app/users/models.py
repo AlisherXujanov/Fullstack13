@@ -32,8 +32,18 @@ class Profile(models.Model):
     image = models.ImageField(
         upload_to='profile_pics/', default='profile_pics/default.png')
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.request = None
+
     def __str__(self):
         return f'{self.user.username} Profile'
+
+
+    # TODO: implement companion_id when the feature is ready!
+    def get_last_message(self) -> str:
+        return 'No messages yet'
+
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
