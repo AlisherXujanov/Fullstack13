@@ -164,16 +164,27 @@
                 border-radius: 10px;
                 max-width: 45%;
                 text-wrap: pretty;
-
+                position: relative;
                 &.my-message {
                     margin-left: auto;
                     background-color: #4299ff;
                     color: #fff;
+                    .time{
+                        
+                        color: #ffffff8c;
+                    }
                 }
 
                 &.companion-message {
                     margin-right: auto;
                     background-color: #dbe8ff
+                }
+                .time{
+                    display: block;
+                    width: 100%;
+                    text-align: right;
+                    font-size: 14px;
+                    color: gray;
                 }
             }
         }

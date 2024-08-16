@@ -34,9 +34,7 @@
         {% for friend_profile in friends %}
           <div class="user">
             <div class="left">
-              <img src="{{ friend_profile.image.url }}" alt="Friend profile image"
-                width="50" height="50" style="border-radius: 50%;"
-              />
+              <img src="{{ friend_profile.image.url }}" alt="Friend profile image" width="50" height="50" style="border-radius: 50%;" />
             </div>
             <div class="right">
               <div class="top">
@@ -50,9 +48,7 @@
               </div>
               <div class="bottom">
                 <div class="message">
-                  <p class="last-message">
-                    {{ friend_profile.get_last_message }}
-                  </p>
+                  <p class="last-message">{{ friend_profile.get_last_message }}</p>
                 </div>
               </div>
             </div>
@@ -95,14 +91,30 @@
           <span class="companion-message">Companion message</span>
         {% endfor %}
         {% endcomment %}
-        <span class="my-message">My message</span>
+        {% comment %} <span class="my-message">My message</span>
         <span class="my-message">My message</span>
         <span class="companion-message">Companion message</span>
         <span class="my-message">My message</span>
         <span class="companion-message">Companion message</span>
         <span class="companion-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quaerat cupiditate architecto temporibus officiis, in pariatur. Impedit, eveniet asperiores! Eius, repellat! Facere at aliquid quisquam. Asperiores modi doloremque recusandae deserunt!</span>
         <span class="my-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias distinctio quae voluptate ducimus blanditiis hic debitis, quia labore nihil. Voluptatem explicabo libero accusantium vitae ipsum placeat laboriosam reiciendis ex iure!</span>
-        <span class="my-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, explicabo!</span>
+        <span class="my-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, explicabo!</span> {% endcomment %}
+        
+
+        {% for message_content in chat_messages %}
+        
+        {% if message_content.message.sender == 'companion' %}
+        <span class="companion-message">
+          {{message_content.message.content}}
+          <p class="time">{{message_content.message.time}}</p>
+        </span>
+        {% else %}
+        <span class="my-message">{{message_content.message.content}}
+          <p class="time">{{message_content.message.time}}</p>
+        </span>
+
+        {% endif %}
+        {% endfor %}
       </div>
       <div class="form-content">
         <form action="">
