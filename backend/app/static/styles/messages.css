@@ -197,15 +197,26 @@ button.green-btn {
   border-radius: 10px;
   max-width: 45%;
   text-wrap: pretty;
+  position: relative;
 }
 .messages-page-wrapper .middle-content-wrapper .messages-content span.my-message {
   margin-left: auto;
   background-color: #4299ff;
   color: #fff;
 }
+.messages-page-wrapper .middle-content-wrapper .messages-content span.my-message .time {
+  color: rgba(255, 255, 255, 0.5490196078);
+}
 .messages-page-wrapper .middle-content-wrapper .messages-content span.companion-message {
   margin-right: auto;
   background-color: #dbe8ff;
+}
+.messages-page-wrapper .middle-content-wrapper .messages-content span .time {
+  display: block;
+  width: 100%;
+  text-align: right;
+  font-size: 14px;
+  color: gray;
 }
 .messages-page-wrapper .middle-content-wrapper .form-content {
   height: 100px;
