@@ -22,7 +22,6 @@ def get_ordered_messages(user: User, companion: User) -> list:
         }
         for message in target_chat_messages
     ]
-    print(filtered_by_day_month_year)
     return filtered_by_day_month_year
 
 
