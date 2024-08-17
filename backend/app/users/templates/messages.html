@@ -27,7 +27,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="gray" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
           </svg>
-          <input type="search" placeholder="Search here ..." />
+          <input type="search" placeholder="Search here ..." oninput="filterFriends()" />
         </div>
       </div>
       <div class="other-profiles">
@@ -54,9 +54,7 @@
                 </div>
                 <div class="bottom">
                   <div class="message">
-                    <p class="last-message">
-                      {{ friend.last_message.content }}
-                    </p>
+                    <p class="last-message">{{ friend.last_message.content }}</p>
                   </div>
                 </div>
               </div>
@@ -92,10 +90,7 @@
         </div>
       </div>
       <div class="messages-content">
-        {% comment %}
-        TODO: IMPLEMENT AJAX call to load all messages between the two users 
-        RU: Реализовать AJAX запрос для загрузки всех сообщений между двумя пользователями
-        {% endcomment %}
+        {% comment %}TODO: IMPLEMENT AJAX call to load all messages between the two users RU: Реализовать AJAX запрос для загрузки всех сообщений между двумя пользователями{% endcomment %}
 
         {% comment %}
         {% for message in messages %}
@@ -142,3 +137,12 @@
     <div class="right-profile-wrapper"></div>
   </main>
 {% endblock %}
+
+
+
+{% block js %}
+  <script>
+    
+
+  </script>
+{% endblock js %}

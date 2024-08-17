@@ -6,12 +6,11 @@ from datetime import datetime, timedelta
 # TODO: use cache here
 def get_ordered_messages(user: User, companion: User) -> list:
     all_messages = Messages.objects.all()
-    owner_messages = list(all_messages.filter(
-        owner=user, sender=companion).order_by('created_at'))
-    sender_messages = list(all_messages.filter(
-        owner=companion, sender=user).order_by('created_at'))
+    
+    owner_messages = list(all_messages.filter(owner=user, sender=companion))
+    sender_messages = list(all_messages.filter(owner=companion, sender=user))
 
-    target_chat_messages = list(owner_messages + sender_messages)
+    target_chat_messages = sorted(list(owner_messages + sender_messages), key=lambda x: x.created_at)
 
     filtered_by_day_month_year = [
         {
@@ -33,10 +32,10 @@ def get_chat_messages(user: User, companion: User) -> list:
     return get_ordered_messages(user, companion)
 
 
-def truncate_msg(msg: str, length: int = 50) -> str:
-    if len(msg) > length:
-        return msg[:length] + " ..."
-    return msg
+# def truncate_msg(msg: str, length: int = 50) -> str:
+#     if len(msg) > length:
+#         return msg[:length] + " ..."
+#     return msg
 
 
 def get_last_message_between(user: User, companion: User) -> str:
@@ -57,7 +56,7 @@ def get_last_message_between(user: User, companion: User) -> str:
 
     return {
         "time": time if len(chat_messages) > 0 else False,
-        "content": truncate_msg(chat_messages[-1]["message"]["content"], 30) if len(chat_messages) > 0 else "No messages yet",
+        "content": chat_messages[-1]["message"]["content"] if len(chat_messages) > 0 else "No messages yet",
     }
 
 
