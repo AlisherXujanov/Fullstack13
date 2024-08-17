@@ -123,6 +123,7 @@ button.green-btn {
   align-items: center;
   cursor: pointer;
   padding: 10px;
+  max-width: 100%;
 }
 .messages-page-wrapper .left-sidebar-wrapper .other-profiles .user:hover {
   background-color: lightgray;
@@ -153,6 +154,12 @@ button.green-btn {
 .messages-page-wrapper .left-sidebar-wrapper .other-profiles .user .right .bottom .message .last-message {
   font-size: 14px;
   color: gray;
+  margin: 0;
+  width: auto;
+  max-width: 25vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .messages-page-wrapper .middle-content-wrapper .companion-profile-info {
   height: 70px;
@@ -255,4 +262,43 @@ button.green-btn {
   border-radius: 50%;
   padding: 0;
   background-color: #4299ff;
+}
+@media (max-width: 1350px) {
+  .messages-page-wrapper {
+    width: 100%;
+  }
+}
+@media (max-width: 1000px) {
+  .messages-page-wrapper {
+    grid-template-columns: 1fr 3fr;
+  }
+  .messages-page-wrapper .left-sidebar-wrapper .other-profiles .user .right .bottom .message {
+    max-width: 20vw;
+  }
+}
+@media (max-width: 700px) {
+  .messages-page-wrapper .left-sidebar-wrapper .my-profile .info .fullname {
+    display: none;
+  }
+  .messages-page-wrapper .left-sidebar-wrapper .my-profile .searchbox {
+    gap: 0;
+  }
+  .messages-page-wrapper .left-sidebar-wrapper .my-profile .searchbox input {
+    display: none;
+  }
+  .messages-page-wrapper .left-sidebar-wrapper .other-profiles .user .right {
+    display: none;
+  }
+  .messages-page-wrapper .middle-content-wrapper .messages-content {
+    align-items: center;
+  }
+  .messages-page-wrapper .middle-content-wrapper .messages-content span {
+    max-width: 100%;
+  }
+  .messages-page-wrapper .middle-content-wrapper .messages-content span.my-message {
+    margin-left: 0;
+  }
+  .messages-page-wrapper .middle-content-wrapper .messages-content span.companion-message {
+    margin-right: 0;
+  }
 }/*# sourceMappingURL=messages.css.map */

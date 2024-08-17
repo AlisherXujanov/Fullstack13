@@ -54,7 +54,7 @@
                 </div>
                 <div class="bottom">
                   <div class="message">
-                    <p class="last-message">{{ friend.last_message.content }}</p>
+                    <div class="last-message"><span>{{ friend.last_message.content }}</span></div>
                   </div>
                 </div>
               </div>
@@ -142,7 +142,13 @@
 
 {% block js %}
   <script>
+    const messageContent = document.querySelector('.messages-content')
     
-
+    document.addEventListener('DOMContentLoaded', function () {
+     // const messageContent = document.querySelector('.messages-content');
+      if (messageContent) {
+        messageContent.scroll({ top: messageContent.scrollHeight, behavior: 'smooth' });
+      }
+    });
   </script>
 {% endblock js %}
