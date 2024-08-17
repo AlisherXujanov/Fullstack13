@@ -133,10 +133,22 @@ button.green-btn {
   flex-direction: column;
   justify-content: center;
 }
+.messages-page-wrapper .left-sidebar-wrapper .other-profiles .user .right .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 5px;
+}
 .messages-page-wrapper .left-sidebar-wrapper .other-profiles .user .right .top .fullname {
   font-weight: 700;
   font-size: 20px;
   color: #58a4fd;
+}
+.messages-page-wrapper .left-sidebar-wrapper .other-profiles .user .right .top .time {
+  font-size: 0.8em;
+  font-family: "Roboto", sans-serif;
+  color: gray;
 }
 .messages-page-wrapper .left-sidebar-wrapper .other-profiles .user .right .bottom .message .last-message {
   font-size: 14px;

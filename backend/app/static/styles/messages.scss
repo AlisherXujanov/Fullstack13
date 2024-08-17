@@ -76,11 +76,18 @@
                     justify-content: center;
 
                     .top {
+                        @include flex(row, space-between, flex-start, 5px);
+
                         .fullname {
                             font-weight: 700;
                             font-size: 20px;
                             color: #58a4fd;
+                        }
 
+                        .time {
+                            font-size: 0.8em;
+                            font-family: 'Roboto', sans-serif;
+                            color: gray;
                         }
                     }
 
@@ -165,12 +172,14 @@
                 max-width: 45%;
                 text-wrap: pretty;
                 position: relative;
+
                 &.my-message {
                     margin-left: auto;
                     background-color: #4299ff;
                     color: #fff;
-                    .time{
-                        
+
+                    .time {
+
                         color: #ffffff8c;
                     }
                 }
@@ -179,7 +188,8 @@
                     margin-right: auto;
                     background-color: #dbe8ff
                 }
-                .time{
+
+                .time {
                     display: block;
                     width: 100%;
                     text-align: right;
