@@ -31,25 +31,32 @@
         </div>
       </div>
       <div class="other-profiles">
-        {% for friend_profile in friends %}
-          <a href="{% url 'messages_page' friend_profile.id %}">
+        {% for friend in friends %}
+          <a href="{% url 'messages_page' friend.fr_profile.id %}">
             <div class="user">
               <div class="left">
-                <img src="{{ friend_profile.image.url }}" alt="Friend profile image" width="50" height="50" style="border-radius: 50%;" />
+                <img src="{{ friend.fr_profile.image.url }}" alt="Friend profile image" width="50" height="50" style="border-radius: 50%;" />
               </div>
               <div class="right">
                 <div class="top">
                   <p class="fullname">
-                    {% if friend_profile.user.first_name and friend_profile.user.last_name %}
-                      {{ friend_profile.user.first_name }} {{ friend_profile.user.last_name }}
+                    {% if friend.fr_profile.user.first_name and friend.fr_profile.user.last_name %}
+                      {{ friend.fr_profile.user.first_name }} {{ friend.fr_profile.user.last_name }}
                     {% else %}
-                      {{ friend_profile.user.username }}
+                      {{ friend.fr_profile.user.username }}
                     {% endif %}
                   </p>
+                  <div class="time">
+                    {% if friend.last_message.time %}
+                      {{ friend.last_message.time }}
+                    {% endif %}
+                  </div>
                 </div>
                 <div class="bottom">
                   <div class="message">
-                    <p class="last-message">{{ friend_profile.get_last_message }}</p>
+                    <p class="last-message">
+                      {{ friend.last_message.content }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -85,7 +92,10 @@
         </div>
       </div>
       <div class="messages-content">
-        {% comment %}TODO: IMPLEMENT AJAX call to load all messages between the two users RU: Реализовать AJAX запрос для загрузки всех сообщений между двумя пользователями{% endcomment %}
+        {% comment %}
+        TODO: IMPLEMENT AJAX call to load all messages between the two users 
+        RU: Реализовать AJAX запрос для загрузки всех сообщений между двумя пользователями
+        {% endcomment %}
 
         {% comment %}
         {% for message in messages %}

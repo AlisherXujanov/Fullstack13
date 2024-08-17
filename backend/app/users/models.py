@@ -15,7 +15,7 @@ class Messages(models.Model):
     content = models.TextField(help_text='The content of the message')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    read = models.BooleanField(
+    seen = models.BooleanField(
         default=False, help_text='Whether the message has been read by the owner')
     # 5671  =>  5000 -> 1-msg,    671 -> 2-msg
 
@@ -38,11 +38,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
-
-
-    # TODO: implement companion_id when the feature is ready!
-    def get_last_message(self) -> str:
-        return 'No messages yet'
 
 
     def save(self, *args, **kwargs):
