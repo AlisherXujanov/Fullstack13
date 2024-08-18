@@ -10,6 +10,7 @@ from .usecases import *
 
 def custom_logout(request):
     logout(request)
+    messages.success(request, 'Logged out successfully')
     return redirect('landing_page')
 
 
