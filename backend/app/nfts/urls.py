@@ -6,6 +6,7 @@ from .views import *
 
 urlpatterns = [
     path("", landing_page, name="landing_page"),
+    path("faq/", faq, name="faq"),
     path('logout/', custom_logout, name='custom_logout'),
     path('create-nft/', create_nft, name='create_nft'),
     path('update-nft/<int:pk>/', update_nft, name='update_nft'),
