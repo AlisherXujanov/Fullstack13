@@ -5,6 +5,9 @@
   background-color: #1f1f1f;
   color: #ffffff;
 }
+.theme-card a, .theme-card span, .theme-card p {
+  color: #ffffff;
+}
 .theme-text {
   color: #ffffff;
 }

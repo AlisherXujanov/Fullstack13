@@ -8,6 +8,10 @@
     &-card {
         background-color: $themeDark-l;
         color: $light;
+        a,span,p{
+            color: $light;
+
+        }
     }
 
     &-text {

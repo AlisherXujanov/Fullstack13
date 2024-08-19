@@ -24,7 +24,7 @@
           {% include 'pagination.html' with page_obj=page_obj is_paginated=is_paginated paginator=paginator %}
           <div class="nfts">
             {% for nft in nfts %}
-              <div class="nft active">
+              <div class="nft active theme-card theme-text">
                 {% if request.user.is_authenticated %}
                   {% if nft.id in favorites %}
                     <a href="{% url 'remove_from_favorites' nft.id %}" class="liked">

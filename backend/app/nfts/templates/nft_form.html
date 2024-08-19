@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="form">
+<div class="form theme-card">
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %} 
         <div class="form-control">
@@ -31,7 +31,7 @@
                 {% if nft_obj %}
                 <input id="cost-nft" type="number" placeholder="Price" name="price" value="{{ nft_obj.price }}" />
                 {% else %}
-                <input id="cost-nft" type="number" placeholder="Price" name="price" />
+                <input class="theme-input" id="cost-nft" type="number" placeholder="Price" name="price" />
                 {% endif %}
             </div>
         </div>
