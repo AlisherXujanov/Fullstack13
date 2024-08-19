@@ -24,14 +24,9 @@ body {
 
 a {
   font-weight: 500;
-  color: #6b6b6b;
   text-decoration: none;
 }
-a:hover {
-  color: #191919;
-}
 a.active {
-  color: #000000;
   font-weight: bold;
 }
 

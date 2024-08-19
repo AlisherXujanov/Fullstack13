@@ -26,16 +26,11 @@ body {
 
 a {
     font-weight: 500;
-    color: $gray;
     text-decoration: none;
-
-    &:hover {
-        color: $dark;
-    }
     &.active {
-        color: $black;
         font-weight: bold;
     }
+    
 }
 
 h1 {

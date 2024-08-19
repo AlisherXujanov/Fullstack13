@@ -1,0 +1,25 @@
+.theme-bg {
+  background-color: #000000;
+}
+.theme-card {
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
+.theme-text {
+  color: #ffffff;
+}
+.theme-input {
+  background-color: #1f1f1f;
+  color: #c7c7c7;
+}
+.theme-border-btn {
+  background-color: black;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+.theme-nav-link {
+  color: rgba(255, 255, 255, 0.8235294118);
+}
+.theme-nav-link.active {
+  color: #ffffff;
+}/*# sourceMappingURL=dark.css.map */

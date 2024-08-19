@@ -1,0 +1,36 @@
+@import './settings';
+
+.theme {
+    &-bg {
+        background-color: $black;
+    }
+
+    &-card {
+        background-color: $themeDark-l;
+        color: $light;
+    }
+
+    &-text {
+        color: $light;
+    }
+
+    &-input {
+        background-color: $themeDark-l;
+        color: #c7c7c7;
+    }
+
+    &-wave {}
+
+    &-border-btn{
+        background-color: black;
+        border: 1px solid $light;
+        color: $light;
+    }
+
+    &-nav-link{
+        color: #ffffffd2;
+        &.active{
+            color: $light;
+        }
+    }
+} 

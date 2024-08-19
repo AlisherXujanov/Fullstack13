@@ -2,97 +2,124 @@
 {% load account %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+    <link id="theme-link" rel="stylesheet" href="{% static 'styles/light.css' %}" />
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const theme = localStorage.getItem('theme') || 'light'
+        const themeLink = document.getElementById('theme-link')
+        if (theme === 'dark') {
+          themeLink.href = "{% static 'styles/dark.css' %}"
+        } else {
+          themeLink.href = "{% static 'styles/light.css' %}"
+        }
+      })
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggleButton = document.getElementById('toggle-theme')
+        if (toggleButton) {
+          toggleButton.addEventListener('click', () => {
+            const themeLink = document.getElementById('theme-link')
+            const currentTheme = themeLink.href.includes('dark.css') ? 'dark' : 'light'
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+            localStorage.setItem('theme', newTheme)
+            location.reload()
+          })
+        }
+      })
+    </script>
+    {% block title %}
+      <title>NFTs</title>
+    {% endblock %}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
-  {% block title %}
-  <title>NFTs</title>
-  {% endblock %}
+    {% block css %}
 
-  {% block css %}
+    {% endblock %}
+    <style>
+      .base-container {
+        padding: 50px;
+      }
+      
+      .main-container-for-messages {
+        padding: 10px 250px;
+        margin: 0 50px;
+      }
+      
+      .main-container-for-messages .messages li {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      
+      .main-container-for-messages .info {
+        background-color: #d9edf7;
+        color: #31708f;
+      }
+      
+      .main-container-for-messages .success {
+        background-color: #dff0d8;
+        color: #3c763d;
+      }
+      
+      .main-container-for-messages .warning {
+        background-color: #fcf8e3;
+        color: #8a6d3b;
+      }
+      
+      .main-container-for-messages .error {
+        background-color: #f2dede;
+        color: #a94442;
+      }
+    </style>
+  </head>
 
-  {% endblock %}
-  <style>
-    .base-container {
-      padding: 50px;
-    }
+  <body>
+    <header>
+      {% include 'navbar.html' %}
+    </header>
 
-    .main-container-for-messages {
-      padding: 10px 250px;
-      margin: 0 50px;
-    }
+    <div class="main-container-for-messages">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li class="{% if message.tags %}
+                {{ message.tags }}
+              {% else %}
+                info
+              {% endif %}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
 
-    .main-container-for-messages .messages li {
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 5px;
-    }
+    <div class="base-container theme-bg theme-text">
+      
+      
+      {% block content %}
 
-    .main-container-for-messages .info {
-      background-color: #d9edf7;
-      color: #31708f;
-    }
+      {% endblock %}
 
-    .main-container-for-messages .success {
-      background-color: #dff0d8;
-      color: #3c763d;
-    }
+      <footer>
+        {% include 'switcher.html' %}
+      </footer>
+    </div>
 
-    .main-container-for-messages .warning {
-      background-color: #fcf8e3;
-      color: #8a6d3b;
-    }
-
-    .main-container-for-messages .error {
-      background-color: #f2dede;
-      color: #a94442;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    {% include 'navbar.html' %}
-  </header>
-
-  <div class="main-container-for-messages">
-    {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-      <li class="{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">
-        {{ message }}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </div>
-
-  <div class="base-container">
-    {% block content %}
+    {% block js %}
 
     {% endblock %}
 
-    <footer>
-      {% include 'switcher.html' %}
-    </footer>
-  </div>
+    {% include 'modal.html' %}
 
-  {% block js %}
-
-  {% endblock %}
-
-  {% include 'modal.html' %}
-
-  <script>
-    setTimeout(function () {
-      var messages = document.querySelectorAll('.messages')
-      messages.forEach(function (message) {
-        message.remove()
-      })
-    }, 5000)
-  </script>
-</body>
-
+    <script>
+      setTimeout(function () {
+        var messages = document.querySelectorAll('.messages')
+        messages.forEach(function (message) {
+          message.remove()
+        })
+      }, 5000)
+    </script>
+  </body>
 </html>

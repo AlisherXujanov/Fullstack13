@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="{% static 'styles/navbar.css' %}" />
 
-<nav>
+<nav class="theme-card theme-text">
   <div class="left">
     <a href="{% url 'landing_page' %}" id="logo"><img src="{% static 'icons/logo.png' %}" alt="logo" /></a>
     <div class="searchbar-warpper-parent">
@@ -17,37 +17,39 @@
     </button>
   </div>
   <div class="right">
-    <a href="{% url 'create_nft' %}">Create NFT💥</a>
-    <a href="{% url 'explore' %}" class="selected">Explore</a>
-    <a href="#trending">Trending🔥</a>
-    <a href="{% url 'faq' %}">FAQ</a>
-    <a href="{% url 'about_us' %}">About us</a>
-    <a href="{% url 'become_artist' %}">Become artist</a>
+    {% with url_name=request.resolver_match.url_name %}
+    <a class="{% if url_name == 'create_nft' %}active{% endif %} theme-nav-link" href="{% url 'create_nft' %}">Create NFT💥</a>
+    <a class="{% if url_name == 'explore' %}active{% endif %} theme-nav-link" href="{% url 'explore' %}">Explore</a>
+    <a class="{% if url_name == 'trending' %}active{% endif %} theme-nav-link" href="#trending">Trending🔥</a>
+    <a class="{% if url_name == 'faq' %}active{% endif %} theme-nav-link" href="{% url 'faq' %}">FAQ</a>
+    <a class="{% if url_name == 'about_us' %}active{% endif %} theme-nav-link" href="{% url 'about_us' %}">About us</a>
+    <a class="{% if url_name == 'become_artist' %}active{% endif %} theme-nav-link" href="{% url 'become_artist' %}">Become artist</a>
+  {% endwith %}
+  
 
     {% if request.user.is_authenticated %}
-    <div class="dropdown-container">
-      <div class="user">
-        <a href="{% url 'profile_page' request.user.id %}">
-          {{ request.user.username }}
-        </a>
+      <div class="dropdown-container">
+        <div class="user">
+          <a href="{% url 'profile_page' request.user.id %}">{{ request.user.username }}</a>
+        </div>
+        <div class="dropdown">
+          <a href="{% url 'custom_logout' %}" class="logout">Log out</a>
+          <a id="toggle-theme">Toggle Theme</a>
+        </div>
       </div>
-      <div class="dropdown">
-        <a href="{% url 'custom_logout' %}" class="logout">Log out</a>
-      </div>
-    </div>
     {% else %}
-    <button class="open-modal">Account</button>
+      <button class="open-modal theme-text">Account</button>
     {% endif %}
   </div>
 </nav>
 {% block js %}
-<script>
-  const right = document.querySelector('body > header:nth-child(1) > nav:nth-child(2) > div.right:nth-child(3)')
-  const burgerMenuBtn = document.querySelector('.burger-menu')
-  function openCloseFn() {
-    right.classList.toggle('open')
-    burgerMenuBtn.classList.toggle('open')
-  }
-  burgerMenuBtn.addEventListener('click', openCloseFn)
-</script>
+  <script>
+    const right = document.querySelector('body > header:nth-child(1) > nav:nth-child(2) > div.right:nth-child(3)')
+    const burgerMenuBtn = document.querySelector('.burger-menu')
+    function openCloseFn() {
+      right.classList.toggle('open')
+      burgerMenuBtn.classList.toggle('open')
+    }
+    burgerMenuBtn.addEventListener('click', openCloseFn)
+  </script>
 {% endblock %}

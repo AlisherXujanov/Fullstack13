@@ -14,8 +14,6 @@
     display: flex;
     flex-flow: row wrap;
     padding: 30px 30px 20px 30px;
-    color: #2f2f2f;
-    background-color: #fff;
     padding-right: 100px;
     margin-left: 150px;
 
@@ -157,7 +155,6 @@
   .switcher {
     width: 100px;
     height: 100px;
-    background-color: #fff;
     border-radius: 10px;
     padding: 10px;
     display: flex;
@@ -266,7 +263,7 @@
 </style>
 
 {% load static %}
-<footer class="footer">
+<footer class="footer theme-bg">
   <div class="footer__addr">
     <img src="{% static 'icons/logo.png' %}" alt="logo">
 
@@ -275,16 +272,14 @@
     <address>
       Experience the Revolutionary World of Non-Fungible Tokens on Our Exclusive NFT Marketplace<br>
 
-      <div class="switcher">
-          <img src="{% static 'icons/sun.png' %}" alt="" class="sun">
-
+      <div class="switcher theme-text">
+        <img src="{% static 'icons/sun.png' %}" alt="" class="sun">
         <label>
-          <input type="checkbox">
-          <div class="moving_circle"></div>
+            <input type="checkbox" id="theme-toggle">
+            <div class="moving_circle"></div>
         </label>
-          <img src="{% static 'icons/moon.png' %}" alt="" class="moon">
-
-      </div>
+        <img src="{% static 'icons/moon.png' %}" alt="" class="moon">
+    </div>
 
     </address>
   </div>
@@ -341,3 +336,33 @@
     </div>
   </div>
 </footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('theme-toggle');
+  const darkThemeClass = 'dark-theme';
+  function toggleTheme() {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add(darkThemeClass);
+      themeToggle.checked = true;
+    } else {
+      document.body.classList.remove(darkThemeClass);
+      themeToggle.checked = false;
+    }
+  }
+  
+  toggleTheme();
+  themeToggle.addEventListener('change', () => {
+    if (themeToggle.checked) {
+      document.body.classList.add(darkThemeClass);
+      localStorage.setItem('theme', 'dark');
+      location.reload();
+    } else {
+      document.body.classList.remove(darkThemeClass);
+      localStorage.setItem('theme', 'light');
+      location.reload();
+    }
+  });
+});
+</script>

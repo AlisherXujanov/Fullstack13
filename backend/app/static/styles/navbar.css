@@ -23,14 +23,9 @@ body {
 
 a {
   font-weight: 500;
-  color: #6b6b6b;
   text-decoration: none;
 }
-a:hover {
-  color: #191919;
-}
 a.active {
-  color: #000000;
   font-weight: bold;
 }
 
@@ -129,7 +124,6 @@ nav .right .open-modal {
   transition: 0.3s;
   background-color: transparent;
   cursor: pointer;
-  color: #222;
   outline: none;
 }
 nav .right .open-modal:hover {
@@ -172,7 +166,6 @@ nav .right .dropdown-container:hover .dropdown {
 }
 nav a {
   text-decoration: none;
-  color: #444;
   font-family: sans-serif;
   padding: 10px 20px;
 }
