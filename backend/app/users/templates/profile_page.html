@@ -14,6 +14,7 @@
       cursor: pointer;
       padding: 10px 20px;
       border-radius: 10px;
+      margin-right: 100px;
       color: snow;
     }
     
@@ -26,6 +27,7 @@
 
 {% block content %}
   <a href="{% url 'messages_page' obj.id %}" class="send-message-btn">My messages</a>
+  <h1 style="margin-left:150px;">My profile</h1>
 
   <div class="profile-container" style="display: flex; gap:50px;">
     <div class="left">
@@ -41,10 +43,10 @@
     </div>
   </div>
   <hr>
-  <div class="container">
+  <!-- <div class="container">
     <button id="ajax-call" style="background-color: green; cursor:pointer;">AJAX call</button>
     <div id="response"></div>
-  </div>
+  </div> -->
 {% endblock %}
 
 {% block js %}
