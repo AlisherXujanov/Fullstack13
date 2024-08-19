@@ -8,8 +8,13 @@ from django.contrib.auth.decorators import login_required
 from .usecases import *
 
 
+def faq(request):
+    return render(request, 'faq.html')
+
+
 def custom_logout(request):
     logout(request)
+    messages.success(request, 'Logged out successfully')
     return redirect('landing_page')
 
 

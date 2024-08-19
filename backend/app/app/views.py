@@ -9,3 +9,6 @@ def custom_404(request, exception):
 
 def become(request):
     return render(request, 'become.html')
+
+def contact_us(request):
+    return render(request, 'contact_us.html')
