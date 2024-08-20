@@ -3,6 +3,9 @@ import os
 from PIL import Image
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+from datetime import timedelta
+
 
 # Create your models here.
 
@@ -17,8 +20,9 @@ class Messages(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     seen = models.BooleanField(
         default=False, help_text='Whether the message has been read by the owner')
-    # 5671  =>  5000 -> 1-msg,    671 -> 2-msg
 
+
+    # 5671  =>  5000 -> 1-msg,    671 -> 2-msg
     class Meta:
         ordering = ['-created_at']
         verbose_name = 'Message'
@@ -31,6 +35,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(
         upload_to='profile_pics/', default='profile_pics/default.png')
+    last_activity = models.DateTimeField(auto_now=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

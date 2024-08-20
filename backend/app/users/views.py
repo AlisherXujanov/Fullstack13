@@ -5,7 +5,8 @@ from django.shortcuts import render
 from allauth.account.views import LoginView, SignupView
 from .forms import *
 from nfts.models import NFTs
-from .usecases import get_chat_messages, get_friends
+from .usecases import get_chat_messages, get_friends, is_user_online
+
 
 
 class CustomLoginView(LoginView):
@@ -39,9 +40,9 @@ def profile_page(request, pk):
 
 @login_required
 def messages(request, pk: int):
-    target_user = Profile.objects.get(user__pk=pk)
+    target_user_profile = Profile.objects.get(user__pk=pk)
 
-    chat_messages = get_chat_messages(request.user, target_user.user)
+    chat_messages = get_chat_messages(request.user, target_user_profile.user)
     # [
     #     {
     #         'day': 15, 'month': 8, 'year': 2024,
@@ -53,12 +54,12 @@ def messages(request, pk: int):
     #     },
     # ]
    
-    formatted_last_login = target_user.user.last_login.strftime(
+    formatted_last_login = target_user_profile.user.last_login.strftime(
         "%d %b %Y, %H:%M:%S")
 
     context = {
-        "target_user_profile": target_user,
-        "target_user_is_active": False,
+        "target_user_profile": target_user_profile,
+        "target_user_is_active": is_user_online(target_user_profile.user),
         "target_user_last_login": formatted_last_login,
         "friends": get_friends(request.user),
         "chat_messages": chat_messages

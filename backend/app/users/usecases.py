@@ -1,3 +1,5 @@
+from datetime import timedelta
+from django.utils import timezone
 from .models import Messages, Profile
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
@@ -52,7 +54,7 @@ def get_last_message_between(user: User, companion: User) -> str:
         elif current_day-1 == last_msg["day"] and current_month == last_msg["month"] and current_year == last_msg["year"]:
             time = 'Yesterday'
         else:
-            time = f"{last_msg["day"]}.{str(last_msg["month"]).zfill(2)}.{last_msg["year"]}"
+            time = f"{last_msg['day']}.{str(last_msg['month']).zfill(2)}.{last_msg['year']}"
 
     return {
         "time": time if len(chat_messages) > 0 else False,
@@ -72,3 +74,12 @@ def get_friends(user: User) -> list:
 
         })
     return all_friends
+
+
+def is_user_online(user):
+    user_profile = Profile.objects.get(user=user)
+    if user_profile.last_activity:
+        now = timezone.now()
+        MINUTE = 1  # Define your timeout period
+        return now.minute - user_profile.last_activity.minute < MINUTE
+    return False
