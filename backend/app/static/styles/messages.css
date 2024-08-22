@@ -183,6 +183,10 @@ button.green-btn {
   font-size: 0.5em;
   color: gray;
 }
+.messages-page-wrapper .middle-content-wrapper .companion-profile-info .content .target-user-fullname.saved-messages {
+  position: relative;
+  top: 15px;
+}
 .messages-page-wrapper .middle-content-wrapper .messages-content {
   height: calc(70vh - 100px - 70px);
   padding: 20px;
@@ -255,4 +259,24 @@ button.green-btn {
   border-radius: 50%;
   padding: 0;
   background-color: #4299ff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  cursor: pointer;
+}
+.messages-page-wrapper .middle-content-wrapper .form-content form button svg {
+  transform: scale(1.1);
+  position: relative;
+  top: 2px;
+  right: 1px;
+}
+.messages-page-wrapper .middle-content-wrapper .form-content form button:hover:not(:disabled) svg {
+  transform: skew(10deg) scale(1.3);
+}
+.messages-page-wrapper .middle-content-wrapper .form-content form button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  transform: skew(0) scale(1);
 }/*# sourceMappingURL=messages.css.map */

@@ -2,108 +2,141 @@
 {% load static %}
 
 {% block title %}
-  <title>My messages</title>
+<title>My messages</title>
 {% endblock %}
 
 {% block css %}
-  <link rel="stylesheet" href="{% static 'styles/messages.css' %}" />
+<link rel="stylesheet" href="{% static 'styles/messages.css' %}" />
 {% endblock %}
 
 {% block content %}
-  <main class="messages-page-wrapper">
-    <div class="left-sidebar-wrapper">
-      <div class="my-profile">
-        <div class="info">
-          <img src="{{ request.user.profile.image.url }}" />
-          <h2 class="fullname">
-            {% if request.user.first_name and request.user.last_name %}
-              {{ request.user.first_name }} {{ request.user.last_name }}
-            {% else %}
-              {{ request.user.username }}
-            {% endif %}
-          </h2>
-        </div>
-        <div class="searchbox">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="gray" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-          </svg>
-          <input type="search" placeholder="Search here ..." oninput="filterFriends()" />
-        </div>
+<main class="messages-page-wrapper">
+  <div class="left-sidebar-wrapper">
+    <div class="my-profile">
+      <div class="info">
+        <img src="{{ request.user.profile.image.url }}" />
+        <h2 class="fullname">
+          {% if request.user.first_name and request.user.last_name %}
+          {{ request.user.first_name }} {{ request.user.last_name }}
+          {% else %}
+          {{ request.user.username }}
+          {% endif %}
+        </h2>
       </div>
-      <div class="other-profiles">
-        {% include 'friend_snippets.html' with friend=saved_messages myself=True %}
-
-        {% for friend in friends %}
-          {% include 'friend_snippets.html' with friend=friend %}
-        {% endfor %}
+      <div class="searchbox">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="gray" class="bi bi-search"
+          viewBox="0 0 16 16">
+          <path
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+        </svg>
+        <input type="search" placeholder="Search here ..." oninput="filterFriends()" />
       </div>
     </div>
-    <div class="middle-content-wrapper">
-      <div class="companion-profile-info">
-        {% if my_saved_messages %}
-        <div class="content">
-          <img src="{% static 'icons/saved_msgs.png' %}" width="70" height="70" style="border-radius: 50%; margin-right: 10px;" />
-          <h2 class="target-user-fullname">
-            <p>Saved messages</p>
-          </h2>
-        </div>
+    <div class="other-profiles">
+      {% include 'friend_snippets.html' with friend=saved_messages myself=True %}
+
+      {% for friend in friends %}
+      {% include 'friend_snippets.html' with friend=friend %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="middle-content-wrapper">
+    <div class="companion-profile-info">
+      {% if my_saved_messages %}
+      <div class="content">
+        <img src="{% static 'icons/saved_msgs.png' %}" width="70" height="70"
+          style="border-radius: 50%; margin-right: 10px;" />
+        <h2 class="target-user-fullname saved-messages">
+          <p>Saved messages</p>
+        </h2>
+      </div>
+      {% else %}
+      <div class="content">
+        {% if target_user_profile.image.url %}
+        <img src="{{ target_user_profile.image.url }}" width="70" height="70"
+          style="border-radius: 50%; margin-right: 10px;" />
         {% else %}
-        <div class="content">
-          {% if target_user_profile.image.url %}
-            <img src="{{ target_user_profile.image.url }}" width="70" height="70" style="border-radius: 50%; margin-right: 10px;" />
-          {% else %}
-            <img src="{% static 'icons/avatar.png' %}" width="70" height="70" style="border-radius: 50%; margin-right: 10px;" />
-          {% endif %}
-          <h2 class="target-user-fullname">
-            <p>
-              {% if target_user_profile.user.first_name and target_user_profile.user.last_name %}
-                {{ target_user_profile.user.first_name }} {{ target_user_profile.user.last_name }}
-              {% else %}
-                {{ target_user_profile.user.username }}
-              {% endif %}
-            </p>
-            <p>
-              {% if target_user_is_active %}
-                <span class="is-online">is online</span>
-              {% else %}
-                <span class="last-login">{{ target_user_last_login }}</span>
-              {% endif %}
-            </p>
-          </h2>
-        </div>
+        <img src="{% static 'icons/avatar.png' %}" width="70" height="70"
+          style="border-radius: 50%; margin-right: 10px;" />
         {% endif %}
+        <h2 class="target-user-fullname">
+          <p>
+            {% if target_user_profile.user.first_name and target_user_profile.user.last_name %}
+            {{ target_user_profile.user.first_name }} {{ target_user_profile.user.last_name }}
+            {% else %}
+            {{ target_user_profile.user.username }}
+            {% endif %}
+          </p>
+          <p>
+            {% if target_user_is_active %}
+            <span class="is-online">is online</span>
+            {% else %}
+            <span class="last-login">{{ target_user_last_login }}</span>
+            {% endif %}
+          </p>
+        </h2>
+      </div>
+      {% endif %}
 
-      </div>
-      <div class="messages-content">
-        {% for message_content in chat_messages %}
-          {% if message_content.message.sender == 'companion' %}
-            <span class="companion-message">
-              {{ message_content.message.content }}
-              <p class="time">{{ message_content.message.time }}</p>
-            </span>
-          {% else %}
-            <span class="my-message">
-              {{ message_content.message.content }}
-              <p class="time">{{ message_content.message.time }}</p>
-            </span>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="form-content">
-        <form action="">
-          {% comment %}TODO{% endcomment %}
-          <input type="text" placeholder="Write Something" /> <button type="submit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-              <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z" />
-            </svg>
-          </button>
-        </form>
-      </div>
     </div>
-    <div class="right-profile-wrapper"></div>
-  </main>
+    <div class="messages-content">
+      {% for message_content in chat_messages %}
+      {% if message_content.message.sender == 'companion' %}
+      <span class="companion-message">
+        {{ message_content.message.content }}
+        <p class="time">{{ message_content.message.time }}</p>
+      </span>
+      {% else %}
+      <span class="my-message">
+        {{ message_content.message.content }}
+        <p class="time">{{ message_content.message.time }}</p>
+      </span>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div class="form-content">
+      <form action="{% url 'messages_page' target_user_profile.id  %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input id="message-input" type="text" placeholder="Write Something" name="message" />
+        
+        <button type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send"
+            viewBox="0 0 16 16">
+            <path
+              d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="right-profile-wrapper"></div>
+</main>
 {% endblock %}
 
 {% block js %}
-  <script></script>
+<script>
+  const messageInput = document.querySelector("#message-input")
+  const submitBtn = document.querySelector("button[type='submit']")
+
+  submitBtn.disabled = true
+  messageInput.addEventListener('input', (e) => {
+    if (e.target.value.length > 0) {
+      submitBtn.disabled = false
+    } else {
+      submitBtn.disabled = true
+    }
+  })
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Code to run when the DOM is fully loaded
+    var messagesContent = document.querySelector('.messages-content');
+
+    // scroll smoothly to bottom
+    messagesContent.scrollTo({
+      top: messagesContent.scrollHeight,
+      // behavior: 'smooth'
+    });
+  });
+</script>
 {% endblock %}

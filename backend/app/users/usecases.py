@@ -96,3 +96,5 @@ def is_user_online(user):
         MINUTE = timedelta(minutes=1)  # Define your timeout period
         return now - user_profile.last_activity < MINUTE
     return False
+
+

@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
-from .models import Profile
+from .models import Profile, Messages
 from django.shortcuts import render
 from allauth.account.views import LoginView, SignupView
 from .forms import *
@@ -41,6 +41,11 @@ def profile_page(request, pk):
 @login_required
 def messages(request, pk: int):
     target_user_profile = Profile.objects.get(user__pk=pk)
+
+    if request.method == "POST":
+        message = request.POST['message']
+        Messages.objects.create(content=message, owner=target_user_profile.user, sender=request.user)
+        
 
     target_user = None if request.user.id == pk else target_user_profile.user 
     chat_messages = get_chat_messages(request.user, target_user)
