@@ -1,4 +1,3 @@
-from datetime import timedelta
 from django.utils import timezone
 from .models import Messages, Profile
 from django.contrib.auth.models import User
@@ -6,13 +5,19 @@ from datetime import datetime, timedelta
 
 
 # TODO: use cache here
-def get_ordered_messages(user: User, companion: User) -> list:
+def get_ordered_messages(user: User, companion: User = None) -> list:
     all_messages = Messages.objects.all()
-    
-    owner_messages = list(all_messages.filter(owner=user, sender=companion))
-    sender_messages = list(all_messages.filter(owner=companion, sender=user))
+    owner_messages = []
+    sender_messages = []
 
-    target_chat_messages = sorted(list(owner_messages + sender_messages), key=lambda x: x.created_at)
+    if companion:
+        owner_messages = list(all_messages.filter(owner=user, sender=companion))
+        sender_messages = list(all_messages.filter(owner=companion, sender=user))
+    else:
+        owner_messages = list(all_messages.filter(owner=user, sender=user))
+
+    target_chat_messages = sorted(
+        [*owner_messages, *sender_messages], key=lambda x: x.created_at)
 
     filtered_by_day_month_year = [
         {
@@ -30,7 +35,7 @@ def get_ordered_messages(user: User, companion: User) -> list:
     return filtered_by_day_month_year
 
 
-def get_chat_messages(user: User, companion: User) -> list:
+def get_chat_messages(user: User, companion: User = None) -> list:
     return get_ordered_messages(user, companion)
 
 
@@ -54,7 +59,8 @@ def get_last_message_between(user: User, companion: User) -> str:
         elif current_day-1 == last_msg["day"] and current_month == last_msg["month"] and current_year == last_msg["year"]:
             time = 'Yesterday'
         else:
-            time = f"{last_msg['day']}.{str(last_msg['month']).zfill(2)}.{last_msg['year']}"
+            time = f"{last_msg['day']}.{str(last_msg['month']).zfill(2)}.{
+                last_msg['year']}"
 
     return {
         "time": time if len(chat_messages) > 0 else False,
@@ -62,24 +68,31 @@ def get_last_message_between(user: User, companion: User) -> str:
     }
 
 
+def get_myself_as_friend_profile(user: User) -> dict:
+    my_profile = Profile.objects.get(user=user)
+    return {
+        "fr_profile": my_profile,
+        "last_message": get_last_message_between(user, user)
+    }
+
+
 def get_friends(user: User) -> list:
     # For now, we get all profiles as friends
     # TODO: implement a real friends system
-    profiles = Profile.objects.all()
+    profiles = Profile.objects.all().exclude(user=user)
     all_friends = []
     for pr in profiles:
         all_friends.append({
             "fr_profile": pr,
             "last_message": get_last_message_between(user, pr.user)
-
         })
     return all_friends
 
 
 def is_user_online(user):
     user_profile = Profile.objects.get(user=user)
-    if user_profile.last_activity:
+    if user_profile.last_activity and user_profile.last_activity.day == timezone.now().day:
         now = timezone.now()
-        MINUTE = 1  # Define your timeout period
-        return now.minute - user_profile.last_activity.minute < MINUTE
+        MINUTE = timedelta(minutes=1)  # Define your timeout period
+        return now - user_profile.last_activity < MINUTE
     return False

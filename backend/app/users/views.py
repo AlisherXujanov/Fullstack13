@@ -5,7 +5,7 @@ from django.shortcuts import render
 from allauth.account.views import LoginView, SignupView
 from .forms import *
 from nfts.models import NFTs
-from .usecases import get_chat_messages, get_friends, is_user_online
+from .usecases import get_chat_messages, get_friends, is_user_online, get_myself_as_friend_profile
 
 
 
@@ -42,7 +42,8 @@ def profile_page(request, pk):
 def messages(request, pk: int):
     target_user_profile = Profile.objects.get(user__pk=pk)
 
-    chat_messages = get_chat_messages(request.user, target_user_profile.user)
+    target_user = None if request.user.id == pk else target_user_profile.user 
+    chat_messages = get_chat_messages(request.user, target_user)
     # [
     #     {
     #         'day': 15, 'month': 8, 'year': 2024,
@@ -62,7 +63,9 @@ def messages(request, pk: int):
         "target_user_is_active": is_user_online(target_user_profile.user),
         "target_user_last_login": formatted_last_login,
         "friends": get_friends(request.user),
-        "chat_messages": chat_messages
+        "my_saved_messages": True if target_user == None else False,
+        "saved_messages": get_myself_as_friend_profile(request.user),
+        "chat_messages": chat_messages,
     }
     return render(request, "messages.html", context)
 

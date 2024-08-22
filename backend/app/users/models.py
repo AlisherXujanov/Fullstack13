@@ -35,7 +35,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(
         upload_to='profile_pics/', default='profile_pics/default.png')
-    last_activity = models.DateTimeField(auto_now=True)
+    last_activity = models.DateTimeField(default=timezone.now)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

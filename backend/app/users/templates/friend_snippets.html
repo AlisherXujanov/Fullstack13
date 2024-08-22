@@ -1,0 +1,42 @@
+{% load static %}
+
+<a href="{% url 'messages_page' friend.fr_profile.id %}">
+    <div class="user">
+        <div class="left">
+            {% if myself %}
+            <img src="{% static 'icons/saved_msgs.png' %}" alt="Friend profile image" width="50" height="50"
+                style="border-radius: 50%;" />
+            {% else %}
+            <img src="{{ friend.fr_profile.image.url }}" alt="Friend profile image" width="50" height="50"
+                style="border-radius: 50%;" />
+            {% endif %}
+        </div>
+        <div class="right">
+            <div class="top">
+
+                {% if myself %}
+                <p class="fullname">Saved messages</p>
+                {% else %}
+                <p class="fullname">
+                    {% if friend.fr_profile.user.first_name and friend.fr_profile.user.last_name %}
+                    {{ friend.fr_profile.user.first_name }} {{ friend.fr_profile.user.last_name }}
+                    {% else %}
+                    {{ friend.fr_profile.user.username }}
+                    {% endif %}
+                </p>
+                <div class="time">
+                    {% if friend.last_message.time %}
+                    {{ friend.last_message.time }}
+                    {% endif %}
+                </div>
+                {% endif %}
+
+            </div>
+            <div class="bottom">
+                <div class="message">
+                    <p class="last-message">{{ friend.last_message.content }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
