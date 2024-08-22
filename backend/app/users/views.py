@@ -6,7 +6,7 @@ from allauth.account.views import LoginView, SignupView
 from .forms import *
 from nfts.models import NFTs
 from .usecases import get_chat_messages, get_friends, is_user_online, get_myself_as_friend_profile
-
+import json
 
 
 class CustomLoginView(LoginView):
@@ -75,11 +75,15 @@ def messages(request, pk: int):
     return render(request, "messages.html", context)
 
 
-def ajax_view(request):
+@login_required
+def deleteMessage(request):
+    # JSON.stringify()   ===  json.dumps()
+    # JSON.parse()   ===  json.loads()
+
     if request.headers.get('X-CSRFToken') and request.method == "POST":
-        # Process the request and prepare the response
-        data = {
-            'message': 'This is the response from the server!'
-        }
+        msg_id = json.loads(request.body)['message_id']
+        message_obj = Messages.objects.get(pk=msg_id)
+        message_obj.delete()
+        data = { 'success': True }
         return JsonResponse(data)
-    return JsonResponse({'error': 'Invalid request'}, status=400)
+    return JsonResponse({'error': 'Invalid request'}, status=401)

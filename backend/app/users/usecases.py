@@ -25,6 +25,7 @@ def get_ordered_messages(user: User, companion: User = None) -> list:
             "month": message.created_at.month,
             "year": message.created_at.year,
             "message": {
+                "id": message.id,
                 "time": message.created_at.strftime("%H:%M"),
                 "content": message.content,
                 "sender": "companion" if message.sender == companion else "myself"

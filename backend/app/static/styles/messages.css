@@ -196,6 +196,7 @@ button.green-btn {
   overflow: scroll;
   overflow-x: hidden;
   border-bottom: 1px solid #eee;
+  position: relative;
 }
 .messages-page-wrapper .middle-content-wrapper .messages-content::-webkit-scrollbar {
   width: 10px;
@@ -233,6 +234,42 @@ button.green-btn {
   text-align: right;
   font-size: 14px;
   color: gray;
+}
+.messages-page-wrapper .middle-content-wrapper .messages-content span .delete-message-icon {
+  width: 20px;
+  height: 20px;
+  padding: 8px 10px 12px 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.3);
+  color: snow;
+  display: inline-block;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  z-index: 9;
+  cursor: pointer;
+  font-size: 1.5em;
+  bottom: 2px;
+  opacity: 0;
+}
+.messages-page-wrapper .middle-content-wrapper .messages-content span.companion-message span {
+  right: 2px;
+}
+.messages-page-wrapper .middle-content-wrapper .messages-content span.companion-message:hover span {
+  opacity: 1;
+  right: -22px;
+  background-color: red;
+}
+.messages-page-wrapper .middle-content-wrapper .messages-content span.my-message span {
+  left: 2px;
+}
+.messages-page-wrapper .middle-content-wrapper .messages-content span.my-message:hover span {
+  opacity: 1;
+  left: -22px;
+  background-color: red;
 }
 .messages-page-wrapper .middle-content-wrapper .form-content {
   height: 100px;

@@ -51,26 +51,5 @@
 
 {% block js %}
   <script>
-    document.querySelector('#ajax-call').addEventListener('click', ajaxCall)
-    let response = document.querySelector('#response')
-
-    function ajaxCall() {
-      fetch('{% url "ajax_view" %}', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': '{{ csrf_token }}'
-        },
-        body: JSON.stringify('data')
-      })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-            response.innerHTML += `<p>${data.message}</p>`
-        })
-        .catch((error) => {
-          console.log('An error occurred: ' + error)
-        })
-    }
   </script>
 {% endblock %}
