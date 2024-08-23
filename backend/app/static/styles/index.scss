@@ -2,7 +2,54 @@
 @import './settings';
 
 body {
-    .base-container {}
+    overflow-x: hidden;
+    .main-container-for-messages {
+        padding: 10px 250px;
+        margin: 0 50px;
+
+        .messages {
+            li {
+                margin: 10px 0;
+                padding: 10px;
+                border-radius: 5px;
+            }
+        }
+
+        .info {
+            background-color: #d9edf7;
+            color: #31708f;
+        }
+
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .warning {
+            background-color: #fcf8e3;
+            color: #8a6d3b;
+        }
+
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    .base-container {
+        position: relative;
+        .set-width{
+            width: 100%;
+            max-width: 180vh;
+            padding: 0 20px;
+            margin: 0 auto;
+
+        }
+    }
 
     .modal-bg {
         position: fixed;
@@ -75,32 +122,39 @@ body {
                         text-align: center;
                     }
                 }
-                .links{
+
+                .links {
                     width: 100%;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     text-align: center;
                     gap: 10px;
-                    a{
+
+                    a {
                         width: 100%;
                         padding: 10px;
                         border-radius: 10px;
                         color: #fff;
-                        &.login{
-                            background:$red;
+
+                        &.login {
+                            background: $red;
                         }
-                        &.signup{
+
+                        &.signup {
                             background: $green;
                         }
-                        &.github{
+
+                        &.github {
                             background-color: #1b1f23;
                             padding: 0;
-                            img{
+
+                            img {
                                 width: 40px;
                             }
                         }
-                        &.google{
+
+                        &.google {
                             background-color: #fff;
                             padding: 0;
                             border: 1px solid #000;
@@ -108,7 +162,8 @@ body {
                             justify-content: center;
                             align-items: center;
                             height: 40px;
-                            img{
+
+                            img {
                                 width: 30px;
                             }
                         }

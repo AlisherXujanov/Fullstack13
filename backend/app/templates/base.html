@@ -7,6 +7,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+  <link rel="stylesheet" href="{% static 'styles/switcher.css' %}">
   {% block title %}
   <title>NFTs</title>
   {% endblock %}
@@ -14,45 +15,7 @@
   {% block css %}
 
   {% endblock %}
-  <style>
-    .base-container {
-      padding: 50px;
-    }
 
-    .main-container-for-messages {
-      padding: 10px 250px;
-      margin: 0 50px;
-    }
-
-    .main-container-for-messages .messages li {
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 5px;
-    }
-
-    .main-container-for-messages .info {
-      background-color: #d9edf7;
-      color: #31708f;
-    }
-
-    .main-container-for-messages .success {
-      background-color: #dff0d8;
-      color: #3c763d;
-    }
-
-    .main-container-for-messages .warning {
-      background-color: #fcf8e3;
-      color: #8a6d3b;
-    }
-
-    .main-container-for-messages .error {
-      background-color: #f2dede;
-      color: #a94442;
-    }
-    img {
-      object-fit: cover;
-    }
-  </style>
 </head>
 
 <body>

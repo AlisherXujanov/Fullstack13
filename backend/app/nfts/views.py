@@ -112,7 +112,7 @@ class ExploreView(ListView):
     model = NFTs
     template_name = 'explore.html'
     context_object_name = 'nfts'
-    paginate_by = 4
+    paginate_by = 8
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

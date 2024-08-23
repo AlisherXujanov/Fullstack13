@@ -8,25 +8,15 @@
 
 {% block css %}
 <style>
-    .nft-form-wrapper {
-        padding: 120px 100px;
-    }
-    .nft-form-wrapper > h1 {
-        position: absolute;
-        left: 0;
-        top: 200px;
-        width: 100%;
-        height: 80vh;
-        z-index: -1;
-        text-align: center;
-    }
+
+
 </style>
 {% endblock %}
 
 
 {% block content %}
 
-<div class="nft-form-wrapper">
+<div class="nft-form-wrapper set-width">
     <h1>Create new NFT</h1>
 
     {% include 'nft_form.html' %}
