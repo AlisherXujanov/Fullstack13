@@ -65,6 +65,9 @@ button.green-btn {
   background: linear-gradient(to right, #56c2ff, #48fe9c);
 }
 
+.explore-wrapper .explore-content {
+  padding-bottom: 150px;
+}
 .explore-wrapper .explore-content .title {
   height: 30vh;
   display: flex;
@@ -78,7 +81,7 @@ button.green-btn {
   font-size: 60px;
 }
 .explore-wrapper .explore-content .title .searchbar {
-  width: 30%;
+  width: 40vh;
 }
 .explore-wrapper .explore-content .title .searchbar .right input {
   border: none;
@@ -96,8 +99,8 @@ button.green-btn {
 }
 .explore-wrapper .explore-content .explore-body .middle .nfts {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
 }
 .explore-wrapper .explore-content .explore-body .middle .nfts .nft {
   width: 100%;
@@ -184,4 +187,26 @@ button.green-btn {
 .explore-wrapper .explore-content .explore-body .middle .nfts .nft .details .info .price span p {
   color: #000;
   font-weight: 600;
+}
+
+@media (max-width: 1300px) {
+  .explore-wrapper .explore-content .explore-body .middle .nfts {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 900px) {
+  .explore-wrapper .explore-content .title .searchbar {
+    width: 30vh;
+  }
+  .explore-wrapper .explore-content .explore-body .middle .nfts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+@media (max-width: 500px) {
+  .explore-wrapper .explore-content .explore-body .middle .nfts {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+  }
 }/*# sourceMappingURL=explore.css.map */
