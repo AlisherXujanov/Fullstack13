@@ -1,0 +1,61 @@
+@use './resets';
+@import './settings';
+
+.leaderboard-wrapper{
+    width: 100%; 
+    height: 50vh;
+    background-color: $dark;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    .leaders{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 50px;
+        width: 100%;
+        padding-top: 50px;
+        .leader{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            #id{
+                width: 30px;
+                height: 30px;
+                background-color: $light;
+                color: $black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                font-weight: 600;
+                position: absolute;
+                top: -15px;
+            }
+            #name{
+                font-size: 25px;
+            }
+        }
+    }
+}
+
+@media (max-width:1000px){
+    .leaderboard-wrapper{
+        height: auto;
+        .leaders{
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+@media (max-width:620px){
+    .leaderboard-wrapper{
+        height: auto;
+        .leaders{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}

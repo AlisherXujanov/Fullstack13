@@ -2,6 +2,7 @@
 @import './settings';
 
 body {
+    overflow-x: hidden;
     .main-container-for-messages {
         padding: 10px 250px;
         margin: 0 50px;
@@ -40,10 +41,14 @@ body {
     }
 
     .base-container {
-        width: 100%;
-        max-width: 150vh;
-        padding: 0 20px;
-        margin: 0 auto;
+        position: relative;
+        .set-width{
+            width: 100%;
+            max-width: 180vh;
+            padding: 0 20px;
+            margin: 0 auto;
+
+        }
     }
 
     .modal-bg {

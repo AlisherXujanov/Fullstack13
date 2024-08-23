@@ -65,6 +65,9 @@ button.green-btn {
   background: linear-gradient(to right, #56c2ff, #48fe9c);
 }
 
+body {
+  overflow-x: hidden;
+}
 body .main-container-for-messages {
   padding: 10px 250px;
   margin: 0 50px;
@@ -95,8 +98,11 @@ body .main-container-for-messages img {
      object-fit: cover;
 }
 body .base-container {
+  position: relative;
+}
+body .base-container .set-width {
   width: 100%;
-  max-width: 150vh;
+  max-width: 180vh;
   padding: 0 20px;
   margin: 0 auto;
 }
