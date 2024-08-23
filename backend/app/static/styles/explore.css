@@ -65,10 +65,6 @@ button.green-btn {
   background: linear-gradient(to right, #56c2ff, #48fe9c);
 }
 
-.explore-wrapper .explore-content {
-  width: 150vh;
-  margin: 0 auto;
-}
 .explore-wrapper .explore-content .title {
   height: 30vh;
   display: flex;

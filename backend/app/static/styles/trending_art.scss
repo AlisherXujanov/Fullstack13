@@ -1,134 +1,169 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@use './resets';
+@import './settings';
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "DM Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-}
 
-body {
-    .container {
-        width: 80%;
-        margin: 0 auto;
+.container {
+    width: 100%;
 
-        .treding-art {
-            .top {
+    .treding-art {
+        .top {
+            display: flex;
+            justify-content: space-between;
+            height: 100px;
+            align-items: center;
+        }
+
+        .bottom {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+            .card {
+                width: 290px;
+                height: 350px;
+                padding: 10px;
                 display: flex;
-                justify-content: space-between;
-                height: 100px;
+                flex-direction: column;
                 align-items: center;
-            }
-
-            .bottom {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
-                .card {
-                    width: 290px;
-                    height: auto;
-                    padding: 10px;
+                justify-content: space-between;
+                box-shadow: 0px 4.57px 54.85px 0px #6e6e6e40;
+                gap: 10px;
+                border-radius: 10px;
+                #name-like{
                     display: flex;
-                    flex-direction: column;
+                    justify-content: space-between;
                     align-items: center;
-                    justify-content: center;
-                    box-shadow: 0px 4.57px 54.85px 0px #6e6e6e40;
-                    gap: 10px;
+                    width: 100%;
                     p{
-                        text-align: left;
-                        width: 100%;
-                        font-weight: 700;
-                    }
-                    .info{
-                        width: 100%;
-                        display: flex;
-                        justify-content: space-between;
-                        .left{
-                            display: flex;
-                            align-items: center;
+                        &:last-child{
+                            text-align: right;
                         }
-                        .right{
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            align-items: center;
-                            p{
-                                &:first-child{
-                                    font-weight: 400;
-                                    color: gray;
-                                }
-                                text-align: center;
+                    }
+                }
+                .image{
+                    width: 100%;
+                    height: 250px;
+                    border-radius: 5px;
+                    object-fit: cover;
+                }
+                p {
+                    text-align: left;
+                    width: 100%;
+                    font-weight: 700;
+                }
+
+                .info {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .left {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .right {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        p {
+                            &:first-child {
+                                font-weight: 400;
+                                color: gray;
                             }
+
+                            text-align: center;
                         }
                     }
                 }
             }
         }
-        .featured-collections{
-            margin: 100px 0;
-            .top{
-                height: 100px;
+    }
+
+    .featured-collections {
+        margin: 100px 0;
+
+        .top {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+
+            .card {
+                height: 400px;
+                width: 100%;
+                box-shadow: 0px 3.6px 43.17px 0px #64646440;
                 display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .bottom{
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 50px;
-                .card{
-                    height: 400px;
-                    width: 100%;
-                    box-shadow: 0px 3.6px 43.17px 0px #64646440;
+                padding: 15px;
+                gap: 20px;
+                border-radius: 10px;
+                .left{
+                    width: 400px;
+                    height: 100%;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .right {
                     display: flex;
-                    padding: 15px;
-                    gap: 20px;
-                    .right{
+                    gap: 5px;
+                    flex-direction: column;
+                    height: 95%;
+                    justify-content: space-between;
+
+                    .row {
                         display: flex;
-                        gap: 5px;
-                        flex-direction: column;
-                        height: 95%;
-                        justify-content: space-between;
-                        .row{
+                        align-items: center;
+                    }
+
+                    .row-flex {
+                        display: flex;
+                        width: 100%;
+                        align-items: center;
+
+                        span {
                             display: flex;
-                            align-items: center;
-                        }
-                        .row-flex{
-                            display: flex;
-                            width: 100%;
-                            align-items: center;
-                            span{
-                                display: flex;
-                                flex-direction: column;
-                                gap: 10px;
-                                text-align: center;
-                                p{
-                                    &:first-child{
-                                        color: gray;
-                                    }
+                            flex-direction: column;
+                            gap: 10px;
+                            text-align: center;
+
+                            p {
+                                &:first-child {
+                                    color: gray;
                                 }
                             }
                         }
-                        .row-btn{
-                            button{
-                                width: 100%;
-                                border-radius: 10px;
-                                background: linear-gradient(108.39deg, #FF56BB 6.99%, #FF8F77 119.86%);
-                                border: none;
-                                outline: none;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                height: 50px;
-                                gap: 10px;
-                                cursor: pointer;
-                                p{
-                                    font-weight: 700;
-                                    color: #fff;
-                                }
+                    }
+
+                    .row-btn {
+                        button {
+                            width: 100%;
+                            border-radius: 10px;
+                            background: linear-gradient(108.39deg, #FF56BB 6.99%, #FF8F77 119.86%);
+                            border: none;
+                            outline: none;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 50px;
+                            gap: 10px;
+                            cursor: pointer;
+
+                            p {
+                                font-weight: 700;
+                                color: #fff;
                             }
                         }
                     }
@@ -138,42 +173,25 @@ body {
     }
 }
 
-@media(max-width:1380px){
-    body{
-        .container{
-            .treding-art{
-                .bottom{
+
+@media(max-width:1380px) {
+    body {
+        .container {
+            .treding-art {
+                .bottom {
                     grid-template-columns: repeat(2, 1fr);
                     justify-content: center;
                     align-items: center;
-                    .card{
+
+                    .card {
                         margin: 0 auto;
                     }
                 }
             }
-            .featured-collections{
-                .bottom{
+
+            .featured-collections {
+                .bottom {
                     grid-template-columns: repeat(1, 1fr);
-                }
-            }
-        }
-    }
-}
-@media(max-width:1380px){
-    body{
-        .container{
-            .treding-art{
-                .bottom{
-                    grid-template-columns: repeat(1, 1fr); 
-                }
-            }
-            .featured-collections{
-                .bottom{
-                    .card{
-                        flex-direction: column;
-                        width: 100%;
-                        height: auto;
-                    }
                 }
             }
         }

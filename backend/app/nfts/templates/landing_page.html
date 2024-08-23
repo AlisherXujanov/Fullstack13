@@ -4,7 +4,11 @@
 {% block title %}
     <title>NFTs - Home</title>
 {% endblock title %}
-    
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/trending_art.css' %}">
+<link rel="stylesheet" href="{% static 'styles/media.css' %}">
+
+{% endblock css %}
 
 {% block content %}
     {% include "media.html" %}

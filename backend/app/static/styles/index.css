@@ -65,6 +65,41 @@ button.green-btn {
   background: linear-gradient(to right, #56c2ff, #48fe9c);
 }
 
+body .main-container-for-messages {
+  padding: 10px 250px;
+  margin: 0 50px;
+}
+body .main-container-for-messages .messages li {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+body .main-container-for-messages .info {
+  background-color: #d9edf7;
+  color: #31708f;
+}
+body .main-container-for-messages .success {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+body .main-container-for-messages .warning {
+  background-color: #fcf8e3;
+  color: #8a6d3b;
+}
+body .main-container-for-messages .error {
+  background-color: #f2dede;
+  color: #a94442;
+}
+body .main-container-for-messages img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body .base-container {
+  width: 100%;
+  max-width: 150vh;
+  padding: 0 20px;
+  margin: 0 auto;
+}
 body .modal-bg {
   position: fixed;
   top: 0;
