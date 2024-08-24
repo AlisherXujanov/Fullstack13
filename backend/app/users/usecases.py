@@ -92,7 +92,6 @@ def get_friends(request) -> list:
     # For now, we get all profiles as friends
     # TODO: implement a real friends system 
     profiles = Profile.objects.all().exclude(user=request.user)
-    all_unread_messages_ids = request.session.get('unread_messages_ids', [])
 
     all_friends = []
     for pr in profiles:
