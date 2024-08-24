@@ -90,14 +90,18 @@ def get_myself_as_friend_profile(request) -> dict:
 
 def get_friends(request) -> list:
     # For now, we get all profiles as friends
-    # TODO: implement a real friends system
+    # TODO: implement a real friends system 
     profiles = Profile.objects.all().exclude(user=request.user)
+    all_unread_messages_ids = request.session.get('unread_messages_ids', [])
+
     all_friends = []
     for pr in profiles:
+        unread_messages = Messages.objects.filter(owner=request.user, sender=pr.user, seen=False)
+
         all_friends.append({
             "fr_profile": pr,
             "last_message": get_last_message_between(request, request.user, pr.user),
-            "unread_messages_count": len(request.session.get('unread_messages_ids', []))
+            "unread_messages_count": len(unread_messages)
         })
     return all_friends
 
@@ -113,10 +117,13 @@ def is_user_online(user):
 
 
 
-def set_all_messages_as_seen(user:User, target_user:User) -> bool:
+def set_all_messages_as_seen(user:User, target_user:User=None) -> bool:
     owner_messages = Messages.objects.filter(owner=user, sender=target_user)
-    if owner_messages.count() > 0:
-        owner_messages.update(seen=True)
+
+    if len(owner_messages) > 0:
+        for message in owner_messages:
+            message.seen = True
+            message.save()
         return True
     return False
     

@@ -172,6 +172,13 @@ button.green-btn {
   font-size: 14px;
   color: gray;
 }
+.messages-page-wrapper .left-sidebar-wrapper .other-profiles .user .right .bottom .message .unread-messages {
+  float: right;
+  background: linear-gradient(to right, #6e56ff, #b073ff);
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: #ffffff;
+}
 .messages-page-wrapper .middle-content-wrapper .companion-profile-info {
   height: 70px;
   border-bottom: 1px solid #eee;

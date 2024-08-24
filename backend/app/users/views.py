@@ -69,7 +69,13 @@ def ajax_create_message(request):
         target_user_profile_id = json.loads(request.body)['target_user_profile_id']
         message_text = json.loads(request.body)['message_text']
         profile_obj = Profile.objects.get(pk=target_user_profile_id) 
-        Messages.objects.create(content=message_text, owner=profile_obj.user, sender=request.user)
+
+        # Set the seen status to True if the ownser and sender is one person
+        seen = False
+        if target_user_profile_id == request.user.profile.id:
+            seen = True
+
+        Messages.objects.create(content=message_text, owner=profile_obj.user, sender=request.user, seen=seen)
         data = {'success': True}
         return JsonResponse(data)
     return JsonResponse({'error': 'Invalid request'}, status=401)

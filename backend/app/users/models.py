@@ -22,7 +22,10 @@ class Messages(models.Model):
         default=False, help_text='Whether the message has been read by the owner')
 
 
-    # 5671  =>  5000 -> 1-msg,    671 -> 2-msg
+    def __str__(self) -> str:
+        return f"Message of {self.sender.username} to {self.owner.username}"
+
+
     class Meta:
         ordering = ['-created_at']
         verbose_name = 'Message'

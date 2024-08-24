@@ -34,7 +34,9 @@
             <div class="bottom">
                 <div class="message">
                     <p class="last-message">{{ friend.last_message.content }}</p>
-                    <p>Unread messages: {{ friend.unread_messages_count }}</p>
+                    {% if friend.unread_messages_count %}
+                        <p class="unread-messages">+{{ friend.unread_messages_count }} messages</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -103,6 +103,14 @@
                                 font-size: 14px;
                                 color: gray;
                             }
+
+                            .unread-messages {
+                                float: right;
+                                background: $purple;
+                                padding: 5px 10px;
+                                border-radius: 10px;
+                                color: $light;
+                            }
                         }
                     }
                 }

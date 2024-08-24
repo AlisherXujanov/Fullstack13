@@ -111,10 +111,6 @@
   <script>
     const allFriends = document.querySelectorAll(".other-profiles .user")
 
-    document.addEventListener('DOMContentLoaded', function () {
-      console.log("{{ friends | safe }}")
-    })
-
     const messageInput = document.querySelector('#message-input')
     const submitBtn = document.querySelector("button[type='submit']")
     
@@ -145,7 +141,6 @@
           .then((response) => response.json())
           .then((data) => {
             if (data.success === true) {
-              e.target.parentElement.parentElement.reset()
               window.location.reload()
             }
           })
