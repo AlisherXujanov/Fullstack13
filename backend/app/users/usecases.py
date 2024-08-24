@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 
 # TODO: use cache here
-def get_ordered_messages(user: User, companion: User = None) -> list:
+def get_ordered_messages(request, user: User, companion: User = None,) -> list:
     all_messages = Messages.objects.all()
     owner_messages = []
     sender_messages = []
@@ -28,7 +28,8 @@ def get_ordered_messages(user: User, companion: User = None) -> list:
                 "id": message.id,
                 "time": message.created_at.strftime("%H:%M"),
                 "content": message.content,
-                "sender": "companion" if message.sender == companion else "myself"
+                "sender": "companion" if message.sender == companion else "myself",
+                "seen": True if message.id in request.session.get('unread_messages_ids', []) else False
             }
         }
         for message in target_chat_messages
@@ -36,7 +37,7 @@ def get_ordered_messages(user: User, companion: User = None) -> list:
     return filtered_by_day_month_year
 
 
-def get_chat_messages(user: User, companion: User = None) -> list:
+def get_chat_messages(request, user: User, companion: User = None) -> list:
       # [
     #     {
     #         'day': 15, 'month': 8, 'year': 2024,
@@ -47,7 +48,7 @@ def get_chat_messages(user: User, companion: User = None) -> list:
     #         }
     #     },
     # ]
-    return get_ordered_messages(user, companion)
+    return get_ordered_messages(request, user, companion)
 
 
 # def truncate_msg(msg: str, length: int = 50) -> str:
@@ -56,8 +57,8 @@ def get_chat_messages(user: User, companion: User = None) -> list:
 #     return msg
 
 
-def get_last_message_between(user: User, companion: User) -> str:
-    chat_messages = get_ordered_messages(user, companion)
+def get_last_message_between(request, user: User, companion: User) -> str:
+    chat_messages = get_ordered_messages(request, user, companion)
 
     time = None
     if last_msg := chat_messages[-1] if len(chat_messages) > 0 else None:
@@ -79,23 +80,24 @@ def get_last_message_between(user: User, companion: User) -> str:
     }
 
 
-def get_myself_as_friend_profile(user: User) -> dict:
-    my_profile = Profile.objects.get(user=user)
+def get_myself_as_friend_profile(request) -> dict:
+    my_profile = Profile.objects.get(user=request.user)
     return {
         "fr_profile": my_profile,
-        "last_message": get_last_message_between(user, user)
+        "last_message": get_last_message_between(request, request.user, request.user)
     }
 
 
-def get_friends(user: User) -> list:
+def get_friends(request) -> list:
     # For now, we get all profiles as friends
     # TODO: implement a real friends system
-    profiles = Profile.objects.all().exclude(user=user)
+    profiles = Profile.objects.all().exclude(user=request.user)
     all_friends = []
     for pr in profiles:
         all_friends.append({
             "fr_profile": pr,
-            "last_message": get_last_message_between(user, pr.user)
+            "last_message": get_last_message_between(request, request.user, pr.user),
+            "unread_messages_count": len(request.session.get('unread_messages_ids', []))
         })
     return all_friends
 
@@ -109,3 +111,12 @@ def is_user_online(user):
     return False
 
 
+
+
+def set_all_messages_as_seen(user:User, target_user:User) -> bool:
+    owner_messages = Messages.objects.filter(owner=user, sender=target_user)
+    if owner_messages.count() > 0:
+        owner_messages.update(seen=True)
+        return True
+    return False
+    

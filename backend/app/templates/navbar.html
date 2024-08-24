@@ -29,10 +29,14 @@
       <div class="user">
         <a href="{% url 'profile_page' request.user.id %}">
           {{ request.user.username }}
+          {% if request.session.has_unread_messages %}
+          <span class="unread-msgs">🔔</span>
+          {% endif %}
         </a>
       </div>
       <div class="dropdown">
-        <a href="{% url 'custom_logout' %}" class="logout">Log out</a>
+        <a href="{% url 'messages_page' request.user.profile.id %}">Messages</a>
+        <a href="{% url 'custom_logout' %}">Log out</a>
       </div>
     </div>
     {% else %}

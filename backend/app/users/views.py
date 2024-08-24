@@ -5,7 +5,7 @@ from django.shortcuts import render
 from allauth.account.views import LoginView, SignupView
 from .forms import *
 from nfts.models import NFTs
-from .usecases import get_chat_messages, get_friends, is_user_online, get_myself_as_friend_profile
+from .usecases import *
 import json
 
 
@@ -38,11 +38,14 @@ def profile_page(request, pk):
     return render(request, "profile_page.html", context)
 
 
+# get_chat_messages
+# get_last_message_between
+
 @login_required
 def messages(request, pk: int):
     target_user_profile = Profile.objects.get(user__pk=pk)
     target_user = None if request.user.id == pk else target_user_profile.user
-    chat_messages = get_chat_messages(request.user, target_user)
+    chat_messages = get_chat_messages(request, request.user, target_user)
 
     formatted_last_login = target_user_profile.user.last_login.strftime(
         "%d %b %Y, %H:%M:%S")
@@ -51,11 +54,12 @@ def messages(request, pk: int):
         "target_user_profile": target_user_profile,
         "target_user_is_active": is_user_online(target_user_profile.user),
         "target_user_last_login": formatted_last_login,
-        "friends": get_friends(request.user),
+        "friends": get_friends(request),
         "my_saved_messages": True if target_user == None else False,
-        "saved_messages": get_myself_as_friend_profile(request.user),
+        "saved_messages": get_myself_as_friend_profile(request),
         "chat_messages": chat_messages,
     }
+    set_all_messages_as_seen(request.user, target_user)
     return render(request, "messages.html", context)
 
 
