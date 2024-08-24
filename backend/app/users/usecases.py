@@ -37,6 +37,16 @@ def get_ordered_messages(user: User, companion: User = None) -> list:
 
 
 def get_chat_messages(user: User, companion: User = None) -> list:
+      # [
+    #     {
+    #         'day': 15, 'month': 8, 'year': 2024,
+    #         'message': {
+    #             'time': '05:40',
+    #             'content': '...',
+    #             'sender': 'companion'
+    #         }
+    #     },
+    # ]
     return get_ordered_messages(user, companion)
 
 

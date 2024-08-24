@@ -8,5 +8,6 @@ urlpatterns = [
     path("messages/<int:pk>/", messages, name="messages_page"),
 
     # AJAX calls
-    path('deleteMessage/', deleteMessage, name='deleteMessage'),
+    path('delete-message/', deleteMessage, name='deleteMessage'),
+    path('ajax-create-message/', ajax_create_message, name='ajax_create_message'),
 ]

@@ -91,9 +91,8 @@
         {% endfor %}
       </div>
       <div class="form-content">
-        <form action="{% url 'messages_page' target_user_profile.id %}" method="POST" enctype="multipart/form-data">
+        <form>
           {% csrf_token %}
-
           <input id="message-input" type="text" placeholder="Write Something" name="message" />
 
           <button type="submit">
@@ -121,6 +120,35 @@
         submitBtn.disabled = true
       }
     })
+
+    submitBtn.addEventListener('click', (e) => {
+      e.preventDefault()
+      if (submitBtn.disabled == false) {
+        
+        fetch('{% url "ajax_create_message" %}', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+          },
+          body: JSON.stringify({
+            target_user_profile_id: {{ target_user_profile.id }},
+            message_text: messageInput.value
+          })
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success === true) {
+              e.target.parentElement.parentElement.reset()
+              window.location.reload()
+            }
+          })
+          .catch((error) => {
+            console.log('An error occurred: ' + error)
+          })
+
+      }
+    })
     
     document.addEventListener('DOMContentLoaded', function () {
       // Code to run when the DOM is fully loaded
@@ -132,7 +160,7 @@
         // behavior: 'smooth'
       })
     })
-
+    
     function deleteMessage(event, messageID) {
       fetch('{% url "deleteMessage" %}', {
         method: 'POST',
@@ -140,16 +168,17 @@
           'Content-Type': 'application/json',
           'X-CSRFToken': '{{ csrf_token }}'
         },
-        body: JSON.stringify({"message_id": messageID})
+        body: JSON.stringify({ message_id: messageID })
       })
         .then((response) => response.json())
         .then((data) => {
-            if (data.success === true) {
-              event.target.parentElement.remove()
-            }
+          if (data.success === true) {
+            event.target.parentElement.remove()
+          }
         })
-        .catch((error) => {console.log('An error occurred: ' + error)})
+        .catch((error) => {
+          console.log('An error occurred: ' + error)
+        })
     }
-
   </script>
 {% endblock %}

@@ -41,25 +41,9 @@ def profile_page(request, pk):
 @login_required
 def messages(request, pk: int):
     target_user_profile = Profile.objects.get(user__pk=pk)
-
-    if request.method == "POST":
-        message = request.POST['message']
-        Messages.objects.create(content=message, owner=target_user_profile.user, sender=request.user)
-        
-
-    target_user = None if request.user.id == pk else target_user_profile.user 
+    target_user = None if request.user.id == pk else target_user_profile.user
     chat_messages = get_chat_messages(request.user, target_user)
-    # [
-    #     {
-    #         'day': 15, 'month': 8, 'year': 2024,
-    #         'message': {
-    #             'time': '05:40',
-    #             'content': '...',
-    #             'sender': 'companion'
-    #         }
-    #     },
-    # ]
-   
+
     formatted_last_login = target_user_profile.user.last_login.strftime(
         "%d %b %Y, %H:%M:%S")
 
@@ -76,6 +60,18 @@ def messages(request, pk: int):
 
 
 @login_required
+def ajax_create_message(request):
+    if request.headers.get('X-CSRFToken') and request.method == "POST":
+        target_user_profile_id = json.loads(request.body)['target_user_profile_id']
+        message_text = json.loads(request.body)['message_text']
+        profile_obj = Profile.objects.get(pk=target_user_profile_id) 
+        Messages.objects.create(content=message_text, owner=profile_obj.user, sender=request.user)
+        data = {'success': True}
+        return JsonResponse(data)
+    return JsonResponse({'error': 'Invalid request'}, status=401)
+
+
+@login_required
 def deleteMessage(request):
     # JSON.stringify()   ===  json.dumps()
     # JSON.parse()   ===  json.loads()
@@ -84,6 +80,6 @@ def deleteMessage(request):
         msg_id = json.loads(request.body)['message_id']
         message_obj = Messages.objects.get(pk=msg_id)
         message_obj.delete()
-        data = { 'success': True }
+        data = {'success': True}
         return JsonResponse(data)
     return JsonResponse({'error': 'Invalid request'}, status=401)
