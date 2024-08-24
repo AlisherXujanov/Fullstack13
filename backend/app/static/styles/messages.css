@@ -142,6 +142,9 @@ button.green-btn {
 .messages-page-wrapper .left-sidebar-wrapper .other-profiles .user:hover {
   background-color: lightgray;
 }
+.messages-page-wrapper .left-sidebar-wrapper .other-profiles .user.hidden {
+  display: none;
+}
 .messages-page-wrapper .left-sidebar-wrapper .other-profiles .user .right {
   width: 100%;
   display: flex;
