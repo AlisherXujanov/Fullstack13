@@ -32,6 +32,7 @@ a {
     &:hover {
         color: $dark;
     }
+
     &.active {
         color: $black;
         font-weight: bold;
@@ -62,9 +63,25 @@ button {
 button.red-btn {
     background: $red;
 }
+
 button.purple-btn {
     background: $purple;
 }
+
 button.green-btn {
     background: $green;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #dadada;
+    border-radius: 10px;
 }

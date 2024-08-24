@@ -66,6 +66,19 @@ button.green-btn {
   background: linear-gradient(to right, #56c2ff, #48fe9c);
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #dadada;
+  border-radius: 10px;
+}
+
 .explore-wrapper .content-header {
   margin-top: 180px;
   text-align: center;
