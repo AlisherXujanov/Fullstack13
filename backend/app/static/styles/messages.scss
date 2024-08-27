@@ -302,3 +302,80 @@
 
     .right-sidebar-wrapper {}
 }
+
+
+
+
+@media(max-width:1350px) {
+    .messages-page-wrapper {
+        width: 100%;
+    }
+}
+
+@media(max-width:1000px) {
+    .messages-page-wrapper {
+        grid-template-columns: 1fr 3fr;
+
+        .left-sidebar-wrapper {
+            .other-profiles {
+                .user {
+                    .right {
+                        .bottom {
+                            .message {
+                                max-width: 20vw;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:700px) {
+    .messages-page-wrapper {
+        .left-sidebar-wrapper {
+            .my-profile {
+                .info {
+                    .fullname {
+                        display: none;
+                    }
+                }
+
+                .searchbox {
+                    gap: 0;
+
+                    input {
+                        display: none;
+                    }
+                }
+            }
+
+            .other-profiles {
+                .user {
+                    .right {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .middle-content-wrapper {
+            .messages-content {
+                align-items: center;
+
+                span {
+                    max-width: 100%;
+
+                    &.my-message {
+                        margin-left: 0;
+                    }
+
+                    &.companion-message {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
