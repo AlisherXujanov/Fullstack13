@@ -66,8 +66,12 @@ def messages(request, pk: int):
 @login_required
 def ajax_create_message(request):
     if request.headers.get('X-CSRFToken') and request.method == "POST":
-        target_user_profile_id = json.loads(request.body)['target_user_profile_id']
-        message_text = json.loads(request.body)['message_text']
+        REQUEST_BODY = json.loads(request.body)
+        
+        target_user_profile_id = REQUEST_BODY['target_user_profile_id']
+        message_text = REQUEST_BODY['message_text']
+        msgId = REQUEST_BODY.get('msgId', None)
+
         profile_obj = Profile.objects.get(pk=target_user_profile_id) 
 
         # Set the seen status to True if the ownser and sender is one person
@@ -75,8 +79,17 @@ def ajax_create_message(request):
         if target_user_profile_id == request.user.profile.id:
             seen = True
 
-        Messages.objects.create(content=message_text, owner=profile_obj.user, sender=request.user, seen=seen)
-        data = {'success': True}
+
+        data = {}
+        if msgId:
+            message_obj = Messages.objects.get(pk=msgId)
+            message_obj.content = message_text
+            message_obj.save()
+            # data["..."] = "..."   # If something needs to be returned
+        else:
+            Messages.objects.create(content=message_text, owner=profile_obj.user, sender=request.user, seen=seen)
+
+        data['success'] = True
         return JsonResponse(data)
     return JsonResponse({'error': 'Invalid request'}, status=401)
 

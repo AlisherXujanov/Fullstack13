@@ -170,6 +170,7 @@
             position: relative;
 
 
+            button,
             span {
                 width: auto;
                 padding: 10px 20px;
@@ -219,6 +220,27 @@
                     opacity: 0;
                 }
 
+                .update-message-icon {
+                    background-color: transparent;
+                    bottom: 30px;
+                    position: absolute;
+
+                    padding: 0;
+                    border-radius: 10px;
+                    color: snow;
+                    display: inline-block;
+                    @include flex(row, center, center, 0);
+                    z-index: 9;
+                    cursor: pointer;
+                    font-size: 1.5em;
+                    opacity: 0;
+
+                    img {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+
                 &.companion-message {
                     span {
                         right: 2px;
@@ -228,21 +250,36 @@
                         span {
                             opacity: 1;
                             right: -22px;
-                            background-color: red;
+                            background: $red;
                         }
                     }
                 }
 
                 &.my-message {
+
+                    button,
                     span {
                         left: 2px;
                     }
 
+
                     &:hover {
                         span {
                             opacity: 1;
-                            left: -22px;
-                            background-color: red;
+
+                            &.delete-message-icon {
+                                background: $red;
+                                left: -22px;
+                            }
+
+                        }
+
+                        button {
+                            opacity: 1;
+
+                            &.update-message-icon {
+                                left: -25px;
+                            }
                         }
                     }
                 }
@@ -294,6 +331,14 @@
                         background-color: gray;
                         cursor: not-allowed;
                         transform: skew(0) scale(1);
+                    }
+
+                    &.cancel-button {
+                        width: auto;
+                        padding: 10px 30px;
+                        border-radius: 10px;
+                        background: $red;
+                        display: none;
                     }
                 }
             }

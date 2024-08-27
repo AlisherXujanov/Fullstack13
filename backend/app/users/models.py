@@ -21,6 +21,10 @@ class Messages(models.Model):
     seen = models.BooleanField(
         default=False, help_text='Whether the message has been read by the owner')
 
+    
+    def updated_after_creation(self) -> bool:
+        return self.created_at != self.updated_at
+
 
     def __str__(self) -> str:
         return f"Message of {self.sender.username} to {self.owner.username}"

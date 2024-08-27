@@ -29,7 +29,8 @@ def get_ordered_messages(request, user: User, companion: User = None,) -> list:
                 "time": message.created_at.strftime("%H:%M"),
                 "content": message.content,
                 "sender": "companion" if message.sender == companion else "myself",
-                "seen": True if message.id in request.session.get('unread_messages_ids', []) else False
+                "seen": True if message.id in request.session.get('unread_messages_ids', []) else False,
+                "updated": message.updated_after_creation()
             }
         }
         for message in target_chat_messages

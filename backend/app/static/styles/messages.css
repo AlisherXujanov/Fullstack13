@@ -223,6 +223,7 @@ button.green-btn {
   border-bottom: 1px solid #eee;
   position: relative;
 }
+.messages-page-wrapper .middle-content-wrapper .messages-content button,
 .messages-page-wrapper .middle-content-wrapper .messages-content span {
   width: auto;
   padding: 10px 20px;
@@ -231,18 +232,22 @@ button.green-btn {
   text-wrap: pretty;
   position: relative;
 }
+.messages-page-wrapper .middle-content-wrapper .messages-content button.my-message,
 .messages-page-wrapper .middle-content-wrapper .messages-content span.my-message {
   margin-left: auto;
   background-color: #4299ff;
   color: #fff;
 }
+.messages-page-wrapper .middle-content-wrapper .messages-content button.my-message .time,
 .messages-page-wrapper .middle-content-wrapper .messages-content span.my-message .time {
   color: rgba(255, 255, 255, 0.5490196078);
 }
+.messages-page-wrapper .middle-content-wrapper .messages-content button.companion-message,
 .messages-page-wrapper .middle-content-wrapper .messages-content span.companion-message {
   margin-right: auto;
   background-color: #dbe8ff;
 }
+.messages-page-wrapper .middle-content-wrapper .messages-content button .time,
 .messages-page-wrapper .middle-content-wrapper .messages-content span .time {
   display: block;
   width: 100%;
@@ -250,6 +255,7 @@ button.green-btn {
   font-size: 14px;
   color: gray;
 }
+.messages-page-wrapper .middle-content-wrapper .messages-content button .delete-message-icon,
 .messages-page-wrapper .middle-content-wrapper .messages-content span .delete-message-icon {
   width: 20px;
   height: 20px;
@@ -270,21 +276,62 @@ button.green-btn {
   bottom: 2px;
   opacity: 0;
 }
+.messages-page-wrapper .middle-content-wrapper .messages-content button .update-message-icon,
+.messages-page-wrapper .middle-content-wrapper .messages-content span .update-message-icon {
+  background-color: transparent;
+  bottom: 30px;
+  position: absolute;
+  padding: 0;
+  border-radius: 10px;
+  color: snow;
+  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  z-index: 9;
+  cursor: pointer;
+  font-size: 1.5em;
+  opacity: 0;
+}
+.messages-page-wrapper .middle-content-wrapper .messages-content button .update-message-icon img,
+.messages-page-wrapper .middle-content-wrapper .messages-content span .update-message-icon img {
+  width: 20px;
+  height: 20px;
+}
+.messages-page-wrapper .middle-content-wrapper .messages-content button.companion-message span,
 .messages-page-wrapper .middle-content-wrapper .messages-content span.companion-message span {
   right: 2px;
 }
+.messages-page-wrapper .middle-content-wrapper .messages-content button.companion-message:hover span,
 .messages-page-wrapper .middle-content-wrapper .messages-content span.companion-message:hover span {
   opacity: 1;
   right: -22px;
-  background-color: red;
+  background: linear-gradient(to right, #ff56bb, #ff8f77);
 }
+.messages-page-wrapper .middle-content-wrapper .messages-content button.my-message button,
+.messages-page-wrapper .middle-content-wrapper .messages-content button.my-message span,
+.messages-page-wrapper .middle-content-wrapper .messages-content span.my-message button,
 .messages-page-wrapper .middle-content-wrapper .messages-content span.my-message span {
   left: 2px;
 }
+.messages-page-wrapper .middle-content-wrapper .messages-content button.my-message:hover span,
 .messages-page-wrapper .middle-content-wrapper .messages-content span.my-message:hover span {
   opacity: 1;
+}
+.messages-page-wrapper .middle-content-wrapper .messages-content button.my-message:hover span.delete-message-icon,
+.messages-page-wrapper .middle-content-wrapper .messages-content span.my-message:hover span.delete-message-icon {
+  background: linear-gradient(to right, #ff56bb, #ff8f77);
   left: -22px;
-  background-color: red;
+}
+.messages-page-wrapper .middle-content-wrapper .messages-content button.my-message:hover button,
+.messages-page-wrapper .middle-content-wrapper .messages-content span.my-message:hover button {
+  opacity: 1;
+}
+.messages-page-wrapper .middle-content-wrapper .messages-content button.my-message:hover button.update-message-icon,
+.messages-page-wrapper .middle-content-wrapper .messages-content span.my-message:hover button.update-message-icon {
+  left: -25px;
 }
 .messages-page-wrapper .middle-content-wrapper .form-content {
   height: 100px;
@@ -331,6 +378,13 @@ button.green-btn {
   background-color: gray;
   cursor: not-allowed;
   transform: skew(0) scale(1);
+}
+.messages-page-wrapper .middle-content-wrapper .form-content form button.cancel-button {
+  width: auto;
+  padding: 10px 30px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #ff56bb, #ff8f77);
+  display: none;
 }
 @media (max-width: 1350px) {
   .messages-page-wrapper {

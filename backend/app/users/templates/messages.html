@@ -76,15 +76,28 @@
           {% if message_content.message.sender == 'companion' %}
             <span class="drop-delete companion-message">
               {{ message_content.message.content }}
-              <p class="time">{{ message_content.message.time }}</p>
+              <p class="time">
+                {% if message_content.message.updated %}
+                  Edited
+                {% endif %}
+                {{ message_content.message.time }}
+              </p>
 
               <span onclick="deleteMessage(event, {{ message_content.message.id }})" class="delete-message-icon">&times;</span>
             </span>
           {% else %}
             <span class="drop-delete my-message">
-              {{ message_content.message.content }}
-              <p class="time">{{ message_content.message.time }}</p>
+              <span class="message-itself">{{ message_content.message.content }}</span>
+              <p class="time">
+                {% if message_content.message.updated %}
+                  Edited
+                {% endif %}
+                {{ message_content.message.time }}
+              </p>
 
+              <button onclick="updateMessage(event, {{ message_content.message.id }})" class="update-message-icon">
+                <img src={% static "icons/pencil-square.svg" %}>
+              </button>
               <span onclick="deleteMessage(event, {{ message_content.message.id }})" class="delete-message-icon">&times;</span>
             </span>
           {% endif %}
@@ -95,6 +108,7 @@
           {% csrf_token %}
           <input id="message-input" type="text" placeholder="Write Something" name="message" />
 
+          <button class="cancel-button" onclick="cancelUpdate(event)" type="button">Cancel</button>
           <button type="submit">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
               <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z" />
@@ -109,24 +123,33 @@
 
 {% block js %}
   <script>
-    const allFriends = document.querySelectorAll(".other-profiles .user")
-
+    const allFriends = document.querySelectorAll('.other-profiles .user')
     const messageInput = document.querySelector('#message-input')
     const submitBtn = document.querySelector("button[type='submit']")
+    const cancelBtn = document.querySelector('.cancel-button')
+    
+    let updateMode = {
+      status: false,
+      self: null,
+      originalContent: '',
+      msgID: null
+    }
     
     submitBtn.disabled = true
     messageInput.addEventListener('input', (e) => {
+      if (updateMode.status === true) {
+        updateMode.self.textContent = e.target.value
+      }
       if (e.target.value.length > 0) {
         submitBtn.disabled = false
       } else {
         submitBtn.disabled = true
       }
     })
-
+    
     submitBtn.addEventListener('click', (e) => {
       e.preventDefault()
       if (submitBtn.disabled == false) {
-        
         fetch('{% url "ajax_create_message" %}', {
           method: 'POST',
           headers: {
@@ -134,8 +157,9 @@
             'X-CSRFToken': '{{ csrf_token }}'
           },
           body: JSON.stringify({
-            target_user_profile_id: {{ target_user_profile.id }},
-            message_text: messageInput.value
+            target_user_profile_id: '{{ target_user_profile.id }}',
+            message_text: messageInput.value.trim(),
+            msgId: updateMode.msgID
           })
         })
           .then((response) => response.json())
@@ -147,7 +171,6 @@
           .catch((error) => {
             console.log('An error occurred: ' + error)
           })
-
       }
     })
     
@@ -181,20 +204,41 @@
           console.log('An error occurred: ' + error)
         })
     }
-
-
+    
     function filterFriends(e) {
       let name = e.target.value.toLowerCase()
-
+    
       Array.from(allFriends).forEach((friend, idx) => {
         let friendName = friend.querySelector('.fullname').textContent.toLowerCase()
         if (friendName.includes(name)) {
-          friend.classList.remove("hidden")
+          friend.classList.remove('hidden')
         } else {
-          friend.classList.add("hidden")
+          friend.classList.add('hidden')
         }
       })
     }
 
+    function showCancelButton() {
+      cancelBtn.style.display = 'inline-block'
+    }
+
+    function cancelUpdate(e) {
+      updateMode.self.textContent = updateMode.originalContent
+      updateMode.self = null
+      updateMode.status = false
+      cancelBtn.style.display = "none"
+      messageInput.value = ""
+      messageInput.msgID = null
+    }
+    
+    function updateMessage(e, msgID) {
+      console.log(e.target)
+      updateMode.status = true
+      updateMode.self = e.target.parentElement.parentElement.querySelector('.message-itself')
+      updateMode.originalContent = updateMode.self.textContent
+      updateMode.msgID = msgID
+      messageInput.value = updateMode.originalContent
+      showCancelButton()
+    }
   </script>
 {% endblock %}
