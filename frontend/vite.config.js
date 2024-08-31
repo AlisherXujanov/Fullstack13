@@ -10,23 +10,5 @@ export default defineConfig({
   build: {
     // Increase the limit as needed
     chunkSizeWarningLimit: 1000, 
-  },
-  server: {
-    middlewareMode: 'html',
-    configureServer: ({ middlewares }) => {
-      middlewares.use((req, res, next) => {
-        if (req.url.startsWith('/api')) {
-          return next()
-        }
-        const filePath = resolve(__dirname, 'dist', 'index.html')
-        fs.readFile(filePath, (err, data) => {
-          if (err) {
-            return next(err)
-          }
-          res.setHeader('Content-Type', 'text/html')
-          res.end(data)
-        })
-      })
-    }
   }
 })
