@@ -1,15 +1,24 @@
 @import "../../../assets/styles/settings";
 
 .heading-wrapper {
-    b {
-        display: inline-block;
+    h1 {
         position: relative;
-        font-weight: 500;
+        display: inline-block;
 
         img {
             position: absolute;
-            right: -25px;
-            top: -15px;
+            right: -15px;
+            top: -7px;
+        }
+    }
+
+    &.gray {
+        color: $text-color;
+
+        h1 {
+            img {
+                filter: grayscale(100%);
+            }
         }
     }
 }

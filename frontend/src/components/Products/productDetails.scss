@@ -1,0 +1,187 @@
+@import "../../assets/styles/settings";
+
+.product-details-wrapper {
+  padding: 50px 250px;
+
+  .intro {
+    color: $light;
+    font-size: 1.2em;
+  }
+
+  .heading-wrapper {
+    margin: 50px 0;
+  }
+
+  .image-wrapper {
+    @include grid(2);
+    grid-template-columns: 1fr 2fr;
+    margin: 50px 0 30px 0;
+
+    img {
+      width: 100%;
+      height: 350px;
+      filter: grayscale(100%);
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    color: lightgray;
+    line-height: 1.5em;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+
+  .documents {
+    margin: 50px 0;
+
+    .action-buttons {
+      margin: 40px 0;
+      @include flex($gap: 20px);
+
+      button.download {
+        padding: 30px 40px 30px 30px;
+        background-color: $dark-lighter;
+        width: 300px;
+        display: inline-block;
+
+        display: grid;
+        grid-template-columns: 15px 1fr 15px;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        .middle {
+          text-align: left;
+        }
+
+        svg {
+          transform: scale(2.5);
+          border-radius: 50%;
+          color: darkgray;
+        }
+
+        .right {
+          a {
+            display: inline-block;
+
+            &:hover {
+              svg {
+                color: $warning;
+              }
+            }
+          }
+        }
+
+        &:hover {
+          .right {
+            a {
+              svg {
+                box-shadow: 0 0 10px 0 $warning-t, 0 0 10px 0 $warning-t;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .lycences {
+      margin: 100px 0;
+
+      .content {
+        @include flex($gap: 100px);
+
+        .first {
+          padding: 40px 40px 40px 0;
+        }
+
+        .second {
+          padding: 10px;
+
+          p {
+            position: relative;
+            left: 25px;
+            bottom: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $xx-large-screen) {
+  .product-details-wrapper {
+    padding: 50px 150px;
+
+    .image-wrapper {
+      grid-template-columns: 2fr 2fr;
+      margin: 50px 0 30px 0;
+    }
+  }
+}
+
+@media (max-width: $x-large-screen) {
+  .product-details-wrapper {
+    padding: 50px 100px;
+  }
+}
+
+@media (max-width: $large-screen) {
+  .product-details-wrapper {
+    padding: 50px 50px;
+  }
+}
+
+@media (max-width: $medium-screen) {
+  .product-details-wrapper {
+    padding: 50px 30px;
+  }
+}
+
+@media (max-width: $small-screen) {
+  .product-details-wrapper {
+    padding: 50px 15px;
+
+    .image-wrapper {
+      @include grid(1);
+      grid-template-columns: 1fr;
+    }
+
+
+    .documents {
+      .action-buttons {
+        @include flex();
+        flex-direction: column;
+
+        button.download {
+          display: grid;
+          grid-template-columns: 35px 2fr 35px;
+          width: 90vw;
+        }
+      }
+
+      .lycences {
+        margin: 50px 0;
+        @include flex(column, center, center, 50px);
+
+        .content {
+          margin: 0;
+          padding: 0;
+          gap: 0;
+
+
+          .first {
+            margin: 0 0 0 10px;
+            padding: 0;
+          }
+
+          .second {
+            padding: 0;
+            position: relative;
+            bottom: 30px;
+          }
+        }
+      }
+    }
+  }
+}

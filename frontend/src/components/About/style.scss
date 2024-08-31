@@ -1,183 +1,94 @@
 @import "../../assets/styles/settings";
 
-#about-wrapper {
-    .about {
-        padding: 100px;
+.about-page-wrapper {
+    padding: 50px 0;
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2.5fr;
-            gap: 50px;
-            margin-top: 50px;
-
-            .left {
-                img {
-                    filter: grayscale(100%);
-                }
-            }
-
-            .right {
-                p {
-                    font-family: cursive;
-                    line-height: 30px;
-                    color: darkgray;
-                }
-
-                button {
-                    @extend %warning-btn;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    img {
-                        margin-right: 10px;
-                    }
-                }
-            }
-        }
+    .heading-wrapper,
+    .content-wrapper {
+        padding: 0 200px;
     }
-    .values {
-        margin-top: 50px;
-        padding: 100px;
 
-        .values-content {
-            margin-top: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px 0;
-
-            .value-item {
-                display: grid;
-                grid-template-columns: 200px 1fr;
-
-                img {
-                    position: relative;
-                    bottom: 20px;
-                }
-
-                div {
-                    h2 {
-                        margin-bottom: 30px;
-                    }
-                    p {
-                        color: darkgray;
-                        font-family: cursive;
-                        line-height: 25px;
-                    }
-                    padding-top: 45px;
-                }
-            }
-        }
-    }
-    #teams {
-        padding: 100px;
+    .content-wrapper {
         margin: 50px 0;
-        .info {
-            color: darkgray;
-            width: 70%;
-            padding: 50px 0 50px 0;
+        @include grid(2, 50px);
+        grid-template-columns: 1fr 3fr;
+
+        img {
+            filter: grayscale(100%);
         }
-        .teams-wrapper {
-            .images {
-                display: grid;
-                grid-template-columns: repeat(6, 1fr);
+
+        .info {
+            p {
+                width: 80%;
+                margin-bottom: 30px;
+                font-size: 1.1em;
+                color: lightgray;
+            }
+
+            .warning-btn {
+                padding: 15px 40px;
+                font-size: 1em;
+                @include flex(row, center, center);
                 gap: 10px;
 
-                .member {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                img {
-                    border-radius: 50%;
-                    filter: grayscale(100%);
+                svg {
+                    width: 20px;
+                    height: 20px;
                 }
             }
         }
     }
-    .company-blog {
-        b {
-            margin: 100px 0 50px 100px;
-        }
-        .carousel-section {
+}
+
+
+@media (max-width: $xx-large-screen) {
+    .about-page-wrapper {
+
+        .heading-wrapper,
+        .content-wrapper {
             padding: 0 100px;
         }
     }
+}
 
-    @media (max-width: $large-screen) {
-        .values {
-            padding: 20px;
-            .values-content {
-                .value-item {
-                    grid-template-columns: 160px 1fr;
-                }
-            }
-        }
-        #teams {
-            padding: 20px;
+@media (max-width: $x-large-screen) {
+    .about-page-wrapper {
+        .content-wrapper {
+            grid-template-columns: 1fr 2fr;
 
-            .teams-wrapper {
-                .images {
-                    grid-template-columns: repeat(3, 1fr);
-                    gap: 20px;
+            .info {
+                p {
+                    width: 100%;
                 }
             }
         }
     }
+}
 
-    @media (max-width: $medium-screen) {
-        .about {
-            padding: 20px;
-            .about-content {
-                grid-template-columns: 0.5fr 1fr;
-                gap: 30px;
-            }
-        }
-        .values {
-            padding: 10px;
+@media (max-width: $large-screen) {
+    .about-page-wrapper {
 
-            .values-content {
-                grid-template-columns: 1fr;
-            }
-        }
-        #teams {
+        .heading-wrapper,
+        .content-wrapper {
+            padding: 0 10px;
+            gap: 20px;
         }
     }
+}
 
-    @media (max-width: $small-screen) {
-        .about {
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
+@media (max-width: $medium-screen) {
+    .about-page-wrapper {
+        .content-wrapper {
+            grid-template-columns: 1fr 1.5fr;
         }
-        #teams {
-            .teams-wrapper {
-                .images {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-            }
-        }
-        .company-blog {
-            b {
-                margin: 50px 0 50px 20px;
-            }
-            .carousel-section {
-                padding: 20px;
-            }
-        }
-        .values {
-            .values-content {
-                grid-template-columns: 1fr;
-                .value-item {
-                    img {
-                        right: 30px;
-                    }
-                    grid-template-columns: 150px 1fr;
-                }
-            }
+    }
+}
+
+@media (max-width: $small-screen) {
+    .about-page-wrapper {
+
+        .content-wrapper {
+            grid-template-columns: 1fr;
         }
     }
 }

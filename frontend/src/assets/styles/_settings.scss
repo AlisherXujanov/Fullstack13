@@ -1,46 +1,58 @@
-@use "./resets";
-@import "./samples";
+$warning: #FF6600;
+$warning-t: #FF660030;
 
-$warning: #ff6600;
-$warning-t: #ff660050;
+$consultation-bg: #0A0A0A;
 $dark: #141414;
-$dark-lighter: #202020;
-$dark-darker: #0a0a0a;
-$black: #0a0a0a;
-$success: #00cc00;
-$light: #f4f4f4;
+$dark-lighter: #1C1C1C;
 
+$light: #FFFFFF;
+$text-color: #6C6C6C;
+
+
+$success: #00FF0030;
+$danger: #FF000030;
+
+$xx-large-screen: 1600px;
+$x-large-screen: 1350px;
 $large-screen: 1100px;
-$medium-screen: 855px;
-$small-screen: 680px;
+$medium-screen: 900px;
+$small-screen: 750px;
 
-%link {
-    @extend %link-style;
+
+// @media (max-width: $xx-large-screen) {
+// }
+// @media (max-width: $x-large-screen) {
+// }
+// @media (max-width: $large-screen) {
+// }
+// @media (max-width: $medium-screen) {
+// }
+// @media (max-width: $small-screen) {
+// }
+
+
+// ====================================================
+// ====================================================
+// MIXINS
+
+@mixin grid($columns: 12, $gap: 20px) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    grid-gap: $gap;
 }
 
-%warning-btn {
-    @extend %btn;
-    padding: 10px 35px;
-    background-color: $warning-t;
-    border: 2px solid $warning;
-    color: snow;
-    border-radius: 0;
-    box-shadow:
-        2px 2px 15px $warning-t,
-        -2px -2px 15px $warning-t,
-        inset 2px 2px 15px $warning-t,
-        inset -2px -2px 15px $warning-t;
+// USAGE:
+// @include grid();
+// @include grid(3, 10px);
 
-    &:hover {
-        background-color: darken(black, 10%);
-        box-shadow:
-            2px 2px 15px $warning,
-            -2px -2px 15px $warning,
-            inset 2px 2px 15px $warning,
-            inset -2px -2px 15px $warning;
-        transform: scale(0.95);
-    }
-    &:active {
-        transform: scale(0.8);
-    }
+@mixin flex($direction: row, $justify: flex-start, $align: flex-start, $gap: 10px) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
 }
+
+// USAGE:
+// @include flex();
+// @include flex(column, center, center);

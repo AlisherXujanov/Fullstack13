@@ -1,10 +1,18 @@
-import './style.scss'
+import NoPageImage from '../../assets/images/404.png'
+import "./style.scss";
 
-function NoPage(props) {
+function NoPage() {
     return (
-        <div id="no-page-wrapper">
-            <h2>404 Page Not Found</h2>
-        </div>
+        <main className="no-page-wrapper">
+            <img src={NoPageImage} alt='No Page Found'/>
+
+            <br />
+            <br />
+
+            <a href="/" className='warning-btn'>
+                Home
+            </a>
+        </main>
     );
 }
 

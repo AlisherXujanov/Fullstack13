@@ -1,29 +1,30 @@
-import "./style.scss"
-import Heading from "../common/Heading"
-import Item from "./Item.jsx"
-import BlogItems from "../../db/blog.json"
-
-
+import './style.scss'
+import Heading from '../common/Heading'
+import blogJson from '../../db/blog.json'
+import Item from './Item.jsx';
+import { useEffect } from 'react'
 
 function Blog(props) {
+    useEffect(() => {
+        document.title = "Blog";
+    }, []);
+
     return (
-        <div id="blog-wrapper">
-            <div style={{ padding: "0 0 20px 20px" }}>
-                <Heading size={1.5} >Blog</Heading>
-            </div>
+        <div className="blog-page-wrapper">
+            <Heading size={1}>Blog</Heading>
+
 
             {
-                BlogItems.map((item, index) => {
+                blogJson.map((item, index) => {
                     return (
-                        <Item key={index} 
-                            h2={item.h2}
-                            id={item.id}
-                        />
+                        <div key={index} className="item-wrapper">
+                            <Item item={item} />
+                        </div>
                     )
                 })
             }
         </div>
-    );
+    )
 }
 
-export default Blog;
+export default Blog

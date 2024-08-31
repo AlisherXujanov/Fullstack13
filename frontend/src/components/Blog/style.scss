@@ -1,54 +1,87 @@
 @import "../../assets/styles/settings";
 
-#blog-wrapper {
-    padding: 100px;
-    background-color: $dark-lighter;
-    .content {
-        display: grid;
-        grid-template-columns: 1fr 1.5fr;
-        gap: 25px;
-        font-family: cursive;
+.blog-page-wrapper {
+  background-color: $dark-lighter;
+  padding: 50px 350px;
 
-        *:not(.warning-btn) {
-            margin-bottom: 20px;
-        }
-        .left,
-        .right {
-            padding: 20px;
-        }
-        .warning-btn {
-            border: 1px solid $warning-t;
-            background-color: transparent;
-        }
-        p {
-            color: darkgray;
-            font-size: 0.75em;
-        }
+  .heading-wrapper {
+    margin: 50px 0;
+  }
+
+  .item-wrapper {
+    margin-bottom: 100px;
+    @include grid(2, 70px);
+
+    img {
+      width: 100%;
+      height: 350px;
     }
 
-    @media (max-width: $large-screen) {
-        padding: 50px;
-    }
-    @media (max-width: $medium-screen) {
-        padding: 50px 10px;
+    .info {
+      position: relative;
 
-        .content {
-            grid-template-columns: 1fr 1fr;
-            gap: 5px;
-        }
-    }
-    @media (max-width: $small-screen) {
-        .content {
-            grid-template-columns: 1fr;
-            gap: 0;
+      h2 {
+        margin: 10px 0;
+      }
 
-            .left {
-                margin: 0;
-                padding: 0;
-            }
-            .right {
-                padding: 0 10px 20px 10px;
-            }
+      p {
+        color: lightgray;
+      }
+
+      .author {
+        margin: 20px 0;
+
+        .date {
+          margin-left: 10px;
         }
+      }
+
+      a {
+        padding: 0 0 5px 0;
+        margin-top: 30px;
+        color: $warning;
+        position: absolute;
+        transition: 0.5s;
+
+        &:hover {
+          border-bottom: 1px solid $warning;
+          padding: 0 0 10px 0;
+        }
+      }
     }
+  }
+}
+
+@media (max-width: $xx-large-screen) {
+  .blog-page-wrapper {
+    padding: 50px 250px;
+    .item-wrapper {
+      grid-template-columns: 2fr 3fr;
+      gap: 50px;
+    }
+  }
+}
+@media (max-width: $x-large-screen) {
+  .blog-page-wrapper {
+    padding: 50px 200px;
+  }
+}
+@media (max-width: $large-screen) {
+  .blog-page-wrapper {
+    padding: 50px 100px;
+  }
+}
+@media (max-width: $medium-screen) {
+  .blog-page-wrapper {
+    padding: 50px 50px;
+  }
+}
+@media (max-width: $small-screen) {
+  .blog-page-wrapper {
+    padding: 25px;
+
+    .item-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
 }

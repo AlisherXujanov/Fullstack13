@@ -9,11 +9,13 @@ header {
         display: grid;
         grid-template-columns: 1fr 5fr;
         padding: 20px 40px;
-        box-shadow: 0 3px 50px $warning-t;
+        align-items: center;
+        justify-content: flex-start;
 
         .logo {
             h2 {
                 font-size: 1.8em;
+
                 a {
                     text-decoration: none;
                     color: snow;
@@ -27,26 +29,24 @@ header {
             padding-left: 100px;
 
             .nav-links {
+
                 a,
                 button {
-                    @extend %link;
                     background-color: transparent;
                     border: none;
                     outline: none;
                 }
             }
+
             .auth {
                 span {
-                    @extend %link;
                     text-decoration: underline 1px solid snow;
                     cursor: pointer;
                     transform: scale(1.5);
+
                     &::selection {
                         background-color: transparent;
                     }
-                }
-                button {
-                    @extend %warning-btn;
                 }
             }
         }
@@ -95,6 +95,7 @@ header {
     }
 
     @media (max-width: $medium-screen) {
+
         .burger-menu-wrapper,
         #burger-menu-toggler {
             display: flex;
@@ -109,9 +110,11 @@ header {
                 .middle {
                     opacity: 0;
                 }
+
                 .top {
                     transform: rotate(45deg);
                 }
+
                 .bottom {
                     transform: rotate(-45deg);
                 }
@@ -132,7 +135,7 @@ header {
             }
         }
 
-        #burger-menu-toggler:checked + .nav-wrapper > .menu {
+        #burger-menu-toggler:checked+.nav-wrapper>.menu {
             width: 450px;
             display: flex;
             flex-direction: column;
@@ -154,7 +157,7 @@ header {
     }
 
     @media (max-width: $small-screen) {
-        #burger-menu-toggler:checked + .nav-wrapper > .menu {
+        #burger-menu-toggler:checked+.nav-wrapper>.menu {
             width: 100%;
         }
     }

@@ -1,8 +1,8 @@
-import './style.scss'
-import { Outlet } from 'react-router-dom'
-import Nav from "./Nav.jsx"
-import Footer from "../Footer"
 import { useState } from 'react'
+import { Outlet } from 'react-router-dom';
+import Navbar from './Navbar'
+import Footer from "./Footer"
+import './style.scss'
 
 function Navigation() {
     const [burgerMenuOpened, setBurgerMenuOpened] = useState(false)
@@ -11,17 +11,17 @@ function Navigation() {
         <div>
             <header>
                 <div className={burgerMenuOpened ? "burger-menu-wrapper opened" : "burger-menu-wrapper"}>
-                    <div className='top'></div>    
-                    <div className='middle'></div>    
-                    <div className='bottom'></div>    
+                    <div className='top'></div>
+                    <div className='middle'></div>
+                    <div className='bottom'></div>
                 </div>
-                <input  
-                    id='burger-menu-toggler' 
-                    type="checkbox" 
-                    onClick={(e) => {setBurgerMenuOpened(e.target.checked)}}
+                <input
+                    id='burger-menu-toggler'
+                    type="checkbox"
+                    onClick={(e) => { setBurgerMenuOpened(e.target.checked) }}
                 />
-                {/* ...:checked + .nav-wrapper > .menu */}
-                <Nav />
+                {/* input:checked + .nav-wrapper > .menu */}
+                <Navbar />
             </header>
 
             <div id='outlet'>

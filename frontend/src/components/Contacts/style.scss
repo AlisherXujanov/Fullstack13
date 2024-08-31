@@ -1,84 +1,118 @@
-@import "../../assets/styles/settings";
+@import '../../assets//styles/settings';
 
-.contacts {
-    #contacts-wrapper {
-        padding: 100px;
-        background-color: $dark-lighter;
-        display: flex;
-        justify-content: space-between;
-        gap: 50px;
+.contacts-page-wrapper {
+    background-color: $dark-lighter;
+    padding: 50px 100px;
+
+    .row {
+        margin-top: 50px;
+        @include grid(2, 20px);
+        grid-template-columns: 2fr 1fr;
 
         .left {
+            @include flex(column, $gap: 15px);
+
             .info {
-                margin: 40px 0;
+                margin-top: 30px;
+
                 p {
-                    color: darkgray;
+                    margin-top: 10px;
+                    line-height: 30px;
+                    color: lightgray;
+                    width: 80%;
                 }
             }
         }
-        .right {
-            input,
-            button {
+
+        .rigth {
+            width: 700px;
+
+            form {
+                @include flex();
+                flex-direction: column;
+                gap: 12px;
                 width: 100%;
-                margin: 5px 0;
-                border: 2px solid transparent;
-                padding: 15px 20px;
-                outline: none;
-                background-color: $dark;
-                color: snow;
 
-                &::placeholder {
-                    color: darkgray;
-                    font-size: 0.8em;
-                }
-                &:hover,
-                &:focus {
-                    border: 2px solid yellow;
-                    box-shadow:
-                        5px 5px 25px $warning,
-                        -5px -5px 25px $warning,
-                        10px 10px 50px black,
-                        -10px -10px 50px black,
-                        inset 0 1px 30px $warning-t,
-                        inset 0 -1px 30px $warning-t;
+
+                .form-control {
+                    width: 80%;
+
+                    input {
+                        display: block;
+                        width: 100%;
+                        background-color: $dark;
+                        border: 2px solid transparent;
+                        padding: 20px;
+
+                        &:hover {
+                            border-color: $warning;
+                        }
+
+                        &:focus {
+                            border-color: $warning;
+                            background-color: $warning-t;
+                            box-shadow: 0 0 5px $warning;
+
+                            &::placeholder {
+                                color: $light;
+                            }
+                        }
+
+                        &:invalid {
+                            background-color: $danger;
+                        }
+
+                        &.phone-input {
+                            padding: 25px 40px;
+                        }
+                    }
+
+                    button {
+                        width: 100%;
+                        padding: 15px;
+                        background-color: $dark-lighter;
+
+                        &:hover {
+                            background-color: $warning-t;
+                        }
+                    }
+
+                    div {
+                        .flag-dropdown {
+                            background-color: $dark;
+                            border: 1px solid transparent;
+
+                            &.open {
+                                ul.country-list {
+                                    li.country {
+                                        span.country-name {
+                                            color: $dark;
+                                        }
+                                    }
+                                }
+                            }
+
+                            &:hover {
+                                background-color: $dark;
+                                border: 1px solid $light;
+                            }
+
+                        }
+                    }
                 }
             }
         }
     }
-    .maps {
-        div {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        padding: 0 100px;
-        display: flex;
-        gap: 50px;
-        justify-content: space-between;
-        background-color: $dark-lighter;
-    }
 
-    @media (max-width: $large-screen) {
-        #contacts-wrapper {
-            padding: 50px;
-            gap: 20px;
+    .maps {
+        margin-top: 100px;
+        @include flex($gap: 20px);
+
+        .heading-wrapper {
+            margin: 20px 0;
         }
-        .maps {
-            padding: 0 50px;
-            gap: 20px;
-        }
-    }
-    @media (max-width: $medium-screen) {
-        #contacts-wrapper {
-            padding: 50px 20px;
-        }
-    }
-    @media (max-width: $small-screen) {
-        #contacts-wrapper {
-            flex-direction: column;
-        }
-        .maps {
-            padding: 0 20px;
-            gap: 10px;
+
+        @media (max-width: $small-screen) {
             flex-direction: column;
         }
     }

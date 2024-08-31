@@ -1,0 +1,276 @@
+@import "../../../assets/styles/settings";
+
+.consultation-wrapper {
+    padding: 0 200px;
+    @include grid(2, 20px);
+    grid-template-columns: 2fr 1fr;
+    background-color: $consultation-bg;
+
+    form {
+        margin: 50px 100px;
+
+        .form-control {
+            text-align: center;
+            margin: 20px 0;
+
+            input,
+            textarea {
+                width: 100%;
+                display: block;
+                background-color: $dark;
+                padding: 20px;
+                color: $light;
+                border: none;
+                outline: none;
+
+                &::placeholder {
+                    color: $text-color;
+                    font-size: 1.2em;
+                }
+
+                &:focus {
+                    border: 1px solid $warning;
+                    box-shadow: 2px 2px 10px $warning-t;
+                    background-color: $warning-t;
+                }
+            }
+
+            textarea {
+                height: 150px;
+            }
+
+            button {
+                padding: 20px 40px;
+            }
+
+            &.row {
+                @include grid(2, 20px);
+            }
+        }
+    }
+}
+
+
+@media (max-width: $xx-large-screen) {
+    .consultation-wrapper {
+        padding: 0 150px;
+        form {
+            margin: 40px 80px ;
+           
+            .form-control {
+                input {
+
+                }
+
+            }
+            &.row {
+                .left {
+                    input {
+
+                    }
+                }
+                .right {
+                    input {
+
+                    }
+                }
+            }
+            .form-control {
+                textarea {
+
+                }
+            }
+            .form-control {
+                button {
+
+                }
+            }
+        }
+        .image-wrapper {
+            img {
+
+            }
+        }
+
+    }
+
+}
+@media (max-width: $x-large-screen) {
+    .consultation-wrapper {
+        padding: 0 100px;
+        form {
+            margin: 25px 60px ;
+            .form-control {
+                input {
+
+                }
+                &.row {
+                    
+                    .left {
+                        input {
+    
+                        }
+                    }
+                    .right {
+                        input {
+    
+                        }
+                    }
+                }
+            }
+           
+            .form-control {
+                textarea {
+
+                }
+            }
+            .form-control {
+                button {
+
+                }
+            }
+        }
+        .image-wrapper {
+            img {
+
+            }
+        }
+
+    }
+}
+@media (max-width: $large-screen) {
+    .consultation-wrapper {
+        padding: 0 50px;
+        form {
+            margin: 15px 30px ;
+            .form-control {
+                input {
+
+                }
+                &.row {
+                    
+                    .left {
+                        input {
+    
+                        }
+                    }
+                    .right {
+                        input {
+    
+                        }
+                    }
+                }
+            }
+            
+            .form-control {
+                textarea {
+
+                }
+            }
+            .form-control {
+                button {
+
+                }
+            }
+        }
+        .image-wrapper {
+            img {
+
+            }
+        }
+
+    }
+
+}
+@media (max-width: $medium-screen) {
+    .consultation-wrapper {
+        padding: 0 30px;
+        form {
+            margin: 10px 20px ;
+            .form-control {
+                input {
+
+                }
+                &.row {
+                    
+                    .left {
+                        input {
+    
+                        }
+                    }
+                    .right {
+                        input {
+    
+                        }
+                    }
+                }
+            }
+            
+            .form-control {
+                textarea {
+
+                }
+            }
+            .form-control {
+                button {
+
+                }
+            }
+        }
+        .image-wrapper {
+            img {
+
+            }
+        }
+
+    }
+
+
+}
+@media (max-width: $small-screen) {
+    .consultation-wrapper {
+        padding: 0 20px;
+        grid-template-columns: 1fr;
+        form {
+            margin: 10px 15px ;
+            .form-control {
+                input {
+
+                }
+                &.row{
+                    display: flex;
+                    flex-direction: column;
+                    .left {
+                        input {
+    
+                        }
+                    }
+                    .right {
+                        input {
+    
+                        }
+                    }
+                }
+            }
+           
+            .form-control {
+                textarea {
+
+                }
+            }
+            .form-control {
+                button {
+
+                }
+            }
+        }
+        .image-wrapper {
+            img {
+
+            }
+        }
+
+    }
+
+
+}

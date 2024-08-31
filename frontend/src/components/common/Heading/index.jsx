@@ -1,28 +1,25 @@
-import "./style.scss"
-import HeadingVector from "../../../assets/icons/headingVector.png"
+import Vector from '../../../assets/icons/Vector.png';
+import './style.scss'
+
+
+
 
 function Heading(props) {
-    const fontSize = {
-        fontSize: `calc(48px / ${props.size})`,
-        color: props.color ? props.color : "",
-        filter: props.color ? "grayscale(100%)" : "",
-    }
+    let fontSize = props.size
+        ? (40 / props.size) + "px"
+        : '40px';
 
-    const SMALL_SCREEN_SIZE = 680
-    if (window.innerWidth < SMALL_SCREEN_SIZE) {
-        fontSize.fontSize = `calc(38px / ${props.size})`
+    let smallScreen = 750
+    if (window.innerWidth < smallScreen) {
+        fontSize = '25px'
     }
 
     return (
-        <div className="heading-wrapper">
-            <b style={fontSize}>
-                <img 
-                    src={HeadingVector} 
-                    alt="Vector"
-                    width={`calc(50px / ${props.size})`}
-                />
-                {props.children}
-            </b>
+        <div className={props.gray ? "heading-wrapper gray" : "heading-wrapper"}>
+            <h1 style={{ fontSize }}>
+                <span>{props.children}</span>
+                <img src={Vector} alt="Vector" />
+            </h1>
         </div>
     );
 }

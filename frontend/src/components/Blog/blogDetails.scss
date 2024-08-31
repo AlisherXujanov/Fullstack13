@@ -1,30 +1,272 @@
 @import "../../assets/styles/settings";
 
-.blog-item {
-    padding: 100px 200px;
+.blog-details-wrapper {
+    padding: 50px 350px;
 
-    .blog-nav {
-        margin-bottom: 50px;
+    * {
+        margin-bottom: 20px;
     }
-    h1,
-    img {
-        margin: 5px 0;
+
+    .intro {
+        color: $light;
     }
-    p {
-        margin: 10px 0;
+
+    .title {
+        margin: 20px 0 10px 0;
+    }
+
+    .author-info {
+        color: $light;
+        margin-top: 50px;
+
+        .date {
+            margin-left: 20px;
+        }
+    }
+
+    .img {
+        
+    }
+
+    .subtitle-1,
+    .subtitle-2 {
         color: lightgray;
-    }
-    .blog-author span {
-        margin-right: 20px;
+        line-height: 1.2em;
     }
 
-    @media (max-width: $large-screen) {
-        padding: 100px 150px;
+    .other {
+        margin: 100px 0 50px 0;
+
+        .row {
+            margin-top: 50px;
+            @include grid(2);
+            position: relative;
+
+            a {
+                padding: 0;
+                display: inline-block;
+                font-size: 14px;
+                padding-bottom: 5px;
+                color: $warning;
+                border-bottom: 1px solid transparent;
+                position: absolute;
+
+                &:hover {
+                    padding-bottom: 10px;
+                    border-color: $warning;
+                }
+            }
+        }
     }
-    @media (max-width: $medium-screen) {
-        padding: 100px;
+}
+
+@media (max-width: $xx-large-screen) {
+    .blog-details-wrapper {
+        padding: 50px 250px;
+        p.intro {
+            h1.title {
+                p.author-info {
+                    span.author {
+
+                    }
+                    span.date {
+
+                    }
+                }
+                img {
+
+                }
+                p.subtitle-1 {
+                    
+                }
+                p.subtitle-2 {
+
+                }
+                .other {
+                    h2 {
+
+                    }
+                    .row {
+
+                    }
+                    .col {
+                        h2 {
+
+                        } a {
+
+                        }
+                    }
+                    .col {
+                        h2 {
+
+                        }
+                        a {
+
+                        }
+                    }
+                }
+            }
+        }
     }
-    @media (max-width: $small-screen) {
-        padding: 20px;
+}
+@media (max-width: $x-large-screen) {
+    .blog-details-wrapper {
+        padding: 50px 150px;
+        p.intro {
+            h1.title {
+                p.author-info {
+                    span.author {
+
+                    }
+                    span.date {
+
+                    }
+                }
+                img {
+
+                }
+                p.subtitle-1 {
+                    
+                }
+                p.subtitle-2 {
+
+                }
+                .other {
+                   
+                    h2 {
+
+                    }
+                    .row {
+                       
+                    }
+                    .col {
+                        h2 {
+
+                        } a {
+
+                        }
+                    }
+                    .col {
+                        h2 {
+
+                        }
+                        a {
+                            
+                        }
+                    }
+                }
+            }
+        }
     }
+}
+@media (max-width: $large-screen) {
+    .blog-details-wrapper {
+        padding: 50px 100px;
+        p.intro {
+            h1.title {
+                p.author-info {
+                    span.author {
+
+                    }
+                    span.date {
+
+                    }
+                }
+                img {
+
+                }
+                p.subtitle-1 {
+                    
+                }
+                p.subtitle-2 {
+
+                }
+                .other {
+                    h2 {
+
+                    }
+                    .row {
+
+                    }
+                    .col {
+                        h2 {
+
+                        } a {
+
+                        }
+                    }
+                    .col {
+                        h2 {
+
+                        }
+                        a {
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+@media (max-width: $medium-screen) {
+    .blog-details-wrapper {
+        padding: 50px 50px;
+        p.intro {
+            h1.title {
+                p.author-info {
+                    span.author {
+
+                    }
+                    span.date {
+
+                    }
+                }
+                img {
+
+                }
+                p.subtitle-1 {
+                    
+                }
+                p.subtitle-2 {
+
+                }
+                .other {
+                    h2 {
+
+                    }
+                    .row {
+
+                    }
+                    .col {
+                        h2 {
+
+                        } a {
+
+                        }
+                    }
+                    .col {
+                        h2 {
+
+                        }
+                        a {
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+@media (max-width: $small-screen) {
+    .blog-details-wrapper {
+        padding: 50px 20px;
+       .other {
+        .row {
+            grid-template-columns: 1fr;
+        }
+       }
+    }
+
 }
