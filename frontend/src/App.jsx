@@ -1,13 +1,16 @@
-import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import AllComponents from "./components/AllComponents.jsx"
-import './firebase.js'
+import React, { Suspense } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
+const AllComponents = React.lazy(() => import('./components/AllComponents.jsx'));
+const LoadingSpinner = React.lazy(() => import('./components/common/LoadingSpinner'));
 
 export default function App() {
-
   return (
     <BrowserRouter>
-      <AllComponents />
+      <Suspense fallback={<LoadingSpinner />}>
+        <AllComponents />
+      </Suspense>
     </BrowserRouter>
-  )
+  );
 }
+

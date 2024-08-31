@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import MapComponent from "../common/MapComponent";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
 // RULE
@@ -21,7 +19,6 @@ import { useNavigate } from "react-router-dom";
 //                 You must use only this function but not other ones!
 
 function Contacts() {
-  const auth = getAuth();
   const navigate = useNavigate();
   const [state, setState] = useState({
     name: "",
@@ -42,23 +39,6 @@ function Contacts() {
 
   function submit(e) {
     e.preventDefault()
-    createUserWithEmailAndPassword(auth,email,password)
-    .then(() => {
-      writeUsersData(auth.currentUser.uid,name,email, "",new Date().toString() )
-      console.log(`User created successfully`)
-      navigate('/')
-    })
-  }
-
-  function writeUsersData() {
-      let db = getDatabase();
-      set(ref(db,'users/'+ userId), {
-          username: name,
-          email: email,
-          phoneNumber: number,
-          date
-      })
-      .catch(e => console.log(e))
   }
 
   const office_coordinates = [41.2995958, 69.2400934];
