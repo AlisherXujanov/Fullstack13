@@ -1,0 +1,46 @@
+{
+    "name": "Web Master Fonte",
+    "short_name": "WebMaster",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "32x32 16x16",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": ".",
+    "theme_color": "#FF6600",
+    "background_color": "#0A0A0A",
+    "display": "standalone",
+    "scope": "/",
+    "orientation": "portrait",
+    "description": "An awesome app that does awesome things.",
+    "lang": "en-US",
+    "dir": "ltr",
+        "_comment_dir": {
+            "Role": "Specifies the text direction for the web application.",
+            "Purpose": "Ensures that the text is displayed in the correct direction based on the language and cultural context. This is particularly important for languages that are read from right to left (e.g., Arabic, Hebrew).",
+            "Values": "↘️",
+            "ltr": "Left-to-right (default for languages like English).",
+            "rtl": "Right-to-left (for languages like Arabic).",
+            "auto": "Automatically determines the direction based on the content."
+        },
+    "related_applications": [
+        {
+            "platform": "Google",
+            "url": "https://www.google.com",
+            "id": "www.google.com"
+        }
+    ],
+    "prefer_related_applications": false
+}
