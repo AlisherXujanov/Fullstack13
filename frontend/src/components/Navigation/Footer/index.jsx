@@ -2,7 +2,7 @@ import Heading from "../../common/Heading";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./style.scss";
 
 
@@ -16,11 +16,11 @@ function Footer() {
           </div>
           <div className="footer-links">
             <div className="left">
-              <a href="#">О нас</a>
-              <Link to="team/">Команда</Link>
-              <a href="#">Блог</a>
-              <a href="#">Продукты</a>
-              <a href="#">Контакты</a>
+              <NavLink exact to="/">О нас</NavLink>
+              <NavLink to="/team">Команда</NavLink>
+              <NavLink to="/blog">Блог</NavLink>
+              <NavLink to="/products">Продукты</NavLink>
+              <NavLink to="/contacts">Контакты</NavLink>
             </div>
             <div className="right">
               <a href="#">Terms and conditions</a>
@@ -41,7 +41,7 @@ function Footer() {
         </div>
       </footer>
       <div className="section">
-        <h3>©  {new Date().toString()}•  Fonte • All rights reserved</h3>
+        <h3>©  {new Date().getFullYear()} •  Fonte • All rights reserved</h3>
      
         <p>
           Частная компания « FONTE Capital Ltd.», зарегистрированная по адресу:
