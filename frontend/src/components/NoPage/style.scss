@@ -1,4 +1,14 @@
+@import "../../assets/styles/settings";
+
 .no-page-wrapper {
     text-align: center;
     padding: 20px;
+
+    img {
+        width: 60vw;
+        max-width: 800px;
+        margin: 0 auto;
+        object-fit: cover;
+        filter: drop-shadow(5px 5px 15px #7839cb);
+    }
 }

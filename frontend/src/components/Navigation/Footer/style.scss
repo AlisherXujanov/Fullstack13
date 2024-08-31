@@ -38,22 +38,26 @@
                 display: inline-block;
                 @include flex(row, center, center);
                 cursor: pointer;
-                transition: 0.2s;
 
                 svg {
-                    width: 1.6em;
-                    height: 1.6em;
+                    width: 3vw;
+                    height: 3vh;
+                    max-width: 25px;
+                    max-height: 25px;
                 }
 
                 &:hover .facebook {
+                    transition: 0s;
                     color: blue;
                 }
 
                 &:hover .instagram {
+                    transition: 0s;
                     color: magenta;
                 }
 
                 &:hover .twitter {
+                    transition: 0s;
                     color: cyan;
                 }
             }

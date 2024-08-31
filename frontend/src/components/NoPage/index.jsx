@@ -5,13 +5,6 @@ function NoPage() {
     return (
         <main className="no-page-wrapper">
             <img src={NoPageImage} alt='No Page Found'/>
-
-            <br />
-            <br />
-
-            <a href="/" className='warning-btn'>
-                Home
-            </a>
         </main>
     );
 }
