@@ -4,7 +4,7 @@ from .models import NFTs
 from django.db.models import Count
 from django.contrib import messages
 from django.views.generic import ListView
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from .usecases import *
 
 
@@ -30,6 +30,7 @@ def landing_page(request):
     return render(request, 'landing_page.html', context)
 
 
+@login_required
 def add_to_favorites(request, pk: int):
     if not request.user.is_authenticated:
         messages.warning(request, 'You need to be logged in to add favorites')
@@ -43,6 +44,7 @@ def add_to_favorites(request, pk: int):
     return redirect(request.META.get('HTTP_REFERER'))
 
 
+@login_required
 def remove_from_favorites(request, pk: int):
     if not request.user.is_authenticated:
         messages.warning(
@@ -57,6 +59,8 @@ def remove_from_favorites(request, pk: int):
     return redirect(request.META.get('HTTP_REFERER'))
 
 
+@login_required
+@permission_required('nfts.can_add_nft')
 def create_nft(request):
     if request.method == "POST":
         name = request.POST['name']
@@ -81,6 +85,7 @@ def create_nft(request):
     return render(request, 'create_nft.html', context)
 
 
+@login_required
 def update_nft(request, pk: int):
     nft = NFTs.objects.get(id=pk)
 
@@ -135,7 +140,7 @@ def nft_details(request, pk: int):
     }
     return render(request, 'nft_details.html', context)
 
-
+@permission_required('nfts.can_change_nft')
 def delete_nft(request, pk: int):
     nft = NFTs.objects.get(id=pk)
     nft.delete()

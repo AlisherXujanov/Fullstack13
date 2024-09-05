@@ -1,6 +1,6 @@
 from django.utils import timezone
-from django.conf import settings
 from .models import Profile, Messages
+from django.http import HttpResponseForbidden
 
 class UserMiddleware:
     def __init__(self, get_response):
@@ -24,3 +24,30 @@ class UserMiddleware:
             user_profile.last_activity = timezone.now()
             user_profile.save()
         return response
+
+
+
+
+
+ALLOWED_IPS = ['127.0.0.1', '192.168.0.100']
+
+class AdminAccessMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        if request.path.startswith('/admin/') and request.META['REMOTE_ADDR'] not in ALLOWED_IPS:
+            return HttpResponseForbidden("You are not allowed to access this page.")    
+
+        # ---------------- OR ----------------
+        # CHECK IF USER IS SUPERUSER
+        # if request.path.startswith('/admin/') and not request.user.is_superuser:
+        #     return redirect('home')  # Redirect to home or any other page
+        # ------------------------------------
+
+        # ---------------- OR ----------------
+        # BOTH CHECKS INCLUDED
+        # if request.path.startswith('/admin/') and (request.META['REMOTE_ADDR'] not in ALLOWED_IPS or not request.user.is_superuser):
+        #     return HttpResponseForbidden("You are not allowed to access this page.")
+        # ------------------------------------
+        return self.get_response(request)

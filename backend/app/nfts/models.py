@@ -17,6 +17,7 @@ class NFTs(models.Model):
         verbose_name = 'NFT'
         verbose_name_plural = 'NFTs'
         ordering = ['-created_at']
+        # permissions = [('can_change_nft', 'Can change NFT')]
 
     def __str__(self) -> str:
         return self.name

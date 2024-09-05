@@ -28,3 +28,11 @@ def remove_from_favorites_fn(request, pk: int) -> bool:
 
     nft.liked_by.remove(user)
     return True
+
+
+
+def testpermission(user): 
+    if user.is_authenticated() and user.has_perm("myapp.change_category"): 
+        return True 
+    else: 
+        return False
