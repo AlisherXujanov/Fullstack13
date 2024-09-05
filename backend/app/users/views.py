@@ -1,14 +1,16 @@
-from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Messages
+from django.http import JsonResponse
 from django.shortcuts import render
+from django.utils.translation import activate, gettext_lazy as _
 from allauth.account.views import LoginView, SignupView
+from bs4 import BeautifulSoup
+import json
+import re
 from .forms import *
+from .models import Profile, Messages
 from nfts.models import NFTs
 from .usecases import *
-import json
-from bs4 import BeautifulSoup
-import re
+
 
 
 class CustomLoginView(LoginView):
@@ -35,6 +37,7 @@ class CustomSignupView(SignupView):
 def profile_page(request, pk):
     obj = Profile.objects.get(user__pk=pk)
     context = {
+        "title": _("Profile"),
         "obj": obj,
     }
     return render(request, "profile_page.html", context)

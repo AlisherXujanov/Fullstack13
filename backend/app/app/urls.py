@@ -19,13 +19,20 @@ from django.urls import path, include
 from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    path("", include("nfts.urls")),
     path('admin/', admin.site.urls),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+   
+
+# https://www.mysite.com/ru/...
+urlpatterns += i18n_patterns(
+    # Patterns that need to be translated
+    path("", include("nfts.urls")),
+    path("", include('users.urls')),
     path('accounts/', include('allauth.urls')),
     path('about-us/', about_us, name='about_us'),
     path('become-artist/', become, name='become_artist'),
     path('contact-us/', contact_us, name='contact_us'),
-    path('', include('users.urls'))
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)
