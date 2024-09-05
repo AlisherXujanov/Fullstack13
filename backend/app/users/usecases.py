@@ -2,7 +2,9 @@ from django.utils import timezone
 from .models import Messages, Profile
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
-
+import json
+import os
+from django.conf import settings
 
 # TODO: use cache here
 def get_ordered_messages(request, user: User, companion: User = None,) -> list:
@@ -127,3 +129,10 @@ def set_all_messages_as_seen(user:User, target_user:User=None) -> bool:
         return True
     return False
     
+    
+#* OPEN JSON FILE
+def load_words_from_json(json_file):
+    file_path = os.path.join(settings.BASE_DIR, json_file)
+    with open(file_path, 'r', encoding='utf-8') as file:
+        words_list = json.load(file)
+    return words_list

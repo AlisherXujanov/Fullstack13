@@ -1,16 +1,14 @@
-from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from django.shortcuts import render
-from django.utils.translation import activate, gettext_lazy as _
-from allauth.account.views import LoginView, SignupView
-from bs4 import BeautifulSoup
-import json
-import re
-from .forms import *
+from django.contrib.auth.decorators import login_required
 from .models import Profile, Messages
+from django.shortcuts import render
+from allauth.account.views import LoginView, SignupView
+from .forms import *
 from nfts.models import NFTs
 from .usecases import *
-
+import json
+from bs4 import BeautifulSoup
+import re
 
 
 class CustomLoginView(LoginView):
@@ -37,7 +35,6 @@ class CustomSignupView(SignupView):
 def profile_page(request, pk):
     obj = Profile.objects.get(user__pk=pk)
     context = {
-        "title": _("Profile"),
         "obj": obj,
     }
     return render(request, "profile_page.html", context)
@@ -72,14 +69,16 @@ def messages(request, pk: int):
 def ajax_create_message(request):
     if request.headers.get('X-CSRFToken') and request.method == "POST":
         REQUEST_BODY = json.loads(request.body)
-        маты = ["bemiyya", "идиот"]
+        маты = load_words_from_json('users/bad_words.json')
         
         target_user_profile_id = REQUEST_BODY['target_user_profile_id']
-        soup = BeautifulSoup(REQUEST_BODY['message_text'])
+        soup = BeautifulSoup(REQUEST_BODY['message_text'],features="lxml")
         msgId = REQUEST_BODY.get('msgId', None)
         
         
-        result = re.sub("|".join(маты), "***", soup.get_text(), flags=re.IGNORECASE)
+        pattern = "|".join(re.escape(мат) for мат in маты)
+        result = re.sub(pattern, "***", soup.get_text(), flags=re.IGNORECASE)
+
         profile_obj = Profile.objects.get(pk=target_user_profile_id) 
 
         # Set the seen status to True if the ownser and sender is one person
