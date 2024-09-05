@@ -1769,31 +1769,6 @@ for key, value in os.environ.items():
     print(f'{key} = {value}')
 ```
 
-
-#### Django debug toolbar
-```pip install django-debug-toolbar```
-```python
-# settings.py
-INSTALLED_APPS = [
-    ...
-    'debug_toolbar',
-    ...
-]
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
-MIIDDLEWARE = [
-    ...
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    ...
-]
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns
-```
-
 #### EMAILS
 ```python
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -1813,6 +1788,27 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 #  -----   Follow the instructions to generate a new password or key.
 #  -----   Copy the generated password or key and store it in a secure location.
 # Once you have the EMAIL_HOST_PASSWORD, you can set it as an environment variable in your development environment or in your production server. 
+
+# -===========================================================================
+# -===========================================================================
+# -===========================================================================
+# You should get the EMAIL_HOST_USER and EMAIL_HOST_PASSWORD from your email service provider. Here are the steps for Gmail:
+
+# EMAIL_HOST_USER:
+
+# This is simply your Gmail email address (e.g., your_email@gmail.com).
+# EMAIL_HOST_PASSWORD:
+
+# If you have 2-Step Verification enabled, generate an App Password:
+
+# Go to your Google Account settings.
+# Navigate to Security.
+# Under "Signing in to Google," select "App passwords."
+# Generate a new app password and use it as your EMAIL_HOST_PASSWORD.
+# If you do not have 2-Step Verification enabled, you can use your regular Gmail password, but it's recommended to enable "Less secure app access" (not recommended for production environments).
+# -===========================================================================
+# -===========================================================================
+# -===========================================================================
 ```
 Then in views.py or in the modals.py we can use this code to send emails
 ```python

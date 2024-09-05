@@ -11,6 +11,7 @@ jwt = "*"
 django-cleanup = "*"
 pillow = "*"
 python-decouple = "*"
+beautifulsoup4 = "*"
 
 [dev-packages]
 

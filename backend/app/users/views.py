@@ -7,6 +7,8 @@ from .forms import *
 from nfts.models import NFTs
 from .usecases import *
 import json
+from bs4 import BeautifulSoup
+import re
 
 
 class CustomLoginView(LoginView):
@@ -67,11 +69,14 @@ def messages(request, pk: int):
 def ajax_create_message(request):
     if request.headers.get('X-CSRFToken') and request.method == "POST":
         REQUEST_BODY = json.loads(request.body)
+        маты = ["bemiyya", "идиот"]
         
         target_user_profile_id = REQUEST_BODY['target_user_profile_id']
-        message_text = REQUEST_BODY['message_text']
+        soup = BeautifulSoup(REQUEST_BODY['message_text'])
         msgId = REQUEST_BODY.get('msgId', None)
-
+        
+        
+        result = re.sub("|".join(маты), "***", soup.get_text(), flags=re.IGNORECASE)
         profile_obj = Profile.objects.get(pk=target_user_profile_id) 
 
         # Set the seen status to True if the ownser and sender is one person
@@ -79,15 +84,14 @@ def ajax_create_message(request):
         if target_user_profile_id == request.user.profile.id:
             seen = True
 
-
         data = {}
         if msgId:
             message_obj = Messages.objects.get(pk=msgId)
-            message_obj.content = message_text
+            message_obj.content = result
             message_obj.save()
             # data["..."] = "..."   # If something needs to be returned
         else:
-            Messages.objects.create(content=message_text, owner=profile_obj.user, sender=request.user, seen=seen)
+            Messages.objects.create(content=result, owner=profile_obj.user, sender=request.user, seen=seen)
 
         data['success'] = True
         return JsonResponse(data)
