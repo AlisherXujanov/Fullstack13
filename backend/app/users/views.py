@@ -69,14 +69,16 @@ def messages(request, pk: int):
 def ajax_create_message(request):
     if request.headers.get('X-CSRFToken') and request.method == "POST":
         REQUEST_BODY = json.loads(request.body)
-        маты = ["bemiyya", "идиот"]
+        маты = load_words_from_json('users/bad_words.json')
         
         target_user_profile_id = REQUEST_BODY['target_user_profile_id']
-        soup = BeautifulSoup(REQUEST_BODY['message_text'])
+        soup = BeautifulSoup(REQUEST_BODY['message_text'],features="lxml")
         msgId = REQUEST_BODY.get('msgId', None)
         
         
-        result = re.sub("|".join(маты), "***", soup.get_text(), flags=re.IGNORECASE)
+        pattern = "|".join(re.escape(мат) for мат in маты)
+        result = re.sub(pattern, "***", soup.get_text(), flags=re.IGNORECASE)
+
         profile_obj = Profile.objects.get(pk=target_user_profile_id) 
 
         # Set the seen status to True if the ownser and sender is one person
