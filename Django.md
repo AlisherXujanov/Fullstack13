@@ -1822,6 +1822,9 @@ send_mail(
     ["receiver-emails"],
     fail_silently=False,
 )
+
+# To design the template of the email we can use this code
+# https://medium.com/@arifcse21/send-and-email-with-html-template-and-context-data-from-a-django-project-e9606644185c
 ```
 
 
