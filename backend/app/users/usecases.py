@@ -6,6 +6,7 @@ import json
 import os
 from django.conf import settings
 
+
 # TODO: use cache here
 def get_ordered_messages(request, user: User, companion: User = None,) -> list:
     all_messages = Messages.objects.all()
