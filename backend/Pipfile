@@ -12,6 +12,7 @@ django-cleanup = "*"
 pillow = "*"
 python-decouple = "*"
 beautifulsoup4 = "*"
+selenium = "*"
 
 [dev-packages]
 
