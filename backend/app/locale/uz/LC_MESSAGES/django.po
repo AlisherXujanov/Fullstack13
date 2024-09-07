@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 16:58+0500\n"
+"POT-Creation-Date: 2024-09-07 17:46+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,3 +33,35 @@ msgstr ""
 #: .\nfts\views.py:13
 msgid "FAQ"
 msgstr ""
+
+#: .\nfts\views.py:128
+msgid "Discover Amazing NFT’s"
+msgstr "Ajoyib NFTlarni kashf eting"
+
+#: .\nfts\views.py:129
+msgid "Explore"
+msgstr "Tadqiq qiling"
+
+#: .\nfts\views.py:130
+msgid "Search"
+msgstr "Qidiruv"
+
+#: .\nfts\views.py:148
+msgid "Minted on"
+msgstr "Zarb qilingan"
+
+#: .\nfts\views.py:149
+msgid "Are you sure you want to delete"
+msgstr "Haqiqatan ham oʻchirib tashlamoqchimisiz"
+
+#: .\nfts\views.py:150
+msgid "Yes"
+msgstr "Ha"
+
+#: .\nfts\views.py:151
+msgid "cancel"
+msgstr "bekor qilish"
+
+#: .\nfts\views.py:152
+msgid "Description"
+msgstr "Tavsif"

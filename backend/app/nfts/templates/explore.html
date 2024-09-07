@@ -12,13 +12,13 @@
   <div class="explore-wrapper set-width">
     <div class="explore-content">
       <div class="title">
-        <h1>Discover Amazing NFT’s</h1>
+        <h1>{{translate.title}}</h1>
         {% include 'searchbar.html' %}
       </div>
       <div class="explore-body">
         <div class="top">
-          <h2>Explore</h2>
-          <button>Recently Added</button>
+          <h2>{{translate.explore}}</h2>
+
         </div>
         <div class="middle">
           {% include 'pagination.html' with page_obj=page_obj is_paginated=is_paginated paginator=paginator %}
