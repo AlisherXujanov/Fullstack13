@@ -124,6 +124,11 @@ class ExploreView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['translate'] = {
+                'title':_('Discover Amazing NFT’s'),
+                'explore':_("Explore"),
+                'search':_('Search')
+            }
         if self.request.user.is_authenticated:
             context['favorites'] = NFTs.objects.filter(
                 liked_by=self.request.user).values_list('id', flat=True)
@@ -139,7 +144,12 @@ def nft_details(request, pk: int):
 
     context = {
         'nft': nft,
-        'favorites': favorites
+        'favorites': favorites,
+        'minted_on':_('Minted on'),
+        'confirm_delete':_('Are you sure you want to delete'),
+        'yes':_('Yes'),
+        'cancel':_('cancel'),
+        'description':_('Description')
     }
     return render(request, 'nft_details.html', context)
 

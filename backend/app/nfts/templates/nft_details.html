@@ -19,7 +19,7 @@
         <div class="title">
           <div class="content">
             <h1>{{ nft.name }}</h1>
-            <p class="created_at">Minted on {{ nft.created_at }}</p>
+            <p class="created_at">{{minted_on}} {{ nft.created_at }}</p>
           </div>
           {% if request.user.is_authenticated %}
             <div class="action-btns">
@@ -60,11 +60,11 @@
                     <span id="close-modal">&times;</span>
 
                     <div class="form-data">
-                      <h2>Вы уверены, что хотите удалить?</h2>
-                      <a href="{% url 'delete_nft' nft.id %}"><button class="create_A">Да</button></a>
+                      <h2>{{confirm_delete}}?</h2>
+                      <a href="{% url 'delete_nft' nft.id %}"><button class="create_A">{{yes}}</button></a>
                     </div>
                     <div class="form-data">
-                      <button id="cancell-modal" class="create_B">Отмена</button>
+                      <button id="cancell-modal" class="create_B">{{cancel}}</button>
                     </div>
                   </div>
                 </div>
@@ -81,7 +81,7 @@
           <p>{{ nft.owner }}</p>
         </div>
         <div class="description">
-          <p class="title">Description</p>
+          <p class="title">{{description}}</p>
           <p class="desc">{{ nft.description }}</p>
         </div>
       </div>
