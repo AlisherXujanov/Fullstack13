@@ -6,10 +6,13 @@ from django.contrib import messages
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required, permission_required
 from .usecases import *
-
+from django.utils.translation import activate, gettext_lazy as _
 
 def faq(request):
-    return render(request, 'faq.html')
+    context = {
+        'name_faq':_('FAQ')
+    }
+    return render(request, 'faq.html', context)
 
 
 def custom_logout(request):
