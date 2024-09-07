@@ -12,9 +12,8 @@
 {% block content %}
 <div class="content_h1_faq">
   <span class="name_faq">{{name_faq}}</span>
-  <h1 class="h1_faq">Frequently asked questions</h1>
-  <p class="faq_about">Here, you'll find answers to the most commonly asked questions about our <br> products,
-    services, and policies.</p>
+  <h1 class="h1_faq">{{h1_faq}}</h1>
+  <p class="faq_about">{{faq_about}}</p>
   <div class='searchbar'>
     <div class="left">
       <img src="{% static 'icons/search.png' %}" alt="Search" />
@@ -25,19 +24,19 @@
   </div>
   <div class="content_navigate">
     <div class="content_navigate_container_for_link1">
-      <a href="#General" class="content_navigate_link">General</a>
+      <a href="#General" class="content_navigate_link">{{content_navigate_link}}</a>
     </div>
     <div class="content_navigate_container_for_link2">
-      <a href="#NFT Product" class="content_navigate_link">NFT Product</a>
+      <a href="#NFT Product" class="content_navigate_link">{{content_navigate_link_2}}</a>
     </div>
     <div class="content_navigate_container_for_link3">
-      <a href="#Payment" class="content_navigate_link">Payment</a>
+      <a href="#Payment" class="content_navigate_link">{{content_navigate_link_3}}</a>
     </div>
   </div>
   <!-- Toggle 1 -->
   <div class="toggler-container">
     <button class="toggle-button" onclick="toggleContent('content1')">
-      What is an NFT marketplace?
+      {{toggle_button}}
       <span class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
           class="bi bi-arrow-right" viewBox="0 0 16 16">
           <path fill-rule="evenodd"
@@ -45,14 +44,12 @@
         </svg></span>
     </button>
     <div id="content1" class="content">
-      <p>An NFT marketplace is a platform that allows users to buy, sell, and trade non-fungible tokens (NFTs). NFTs
-        are unique digital assets that can represent anything from artwork and collectibles to in-game items and
-        virtual real estate.</p>
+      <p>{{content}}</p>
     </div>
 
     <!-- Toggle 2 -->
     <button class="toggle-button" onclick="toggleContent('content2')">
-      How does buying an NFT work?
+      {{toggle_button_2}}
       <span class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
           class="bi bi-arrow-right" viewBox="0 0 16 16">
           <path fill-rule="evenodd"
@@ -60,14 +57,12 @@
         </svg></span>
     </button>
     <div id="content2" class="content">
-      <p>An NFT marketplace is a platform that allows users to buy, sell, and trade non-fungible tokens (NFTs). NFTs
-        are unique digital assets that can represent anything from artwork and collectibles to in-game items and
-        virtual real estate.</p>
+      <p>{{content}}</p>
     </div>
 
     <!-- Toggle 3 -->
     <button class="toggle-button" onclick="toggleContent('content3')">
-      What are the benefits of owning an NFT?
+      {{toggle_button_3}}
       <span class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
           class="bi bi-arrow-right" viewBox="0 0 16 16">
           <path fill-rule="evenodd"
@@ -75,14 +70,12 @@
         </svg></span>
     </button>
     <div id="content3" class="content">
-      <p>An NFT marketplace is a platform that allows users to buy, sell, and trade non-fungible tokens (NFTs). NFTs
-        are unique digital assets that can represent anything from artwork and collectibles to in-game items and
-        virtual real estate.</p>
+      <p>{{content}}</p>
     </div>
 
     <!-- Toggle 4 -->
     <button class="toggle-button" onclick="toggleContent('content4')">
-      Are there any risks associated with buying NFTs?
+      {{toggle_button_4}}
       <span class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
           class="bi bi-arrow-right" viewBox="0 0 16 16">
           <path fill-rule="evenodd"
@@ -90,9 +83,7 @@
         </svg></span>
     </button>
     <div id="content4" class="content">
-      <p>An NFT marketplace is a platform that allows users to buy, sell, and trade non-fungible tokens (NFTs). NFTs
-        are unique digital assets that can represent anything from artwork and collectibles to in-game items and
-        virtual real estate.</p>
+      <p>{{content}}</p>
     </div>
   </div>
 </div>

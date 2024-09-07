@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 16:58+0500\n"
+"POT-Creation-Date: 2024-09-07 17:55+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,4 +32,56 @@ msgstr ""
 
 #: .\nfts\views.py:13
 msgid "FAQ"
+msgstr "FAQ"
+
+#: .\nfts\views.py:14
+msgid "Frequently asked questions"
+msgstr "Frequently asked questions"
+
+#: .\nfts\views.py:15
+msgid ""
+"Here, youll find answers to the most commonly asked questions about our  "
+"products,services, and policies."
 msgstr ""
+"Here, youll find answers to the most commonly asked questions about our  "
+"products,services, and policies."
+
+#: .\nfts\views.py:16
+msgid "General"
+msgstr "General"
+
+#: .\nfts\views.py:17
+msgid "NFT Product"
+msgstr "NFT Product"
+
+#: .\nfts\views.py:18
+msgid "Payment"
+msgstr "Payment"
+
+#: .\nfts\views.py:19
+msgid "What is an NFT marketplace?"
+msgstr "What is an NFT marketplace?"
+
+#: .\nfts\views.py:20
+msgid "How does buying an NFT work?"
+msgstr "How does buying an NFT work?"
+
+#: .\nfts\views.py:21
+msgid "What are the benefits of owning an NFT?"
+msgstr "What are the benefits of owning an NFT?"
+
+#: .\nfts\views.py:22
+msgid "Are there any risks associated with buying NFTs?"
+msgstr "Are there any risks associated with buying NFTs?"
+
+#: .\nfts\views.py:23
+msgid ""
+"An NFT marketplace is a platform that allows users to buy, sell, and trade "
+"non-fungible tokens (NFTs). NFTs are unique digital assets that can "
+"represent anything from artwork and collectibles to in-game items and "
+"virtual real estate."
+msgstr ""
+"An NFT marketplace is a platform that allows users to buy, sell, and trade "
+"non-fungible tokens (NFTs). NFTs are unique digital assets that can "
+"represent anything from artwork and collectibles to in-game items and "
+"virtual real estate."

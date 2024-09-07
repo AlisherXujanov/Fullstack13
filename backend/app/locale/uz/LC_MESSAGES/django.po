@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 16:58+0500\n"
+"POT-Creation-Date: 2024-09-07 17:55+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,4 +32,56 @@ msgstr ""
 
 #: .\nfts\views.py:13
 msgid "FAQ"
+msgstr "NIMA"
+
+#: .\nfts\views.py:14
+msgid "Frequently asked questions"
+msgstr "Tez-tez beriladigan savollar"
+
+#: .\nfts\views.py:15
+msgid ""
+"Here, youll find answers to the most commonly asked questions about our  "
+"products,services, and policies."
 msgstr ""
+"Bu yerda siz bizning saytimiz haqida eng ko'p beriladigan savollarga javob "
+"topasizmahsulotlar, xizmatlar va siyosatlar"
+
+#: .\nfts\views.py:16
+msgid "General"
+msgstr "Asosiy"
+
+#: .\nfts\views.py:17
+msgid "NFT Product"
+msgstr "NFT mahsuloti"
+
+#: .\nfts\views.py:18
+msgid "Payment"
+msgstr "To'lov"
+
+#: .\nfts\views.py:19
+msgid "What is an NFT marketplace?"
+msgstr "NFT bozori nima?"
+
+#: .\nfts\views.py:20
+msgid "How does buying an NFT work?"
+msgstr "NFT sotib olish qanday ishlaydi?"
+
+#: .\nfts\views.py:21
+msgid "What are the benefits of owning an NFT?"
+msgstr "NFTga ega bo'lishning qanday afzalliklari bor?"
+
+#: .\nfts\views.py:22
+msgid "Are there any risks associated with buying NFTs?"
+msgstr "NFT sotib olish bilan bog'liq har qanday xavf bormi?"
+
+#: .\nfts\views.py:23
+msgid ""
+"An NFT marketplace is a platform that allows users to buy, sell, and trade "
+"non-fungible tokens (NFTs). NFTs are unique digital assets that can "
+"represent anything from artwork and collectibles to in-game items and "
+"virtual real estate."
+msgstr ""
+"NFT bozori - bu foydalanuvchilarga sotib olish, sotish va savdo qilish imkonini beruvchi platformadir"
+"O'zgarib bo'lmaydigan tokenlar (NFTs). NFTs noyob raqamli aktivlar bo'lib, ular "
+"san'at asarlari va kollektsiyalardan tortib o'yin ichidagi narsalargacha va"
+"virtual ko'chmas mulk."

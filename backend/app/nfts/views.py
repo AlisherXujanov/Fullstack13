@@ -10,7 +10,17 @@ from django.utils.translation import activate, gettext_lazy as _
 
 def faq(request):
     context = {
-        'name_faq':_('FAQ')
+        'name_faq':_('FAQ'),
+        'h1_faq': _('Frequently asked questions'),
+        'faq_about': _('Here, youll find answers to the most commonly asked questions about our  products,services, and policies.'),
+        'content_navigate_link': _('General'),
+        'content_navigate_link_2': _('NFT Product'),
+        'content_navigate_link_3': _('Payment'),
+        'toggle_button': _('What is an NFT marketplace?'),
+        'toggle_button_2': _('How does buying an NFT work?'),
+        'toggle_button_3': _('What are the benefits of owning an NFT?'),
+        'toggle_button_4': _('Are there any risks associated with buying NFTs?'),
+        'content': _('An NFT marketplace is a platform that allows users to buy, sell, and trade non-fungible tokens (NFTs). NFTs are unique digital assets that can represent anything from artwork and collectibles to in-game items and virtual real estate.'),
     }
     return render(request, 'faq.html', context)
 

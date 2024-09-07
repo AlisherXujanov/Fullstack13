@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 16:58+0500\n"
+"POT-Creation-Date: 2024-09-07 17:55+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: .\app\settings.py:189
 msgid "English"
@@ -34,4 +34,56 @@ msgstr ""
 
 #: .\nfts\views.py:13
 msgid "FAQ"
+msgstr "ЧЕГО"
+
+#: .\nfts\views.py:14
+msgid "Frequently asked questions"
+msgstr "Часто задаваемые вопросы"
+
+#: .\nfts\views.py:15
+msgid ""
+"Here, youll find answers to the most commonly asked questions about our  "
+"products,services, and policies."
 msgstr ""
+"Здесь вы найдете ответы на наиболее часто задаваемые вопросы о наших "
+"продуктах, услугах и политиках."
+
+#: .\nfts\views.py:16
+msgid "General"
+msgstr "Главное"
+
+#: .\nfts\views.py:17
+msgid "NFT Product"
+msgstr "Продукт NFT"
+
+#: .\nfts\views.py:18
+msgid "Payment"
+msgstr "Оплата"
+
+#: .\nfts\views.py:19
+msgid "What is an NFT marketplace?"
+msgstr "Что такое торговая площадка NFT?"
+
+#: .\nfts\views.py:20
+msgid "How does buying an NFT work?"
+msgstr "Как работает покупка NFT?"
+
+#: .\nfts\views.py:21
+msgid "What are the benefits of owning an NFT?"
+msgstr "Каковы преимущества владения NFT?"
+
+#: .\nfts\views.py:22
+msgid "Are there any risks associated with buying NFTs?"
+msgstr "Существуют ли какие-либо риски, связанные с покупкой NFT?"
+
+#: .\nfts\views.py:23
+msgid ""
+"An NFT marketplace is a platform that allows users to buy, sell, and trade "
+"non-fungible tokens (NFTs). NFTs are unique digital assets that can "
+"represent anything from artwork and collectibles to in-game items and "
+"virtual real estate."
+msgstr ""
+"Торговая площадка NFT — это платформа, которая позволяет пользователям покупать, продавать и обменивать "
+"невзаимозаменяемые токены (NFT). NFT — это уникальные цифровые активы, которые могут "
+"представлять собой что угодно: от произведений искусства и предметов коллекционирования до игровых предметов и "
+"виртуальной недвижимости"
