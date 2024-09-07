@@ -64,6 +64,7 @@ nav {
         align-items: center;
         justify-content: space-between;
 
+        span,
         a {
             text-wrap: nowrap;
         }
@@ -103,6 +104,7 @@ nav {
             width: 100px;
             height: 50px;
 
+            .current-lang-container,
             .user {
                 width: 100%;
                 cursor: pointer;
@@ -140,6 +142,16 @@ nav {
                         background-color: $dark;
                         color: snow;
                     }
+                }
+            }
+
+
+            &.lang-drp {
+                width: 50px;
+
+                .dropdown {
+                    bottom: -110px;
+                    left: -20px;
                 }
             }
 

@@ -19,10 +19,18 @@
   <div class="right">
     <a href="{% url 'create_nft' %}">Create NFT💥</a>
     <a href="{% url 'explore' %}" class="selected">Explore</a>
-    <a href="#trending">Trending🔥</a>
     <a href="{% url 'faq' %}">FAQ</a>
     <a href="{% url 'about_us' %}">About us</a>
     <a href="{% url 'become_artist' %}">Become artist</a>
+    <span class="dropdown-container lang-drp"> 
+      <span class="current-lang-container">{{ request.session.current_language }}</span>
+      <div class="dropdown">
+        <a href="{% url 'change_translation' 'en' %}">English</a>
+        <a href="{% url 'change_translation' 'ru' %}">Russian</a>
+        <a href="{% url 'change_translation' 'uz' %}">Uzbek</a>
+      </div>
+    </span>
+
 
     {% if request.user.is_authenticated %}
     <div class="dropdown-container">

@@ -25,14 +25,13 @@ from django.conf.urls.i18n import i18n_patterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('about-us/', about_us, name='about_us'),
-    path('become-artist/', become, name='become_artist'),
-    path('contact-us/', contact_us, name='contact_us'),
-    path('', include('users.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 urlpatterns += i18n_patterns(
+    path("", include('users.urls')),
     path("", include("nfts.urls")),
-
+    path('about-us/', about_us, name='about_us'),
+    path('become-artist/', become, name='become_artist'),
+    path('contact-us/', contact_us, name='contact_us'),
 )

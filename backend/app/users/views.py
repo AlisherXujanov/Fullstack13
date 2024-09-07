@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Messages
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from allauth.account.views import LoginView, SignupView
 from .forms import *
 from nfts.models import NFTs
@@ -9,6 +9,8 @@ from .usecases import *
 import json
 from bs4 import BeautifulSoup
 import re
+from django.utils.translation import activate, gettext_lazy as _
+
 
 
 class CustomLoginView(LoginView):
@@ -31,6 +33,11 @@ class CustomSignupView(SignupView):
         return context
 
 
+def change_translation(request, lang_code:str):
+    activate(lang_code)
+    return redirect(request.META.get('HTTP_REFERER'))
+
+
 @login_required
 def profile_page(request, pk):
     obj = Profile.objects.get(user__pk=pk)
@@ -39,9 +46,6 @@ def profile_page(request, pk):
     }
     return render(request, "profile_page.html", context)
 
-
-# get_chat_messages
-# get_last_message_between
 
 @login_required
 def messages(request, pk: int):
@@ -72,7 +76,7 @@ def ajax_create_message(request):
         маты = load_words_from_json('users/bad_words.json')
         
         target_user_profile_id = REQUEST_BODY['target_user_profile_id']
-        soup = BeautifulSoup(REQUEST_BODY['message_text'],features="lxml")
+        soup = BeautifulSoup(REQUEST_BODY['message_text'])
         msgId = REQUEST_BODY.get('msgId', None)
         
         

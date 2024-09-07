@@ -6,6 +6,7 @@ urlpatterns = [
     path("signup/", CustomSignupView.as_view(), name="signup"),
     path("profile/<int:pk>/", profile_page, name="profile_page"),
     path("messages/<int:pk>/", messages, name="messages_page"),
+    path("change_translation/<str:lang_code>/", change_translation, name="change_translation"),
 
     # AJAX calls
     path('delete-message/', deleteMessage, name='deleteMessage'),

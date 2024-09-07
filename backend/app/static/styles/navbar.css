@@ -135,6 +135,7 @@ nav .right {
   align-items: center;
   justify-content: space-between;
 }
+nav .right span,
 nav .right a {
   text-wrap: nowrap;
 }
@@ -168,6 +169,7 @@ nav .right .dropdown-container {
   width: 100px;
   height: 50px;
 }
+nav .right .dropdown-container .current-lang-container,
 nav .right .dropdown-container .user {
   width: 100%;
   cursor: pointer;
@@ -175,10 +177,12 @@ nav .right .dropdown-container .user {
   font-weight: 600;
   font-size: 20px;
 }
+nav .right .dropdown-container .current-lang-container a,
 nav .right .dropdown-container .user a {
   position: relative;
   display: inline-block;
 }
+nav .right .dropdown-container .current-lang-container a span.unread-msgs,
 nav .right .dropdown-container .user a span.unread-msgs {
   position: absolute;
   top: -5px;
@@ -201,6 +205,13 @@ nav .right .dropdown-container .dropdown a {
 nav .right .dropdown-container .dropdown a:hover {
   background-color: #191919;
   color: snow;
+}
+nav .right .dropdown-container.lang-drp {
+  width: 50px;
+}
+nav .right .dropdown-container.lang-drp .dropdown {
+  bottom: -110px;
+  left: -20px;
 }
 nav .right .dropdown-container:hover .dropdown {
   display: block;
