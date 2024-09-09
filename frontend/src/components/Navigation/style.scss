@@ -48,13 +48,38 @@ header {
             }
 
             .auth {
-                span {
-                    text-decoration: underline 1px solid snow;
-                    cursor: pointer;
-                    transform: scale(1.5);
+                @include flex(row, center, center);
 
-                    &::selection {
-                        background-color: transparent;
+                .logged-in-menu {
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 20px;
+                    text-transform: uppercase;
+                    cursor: pointer;
+
+                    h4 {
+                        text-shadow: 1px 1px 1px $warning,
+                            -1px -1px 1px $warning;
+                    }
+
+                    .content {
+                        display: inline-block;
+                        position: absolute;
+                        width: 160px;
+                        bottom: -35px;
+                        left: 0;
+                        display: none;
+
+                        button {
+                            position: relative;
+                            top: 10px;
+                        }
+                    }
+
+                    &:hover {
+                        .content {
+                            display: block;
+                        }
                     }
                 }
             }

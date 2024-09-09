@@ -16,11 +16,11 @@ function Footer() {
           </div>
           <div className="footer-links">
             <div className="left">
-              <NavLink exact to="/">О нас</NavLink>
-              <NavLink to="/team">Команда</NavLink>
-              <NavLink to="/blog">Блог</NavLink>
-              <NavLink to="/products">Продукты</NavLink>
-              <NavLink to="/contacts">Контакты</NavLink>
+              <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>О нас</NavLink>
+              <NavLink to="/team" className={({ isActive }) => isActive ? "active" : ""}>Команда</NavLink>
+              <NavLink to="/blog" className={({ isActive }) => isActive ? "active" : ""}>Блог</NavLink>
+              <NavLink to="/products" className={({ isActive }) => isActive ? "active" : ""}>Продукты</NavLink>
+              <NavLink to="/contacts" className={({ isActive }) => isActive ? "active" : ""}>Контакты</NavLink>
             </div>
             <div className="right">
               <a href="#">Terms and conditions</a>

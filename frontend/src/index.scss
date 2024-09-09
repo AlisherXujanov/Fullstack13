@@ -13,7 +13,7 @@ p {
 }
 
 a,
-button,
+button:not(.close-btn),
 input {
     border: none;
     outline: none;
@@ -36,4 +36,15 @@ input {
     &:active {
         transform: scale(0.8);
     }
+}
+
+
+::selection {
+    background-color: $warning;
+    color: $light;
+}
+
+.toast-wrapper {
+    position: relative;
+    z-index: 9999;
 }

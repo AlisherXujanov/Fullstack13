@@ -7,7 +7,7 @@
     .row {
         margin-top: 50px;
         @include grid(2, 20px);
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 2fr 700px;
 
         .left {
             @include flex(column, $gap: 15px);
@@ -25,14 +25,10 @@
         }
 
         .rigth {
-            width: 700px;
-
             form {
                 @include flex();
                 flex-direction: column;
                 gap: 12px;
-                width: 100%;
-
 
                 .form-control {
                     width: 80%;
@@ -111,8 +107,56 @@
         .heading-wrapper {
             margin: 20px 0;
         }
+    }
+}
 
-        @media (max-width: $small-screen) {
+@media (max-width: $xx-large-screen) {
+    .contacts-page-wrapper {
+        padding: 50px;
+    }
+}
+
+@media (max-width: $x-large-screen) {
+    .contacts-page-wrapper {
+        .row {
+            grid-template-columns: 1fr 600px;
+
+            .right {
+                form {
+                    .form-control {
+                        width: 500px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $large-screen) {
+    .contacts-page-wrapper {
+        padding: 50px 20px;
+
+        .row {
+            grid-template-columns: 1fr;
+
+            .right {
+                form {
+                    max-width: 500px;
+                    width: 100%;
+
+
+                    .form-control {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $medium-screen) {
+    .contacts-page-wrapper {
+        .maps {
             flex-direction: column;
         }
     }

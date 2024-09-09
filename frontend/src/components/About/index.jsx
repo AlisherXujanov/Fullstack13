@@ -4,8 +4,14 @@ import ImageAbout from "../../assets/images/about.png"
 import { TbLicense } from "react-icons/tb"
 import { useEffect } from 'react'
 import Lycence from "../../assets/images/certificates/second.png"
+import Test from "./Test.jsx"
+import { useContext } from "react"
+import { globalContext } from "../../store/index.js"
+
 
 function About() {
+  const state = useContext(globalContext)
+
   useEffect(() => {
     document.title = "About Us";
   }, []);
@@ -21,10 +27,18 @@ function About() {
           <p>Наша Команда успешно осуществляет деятельность на нескольких рынках инвестиций. Богатство выбора инструментов этих рынков позволяет Нам успешно сохранять и преумножать капитал клиентов. </p>
           <p>Вступить в партнерство с Fonte могут как профессиональные инвестора, так и частные лица, только начинающие открывать для себя новые перспективы. Наша юрисдикция - Международный финансовый центр «Астана» (МФЦА). Комфортные налоговые условия и регуляторные политики обеспечивают необходимые свободы и преимущества для достижения целей инвестиций. </p>
           <p>В партнерстве с Fonte Capital LTD, инвесторы имеют возможность воспользоваться не только проверенными стратегиями, но и смогут совместно разработать персональные инвестиционные решения.</p>
-          <a className="warning-btn" href={Lycence} download={"Lycence"} style={{display: "inline-block"}}>
+          <a className="warning-btn" href={Lycence} download={"Lycence"} style={{ display: "inline-block"}}>
             <TbLicense /> Лицензии
           </a>
+
         </div>
+      </div>
+
+      <div style={{ padding: "50px 100px" }}>
+        <h2>{state.counter}</h2>
+        <button className="warning-btn" onClick={() => state.dispatch({type: "DECREMENT"})}>Decrement</button>
+        <button className="warning-btn" onClick={() => state.dispatch({type: "INCREMENT"})}>Increment</button>
+        <Test />
       </div>
     </main>
   );

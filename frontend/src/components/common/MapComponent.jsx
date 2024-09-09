@@ -27,12 +27,15 @@ export default function MapComponent(props) {
   };
 
   let normal_size = "40vw"
-  let small_screen = 680
+  let small_screen = 900
 
   if (window.innerWidth < small_screen) {
-    normal_size = "90vw"
+    normal_size = "80vw"
     // 1vw == 1% of the viewport
     // 1vh == 1% of the viewport height
+  }
+  else if (window.innerWidth < 750) {
+    normal_size = "100vw"
   }
 
   return (
