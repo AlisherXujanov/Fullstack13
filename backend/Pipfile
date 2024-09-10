@@ -13,6 +13,7 @@ pillow = "*"
 python-decouple = "*"
 beautifulsoup4 = "*"
 selenium = "*"
+djangorestframework = "*"
 
 [dev-packages]
 
