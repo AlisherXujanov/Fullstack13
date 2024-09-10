@@ -1,3 +1,4 @@
+from copyreg import constructor
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -26,7 +27,27 @@ def hello_world(request):
 
 class HelloWorld(APIView):
     def get(self, request):
+        # .../?name-startswith=John
+        # .../?age-between=18-30
+        users = [
+            {"id":1, "name":  "John",    "age":15},
+            {"id":2, "name":  "Liza",    "age":20},
+            {"id":3, "name":  "Marta",   "age":12},
+            {"id":4, "name":  "Maks",    "age":35},
+            {"id":5, "name":  "Azim",    "age":18},
+            {"id":6, "name":  "Dadosh",  "age":15},
+            {"id":7, "name":  "Lyosha",  "age":12},
+            {"id":8, "name":  "Akerfer", "age":55},
+            {"id":9, "name":  "Sherzod", "age":20},
+            {"id":10, "name": "Islom",   "age":25},
+        ]
         context = {}
+        # age-between="18-30"
+        # age = request.query_params.get('age-between')
+        # start, end = age.split("-")
+        # filtered_users = list(filter(lambda user: int(start) <= user['age'] <= int(end), users))
+        # print(filtered_users)
+
         
         if color := request.query_params.get('color'):
             context['color'] = color
