@@ -162,12 +162,6 @@ def get_nfts(request):
     nfts = NFT.objects.all()
     return Response(nfts.values())
 
-@api_view()
-def get_nft(request, pk):
-    nft = NFT.objects.get(pk=pk)
-    return Response(nft.values())
-
-
 # ----------------------------------------------
 # with the help of serializers.py
 from .serializers import NFTSerializer

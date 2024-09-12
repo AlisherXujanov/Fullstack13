@@ -25,7 +25,9 @@ from nfts import api_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('apis/', api_views.hello_world),
-    path('apis/', api_views.HelloWorld.as_view()),
+    path('apis/', api_views.NFTListCreateView.as_view()),
+    path('apis/<int:pk>/', api_views.SingleNFTsView.as_view()),
+    
     
     path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
