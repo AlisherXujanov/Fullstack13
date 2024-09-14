@@ -1,20 +1,25 @@
+import { BASE_URL } from "."
+
 function globalReducer(state, action) {
     switch (action.type) {
-        // action.type === "SET_USER"
         case 'SET_USER':
             return { ...state,  user: action.payload }
         case 'LOGOUT':
             return { ...state,  user: {} }
-        case 'INCREMENT':
-            return { ...state,  counter: state.counter + 1 }
-        case 'DECREMENT':
-            return { ...state,  counter: state.counter - 1 }
+        case "SET_PRODUCTS":
+            return { ...state, products: action.payload }
     }
 }
-// globalReducer(initialState, {type:"...",  payload: {"..."}})
 
-
-
+async function fetchProducts() {
+    try {
+        const res = await fetch(BASE_URL + 'apis/products')
+        const data = await res.json()
+        return data
+    } catch (err) {
+        return console.log(err)
+    }
+}
 
 function getUsersFromLocalStorage() {
     let users = localStorage.getItem('users') ?? "[]"
@@ -54,5 +59,6 @@ export {
     getUsersFromLocalStorage,
     addNewUserToLocalStorage,
     userExistsInDB,
-    globalReducer
+    globalReducer,
+    fetchProducts
 }

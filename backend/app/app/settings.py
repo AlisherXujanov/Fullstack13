@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     
     'django_cleanup.apps.CleanupConfig',
     'rest_framework',
+    'corsheaders',
 ]
 
 SITE_ID = 1
@@ -61,6 +62,7 @@ AUTHENTICATION_BACKENDS = (
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -71,6 +73,7 @@ MIDDLEWARE = [
     'users.middleware.UserMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [

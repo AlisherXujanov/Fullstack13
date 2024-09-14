@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5e30c0a7dd25eabdc1c4603d014074edfb988037ff69998a253c3c8331ff86f8"
+            "sha256": "6bd70dc029042d3b02044607d683fabb0e7a9b7b9783061a464787c03464f060"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -276,6 +276,15 @@
             "index": "pypi",
             "version": "==8.1.0"
         },
+        "django-cors-headers": {
+            "hashes": [
+                "sha256:5c6e3b7fe870876a1efdfeb4f433782c3524078fa0dc9e0195f6706ce7a242f6",
+                "sha256:92cf4633e22af67a230a1456cb1b7a02bb213d6536d2dcb2a4a24092ea9cebc2"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==4.4.0"
+        },
         "djangorestframework": {
             "hashes": [
                 "sha256:2b8871b062ba1aefc2de01f773875441a961fefbf79f5eed1e32b2f096944b20",
@@ -295,11 +304,11 @@
         },
         "idna": {
             "hashes": [
-                "sha256:050b4e5baadcd44d760cedbd2b8e639f2ff89bbc7a5730fcc662954303377aac",
-                "sha256:d838c2c0ed6fced7693d5e8ab8e734d5f8fda53a039c0164afb0b82e771e3603"
+                "sha256:69297d5da0cc9281c77efffb4e730254dd45943f45bbfb461de5991713989b1e",
+                "sha256:e5c5dafde284f26e9e0f28f6ea2d6400abd5ca099864a67f576f3981c6476124"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==3.8"
+            "version": "==3.9"
         },
         "jwt": {
             "hashes": [
@@ -514,11 +523,11 @@
                 "socks"
             ],
             "hashes": [
-                "sha256:a448b2f64d686155468037e1ace9f2d2199776e17f0a46610480d311f73e3472",
-                "sha256:dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
+                "sha256:ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac",
+                "sha256:e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9"
             ],
             "markers": "python_version >= '3.8'",
-            "version": "==2.2.2"
+            "version": "==2.2.3"
         },
         "websocket-client": {
             "hashes": [
