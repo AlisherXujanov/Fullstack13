@@ -20,13 +20,13 @@ from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
-from nfts import api_views
+from nfts.api_views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('apis/', api_views.hello_world),
-    path('apis/', api_views.NFTListCreateView.as_view()),
-    path('apis/<int:pk>/', api_views.SingleNFTsView.as_view()),
+    path('apis/', NFTListCreateView.as_view()),
+    path('apis/<int:pk>/', SingleNFTsView.as_view()),
     
     
     path('accounts/', include('allauth.urls')),

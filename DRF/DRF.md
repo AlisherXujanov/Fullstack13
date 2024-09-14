@@ -220,8 +220,8 @@ from rest_framework import serializers
 DISCOUNT_IN_PERCENT = 10
 
 class BookSerializer(serializers.ModelSerializer):
-    price_in_discount = serializers.IntegerField(read_only=True, method_name='price_after_discount')
-    author_name = serializers.CharField(read_only=True, method_name='current_user_as_author')
+    price_in_discount = serializers.SerializerMethodField(read_only=True, method_name='price_after_discount')
+    author_name = serializers.SerializerMethodField(read_only=True, method_name='current_user_as_author')
 
     # NOTE: 
     # 1. We can aslo use rename existing fields by using source attribute
