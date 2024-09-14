@@ -1,13 +1,7 @@
 import "./productDetails.scss"
 import { useParams } from "react-router-dom"
-import { useEffect } from 'react'
-import ProductsJSON from "../../db/products.json"
-
-import img1 from "../../assets/images/img1.png"
-import img2 from "../../assets/images/img2.png"
-import img3 from "../../assets/images/img3.png"
-import img4 from "../../assets/images/img4.png"
-import img5 from "../../assets/images/img5.png"
+import { useEffect, useState } from 'react'
+import { BASE_URL } from "../../store"
 import Heading from "../common/Heading"
 
 import { IoDocumentTextOutline } from "react-icons/io5"
@@ -18,9 +12,13 @@ import Consultation from "../Navigation/Footer/Consultation"
 
 function ProductDetails(props) {
     const { id } = useParams()
-    const product = ProductsJSON.find(product => product.id === parseInt(id))
-    const images = [img1, img2, img3, img4, img5]
+    const [product, setProduct] = useState({})
 
+    useEffect(() => {
+        goToTopSmoothly()
+        getProduct()
+        document.title = "Product: " + product?.name
+    }, [])
 
     function goToTopSmoothly() {
         window.scrollTo({
@@ -29,30 +27,32 @@ function ProductDetails(props) {
         });
     }
 
-    useEffect(() => {
-        goToTopSmoothly()
-        document.title = "Product: " + product.title
-    }, [])
+    async function getProduct() {
+        const URL = BASE_URL + "products/" + id
+        let response = await fetch(URL)
+        let data = await response.json()
+        setProduct(data)
+    }
 
     return (
         <>
             <div className="product-details-wrapper">
                 <p className="intro">
-                    Продукты / {product.title.split(" ").slice(0, 3).join(" ")}
+                    Продукты / {product?.name?.split(" ").slice(0, 3).join(" ")}
                 </p>
-                <Heading size={1}>{product.title}</Heading>
+                <Heading size={1}>{product.name}</Heading>
 
                 <div className="image-wrapper">
-                    <img src={images[product.id % images.length]} alt="Product image" />
+                    <img src={product.image} alt="Product image" />
                     <p className="content">
-                        {product.content}
+                        {product.description}
                     </p>
                 </div>
                 <p className="content-content2">
-                    {product.content2}
+                    {product.description}
                 </p>
                 <p className="content-content3">
-                    {product.content3}
+                    {product.description}
                 </p>
 
                 <div className="documents">

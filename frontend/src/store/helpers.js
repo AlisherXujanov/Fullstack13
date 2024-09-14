@@ -13,7 +13,7 @@ function globalReducer(state, action) {
 
 async function fetchProducts() {
     try {
-        const res = await fetch(BASE_URL + 'apis/products')
+        const res = await fetch(BASE_URL + 'products')
         const data = await res.json()
         return data
     } catch (err) {

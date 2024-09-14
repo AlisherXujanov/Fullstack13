@@ -17,7 +17,6 @@ function Navigation() {
     async function fetchEverything() {
         const data = await fetchProducts()
         state.dispatch({ type: "SET_PRODUCTS", payload:data })
-        console.log(data)
     }
 
 
