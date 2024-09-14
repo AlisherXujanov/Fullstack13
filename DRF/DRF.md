@@ -244,6 +244,27 @@ class BookSerializer(serializers.ModelSerializer):
 # NOTE: To be able to get request object in serializer, 
 #       you need to pass it in the view MySerializer(..., context={'request': request})
 
+# =====================================================
+# in views.py 
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .models import *
+from .serializers import BookSerializer
+
+@api_view()
+def get_books(request):
+    books = Book.objects.all()
+    serializer = BookSerializer(books, many=True, context={'request': request})
+    return Response(serializer.data)
+
+# OUTPUT:
+# {
+#     "title": "Book1",
+#     "author_name": "admin",
+#     "price_in_discount": "$90 - (10% discount)",
+#     "description": "This is a book",
+#     "created_at": "2022-01-01T00:00:00Z"
+# }
 ```
 
 
@@ -292,7 +313,6 @@ class BooksSerializer(serializers.ModelSerializer):
 Then, we need to create a view for it.
 ```python
 # NOTE: There is a convention you must follow when you create this view name. The rule is that you have to add -detail after the related field name, which is category in the MenuItemSerializer. This is why the view name was category-detail in this code. If the related field name was user, the view name would be user-detail. 
-# RU: Существует соглашение, которого вы должны придерживаться при создании этого имени представления. Правило таково, что вы должны добавить -detail после имени связанного поля, которое является категорией в MenuItemSerializer. Вот почему имя представления было category-detail в этом коде. Если бы имя связанного поля было пользователь, имя представления было бы user-detail.
 
 from .models import Genre 
 from .serializers import GenreSerializer
@@ -310,3 +330,28 @@ urlpatterns = [
 ]
 ```
 
+## HyperlinkedModelSerializer
+- HyperlinkedModelSerializer is similar to ModelSerializer, but it uses hyperlinks to represent relationships instead of primary keys.
+
+```python
+from rest_framework import serializers
+from .models import *
+
+class GenreSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Genre
+        fields = ['url', 'slug', 'name']
+
+# =====================================================
+# in views.py
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .models import *
+from .serializers import GenreSerializer
+
+@api_view()
+def get_genres(request):
+    genres = Genre.objects.all()
+    serializer = GenreSerializer(genres, many=True, context={'request': request})
+    return Response(serializer.data)
+```
