@@ -48,3 +48,15 @@ input {
     position: relative;
     z-index: 9999;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 10px;
+    background-color: $warning;
+    border-radius: 10px;
+    border: 2px solid black;
+}
