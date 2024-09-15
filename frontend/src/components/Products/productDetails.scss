@@ -22,6 +22,10 @@
       height: 350px;
       filter: grayscale(100%);
       object-fit: cover;
+
+      &:hover {
+        filter: grayscale(0);
+      }
     }
   }
 

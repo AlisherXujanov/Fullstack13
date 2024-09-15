@@ -33,6 +33,13 @@
         line-height: 1.2em;
         width: 70%;
         color: $light;
+
+        // hide text after 4 lines
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
       }
 
       a {

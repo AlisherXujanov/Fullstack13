@@ -4,7 +4,6 @@ import ImageAbout from "../../assets/images/about.png"
 import { TbLicense } from "react-icons/tb"
 import { useEffect } from 'react'
 import Lycence from "../../assets/images/certificates/second.png"
-import Test from "./Test.jsx"
 import { useContext } from "react"
 import { globalContext } from "../../store/index.js"
 
@@ -34,12 +33,6 @@ function About() {
         </div>
       </div>
 
-      <div style={{ padding: "50px 100px" }}>
-        <h2>{state.counter}</h2>
-        <button className="warning-btn" onClick={() => state.dispatch({type: "DECREMENT"})}>Decrement</button>
-        <button className="warning-btn" onClick={() => state.dispatch({type: "INCREMENT"})}>Increment</button>
-        <Test />
-      </div>
     </main>
   );
 }
