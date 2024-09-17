@@ -42,6 +42,18 @@ urlpatterns = [
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
+        # We need this to allow everyone to access the API
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        # We need this to render the response in JSON format (default)
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        # The view of browseable API is a human-friendly interface for the API
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',  # parse simple JSON data
+        'rest_framework.parsers.FormParser',  # parse FormData from JS in 
+        'rest_framework.parsers.MultiPartParser', # parse file data
     ]
 }
 ```
@@ -358,7 +370,6 @@ def get_genres(request):
 
 
 
-#
 # API views
 
 ### Diffirent types of API-views
@@ -535,4 +546,6 @@ path('api/.../', ...APIView.as_view(), name='...'),
 
 # 
 # 
+#
+#
 # 
