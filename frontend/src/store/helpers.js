@@ -8,6 +8,8 @@ function globalReducer(state, action) {
             return { ...state,  user: {} }
         case "SET_PRODUCTS":
             return { ...state, products: action.payload }
+        case "SET_SHOW_MODAL":
+            return { ...state, showModal: action.payload }
     }
 }
 

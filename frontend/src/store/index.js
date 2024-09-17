@@ -9,6 +9,7 @@ const initialState = {
     user: {},
     coordinates: {},
     products: [],
+    showModal: false,
 }
 
 

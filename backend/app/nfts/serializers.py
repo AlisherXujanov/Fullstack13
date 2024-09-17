@@ -5,15 +5,15 @@ DISCOUNT_IN_PERCENT = 10
 
 class NFTsSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    price_in_discount = serializers.SerializerMethodField(method_name='price_after_discount')
+    # price_in_discount = serializers.SerializerMethodField(method_name='price_after_discount')
     
     class Meta:
         model = NFTs
-        fields = "__all__"
+        fields = ["id", "name", "price", "description", "image", "owner"]
         
-    def price_after_discount(self, obj:NFTs):
-        discount_price = obj.price - (obj.price * DISCOUNT_IN_PERCENT / 100)
-        return f'${discount_price} - ({DISCOUNT_IN_PERCENT}% discount)'
+    # def price_after_discount(self, obj:NFTs):
+    #     discount_price = obj.price - (obj.price * DISCOUNT_IN_PERCENT / 100)
+    #     return f'${discount_price} - ({DISCOUNT_IN_PERCENT}% discount)'
 
 
 

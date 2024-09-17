@@ -203,5 +203,10 @@ LOCALE_PATHS = (
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',  # parse simple JSON data
+        'rest_framework.parsers.FormParser',  # parse FormData from JS in 
+        'rest_framework.parsers.MultiPartParser', # parse file data
     ]
 }
