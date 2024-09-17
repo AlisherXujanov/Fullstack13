@@ -75,6 +75,18 @@ function Products() {
         } else {
             let file = e.target.files[0]
             setForm({ ...form, [name]: file })
+
+            const imageWrapper = document.querySelector(".form-control .image-wrapper")
+            imageWrapper.innerHTML = ""
+            const imageURL = URL.createObjectURL(file)
+            const imageTag = document.createElement("img")
+            imageTag.src = imageURL
+            imageTag.alt = "Product image cound not be loaded"
+            imageWrapper.appendChild(imageTag)
+            imageTag.addEventListener('click', (e) => {
+                e.target.remove()
+                setForm({ ...form, "image": "" })
+            })
         }
     }
 
@@ -97,13 +109,19 @@ function Products() {
                                 <label htmlFor="prod-price">Price of the product</label>
                                 <input id="prod-price" type="number" placeholder="Price" name='price' onChange={handleFormInfo} required />
                             </div>
-                            <div className="form-control">
-                                <label htmlFor="prod-image">Image of the product</label>
-                                <input id="prod-image" type="file" name='image' onChange={handleFormInfo} required />
+                            <div className={form.image ? "form-control row" : "form-control"}>
+                                <div>
+                                    <label htmlFor="prod-image">Image of the product</label>
+                                    <input id="prod-image" type="file" name='image' onChange={handleFormInfo} required />
+                                </div>
+                                {
+                                    <div className="image-wrapper">
+                                    </div>
+                                }
                             </div>
                             <div className="form-control">
                                 <label htmlFor="prod-desc">Description of the product</label>
-                                <textarea rows={5} name="description" id="prod-desc" placeholder="Description" onChange={handleFormInfo}></textarea>
+                                <textarea rows={5} name="description" id="prod-desc" placeholder="Description" onChange={handleFormInfo} required></textarea>
                             </div>
                             <div className="form-control">
                                 <button type="submit" className="warning-btn">

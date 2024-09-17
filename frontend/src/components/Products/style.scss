@@ -17,6 +17,21 @@
         * {
           margin: 5px 0;
         }
+
+        &.row {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          gap: 10px;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+          }
+        }
       }
 
       label {
