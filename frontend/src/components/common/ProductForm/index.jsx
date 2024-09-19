@@ -12,6 +12,7 @@ function ProductForm(props) {
         price: "",
         description: "",
         image: "",
+        // TODO: Preset the image too
         owner: 1,
     })
     const state = useContext(globalContext)
@@ -52,7 +53,7 @@ function ProductForm(props) {
             if (props.updateMode) {
                 FETCH_METHOD = "PUT"
                 URL = `${BASE_URL}products/${props.product.id}/`
-                success_message = "Product updated successfully" 
+                success_message = "Product updated successfully"
             } else {
                 FETCH_METHOD = "POST"
                 URL = BASE_URL + "products"
@@ -97,6 +98,7 @@ function ProductForm(props) {
             imageTag.alt = "Product image cound not be loaded"
             imageWrapper.appendChild(imageTag)
             imageTag.addEventListener('click', (e) => {
+                // TODO:  when deleted the image, we must clear the input value too
                 e.target.remove()
                 setForm({ ...form, "image": "" })
             })

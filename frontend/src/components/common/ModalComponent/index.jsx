@@ -5,6 +5,8 @@ import Heading from "../Heading"
 
 
 function ModalComponent(props) {
+    // TODO: add scrollbar-y  if the height is too big
+
     const state = useContext(globalContext)
     function closeModal() {
         state.dispatch({ type: "SET_SHOW_MODAL", payload: false })
