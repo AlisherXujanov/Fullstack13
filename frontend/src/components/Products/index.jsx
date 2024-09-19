@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 import { useEffect, useContext } from 'react'
 import { globalContext } from "../../store"
 import ModalComponent from "../common/ModalComponent"
-import { fetchProducts } from "../../store/helpers.js"
 import ProductForm from "../common/ProductForm"
 
 
@@ -20,23 +19,16 @@ function Products() {
         state.dispatch({ type: "SET_SHOW_MODAL", payload: true })
     }
  
-    async function fetchProductsFn() {
-        const data = await fetchProducts()
-        state.dispatch({ type: "SET_PRODUCTS", payload: data })
-    }
-
-
     return (
         <main className="products-page-wrapper">
             <Heading size={1.2}>Products</Heading>
 
             <button className="warning-btn create-btn" onClick={openModal}>Create new product</button>
 
-
             {state.showModal &&
                 <div className="create-form-modal-wrapper">
                     <ModalComponent title="Create new product">
-                        <ProductForm fetchFunction={fetchProductsFn} />
+                        <ProductForm />
                     </ModalComponent>
                 </div>
             }

@@ -10,6 +10,7 @@ import Certificate from "../../assets/images/certificates/first.png"
 import Lycence from "../../assets/images/certificates/second.png"
 import Consultation from "../Navigation/Footer/Consultation"
 import ModalComponent from "../common/ModalComponent"
+import ProductForm from "../common/ProductForm"
 import { toast } from "react-toastify"
 
 function ProductDetails(props) {
@@ -68,10 +69,6 @@ function ProductDetails(props) {
         }
     }
 
-    async function submitUpdate(e) {
-        e.preventDefault()
-    } 
-
     // function formatContent(content) {
     //     // TODO: Format content by dots
     //     return String(content).split(".").join(".\n\n")
@@ -113,37 +110,9 @@ function ProductDetails(props) {
                     }
 
                     {state.showModal &&
-                        <div className="create-form-modal-wrapper">
+                        <div className="update-form-modal-wrapper">
                             <ModalComponent title="Update product">
-                                <form onSubmit={submitUpdate}>
-                                    <div className="form-control">
-                                        <label htmlFor="prod-name">Name of the product</label>
-                                        <input id="prod-name" type="text" placeholder="Name" name='name' onChange={handleFormInfo} required />
-                                    </div>
-                                    <div className="form-control">
-                                        <label htmlFor="prod-price">Price of the product</label>
-                                        <input id="prod-price" type="number" placeholder="Price" name='price' onChange={handleFormInfo} required />
-                                    </div>
-                                    <div className={form.image ? "form-control row" : "form-control"}>
-                                        <div>
-                                            <label htmlFor="prod-image">Image of the product</label>
-                                            <input id="prod-image" type="file" name='image' onChange={handleFormInfo} required />
-                                        </div>
-                                        {
-                                            <div className="image-wrapper">
-                                            </div>
-                                        }
-                                    </div>
-                                    <div className="form-control">
-                                        <label htmlFor="prod-desc">Description of the product</label>
-                                        <textarea rows={5} name="description" id="prod-desc" placeholder="Description" onChange={handleFormInfo} required></textarea>
-                                    </div>
-                                    <div className="form-control">
-                                        <button type="submit" className="warning-btn">
-                                            Create product
-                                        </button>
-                                    </div>
-                                </form>
+                                <ProductForm updateMode={true} product={product} />
                             </ModalComponent>
                         </div>
                     }

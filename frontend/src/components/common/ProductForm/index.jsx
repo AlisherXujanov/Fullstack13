@@ -1,14 +1,12 @@
 import "./style.scss"
 import { useContext, useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom"
 import { globalContext, BASE_URL } from "../../../store"
 import { toast } from "react-toastify"
-
+import { fetchProducts } from "../../../store/helpers.js"
 
 function ProductForm(props) {
-    // REQUIRES:
-    // fetchFunction:  is called after the product is created
-
-
+    const navigate = useNavigate()
     const [form, setForm] = useState({
         name: "",
         price: "",
@@ -18,18 +16,23 @@ function ProductForm(props) {
     })
     const state = useContext(globalContext)
 
-    // useEffect(() => {
-    //     // if (props.updateMode == true) {
-    //     //     setForm({
-    //     //         name: props.product.name,
-    //     //         price: props.product.price,
-    //     //         description: props.product.description,
-    //     //         image: "",
-    //     //         owner: 1,
-    //     //     })
-    //     // }
-    // }, [])
+    useEffect(() => {
+        if (props.updateMode == true) {
+            setForm({
+                name: props.product.name,
+                price: props.product.price,
+                description: props.product.description,
+                owner: props.product.owner,
+            })
+        }
+    }, [])
 
+
+    async function fetchProductsFn() {
+        const data = await fetchProducts()
+        state.dispatch({ type: "SET_PRODUCTS", payload: data })
+        navigate("/products")
+    }
 
     async function submit(e) {
         e.preventDefault()
@@ -42,14 +45,25 @@ function ProductForm(props) {
         formData.append("owner", form.owner)
 
         try {
-            fetch(BASE_URL + "products", {
-                method: "POST",
-                body: formData
-            })
+            let FETCH_METHOD = null
+            let URL = null
+            let success_message = ""
+
+            if (props.updateMode) {
+                FETCH_METHOD = "PUT"
+                URL = `${BASE_URL}products/${props.product.id}/`
+                success_message = "Product updated successfully" 
+            } else {
+                FETCH_METHOD = "POST"
+                URL = BASE_URL + "products"
+                success_message = "Product created successfully"
+            }
+
+            fetch(URL, { method: FETCH_METHOD, body: formData })
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
-                    toast.success("Product created successfully")
+                    toast.success(success_message)
                     state.dispatch({ type: "SET_SHOW_MODAL", payload: false })
                     setForm({
                         name: "",
@@ -58,9 +72,7 @@ function ProductForm(props) {
                         image: "",
                         owner: 1,
                     })
-                    if (props.fetchFunction) {
-                        props.fetchFunction()
-                    }
+                    fetchProductsFn()
                 })
         }
         catch (e) {
@@ -96,16 +108,30 @@ function ProductForm(props) {
             <form onSubmit={submit}>
                 <div className="form-control">
                     <label htmlFor="prod-name">Name of the product</label>
-                    <input id="prod-name" type="text" placeholder="Name" name='name' onChange={handleFormInfo} required />
+                    <input id="prod-name" type="text"
+                        placeholder="Name" name='name'
+                        onChange={handleFormInfo}
+                        value={form.name}
+                        required
+                    />
                 </div>
                 <div className="form-control">
                     <label htmlFor="prod-price">Price of the product</label>
-                    <input id="prod-price" type="number" placeholder="Price" name='price' onChange={handleFormInfo} required />
+                    <input id="prod-price" type="number"
+                        placeholder="Price" name='price'
+                        onChange={handleFormInfo}
+                        value={form.price}
+                        required
+                    />
                 </div>
                 <div className={form.image ? "form-control row" : "form-control"}>
                     <div>
                         <label htmlFor="prod-image">Image of the product</label>
-                        <input id="prod-image" type="file" name='image' onChange={handleFormInfo} required />
+                        <input id="prod-image" type="file"
+                            name='image'
+                            onChange={handleFormInfo}
+                            required
+                        />
                     </div>
                     {
                         <div className="image-wrapper">
@@ -114,11 +140,19 @@ function ProductForm(props) {
                 </div>
                 <div className="form-control">
                     <label htmlFor="prod-desc">Description of the product</label>
-                    <textarea rows={5} name="description" id="prod-desc" placeholder="Description" onChange={handleFormInfo} required></textarea>
+                    <textarea
+                        id="prod-desc"
+                        rows={5}
+                        name="description"
+                        placeholder="Description"
+                        onChange={handleFormInfo}
+                        value={form.description}
+                        required
+                    ></textarea>
                 </div>
                 <div className="form-control">
                     <button type="submit" className="warning-btn">
-                        { props.updateMode ? "Update" : "Create" } product
+                        {props.updateMode ? "Update" : "Create"} product
                     </button>
                 </div>
             </form>
