@@ -1,0 +1,113 @@
+@import "../../../assets/styles/settings";
+
+.form-wrapper {
+    form {
+        .form-control {
+            margin-bottom: 20px;
+
+            * {
+                margin: 5px 0;
+            }
+
+            &.row {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 10px;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 100px;
+                    height: 100px;
+                    object-fit: cover;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        label {
+            text-align: left;
+            display: block;
+            font-family: sans-serif;
+            margin-bottom: 2px;
+        }
+
+        textarea,
+        input,
+        button {
+            width: 100%;
+            margin: 5px 0;
+            border: 2px solid transparent;
+            padding: 15px 20px;
+            outline: none;
+            background-color: $dark;
+            border: 1px solid transparent;
+            color: snow;
+
+            &.error {
+                border: 2px solid red;
+                box-shadow:
+                    1px 1px 10px red,
+                    -1px -1px 10px red,
+            }
+
+            &::placeholder {
+                color: darkgray;
+                font-size: 0.8em;
+            }
+
+            &:hover:not(.error),
+            &:focus:not(.error) {
+                border: 1px solid $warning;
+                box-shadow:
+                    1px 1px 30px $warning-t,
+                    -1px -1px 30px $warning-t,
+                    inset 0 1px 30px $warning-t,
+                    inset 0 -1px 30px $warning-t;
+            }
+
+            &[type='file'] {
+                cursor: pointer;
+
+                &::-webkit-file-upload-button {
+                    background-color: $warning-t;
+                    color: $light;
+                    padding: 5px;
+                    border: 1px solid $warning;
+                    cursor: pointer;
+                    font-size: 1.1em;
+                    transition: all 0.3s;
+                }
+            }
+        }
+
+        button {
+            &:active {
+                transform: scale(0.9);
+            }
+        }
+
+        p {
+            &.error {
+                color: red;
+                font-size: 0.8em;
+                font-style: italic;
+                text-align: center;
+            }
+        }
+    }
+
+    @media (max-width: $medium-screen) {
+        form {
+            .form-control {
+                margin: 20px 0;
+            }
+        }
+    }
+
+    @media (max-width: $small-screen) {
+        form {
+            padding-top: 10px;
+        }
+    }
+}

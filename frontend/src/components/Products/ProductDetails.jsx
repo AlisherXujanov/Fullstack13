@@ -1,7 +1,7 @@
 import "./productDetails.scss"
 import { useParams, useNavigate } from "react-router-dom"
-import { useEffect, useState } from 'react'
-import { BASE_URL } from "../../store"
+import { useEffect, useState, useContext } from 'react'
+import { BASE_URL, globalContext } from "../../store"
 import Heading from "../common/Heading"
 
 import { IoDocumentTextOutline } from "react-icons/io5"
@@ -9,12 +9,14 @@ import { MdDownloadForOffline } from "react-icons/md"
 import Certificate from "../../assets/images/certificates/first.png"
 import Lycence from "../../assets/images/certificates/second.png"
 import Consultation from "../Navigation/Footer/Consultation"
+import ModalComponent from "../common/ModalComponent"
 import { toast } from "react-toastify"
 
 function ProductDetails(props) {
     const { id } = useParams()
     const [product, setProduct] = useState({})
     const [showDialog, setShowDialog] = useState(false)
+    const state = useContext(globalContext)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -38,7 +40,7 @@ function ProductDetails(props) {
     }
 
     function updateProduct() {
-        return ""
+        state.dispatch({ type: "SET_SHOW_MODAL", payload: true })
     }
 
     function showDeleteDialog(e = null, close = false) {
@@ -65,6 +67,10 @@ function ProductDetails(props) {
             toast.error("Error creating product")
         }
     }
+
+    async function submitUpdate(e) {
+        e.preventDefault()
+    } 
 
     // function formatContent(content) {
     //     // TODO: Format content by dots
@@ -103,6 +109,42 @@ function ProductDetails(props) {
                                     <button className="warning-btn update-btn" onClick={(e) => { showDeleteDialog(e, true) }}>No</button>
                                 </div>
                             </div>
+                        </div>
+                    }
+
+                    {state.showModal &&
+                        <div className="create-form-modal-wrapper">
+                            <ModalComponent title="Update product">
+                                <form onSubmit={submitUpdate}>
+                                    <div className="form-control">
+                                        <label htmlFor="prod-name">Name of the product</label>
+                                        <input id="prod-name" type="text" placeholder="Name" name='name' onChange={handleFormInfo} required />
+                                    </div>
+                                    <div className="form-control">
+                                        <label htmlFor="prod-price">Price of the product</label>
+                                        <input id="prod-price" type="number" placeholder="Price" name='price' onChange={handleFormInfo} required />
+                                    </div>
+                                    <div className={form.image ? "form-control row" : "form-control"}>
+                                        <div>
+                                            <label htmlFor="prod-image">Image of the product</label>
+                                            <input id="prod-image" type="file" name='image' onChange={handleFormInfo} required />
+                                        </div>
+                                        {
+                                            <div className="image-wrapper">
+                                            </div>
+                                        }
+                                    </div>
+                                    <div className="form-control">
+                                        <label htmlFor="prod-desc">Description of the product</label>
+                                        <textarea rows={5} name="description" id="prod-desc" placeholder="Description" onChange={handleFormInfo} required></textarea>
+                                    </div>
+                                    <div className="form-control">
+                                        <button type="submit" className="warning-btn">
+                                            Create product
+                                        </button>
+                                    </div>
+                                </form>
+                            </ModalComponent>
                         </div>
                     }
                 </div>
