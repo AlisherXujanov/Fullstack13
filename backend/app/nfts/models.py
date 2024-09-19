@@ -1,6 +1,8 @@
 # models.py
 from django.db import models
 from django.contrib.auth.models import User
+from PIL import Image
+
 
 class NFTs(models.Model):
     name = models.CharField(max_length=50)
@@ -21,3 +23,13 @@ class NFTs(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.image.path)
+        if img.height > 700 or img.width > 700:
+            output_size = (700, 700)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
+
