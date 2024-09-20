@@ -89,7 +89,7 @@ function ProductForm(props) {
         } else {
             let file = e.target.files[0]
             setForm({ ...form, [name]: file })
-
+            
             const imageWrapper = document.querySelector(".form-control .image-wrapper")
             imageWrapper.innerHTML = ""
             const imageURL = URL.createObjectURL(file)
@@ -97,9 +97,14 @@ function ProductForm(props) {
             imageTag.src = imageURL
             imageTag.alt = "Product image cound not be loaded"
             imageWrapper.appendChild(imageTag)
+
+            const fileInput = document.querySelector('input[type="file"]')
             imageTag.addEventListener('click', (e) => {
+                //* DONE
                 // TODO:  when deleted the image, we must clear the input value too
+
                 e.target.remove()
+                fileInput.value = ""
                 setForm({ ...form, "image": "" })
             })
         }

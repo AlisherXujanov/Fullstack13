@@ -21,11 +21,12 @@
         width: 100%;
         margin: 0 15px;
         text-align: center;
-
+        height: 80vh;
+        overflow: hidden;
         .modal-header {
             padding: 20px;
             position: relative;
-
+            
             .close-modal {
                 @include flex(row, center, center);
                 width: 25px;
@@ -41,9 +42,21 @@
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             }
         }
-
+        
         .modal-body {
             padding: 20px;
+            overflow-y: scroll;
+            height: calc(80vh - 101px);
+            .form-wrapper{
+                form{
+                    .form-control{
+                        textarea{
+                            resize: vertical;
+                            transition: 0s;
+                        }
+                    }
+                }
+            }
         }
     }
 }

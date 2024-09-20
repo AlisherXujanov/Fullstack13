@@ -5,6 +5,7 @@ import Heading from "../Heading"
 
 
 function ModalComponent(props) {
+    // * DONE
     // TODO: add scrollbar-y  if the height is too big
 
     const state = useContext(globalContext)
