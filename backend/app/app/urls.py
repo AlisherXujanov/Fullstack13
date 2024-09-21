@@ -22,12 +22,14 @@ from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from rest_framework.authtoken.views import obtain_auth_token
 from nfts.api_views import *
+from users.api_views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('apis/', api_views.hello_world),
     path('apis/products', NFTListCreateView.as_view()),
     path('apis/products/<int:pk>/', SingleNFTsView.as_view()),
+    path('apis/users/profile', ProfileView.as_view()),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
