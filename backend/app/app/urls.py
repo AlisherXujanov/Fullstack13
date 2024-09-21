@@ -20,6 +20,7 @@ from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
+from rest_framework.authtoken.views import obtain_auth_token
 from nfts.api_views import *
 
 urlpatterns = [
@@ -27,7 +28,7 @@ urlpatterns = [
     # path('apis/', api_views.hello_world),
     path('apis/products', NFTListCreateView.as_view()),
     path('apis/products/<int:pk>/', SingleNFTsView.as_view()),
-    
+
     
     path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

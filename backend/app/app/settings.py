@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'nfts',
     'users',
     'django.contrib.sites',
-    'allauth',
+
+    "allauth",
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
@@ -49,6 +50,8 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'rest_framework',
     'corsheaders',
+    "rest_framework.authtoken",
+    'djoser',
 ]
 
 SITE_ID = 1
@@ -208,5 +211,20 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',  # parse simple JSON data
         'rest_framework.parsers.FormParser',  # parse FormData from JS in 
         'rest_framework.parsers.MultiPartParser', # parse file data
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # Allows us to use token authentication throughout the project
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
+
+if DEBUG:
+    REST_FRAMEWORK['DEFAULT_AUTHENTICATION_CLASSES'] += [
+        'rest_framework.authentication.SessionAuthentication',
     ]
+
+DJOSER = {
+    "USER_ID_FIELD": "username", # We use username for login
+    # "LOGIN_FIELD": "email", # We can use email or username for login
+    # "USER_CREATE_PASSWORD_RETYPE": True, # We can use this to make user retype the password
 }
