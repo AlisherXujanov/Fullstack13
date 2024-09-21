@@ -28,6 +28,10 @@ urlpatterns = [
     # path('apis/', api_views.hello_world),
     path('apis/products', NFTListCreateView.as_view()),
     path('apis/products/<int:pk>/', SingleNFTsView.as_view()),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    
 
     
     path('accounts/', include('allauth.urls')),

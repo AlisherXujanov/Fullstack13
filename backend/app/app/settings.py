@@ -205,7 +205,7 @@ LOCALE_PATHS = (
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',  # parse simple JSON data
@@ -217,7 +217,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
-
 if DEBUG:
     REST_FRAMEWORK['DEFAULT_AUTHENTICATION_CLASSES'] += [
         'rest_framework.authentication.SessionAuthentication',

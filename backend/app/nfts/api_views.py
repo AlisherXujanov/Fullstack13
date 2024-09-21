@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from .serializers import NFTsSerializer
 from .models import NFTs
 from django.shortcuts import get_object_or_404
-
+from rest_framework.permissions import IsAuthenticated
 
 # API = Application Programming Interface
 
@@ -17,6 +17,7 @@ from django.shortcuts import get_object_or_404
 
 class NFTListCreateView(generics.ListCreateAPIView):
     # ListCreateAPIView: GET, POST
+    permission_classes = [IsAuthenticated]
     queryset = NFTs.objects.all()
     serializer_class = NFTsSerializer
     
