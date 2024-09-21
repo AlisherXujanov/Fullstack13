@@ -544,7 +544,306 @@ path('api/.../', ...APIView.as_view(), name='...'),
 - `IsAuthenticatedOrReadOnly` - Allow access to authenticated users (read-only) and allow access to non-authenticated users (read-only)
 
 
-# 
+# Authentication and Authorization
+
+### General information
+- Authentication is the process of verifying the credentials of a user. Logging into websites with a username and password is a typical example of authentication. When the username and password match, the website recognizes the user and sets some cookies in the user’s browser. When the user visits another page on that website, the browser sends those cookies within the HTTP request header. The website recognizes the cookies as well as server-side session data and therefore doesn’t ask for credentials until the user logs out again.  
+
+- So, how does this work? Token-based authentication usually involves two steps in the API Architecture. First, the client identifies itself with a username and password. Then the API server gives it a bearer token. From there, the client includes the bearer token with every API call that it places. The API server verifies it and then allows the client to perform the action or not. This is where authorization comes in
+
+- If the credentials are not valid, the client will receive a **`401 - Unauthorized`** HTTP status code.
+
+- This is like coming to the office on the first day, submitting all your papers and documents, and then receiving your employee card. After that, only your employee card will be sufficient to get inside. Authentication works just like that!
+
+- The two steps in the API authentication process can be represented by the following two diagrams.
+
+```markdown
+1. Authentication      2. Authorization
++----------------+     +----------------+
+|    Client      |     |     Client     |
+|  +----------+  |     |  +----------+  |
+|  |          |  |     |  |  Token   |  |
+|  |  Login   |  |     |  |          |  |
+|  |          |  |     |  |  Group   |  |
+|  +----------+  |     |  +----------+  |
+|  +----------+  |     |  +----------+  |
+|  |          |  |     |  |          |  |
+|  |  Token   |  |     |  |  Action  |  |
+|  |          |  |     |  |          |  |
+|  +----------+  |     |  +----------+  |
++----------------+     +----------------+
+```
+
+### Token based authentication
+
+```python
+# settings.py
+INSTALLED_APPS = [
+    ...
+    'rest_framework.authtoken', # Allows us create a token for each user
+    ...
+]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # Allows us to use token authentication throughout the project
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
+if DEBUG:
+    REST_FRAMEWORK['DEFAULT_AUTHENTICATION_CLASSES'] += [
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+```
+
+- For allowing token authentication, we need to create a token for each user. 
+There, we would need obtain_auth_token
+
+
+```python
+# urls.py
+from rest_framework.authtoken.views import obtain_auth_token
+urlpatterns = [
+    ...
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    ...
+]
+```
+- Then, we need to create a view for it.
+
+```python
+# views.py
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from django.contrib.auth import authenticate
+
+@api_view(['POST'])
+def login(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({'token': token.key}, status=200)
+    else:
+        return Response({'error': 'Wrong credentials'}, status=400)
+```
+
+### Authorization
+Authorization is the process of determining whether a user has access to a resource.
+For example, if the user can delete or update something or not.
+We can do this by adding certain user to a group and then check if the user is in that group or not. So, by doing this we authorize the user to do certain actions.
+
+
+```python
+# views.py
+@api_view()
+def is_admin(request):
+    if request.user.groups.filter(name='admin').exists():
+        return Response({'message': 'You are admin'}, status=200)
+    else:
+        return Response({'message': 'You are not admin'}, status=400)
+```
+
+### Throttling
+- Throttling means that we can postpone the request for a certain amount of time.
+For example, we can allow only 5 requests per minute.
+We need this to prevent the server from overloading.
+Sometimes, a user can try to break in by trying to guess the password. So, we can prevent this by adding throttling. This way, that user will be able to make only 5 requests per minute.
+
+```python
+# settings.py
+
+REST_FRAMEWORK = {
+    ...
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle', # for anonymous users
+        'rest_framework.throttling.UserRateThrottle', # for authenticated users
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '3/minute', # 3 requests per minute
+        'user': '5/minute', # 5 requests per minute
+    }
+}
+```
+Then we need to add it to the view.
+```python
+# views.py
+from rest_framework.throttling import UserRateThrottle
+
+class MyView(APIView):
+    throttle_classes = [UserRateThrottle]
+    ...
+```
+
+If we want to create manual throttling for a specific view, we can do it like this:
+```python
+# views.py
+from rest_framework.throttling import UserRateThrottle
+
+class TenCallsPerMinute(UserRateThrottle):
+    scope = 'ten'
+
+class MyView(APIView):
+    throttle_classes = [TenCallsPerMinute]
+    ...
+
+# settings.py
+...
+DEFAULT_THROTTLE_RATES = {
+    ...
+    'ten': '10/minute',
+    ...
+}
+```
+
+
+### Djoser
+- Djoser is a REST implementation of Django authentication system. It provides a set of endpoints for authentication, registration, password reset, etc.
+
+`pipenv || pip   install djoser`
+
+```python
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+    'djoser', # It is vital to add it after rest_framework
+    # RU: Важно добавить его после rest_framework
+    ...
+]
+
+DJOSER = {
+    "USER_ID_FIELD": "username", # We use username for login
+    # "LOGIN_FIELD": "email", # We can use email or username for login
+    # "USER_CREATE_PASSWORD_RETYPE": True, # We can use this to make user retype the password
+}
+
+# urls.py
+urlpatterns = [
+    ...
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
+    ...
+    # handy endpoints list
+    # --------------------------------
+    # /auth/users/ - list of all users
+    # /auth/users/me/ - current user
+    # /auth/users/confirm/ - confirm email
+    # /auth/users/resend_activation/ - resend activation email
+    # /auth/users/set_password/ - set new password
+    # /auth/users/reset_password/ - reset password
+    # /auth/users/reset_password_confirm/ - confirm reset password
+    # /auth/token/login/ - login
+    # /auth/token/logout/ - logout
+]
+
+```
+
+
+
+# JWT
+### JWT Authentication
+- JSON Web Token (JWT) is  a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. (Digitally signed means that it is signed using a secret key that only the server knows.)
+
+`pipenv || pip   install djangorestframework_simplejwt`
+
+[JWT-documentation](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html?highlight=settings)
+
+```python
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+    'rest_framework_simplejwt',
+    ...
+]
+
+REST_FRAMEWORK = {
+    ...
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # TokenAuthentication is replaced with JWTAuthentication
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    ...
+}
+
+# urls.py
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView
+)
+
+urlpatterns = [
+    ...
+    path('api/token/create/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    ...
+]
+
+# settings.py
+# JWT settings
+from datetime import timedelta
+REFRESH_TOKEN_LIFETIME_SIX_WEEKS = 42 # days
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=REFRESH_TOKEN_LIFETIME_SIX_WEEKS),
+    'ROTATE_REFRESH_TOKENS': True, # If True, refresh tokens will be rotated
+    # That means that after each request we will get a new refresh token
+    # RU: Если True, токены обновления будут поворачиваться
+    # Это означает, что после каждого запроса мы получим новый токен обновления
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    # In the client we need to send the token in the header like this:
+    # Authorization: bearer <token>
+}
+```
+`NOTE`
+- access token expires and is not valid after settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
+But, this does NOT mean that client has to login again. Client can use refresh token to get a new access token. 
+---
+
+
+### Customizing JWT
+If we want to some extra validation in the token, we can do it like this:
+```python
+# views.py
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+
+class MyTokenRefreshView(TokenRefreshView):
+    serializer_class = MyTokenRefreshSerializer
+
+# serializers.py
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, TokenRefreshSerializer
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        # Add custom claims
+        token['username'] = user.username
+        return token
+
+class MyTokenRefreshSerializer(TokenRefreshSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        # Add custom claims
+        token['username'] = user.username
+        return token
+
+# urls.py
+urlpatterns = [
+    ...
+    path('api/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', MyTokenRefreshView.as_view(), name='token_refresh'),
+    ...
+]
+```
+
 # 
 #
 #
