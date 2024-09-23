@@ -2,7 +2,7 @@ import "./authContent.scss"
 import Heading from '../common/Heading'
 import { useState } from 'react'
 import { toast } from 'react-toastify';
-import { userExistsInDB } from "../../store/helpers";
+import { fetchLogin } from "../../store/helpers";
 import { useContext } from "react"
 import { globalContext } from "../../store"
 
@@ -35,11 +35,16 @@ function Login(props) {
             setFormErrors({ ...formErrors, ['password']: "Symbols are not allowed except:($,&,_). Length 5+" })
             return
         } else {
-            if (userExistsInDB(user)) {
+            try {
+                let account = await fetchLogin(user)
+                console.log(account)
                 toast.success("You have successfully logged in", { theme: "dark" })
-                state.dispatch({ type: "SET_USER", payload: user })
+                state.dispatch({ type: "SET_USER", payload:account })
+                // TODO
+                // CREATE profile-page
+                // SET image of the user instead of his username
                 props.closeModal()
-            } else {
+            } catch(error) {
                 toast.error("User not found with provided credentials", { theme: "dark" })
             }
         }

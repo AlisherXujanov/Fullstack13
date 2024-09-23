@@ -1,3 +1,12 @@
+# TABLE OF CONTENTS
+- [Introduction](#introduction)
+- [CRUD Operations & Serializers (easy way)](#crud-operations--serializers-easy-way)
+- [Serialization and Deserialization](#serialization-and-deserialization)
+- [API views](#api-views)
+- [Authentication and Authorization](#authentication-and-authorization)
+- [JWT](#jwt)
+
+
 # Introduction 
 - Django REST framework is a powerful and flexible toolkit for building Web APIs.
 

@@ -1,11 +1,12 @@
-import { BASE_URL } from "."
+import { BASE_URL, BASE_AUTH_URL } from "."
+import axios from "axios"
 
 function globalReducer(state, action) {
     switch (action.type) {
         case 'SET_USER':
-            return { ...state,  user: action.payload }
+            return { ...state,  profile: action.payload }
         case 'LOGOUT':
-            return { ...state,  user: {} }
+            return { ...state,  profile: {} }
         case "SET_PRODUCTS":
             return { ...state, products: action.payload }
         case "SET_SHOW_MODAL":
@@ -47,12 +48,31 @@ function addNewUserToLocalStorage(new_user) {
     }
 }
 
-function userExistsInDB({ username, password }) {
-    let users = getUsersFromLocalStorage()
-    for (let user of users) {
-        if (user.username == username && user.password == password) {
-            return true
+
+async function getUserProfile() {
+    const TOKEN = localStorage.getItem("token")
+    let response = await axios.get(BASE_AUTH_URL + "users/profile", {
+        headers: {
+            "Authorization": `Token ${TOKEN}`
         }
+    })
+    if (response.status == 200) {
+        return response.data
+    }
+    return false
+}
+
+
+async function fetchLogin({ username, password }) {
+    const URL = BASE_AUTH_URL + "token/login"
+    let response = await axios.post(URL, {
+        username: username,
+        password: password
+    })
+    if (response.status == 200) {
+        localStorage.setItem("token", response.data.auth_token)
+        let account = await getUserProfile()
+        return account
     }
     return false
 }
@@ -60,7 +80,7 @@ function userExistsInDB({ username, password }) {
 export {
     getUsersFromLocalStorage,
     addNewUserToLocalStorage,
-    userExistsInDB,
+    fetchLogin,
     globalReducer,
     fetchProducts
 }
