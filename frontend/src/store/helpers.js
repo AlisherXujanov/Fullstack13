@@ -1,12 +1,18 @@
 import { BASE_URL, BASE_AUTH_URL } from "."
 import axios from "axios"
 
+
+function getTokenFromLS() {
+    return localStorage.getItem("token")
+}
+
+
 function globalReducer(state, action) {
     switch (action.type) {
         case 'SET_USER':
-            return { ...state,  profile: action.payload }
+            return { ...state, profile: action.payload }
         case 'LOGOUT':
-            return { ...state,  profile: {} }
+            return { ...state, profile: {} }
         case "SET_PRODUCTS":
             return { ...state, products: action.payload }
         case "SET_SHOW_MODAL":
@@ -17,13 +23,39 @@ function globalReducer(state, action) {
 }
 
 async function fetchProducts() {
-    try {
-        const res = await fetch(BASE_URL + 'products')
-        const data = await res.json()
-        return data
-    } catch (err) {
-        return console.log(err)
+    let response =  await axios.get(BASE_URL + 'products', {
+        headers: {
+            "Authorization": "Token " + getTokenFromLS()
+        }
+    })
+    return response.data
+}
+
+async function getUserProfile() {
+    const TOKEN = localStorage.getItem("token")
+    let response = await axios.get(BASE_AUTH_URL + "users/profile", {
+        headers: {
+            "Authorization": `Token ${TOKEN}`
+        }
+    })
+    if (response.status === 200) {
+        return response.data
     }
+    return false
+}
+
+async function fetchLogin({ username, password }) {
+    const URL = BASE_AUTH_URL + "token/login"
+    let response = await axios.post(URL, {
+        username: username,
+        password: password
+    })
+    if (response.status == 200) {
+        localStorage.setItem("token", response.data.auth_token)
+        let account = await getUserProfile()
+        return account
+    }
+    return false
 }
 
 function getUsersFromLocalStorage() {
@@ -51,38 +83,18 @@ function addNewUserToLocalStorage(new_user) {
 }
 
 
-async function getUserProfile() {
-    const TOKEN = localStorage.getItem("token")
-    let response = await axios.get(BASE_AUTH_URL + "users/profile", {
-        headers: {
-            "Authorization": `Token ${TOKEN}`
-        }
-    })
-    if (response.status == 200) {
-        return response.data
-    }
-    return false
-}
 
-
-async function fetchLogin({ username, password }) {
-    const URL = BASE_AUTH_URL + "token/login"
-    let response = await axios.post(URL, {
-        username: username,
-        password: password
-    })
-    if (response.status == 200) {
-        localStorage.setItem("token", response.data.auth_token)
-        let account = await getUserProfile()
-        return account
-    }
-    return false
-}
 
 export {
-    getUsersFromLocalStorage,
-    addNewUserToLocalStorage,
     fetchLogin,
     globalReducer,
-    fetchProducts
+    fetchProducts,
+    getUsersFromLocalStorage,
+    addNewUserToLocalStorage,
+    getTokenFromLS,
+    getUserProfile
 }
+
+
+
+

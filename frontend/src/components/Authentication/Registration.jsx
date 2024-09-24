@@ -2,7 +2,7 @@ import "./authContent.scss"
 import Heading from '../common/Heading'
 import { useState } from 'react'
 import { toast } from 'react-toastify';
-import { getUsersFromLocalStorage, addNewUserToLocalStorage } from "../../store/helpers.js"
+import { addNewUserToLocalStorage } from "../../store/helpers.js"
 
 
 function Registration(props) {

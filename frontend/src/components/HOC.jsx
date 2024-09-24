@@ -1,9 +1,8 @@
 import { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import { isLoggedIn } from ''
+import { getTokenFromLS, getUserProfile, fetchProducts } from '../store/helpers.js'
 import { globalContext } from '../store'
 import { toast } from 'react-toastify'
-
 
 export default function withAuthCheck(Component) {
     return function AuthenticatedComponent(props) {
@@ -11,13 +10,31 @@ export default function withAuthCheck(Component) {
         const navigate = useNavigate()
 
         useEffect(() => {
-            if (2 == 2) {
-                navigate('/')
-                state.dispatch({ type: "SET_AUTH_MODAL", payload: true })
-                toast.warning('You need to login to access this page', { theme: 'dark', toastId: "login" })
+            const TOKEN = getTokenFromLS()
+            if (!TOKEN) {
+                sendToAuth()
+                console.clear()
+                return
             }
+            let response = getUserProfile()
+            if (response == false) {
+                sendToAuth()
+                console.clear()
+                return 
+            }
+            fetchEverything()
         }, [navigate])
 
+        function sendToAuth() {
+            navigate('/')
+            state.dispatch({ type: "SET_AUTH_MODAL", payload: true })
+            toast.warning('You need to login to access this page', { theme: 'dark', toastId: "login" })
+            localStorage.clear()
+        }
+        async function fetchEverything() {
+            const data = await fetchProducts()
+            state.dispatch({ type: "SET_PRODUCTS", payload:data })
+        }
 
         return <Component {...props} />
     }

@@ -1,24 +1,11 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState } from 'react'
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar'
 import Footer from "./Footer"
-import { fetchProducts } from "../../store/helpers.js"
-import { globalContext } from "../../store"
 import './style.scss'
 
 function Navigation() {
     const [burgerMenuOpened, setBurgerMenuOpened] = useState(false)
-    const state = useContext(globalContext)
-
-    useEffect(() => {
-        fetchEverything()
-    }, [])
-
-    async function fetchEverything() {
-        const data = await fetchProducts()
-        state.dispatch({ type: "SET_PRODUCTS", payload:data })
-    }
-
 
     return (
         <div>
