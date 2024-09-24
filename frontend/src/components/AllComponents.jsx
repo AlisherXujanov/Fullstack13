@@ -9,6 +9,12 @@ import Products from './Products'
 import ProductDetails from './Products/ProductDetails.jsx'
 import Contacts from './Contacts'
 import BlogDetails from "./Blog/BlogDetails";
+import HOC from "./HOC.jsx"
+
+
+const ControlledProducts = HOC(Products)
+const ControlledProductDetails = HOC(ProductDetails)
+
 
 function AllComponents() {
     const location = useLocation();
@@ -20,8 +26,8 @@ function AllComponents() {
                 <Route path="team" element={<Team />} />
                 <Route path="blog" element={<Blog />} />
                 <Route path="blog/:id" element={<BlogDetails />} />
-                <Route path="products" element={<Products />} />
-                <Route path="products/:id" element={<ProductDetails />} />
+                <Route path="products" element={<ControlledProducts />} />
+                <Route path="products/:id" element={<ControlledProductDetails />} />
                 <Route path="contacts" element={<Contacts />} />
                 <Route path="*" element={<NoPage />} />
             </Route>
