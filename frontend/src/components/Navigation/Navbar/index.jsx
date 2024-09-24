@@ -1,18 +1,17 @@
-import { Link, NavLink } from "react-router-dom";
-import Heading from "../../common/Heading";
-import Authentication from "../../Authentication";
-import { useState, useContext } from "react";
+import { Link, NavLink } from "react-router-dom"
+import Heading from "../../common/Heading"
+import Authentication from "../../Authentication"
+import { useContext } from "react"
 import { globalContext } from "../../../store"
-import { toast } from "react-toastify";
+import { toast } from "react-toastify"
 
 import "./style.scss"
 
 function Navbar() {
-    const [authModal, setAuthModal] = useState(false);
     const state = useContext(globalContext)
 
     function closeModal() {
-        setAuthModal(false);
+        state.dispatch({ type: "SET_AUTH_MODAL", payload: false })
     }
 
     function logout() {
@@ -49,8 +48,8 @@ function Navbar() {
                         </div>
                         :
                         <div className="logged-out-menu">
-                            <button className="warning-btn" onClick={() => setAuthModal(!authModal)}>Войти</button>
-                            {authModal ?
+                            <button className="warning-btn" onClick={() => state.dispatch({ type: "SET_AUTH_MODAL", payload:true })}>Войти</button>
+                            {state.authModalOpened ?
                                 <Authentication closeModal={closeModal} />
                                 : null}
                         </div>
@@ -61,7 +60,7 @@ function Navbar() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
 export default Navbar;

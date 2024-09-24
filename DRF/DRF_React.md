@@ -49,3 +49,34 @@ CORS error. To fix this, we need to add the Django Cors Headers
 package to our Django project. This package will add the necessary 
 headers to allow cross-origin requests.
 ```
+
+### Create HOC (higher order component) for checking if user is authenticated
+
+`AuthCheck.jsx`
+```javascript
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { isLoggedIn } from '../conf/common';
+
+export default function withAuthCheck(Component) {
+    return function AuthenticatedComponent(props) {
+        const navigate = useNavigate();
+
+        useEffect(() => {
+            if (!isLoggedIn()) {
+                navigate('/auth');
+            }
+        }, [navigate]);
+
+
+        return <Component {...props} />;
+    };
+}
+```
+Then we can use it in our components like this:
+```javascript
+...
+import withAuthCheck from './AuthCheck'; 
+const AuthenticatedComponent = withAuthCheck(Component);
+...
+```

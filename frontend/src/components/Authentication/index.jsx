@@ -6,7 +6,6 @@ import './style.scss'
 
 function Authentication(props) {
     const [isRegistred, setIsRegistred] = useState(true)
-    const [showModal, setShowModal] = useState(false)
 
     function setIsRegistered() {
         setIsRegistred(true)

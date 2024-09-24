@@ -12,6 +12,7 @@ const initialState = {
     coordinates: {},
     products: [],
     showModal: false,
+    authModalOpened: false,
 }
 
 

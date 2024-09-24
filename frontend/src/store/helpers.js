@@ -11,6 +11,8 @@ function globalReducer(state, action) {
             return { ...state, products: action.payload }
         case "SET_SHOW_MODAL":
             return { ...state, showModal: action.payload }
+        case "SET_AUTH_MODAL":
+            return { ...state, authModalOpened: action.payload }
     }
 }
 
