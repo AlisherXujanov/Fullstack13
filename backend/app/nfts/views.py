@@ -7,6 +7,7 @@ from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required, permission_required
 from .usecases import *
 from django.utils.translation import activate, gettext_lazy as _
+from django.contrib.auth.models import User
 
 def faq(request):
     context = {
@@ -65,6 +66,11 @@ def remove_from_favorites(request, pk: int):
 @login_required
 @permission_required('nfts.can_add_nft')
 def create_nft(request):
+    if request.user.is_authenticated:
+        user = request.user
+    else:
+        user = User.objects.get(id=1)
+    
     if request.method == "POST":
         name = request.POST['name']
         description = request.POST['description'].strip()
@@ -77,7 +83,7 @@ def create_nft(request):
             description=description,
             price=price,
             image=img,
-            owner=request.user
+            owner=user
         )
         messages.success(request, 'NFT created successfully')
         return redirect('explore')
