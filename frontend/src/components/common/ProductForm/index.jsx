@@ -3,19 +3,19 @@ import { useContext, useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import { globalContext, BASE_URL } from "../../../store"
 import { toast } from "react-toastify"
-import { fetchProducts } from "../../../store/helpers.js"
+import { fetchProducts, getTokenFromLS } from "../../../store/helpers.js"
 
 function ProductForm(props) {
     const navigate = useNavigate()
+    const state = useContext(globalContext)
     const [form, setForm] = useState({
         name: "",
         price: "",
         description: "",
         image: "",
         // TODO: Preset the image too
-        owner: 1,
+        owner: state.profile.user.id,
     })
-    const state = useContext(globalContext)
 
     useEffect(() => {
         if (props.updateMode == true) {
@@ -60,7 +60,13 @@ function ProductForm(props) {
                 success_message = "Product created successfully"
             }
 
-            fetch(URL, { method: FETCH_METHOD, body: formData })
+            fetch(URL, { 
+                method: FETCH_METHOD, 
+                headers: {
+                    Authorization: "Token " + getTokenFromLS()
+                },
+                body: formData 
+            })
                 .then(res => res.json())
                 .then(data => {
                     toast.success(success_message)
