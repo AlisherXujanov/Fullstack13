@@ -99,7 +99,7 @@ function Contacts() {
               />
             </div>
             <div className="form-control">
-              <button className="warning-btn">Отправить</button>
+              <button className="warning-btn">Подписаться</button>
             </div>
           </form>
         </div>
