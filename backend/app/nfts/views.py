@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required, permission_required
 from .usecases import *
-from django.utils.translation import activate, gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 
 def faq(request):
