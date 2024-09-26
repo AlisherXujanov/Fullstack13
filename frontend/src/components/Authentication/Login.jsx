@@ -37,7 +37,6 @@ function Login(props) {
         } else {
             try {
                 let account = await fetchLogin(user)
-                console.log(account)
                 toast.success("You have successfully logged in", { theme: "dark" })
                 state.dispatch({ type: "SET_USER", payload:account })
                 // TODO

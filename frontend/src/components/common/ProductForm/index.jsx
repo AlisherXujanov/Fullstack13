@@ -63,7 +63,6 @@ function ProductForm(props) {
             fetch(URL, { method: FETCH_METHOD, body: formData })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     toast.success(success_message)
                     state.dispatch({ type: "SET_SHOW_MODAL", payload: false })
                     setForm({
@@ -77,7 +76,6 @@ function ProductForm(props) {
                 })
         }
         catch (e) {
-            console.log(e)
             toast.error("Error creating product")
         }
     }

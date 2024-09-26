@@ -20,7 +20,7 @@ export default function withAuthCheck(Component) {
             if (response == false) {
                 sendToAuth()
                 console.clear()
-                return 
+                return
             }
             fetchEverything()
         }, [navigate])
@@ -30,10 +30,15 @@ export default function withAuthCheck(Component) {
             state.dispatch({ type: "SET_AUTH_MODAL", payload: true })
             toast.warning('You need to login to access this page', { theme: 'dark', toastId: "login" })
             localStorage.clear()
+            state.dispatch({ type: "SET_PRODUCTS", payload: {} })
+            state.dispatch({ type: "SET_USER", payload: {} })
         }
         async function fetchEverything() {
             const data = await fetchProducts()
-            state.dispatch({ type: "SET_PRODUCTS", payload:data })
+            state.dispatch({ type: "SET_PRODUCTS", payload: data })
+            // ---------------------------------------------------
+            let account = await getUserProfile()
+            state.dispatch({ type: "SET_USER", payload: account })
         }
 
         return <Component {...props} />

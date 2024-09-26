@@ -64,7 +64,6 @@ function ProductDetails(props) {
                 })
         }
         catch (e) {
-            console.log(e)
             toast.error("Error creating product")
         }
     }

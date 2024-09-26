@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 import Heading from "../../common/Heading"
 import Authentication from "../../Authentication"
 import { useContext } from "react"
@@ -10,6 +10,7 @@ import "./style.scss"
 
 function Navbar() {
     const state = useContext(globalContext)
+    const navigate = useNavigate()
 
     function closeModal() {
         state.dispatch({ type: "SET_AUTH_MODAL", payload: false })
@@ -18,7 +19,7 @@ function Navbar() {
     async function logout() {
         state.dispatch({ type: "LOGOUT" })
         await fetchLogout()
-        localStorage.clear()
+        navigate("/")
         toast.success("You have successfully logged out", { theme: "dark" })
     }
 
@@ -51,7 +52,7 @@ function Navbar() {
                         </div>
                         :
                         <div className="logged-out-menu">
-                            <button className="warning-btn" onClick={() => state.dispatch({ type: "SET_AUTH_MODAL", payload:true })}>Войти</button>
+                            <button className="warning-btn" onClick={() => state.dispatch({ type: "SET_AUTH_MODAL", payload: true })}>Войти</button>
                             {state.authModalOpened ?
                                 <Authentication closeModal={closeModal} />
                                 : null}

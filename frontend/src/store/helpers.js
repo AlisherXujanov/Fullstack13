@@ -31,6 +31,7 @@ async function fetchLogout() {
         }
     })
     if (response.status === 204) {
+        localStorage.clear()
         return true
     }
     return false
