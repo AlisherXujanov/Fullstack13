@@ -224,6 +224,6 @@ REST_FRAMEWORK = {
 
 DJOSER = {
     "USER_ID_FIELD": "username", # We use username for login
+    "USER_CREATE_PASSWORD_RETYPE": True, # We can use this to make user retype the password
     # "LOGIN_FIELD": "email", # We can use email or username for login
-    # "USER_CREATE_PASSWORD_RETYPE": True, # We can use this to make user retype the password
 }

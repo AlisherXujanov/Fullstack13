@@ -2,7 +2,7 @@ import "./authContent.scss"
 import Heading from '../common/Heading'
 import { useState } from 'react'
 import { toast } from 'react-toastify';
-import { addNewUserToLocalStorage } from "../../store/helpers.js"
+import { registerNewUser } from "../../store/helpers.js"
 
 
 function Registration(props) {
@@ -32,14 +32,21 @@ function Registration(props) {
         const newUser = {
             username: regState.username,
             email: regState.email,
-            password: regState.password
+            password: regState.password,
+            re_password: regState.re_password
         }
         try {
-            if (addNewUserToLocalStorage(newUser)) {
+            let response = await registerNewUser(newUser)
+            let status_code = response.status
+            let data = await response.json()
+
+            if (status_code == 400) {
+                for (let key in data) {
+                    toast.error(String(data[key]), { theme: 'dark' })
+                }
+            } else {
                 toast.success("Account successfully created. Now You can log in!", { theme: 'dark' })
                 props.setIsRegistered()
-            } else {
-                toast.error("User already exists", { theme: 'dark' })
             }
         }
         catch (error) {

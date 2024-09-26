@@ -73,28 +73,14 @@ async function fetchLogin({ username, password }) {
     return false
 }
 
-function getUsersFromLocalStorage() {
-    let users = localStorage.getItem('users') ?? "[]"
-    return JSON.parse(users) // [...]
-}
-
-function addNewUserToLocalStorage(new_user) {
-    let { username, email } = new_user
-    let existingUsers = getUsersFromLocalStorage()
-
-    let userExists = false
-    for (let user of existingUsers) {
-        if (user.username == username || user.email == email) {
-            userExists = true
-        }
-    }
-    if (userExists) {
-        return false
-    } else {
-        existingUsers.push(new_user)
-        localStorage.setItem('users', JSON.stringify(existingUsers))
-        return true
-    }
+async function registerNewUser(new_user) {
+    return await fetch(BASE_AUTH_URL + "users/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(new_user)
+    })
 }
 
 
@@ -104,8 +90,7 @@ export {
     fetchLogin,
     globalReducer,
     fetchProducts,
-    getUsersFromLocalStorage,
-    addNewUserToLocalStorage,
+    registerNewUser,
     getTokenFromLS,
     getUserProfile,
     fetchLogout
