@@ -22,8 +22,22 @@ function globalReducer(state, action) {
     }
 }
 
+async function fetchLogout() {
+    const TOKEN = getTokenFromLS()
+    let response = await fetch(BASE_AUTH_URL + "token/logout", {
+        method: "POST",
+        headers: {
+            "Authorization": `Token ` + TOKEN
+        }
+    })
+    if (response.status === 204) {
+        return true
+    }
+    return false
+}
+
 async function fetchProducts() {
-    let response =  await axios.get(BASE_URL + 'products', {
+    let response = await axios.get(BASE_URL + 'products', {
         headers: {
             "Authorization": "Token " + getTokenFromLS()
         }
@@ -92,7 +106,8 @@ export {
     getUsersFromLocalStorage,
     addNewUserToLocalStorage,
     getTokenFromLS,
-    getUserProfile
+    getUserProfile,
+    fetchLogout
 }
 
 

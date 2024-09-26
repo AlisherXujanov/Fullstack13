@@ -3,6 +3,7 @@ import Heading from "../../common/Heading"
 import Authentication from "../../Authentication"
 import { useContext } from "react"
 import { globalContext } from "../../../store"
+import { fetchLogout } from "../../../store/helpers"
 import { toast } from "react-toastify"
 
 import "./style.scss"
@@ -14,8 +15,10 @@ function Navbar() {
         state.dispatch({ type: "SET_AUTH_MODAL", payload: false })
     }
 
-    function logout() {
+    async function logout() {
         state.dispatch({ type: "LOGOUT" })
+        await fetchLogout()
+        localStorage.clear()
         toast.success("You have successfully logged out", { theme: "dark" })
     }
 
