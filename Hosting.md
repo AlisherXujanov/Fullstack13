@@ -11,32 +11,32 @@ To host your Django project on PythonAnywhere for free, you can follow these ste
 <br>
 
 #### 1. Create an account on PythonAnywhere: 
-  - Go to [PythonAnywhere](https://www.pythonanywhere.com/) and sign up for a free account.
+- Go to [PythonAnywhere](https://www.pythonanywhere.com/) and sign up for a free account.
 
 <br>
 
 #### 2. Upload your code: 
-  - After logging in, go to the "Files" tab and upload your project files. You can also use the Bash console to clone your project if it's hosted on a Git repository.
+- After logging in, go to the "Files" tab and upload your project files. You can also use the Bash console to clone your project if it's hosted on a Git repository.
 
 <br>
 
 #### 3. Set up a virtual environment: 
   - Go to the "Consoles" tab and start a new Bash console. Then, create a new virtual environment and install your project's dependencies. You can use the Pipfile and Pipfile.lock files in your project to do this.
-- To install requirements.txt file use: 
-  ```bash
-  # IF PIP
-  pip install -r requirements.txt
-  # OR
-  # If PIPENV 
-  # pipenv run pip freeze > requirements.txt
 
-  mkvirtualenv --python=/usr/bin/python3.10 venv
-  ```
-  afterwards, enter just `venv` to activate virtual environment and install requirements.txt file:
+- First set the `venv`
+```bash
+mkvirtualenv --python=/usr/bin/python3.10 venv
+```
   
-  ```bash
-  pip install -r requirements.txt
-  ```
+- Only after you installed venv, install requirements.txt: 
+```bash
+# IF PIP
+pip install -r requirements.txt
+# OR
+# To create a requirements.txt file from a Pipfile, you can use the following command:
+# pipenv run pip freeze > requirements.txt
+```
+afterwards, enter just `venv` to activate virtual environment and install requirements.txt file:
 
 <br>
 
@@ -69,19 +69,19 @@ To configure the WSGI file for hosting on PythonAnywhere, you can follow these s
 4. In the WSGI configuration file, you'll see some default code. You need to modify this to point to your Django project.
 5. Comment out the existing code and it should look something like this:
    
-    ```python
-    import os
-    import sys
+```python
+import os
+import sys
 
-    path = '/home/YourPythonAnywhereUsername/YourProjectName'
-    if path not in sys.path:
-        sys.path.append(path)
+path = '/home/YourPythonAnywhereUsername/YourProjectName'
+if path not in sys.path:
+    sys.path.append(path)
 
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'YourProjectName.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'YourProjectName.settings'
 
-    from django.core.wsgi import get_wsgi_application
-    application = get_wsgi_application()
-    ```
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+```
 
 - Replace `YourPythonAnywhereUsername` with your PythonAnywhere username and `YourProjectName` with the name of your Django project.
 - Save the changes to the WSGI configuration file.
@@ -121,14 +121,6 @@ Now, PythonAnywhere will serve your static files at the URL you specified.
 - RU: Теперь PythonAnywhere будет обслуживать ваши статические файлы по указанному вами URL-адресу.
 
 
-
-# Configure Virtual Environment
-Please note that PythonAnywhere doesn't support Pipfile.lock, so you might need to generate a requirements.txt file from your Pipfile. You can do this using the following command:
-
-- `pipenv lock -r > requirements.txt` - is outdated
-- 🎯 New version is: `pipenv run pip freeze > requirements.txt`
-
-
 ---
 <br>
 
@@ -146,8 +138,6 @@ Please note that PythonAnywhere doesn't support Pipfile.lock, so you might need 
 python manage.py check --deploy
 # This command checks for common misconfigurations and security issues in a deployment environment.
 ```
-
-
 
 
 # Restrict Admin access
