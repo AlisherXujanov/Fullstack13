@@ -73,10 +73,13 @@ function ProductDetails(props) {
         }
     }
 
-    // function formatContent(content) {
-    //     // TODO: Format content by dots
-    //     return String(content).split(".").join(".\n\n")
-    // }
+    function formattedContent() {
+        if (product.description == null) { return "" }
+        return product.description.split(". ").map(item => {
+            return item + ".<br>"
+        })
+    }
+
 
     return (
         <>
@@ -87,7 +90,7 @@ function ProductDetails(props) {
                 <Heading size={1}>{product.name}</Heading>
 
 
-                { product.owner == state.profile.user?.id &&
+                {product.owner == state.profile.user?.id &&
                     <div className="edit-buttons">
                         <button className="warning-btn update-btn" onClick={updateProduct}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" className="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -127,9 +130,7 @@ function ProductDetails(props) {
 
                 <div className="image-wrapper">
                     <img src={product.image} alt="Product image" />
-                    <p className="content">
-                        {product.description}
-                    </p>
+                    <p className="content"><span dangerouslySetInnerHTML={{ __html: formattedContent() }} /></p>
                 </div>
                 <p className="content-content2">
                     {product.description}

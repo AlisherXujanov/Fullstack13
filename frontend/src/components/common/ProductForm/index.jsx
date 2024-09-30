@@ -13,7 +13,6 @@ function ProductForm(props) {
         price: "",
         description: "",
         image: "",
-        // TODO: Preset the image too
         owner: state.profile.user.id,
     })
 
@@ -26,6 +25,7 @@ function ProductForm(props) {
                 owner: props.product.owner,
             })
         }
+        presetImageIfUpdateMode()
     }, [])
 
 
@@ -85,6 +85,7 @@ function ProductForm(props) {
             toast.error("Error creating product")
         }
     }
+    
     function handleFormInfo(e) {
         const { value, name } = e.target
 
@@ -93,10 +94,14 @@ function ProductForm(props) {
         } else {
             let file = e.target.files[0]
             setForm({ ...form, [name]: file })
-            
-            const imageWrapper = document.querySelector(".form-control .image-wrapper")
-            imageWrapper.innerHTML = ""
             const imageURL = URL.createObjectURL(file)
+            setImage(imageURL)
+        }
+    }
+
+    function setImage(imageURL) {
+        const imageWrapper = document.querySelector(".form-control .image-wrapper")
+            imageWrapper.innerHTML = ""
             const imageTag = document.createElement("img")
             imageTag.src = imageURL
             imageTag.alt = "Product image cound not be loaded"
@@ -104,13 +109,16 @@ function ProductForm(props) {
 
             const fileInput = document.querySelector('input[type="file"]')
             imageTag.addEventListener('click', (e) => {
-                //* DONE
-                // TODO:  when deleted the image, we must clear the input value too
-
                 e.target.remove()
                 fileInput.value = ""
                 setForm({ ...form, "image": "" })
             })
+    }
+
+
+    function presetImageIfUpdateMode() {
+        if (props.updateMode) {
+            setImage(props.product.image)
         }
     }
 
@@ -135,7 +143,7 @@ function ProductForm(props) {
                         required
                     />
                 </div>
-                <div className={form.image ? "form-control row" : "form-control"}>
+                <div className={form.image || props.product.image ? "form-control row" : "form-control"}>
                     <div>
                         <label htmlFor="prod-image">Image of the product</label>
                         <input id="prod-image" type="file"
