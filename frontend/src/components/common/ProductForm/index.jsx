@@ -17,15 +17,16 @@ function ProductForm(props) {
     })
 
     useEffect(() => {
-        if (props.updateMode == true) {
+        if (props.updateMode) {
             setForm({
                 name: props.product.name,
                 price: props.product.price,
                 description: props.product.description,
                 owner: props.product.owner,
+                image: "" // do not set image here if update more
             })
+            handleFormInfo()
         }
-        presetImageIfUpdateMode()
     }, [])
 
 
@@ -60,12 +61,12 @@ function ProductForm(props) {
                 success_message = "Product created successfully"
             }
 
-            fetch(URL, { 
-                method: FETCH_METHOD, 
+            fetch(URL, {
+                method: FETCH_METHOD,
                 headers: {
                     Authorization: "Token " + getTokenFromLS()
                 },
-                body: formData 
+                body: formData
             })
                 .then(res => res.json())
                 .then(data => {
@@ -85,42 +86,53 @@ function ProductForm(props) {
             toast.error("Error creating product")
         }
     }
-    
-    function handleFormInfo(e) {
-        const { value, name } = e.target
 
-        if (name != 'image') {
-            setForm({ ...form, [name]: value })
-        } else {
-            let file = e.target.files[0]
-            setForm({ ...form, [name]: file })
-            const imageURL = URL.createObjectURL(file)
-            setImage(imageURL)
-        }
-    }
+    function handleFormInfo(e = null) {
+        if (e == null && props.updateMode) {
+            // preset image file into form
+            setImage(props.product.image, true)
 
-    function setImage(imageURL) {
-        const imageWrapper = document.querySelector(".form-control .image-wrapper")
-            imageWrapper.innerHTML = ""
-            const imageTag = document.createElement("img")
-            imageTag.src = imageURL
-            imageTag.alt = "Product image cound not be loaded"
-            imageWrapper.appendChild(imageTag)
-
+            // ------------------------------------------------------------
+            // set image into state file too
+            // This only sets the name of the image into input[type="file"]
             const fileInput = document.querySelector('input[type="file"]')
-            imageTag.addEventListener('click', (e) => {
-                e.target.remove()
-                fileInput.value = ""
-                setForm({ ...form, "image": "" })
-            })
-    }
-
-
-    function presetImageIfUpdateMode() {
-        if (props.updateMode) {
-            setImage(props.product.image)
+            let imageName = props.product.image.split("/").pop()
+            const file = new File([""], imageName, { type: "image/png" });
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            fileInput.files = dataTransfer.files;
+        }
+        else {
+            const { value, name } = e.target
+            if (name != 'image') {
+                setForm({ ...form, [name]: value })
+            } else {
+                let file = e.target.files[0]
+                setForm({ ...form, [name]: file })
+                const imageURL = URL.createObjectURL(file)
+                setImage(imageURL)
+            }
         }
     }
+
+    function setImage(imageURL, initialUpdate=false) {
+        const imageWrapper = document.querySelector(".form-control .image-wrapper")
+        imageWrapper.innerHTML = ""
+        const imageTag = document.createElement("img")
+        imageTag.src = imageURL
+        imageTag.alt = "Product image cound not be loaded"
+        imageWrapper.appendChild(imageTag)
+
+        const fileInput = document.querySelector('input[type="file"]')
+        imageTag.addEventListener('click', (e) => {
+            e.target.remove()
+            fileInput.value = ""
+            if (!initialUpdate) {
+                setForm({ ...form, image: "" })
+            }
+        })
+    }
+
 
     return (
         <div className="form-wrapper">
@@ -143,13 +155,13 @@ function ProductForm(props) {
                         required
                     />
                 </div>
-                <div className={form.image || props.product.image ? "form-control row" : "form-control"}>
+                <div className={form.image || props.product?.image ? "form-control row" : "form-control"}>
                     <div>
                         <label htmlFor="prod-image">Image of the product</label>
                         <input id="prod-image" type="file"
                             name='image'
                             onChange={handleFormInfo}
-                            required
+                            required={props.updateMode ? false : true}
                         />
                     </div>
                     {
