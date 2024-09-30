@@ -3,7 +3,12 @@
 - [Deploying a Django project on PythonAnywhere](#deploying-a-django-project-on-pythonanywhere)
 - [Configure WSGI File](#configure-wsgi-file)
 - [Collect Static Files](#collect-static-files)
-- [Configure Virtual Environment](#configure-virtual-environment)
+- [Security](#security)
+  - [Important links](#important-links)
+  - [First commands when deploying a Django project](#first-commands-when-deploying-a-django-project)
+
+- 
+
 
 # Deploying a Django project on PythonAnywhere
 To host your Django project on PythonAnywhere for free, you can follow these steps:
