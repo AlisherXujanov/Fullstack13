@@ -43,6 +43,7 @@ class Profile(models.Model):
     image = models.ImageField(
         upload_to='profile_pics/', default='profile_pics/default.png')
     last_activity = models.DateTimeField(default=timezone.now)
+    bio = models.TextField(default='No bio provided')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
