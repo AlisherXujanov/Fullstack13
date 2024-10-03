@@ -1,10 +1,11 @@
-import {getTokenFromLS, getUserProfile, fetchLogout} from '../../store/helpers'
+import { getUserProfile, fetchLogout} from '../../store/helpers'
 import {useNavigate} from 'react-router-dom'
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react';
+import { globalContext } from "../../store"
 import './style.scss'
-
 function Profile() {
     const navigate = useNavigate()
+    const state = useContext(globalContext)
     const [profile, setProfile] = useState()
     useEffect(()=>{
         async function fetchGetUserProfile(){
@@ -13,7 +14,12 @@ function Profile() {
         }
         fetchGetUserProfile()
     },[])
-    console.log(profile)
+    async function logout() {
+        state.dispatch({ type: "LOGOUT" })
+        await fetchLogout()
+        navigate("/")
+        toast.success("You have successfully logged out", { theme: "dark" })
+    }
     return ( 
         <>
         <div className="profile-wrapper">
@@ -31,7 +37,7 @@ function Profile() {
             }
             {
                 profile?.user.email ? (
-                    <p>{profile.user.email}</p>
+                    <a href={`mailto:${profile.user.email}`}>{profile.user.email}</a>
                 ) : (
                     <p>Email not specified</p>
                 )
@@ -39,7 +45,7 @@ function Profile() {
 
         </div>
         <div className="right">
-            <button className='warning-btn'>Выйти</button>
+            <button className='warning-btn' onClick={logout}>Выйти</button>
         </div>
         </div>
         </>
