@@ -1,12 +1,12 @@
-import "./authContent.scss"
+import "../Authentication/authContent.scss"
+import "./profileContent.scss"
 import Heading from '../common/Heading'
 import { useState } from 'react'
 import { toast } from 'react-toastify';
-import { registerNewUser } from "../../store/helpers.js"
 
 
 function Update(props) {
-    const [regState, setRegState] = useState({
+    const [profileState, setProfileState] = useState({
         first_name: '',
         last_name: '',
         username: '',
@@ -14,49 +14,41 @@ function Update(props) {
         bio: '',
     })
     const [formErrors, setFormErrors] = useState({
-        first_name: '',
-        last_name: '',
         username: '',
         email: '',
-        bio: '',
     })
 
     async function submit(e) {
         e.preventDefault();
 
-        if (!regState.username || !regState.email || !regState.password || !regState.re_password) {
-            toast.error("Please, fill in all fields", { theme: 'dark' })
-            return
-        } else if (regState.password !== regState.re_password) {
-            toast.error("Passwords do not match", { theme: 'dark' })
-            return
+        const updatedUser = {
+            username: profileState.username,
+            email: profileState.email,
+            first_name: profileState.first_name,
+            last_name: profileState.first_name,
+            bio: profileState.first_name,
         }
-        const newUser = {
-            username: regState.username,
-            email: regState.email,
-            password: regState.password,
-            re_password: regState.re_password
-        }
-        try {
-            let response = await registerNewUser(newUser)
-            let status_code = response.status
-            let data = await response.json()
+        // TODO: Implement the function registerNewUser
+        // try {
+        //     let response = await registerNewUser(updatedUser)
+        //     let status_code = response.status
+        //     let data = await response.json()
 
-            if (status_code == 400) {
-                for (let key in data) {
-                    toast.error(String(data[key]), { theme: 'dark' })
-                }
-            } else {
-                toast.success("Account successfully created. Now You can log in!", { theme: 'dark' })
-                props.setIsRegistered()
-            }
-        }
-        catch (error) {
-            toast.error(error, { theme: 'dark' })
-        }
-        finally {
-            e.target.reset()
-        }
+        //     if (status_code == 400) {
+        //         for (let key in data) {
+        //             toast.error(String(data[key]), { theme: 'dark' })
+        //         }
+        //     } else {
+        //         toast.success("Account successfully created. Now You can log in!", { theme: 'dark' })
+        //         props.setIsRegistered()
+        //     }
+        // }
+        // catch (error) {
+        //     toast.error(error, { theme: 'dark' })
+        // }
+        // finally {
+        //     e.target.reset()
+        // }
     }
 
     function handleState(e) {
@@ -64,12 +56,11 @@ function Update(props) {
 
         const key = e.target.name
         const val = e.target.value
-        setRegState({ ...regState, [key]: val })
+        setProfileState({ ...profileState, [key]: val })
     }
 
     function validate({ name, value }) {
         const usernamePattern = /^[a-zA-Z0-9_]{1,10}$/
-        const passwordPattern = /^[a-zA-Z0-9_$&]{5,}$/
         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
         let error_msg = ''
@@ -77,16 +68,6 @@ function Update(props) {
             if (name == 'username') {
                 if (!usernamePattern.test(value)) {
                     error_msg = "Symbols are not allowed. Length 1-10"
-                }
-            }
-            else if (name == 'password') {
-                if (value.length >= 5 && !passwordPattern.test(value)) {
-                    error_msg = "Symbols are not allowed except:($,&,_). Length 5+"
-                }
-            }
-            else if (name == 're_password') {
-                if (!passwordPattern.test(value)) {
-                    error_msg = "Password confirmation is invalid"
                 }
             }
             else if (name == 'email') {
@@ -103,8 +84,8 @@ function Update(props) {
 
 
     return (
-        <div className="auth-content-wrapper">
-            <Heading size={1.2}>Sign up</Heading>
+        <div className="profile-form-wrapper">
+            <Heading size={1.2}>Update profile</Heading>
 
             <form onSubmit={submit}>
                 <div className="form-control">
@@ -134,34 +115,29 @@ function Update(props) {
                     }
                 </div>
                 <div className="form-control">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        className={formErrors.password ? "error" : ""}
-                        type="password" id="password" placeholder='Password' name='password'
+                    <label htmlFor="first_name">First name</label>
+                    <input type="text" id="first_name"
+                        placeholder='First name' name='first_name'
                         onChange={handleState}
                     />
-                    {
-                        formErrors.password.length > 0 ?
-                            <p className='error'>{formErrors.password}</p>
-                            : null
-                    }
                 </div>
                 <div className="form-control">
-                    <label htmlFor="password-conf">Password confirmation</label>
-                    <input
-                        className={formErrors.re_password ? "error" : ""}
-                        type="password" id="password-conf" placeholder='Password confirmation' name='re_password'
+                    <label htmlFor="last_name">Last name</label>
+                    <input type="text" id="last_name"
+                        placeholder='Last name' name='last_name'
                         onChange={handleState}
                     />
-                    {
-                        formErrors.re_password.length > 0 ?
-                            <p className='error'>{formErrors.re_password}</p>
-                            : null
-                    }
+                </div>
+                <div className="form-control">
+                    <label htmlFor="bio">Bio</label>
+                    <textarea rows={10} type="text" id="bio"
+                        placeholder='Bio' name='bio'
+                        onChange={handleState}
+                    ></textarea>
                 </div>
                 <div className="form-control">
                     <button className='warning-btn'>
-                        Sign Up
+                        Update
                     </button>
                 </div>
             </form>

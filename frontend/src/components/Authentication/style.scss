@@ -1,5 +1,7 @@
 @import "../../assets/styles/settings";
 
+
+#profile-update-modal-screen-wrapper,
 #authentication-wrapper {
     position: fixed;
     width: 100%;
@@ -55,6 +57,8 @@
 }
 
 @media (max-width: $large-screen) {
+
+    #profile-update-modal-screen-wrapper,
     #authentication-wrapper {
         section.content {
             width: 50%;
@@ -63,6 +67,8 @@
 }
 
 @media (max-width: $medium-screen) {
+
+    #profile-update-modal-screen-wrapper,
     #authentication-wrapper {
         section.content {
             width: 60%;
@@ -71,6 +77,8 @@
 }
 
 @media (max-width: $small-screen) {
+
+    #profile-update-modal-screen-wrapper,
     #authentication-wrapper {
         section.content {
             width: 80%;
