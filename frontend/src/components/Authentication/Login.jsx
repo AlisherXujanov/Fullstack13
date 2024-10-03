@@ -5,9 +5,10 @@ import { toast } from 'react-toastify';
 import { fetchLogin } from "../../store/helpers";
 import { useContext } from "react"
 import { globalContext } from "../../store"
-
+import {useNavigate} from 'react-router-dom'
 
 function Login(props) {
+    const navigate = useNavigate()
     const state = useContext(globalContext)
 
 
@@ -39,6 +40,7 @@ function Login(props) {
                 let account = await fetchLogin(user)
                 toast.success("You have successfully logged in", { theme: "dark" })
                 state.dispatch({ type: "SET_USER", payload:account })
+                navigate('/profile')
                 // TODO
                 // CREATE profile-page
                 // SET image of the user instead of his username
