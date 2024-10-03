@@ -1,8 +1,9 @@
 import "../Authentication/authContent.scss"
 import "./profileContent.scss"
 import Heading from '../common/Heading'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify';
+import { BASE_AUTH_URL } from '../../store'
 
 
 function Update(props) {
@@ -18,37 +19,58 @@ function Update(props) {
         email: '',
     })
 
+
+    useEffect(() => {
+        setProfileState({
+            first_name: props.profile?.user?.first_name,
+            last_name: props.profile?.user?.last_name,
+            username: props.profile?.user?.username,
+            email: props.profile?.user?.email,
+            bio: props.profile?.bio,
+        })
+    }, [])
+
     async function submit(e) {
         e.preventDefault();
 
         const updatedUser = {
-            username: profileState.username,
-            email: profileState.email,
-            first_name: profileState.first_name,
-            last_name: profileState.first_name,
+            user: {
+                username: profileState.username,
+                email: profileState.email,
+                first_name: profileState.first_name,
+                last_name: profileState.first_name,
+            },
             bio: profileState.first_name,
         }
-        // TODO: Implement the function registerNewUser
-        // try {
-        //     let response = await registerNewUser(updatedUser)
-        //     let status_code = response.status
-        //     let data = await response.json()
+        try {
+            const TOKEN = localStorage.getItem('token')
+            let response = await fetch(BASE_AUTH_URL + "users/update_profile", {
+                method: 'PUT',
+                headers: {
+                    "Authorization": `Token ${TOKEN}`
+                },
+                body: JSON.stringify(updatedUser)
+            })
+            let data = await response.json()
 
-        //     if (status_code == 400) {
-        //         for (let key in data) {
-        //             toast.error(String(data[key]), { theme: 'dark' })
-        //         }
-        //     } else {
-        //         toast.success("Account successfully created. Now You can log in!", { theme: 'dark' })
-        //         props.setIsRegistered()
-        //     }
-        // }
-        // catch (error) {
-        //     toast.error(error, { theme: 'dark' })
-        // }
-        // finally {
-        //     e.target.reset()
-        // }
+            if (response.status == 400) {
+                for (let key in data) {
+                    toast.error(String(data[key]), { theme: 'dark' })
+                }
+            } else {
+                toast.success("Account successfully updated.", { theme: 'dark' })
+                props.closeModal()
+                setTimeout(() => {
+                    location.reload()
+                }, 1000)
+            }
+        }
+        catch (error) {
+            toast.error(error, { theme: 'dark' })
+        }
+        finally {
+            e.target.reset()
+        }
     }
 
     function handleState(e) {
@@ -75,9 +97,6 @@ function Update(props) {
                     error_msg = "Invalid email"
                 }
             }
-            else {
-                throw new Error('Unknown input field')
-            }
         }
         setFormErrors({ ...formErrors, [name]: error_msg })
     }
@@ -94,6 +113,7 @@ function Update(props) {
                         className={formErrors.username ? "error" : ""}
                         type="name" id="name" placeholder='Username' name='username'
                         onChange={handleState}
+                        value={profileState.username}
                     />
                     {
                         formErrors.username.length > 0 ?
@@ -107,6 +127,7 @@ function Update(props) {
                         className={formErrors.email ? "error" : ""}
                         type="email" id="email" placeholder='Email' name='email'
                         onChange={handleState}
+                        value={profileState.email}
                     />
                     {
                         formErrors.email.length > 0 ?
@@ -119,6 +140,7 @@ function Update(props) {
                     <input type="text" id="first_name"
                         placeholder='First name' name='first_name'
                         onChange={handleState}
+                        value={profileState.first_name}
                     />
                 </div>
                 <div className="form-control">
@@ -126,6 +148,7 @@ function Update(props) {
                     <input type="text" id="last_name"
                         placeholder='Last name' name='last_name'
                         onChange={handleState}
+                        value={profileState.last_name}
                     />
                 </div>
                 <div className="form-control">
@@ -133,6 +156,7 @@ function Update(props) {
                     <textarea rows={10} type="text" id="bio"
                         placeholder='Bio' name='bio'
                         onChange={handleState}
+                        value={profileState.bio}
                     ></textarea>
                 </div>
                 <div className="form-control">
