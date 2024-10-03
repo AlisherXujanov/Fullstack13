@@ -1,4 +1,4 @@
-1. Profile (Azim)
+1. *Profile (Azim)*
 2. Update profile 
 3. Liked by
 4. Comments

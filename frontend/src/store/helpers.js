@@ -1,4 +1,4 @@
-import { BASE_URL, BASE_AUTH_URL } from "."
+import { BASE_URL_APIS, BASE_AUTH_URL } from "."
 import axios from "axios"
 
 
@@ -38,7 +38,7 @@ async function fetchLogout() {
 }
 
 async function fetchProducts() {
-    let response = await axios.get(BASE_URL + 'products', {
+    let response = await axios.get(BASE_URL_APIS + 'products', {
         headers: {
             "Authorization": "Token " + getTokenFromLS()
         }

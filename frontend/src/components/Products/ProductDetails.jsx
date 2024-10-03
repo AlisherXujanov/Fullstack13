@@ -1,7 +1,7 @@
 import "./productDetails.scss"
 import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState, useContext } from 'react'
-import { BASE_URL, globalContext } from "../../store"
+import { BASE_URL_APIS, globalContext } from "../../store"
 import { getTokenFromLS } from "../../store/helpers"
 import Heading from "../common/Heading"
 
@@ -35,7 +35,7 @@ function ProductDetails(props) {
     }
 
     async function getProduct() {
-        const URL = BASE_URL + "products/" + id
+        const URL = BASE_URL_APIS + "products/" + id
         let response = await fetch(URL, {
             headers: {
                 Authorization: "Token " + getTokenFromLS()
@@ -59,7 +59,7 @@ function ProductDetails(props) {
 
     function fetchDelete() {
         try {
-            fetch(BASE_URL + `products/${id}/`, { method: "DELETE" })
+            fetch(BASE_URL_APIS + `products/${id}/`, { method: "DELETE" })
                 .then(res => {
                     if (res.ok) {
                         toast.success(product.name + " deleted successfully", { theme: 'dark' })

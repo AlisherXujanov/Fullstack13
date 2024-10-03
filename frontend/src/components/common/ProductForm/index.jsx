@@ -1,7 +1,7 @@
 import "./style.scss"
 import { useContext, useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
-import { globalContext, BASE_URL } from "../../../store"
+import { globalContext, BASE_URL_APIS } from "../../../store"
 import { toast } from "react-toastify"
 import { fetchProducts, getTokenFromLS } from "../../../store/helpers.js"
 
@@ -53,11 +53,11 @@ function ProductForm(props) {
 
             if (props.updateMode) {
                 FETCH_METHOD = "PUT"
-                URL = `${BASE_URL}products/${props.product.id}/`
+                URL = `${BASE_URL_APIS}products/${props.product.id}/`
                 success_message = "Product updated successfully"
             } else {
                 FETCH_METHOD = "POST"
-                URL = BASE_URL + "products"
+                URL = BASE_URL_APIS + "products"
                 success_message = "Product created successfully"
             }
 

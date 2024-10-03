@@ -45,7 +45,9 @@ function Navbar() {
                 <div className="auth">
                     {state.profile?.user?.username ?
                         <div className="logged-in-menu">
-                            <h4>{state.profile?.user?.username}</h4>
+                            <Link to="profile">
+                                <h4>{state.profile?.user?.username}</h4>
+                            </Link>
                             <div className="content">
                                 <button className="warning-btn" onClick={logout}>Выйти</button>
                             </div>
