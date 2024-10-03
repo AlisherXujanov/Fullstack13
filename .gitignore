@@ -26,3 +26,7 @@ yarn-error.log*
 
 frontend/src/**/*.css
 frontend/src/**/*.css.map
+
+
+
+backend/venv
