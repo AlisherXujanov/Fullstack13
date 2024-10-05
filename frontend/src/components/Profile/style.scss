@@ -7,13 +7,15 @@
     margin: 0 auto;
     width: 100%;
     display: flex;
-    
+    padding: 0 20px;
     padding-top: 50px;
     gap: 20px;
-    .loader-container{
+
+    .loader-container {
         width: 100%;
         height: 100%;
     }
+
     .left {
         img {
             border-radius: 50%;
@@ -44,12 +46,32 @@
     .right {
         @include flex(row, flex-end, flex-start, 20px);
         margin-left: auto;
+
         button.warning-btn {
             @include flex();
 
             &.update {}
 
             &.logout {}
+        }
+    }
+}
+
+@media(max-width:780px) {
+    .profile-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 10px;
+    padding-top: 50px;
+
+        .left {
+            order: 1;
+        }
+        
+        .middle {
+            order: 2;
+            justify-content: flex-start;
+            align-items: center;
         }
     }
 }
