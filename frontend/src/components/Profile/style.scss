@@ -2,15 +2,18 @@
 @import '../../assets/styles/settings';
 
 .profile-wrapper {
-    max-width: 170vh;
+    max-width: 150vh;
     min-height: 70vh;
     margin: 0 auto;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 3fr;
+    display: flex;
+    
     padding-top: 50px;
     gap: 20px;
-
+    .loader-container{
+        width: 100%;
+        height: 100%;
+    }
     .left {
         img {
             border-radius: 50%;
@@ -40,7 +43,7 @@
 
     .right {
         @include flex(row, flex-end, flex-start, 20px);
-
+        margin-left: auto;
         button.warning-btn {
             @include flex();
 
