@@ -1,5 +1,6 @@
 @import "../../assets/styles/settings";
 
+.profile-form-wrapper,
 .auth-content-wrapper {
     form {
         .form-control {
@@ -17,6 +18,7 @@
             margin-bottom: 2px;
         }
 
+        textarea,
         input,
         button {
             width: 100%;
@@ -49,7 +51,11 @@
                     inset 0 1px 30px $warning-t,
                     inset 0 -1px 30px $warning-t;
             }
+        }
 
+        textarea {
+            resize: vertical;
+            transition: 0s;
         }
 
         button {
