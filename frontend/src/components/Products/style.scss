@@ -26,13 +26,25 @@
         height: 40px;
 
         &.liked {
-          filter: drop-shadow(0 5px 10px $warning);
+          filter: drop-shadow(5px 5px 1px #333);
+          // filter: drop-shadow(0 5px 10px $warning);
+          // animation: rotateStar 0.2s linear 1;
         }
 
         &.not-liked {
           filter: drop-shadow(3px 3px 1px $warning);
+          // animation: rotateStar 0.2s linear 1;
         }
       }
+
+      // TODO: do this animation
+      // @keyframes rotateStar {
+      //   from {}
+
+      //   to {
+      //     transform: rotate(360deg);
+      //   }
+      // }
     }
 
     .inner-product-info {

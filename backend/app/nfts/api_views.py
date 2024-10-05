@@ -1,10 +1,12 @@
 from rest_framework import status, generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from .usecases import add_to_favorites_fn, remove_from_favorites_fn
 from .serializers import NFTsSerializer
 from .models import NFTs
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
 
 # API = Application Programming Interface
 
@@ -27,4 +29,18 @@ class SingleNFTsView(generics.RetrieveUpdateDestroyAPIView):
     # RetrieveUpdateDestroyAPIView: GET, PUT, DELETE
     queryset = NFTs.objects.all()
     serializer_class = NFTsSerializer
+    
+    
+    
+class ToggleLikeApiView(APIView):
+    
+    def post(self, request, pk):
+        nft_object = get_object_or_404(NFTs, pk=pk)
+        current_user = request.user
 
+        if current_user in nft_object.liked_by.all():
+            remove_from_favorites_fn(request, pk)
+        else:
+            add_to_favorites_fn(request, pk)
+
+        return Response(status=status.HTTP_200_OK)

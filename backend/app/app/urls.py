@@ -29,6 +29,7 @@ urlpatterns = [
     # path('apis/', api_views.hello_world),
     path('apis/products', NFTListCreateView.as_view()),
     path('apis/products/<int:pk>/', SingleNFTsView.as_view()),
+    path('apis/products/toggle-like/<int:pk>/', ToggleLikeApiView.as_view()),
     path('auth/users/profile', ProfileView.as_view()),
     path('auth/users/update_profile', UpdateProfileView.as_view()),
     path('auth/', include('djoser.urls')),
