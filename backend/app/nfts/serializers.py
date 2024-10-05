@@ -9,7 +9,7 @@ class NFTsSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = NFTs
-        fields = ["id", "name", "price", "description", "image", "owner"]
+        fields = ["id", "name", "price", "description", "image", "owner", "liked_by"]
         
     # def price_after_discount(self, obj:NFTs):
     #     discount_price = obj.price - (obj.price * DISCOUNT_IN_PERCENT / 100)
