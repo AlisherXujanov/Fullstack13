@@ -7,9 +7,12 @@ function Profile() {
     const navigate = useNavigate()
     const state = useContext(globalContext)
     const [profile, setProfile] = useState()
+    const [isLoading, setIsLoading] = useState(false)
     useEffect(()=>{
         async function fetchGetUserProfile(){
+            setIsLoading(true)
             const userData = await getUserProfile()
+            setIsLoading(false)
             setProfile(userData)
         }
         fetchGetUserProfile()
