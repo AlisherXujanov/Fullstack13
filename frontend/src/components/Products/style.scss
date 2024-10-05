@@ -20,7 +20,11 @@
       position: absolute;
       right: 50px;
       top: 0;
-
+      .likes_count{
+        padding: 2px 8px;
+        border-radius: 50%;
+        background-color: #272628;
+      }
       svg {
         width: 40px;
         height: 40px;
