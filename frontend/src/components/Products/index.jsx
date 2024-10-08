@@ -8,7 +8,6 @@ import { getTokenFromLS, fetchProducts } from "../../store/helpers"
 import ModalComponent from "../common/ModalComponent"
 import ProductForm from "../common/ProductForm"
 import { toast } from "react-toastify"
-import Like from "../common/Like/Like"
 
 
 function Products() {
@@ -46,7 +45,6 @@ function Products() {
     return (
         <main className="products-page-wrapper">
             <Heading size={1.2}>Products</Heading>
-            <Like/>
             <button className="warning-btn create-btn" onClick={openModal}>Create new product</button>
 
             {state.showModal &&
