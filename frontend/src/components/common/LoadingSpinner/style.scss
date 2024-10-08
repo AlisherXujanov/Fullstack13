@@ -11,6 +11,18 @@
     top: 0;
     left: 0;
 
+    &.offset {
+        position: relative;
+        background-color: transparent;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        background-color: black;
+        box-shadow: inset 5px 5px 50px $warning-t, inset -5px -5px 50px $warning-t;
+    }
+
     .fulfilling-bouncing-circle-spinner {
         height: 60px;
         width: 60px;
@@ -124,5 +136,57 @@
         border-color: transparent;
         border-top-color: inherit;
         transform: scale(1);
+    }
+}
+
+
+
+.looping-rhombuses-spinner,
+.looping-rhombuses-spinner * {
+    box-sizing: border-box;
+}
+
+.looping-rhombuses-spinner {
+    width: calc(25px * 4);
+    height: 25px;
+    position: relative;
+}
+
+.looping-rhombuses-spinner .rhombus {
+    height: 25px;
+    width: 25px;
+    background-color: $warning;
+    box-shadow: 3px 3px 30px $warning, -3px -3px 30px $warning;
+    left: calc(25px * 4);
+    position: absolute;
+    margin: 0 auto;
+    border-radius: 2px;
+    transform: translateY(0) rotate(45deg) scale(0);
+    animation: looping-rhombuses-spinner-animation 2500ms linear infinite;
+}
+
+.looping-rhombuses-spinner .rhombus:nth-child(1) {
+    animation-delay: calc(2500ms * 1 / -1.5);
+}
+
+.looping-rhombuses-spinner .rhombus:nth-child(2) {
+    animation-delay: calc(2500ms * 2 / -1.5);
+}
+
+.looping-rhombuses-spinner .rhombus:nth-child(3) {
+    animation-delay: calc(2500ms * 3 / -1.5);
+}
+
+@keyframes looping-rhombuses-spinner-animation {
+    0% {
+        transform: translateX(0) rotate(45deg) scale(0);
+    }
+
+    50% {
+        transform: translateX(-233%) rotate(45deg) scale(1);
+    }
+
+    100% {
+        transform: translateX(-466%) rotate(45deg) scale(0);
     }
 }
