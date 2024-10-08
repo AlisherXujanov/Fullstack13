@@ -60,6 +60,11 @@ git push
     git push
     ```
 
+3. Visit the fullstack repository of fullstack13
+- when you just enter to the site, you will see the button "Compare & pull request"
+- Press on the button and choose "Alisher Khujanov" as a reviewer
+- Press on the button "Create pull request"
+
 
 # When you work with Fullstack13
 <!-- Когда вы работаете с Fullstack13 -->
