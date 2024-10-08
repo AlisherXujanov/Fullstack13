@@ -50,10 +50,21 @@ git push
 <!-- ------------------------------ -->
 <!-- ------------------------------ -->
 <!-- ------------------------------ -->
-# When you work with Fullstack16
-<!-- Когда вы работаете с Fullstack16 -->
+# When you want to change smth and add a commit as a new branch
+1. `git checkout -b branch-name`
+- After you can change things that you wanted 
+- ONLY AFTER
+2. ```bash
+    git add .
+    git commit -m 'message'
+    git push
+    ```
+
+
+# When you work with Fullstack13
+<!-- Когда вы работаете с Fullstack13 -->
 1. git clone ...
-2. cd fullstack16
+2. cd fullstack13
 3. code .
 4. cd frontend
 5. npm install
