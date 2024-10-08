@@ -15,12 +15,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    user = UserSerializer()
+    user = UserSerializer(required=False)
 
     class Meta:
         model = Profile
         fields = '__all__'
-
-
 
 

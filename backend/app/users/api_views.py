@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 import json
+from rest_framework import generics
 
 # JWT: JSON Web Token
 
@@ -33,3 +34,7 @@ class UpdateProfileView(APIView):
         return Response({"success": True})
 
 
+class UpdateProfilePictureView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    

@@ -32,6 +32,7 @@ urlpatterns = [
     path('apis/products/toggle-like/<int:pk>/', ToggleLikeApiView.as_view()),
     path('auth/users/profile', ProfileView.as_view()),
     path('auth/users/update_profile', UpdateProfileView.as_view()),
+    path('auth/users/update_profile_image/<int:pk>/', UpdateProfilePictureView.as_view()),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
