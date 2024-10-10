@@ -1,6 +1,7 @@
 import "./style.scss"
 import Heading from "../common/Heading"
 import ImageAbout from "../../assets/images/programmer.png"
+import ImageAbout2 from "../../assets/images/programmer2.png"
 import { TbLicense } from "react-icons/tb"
 import { useEffect } from 'react'
 import Lycence from "../../assets/images/certificates/second.png"
@@ -37,12 +38,13 @@ function About() {
     <div className="languages-section">
       <h2>Наша команда Fullstack13 изучает следующие языки и фреймворки:</h2>
       <div className="languages-grid">
-        <div className="language-card large-card">Python</div>
-        <div className="language-card large-card">JavaScript</div>
-        <div className="language-card large-card">Django</div>
-        <div className="language-card large-card">REST</div>
-        <div className="language-card large-card">React</div>
+          <div className="language-card python"></div>
+          <div className="language-card javascript"></div>
+          <div className="language-card django"></div>
+          <div className="language-card rest"></div>
+          <div className="language-card react"></div>
       </div>
+
     </div>
 
     <div class="second-about-page-wrapper">
@@ -52,7 +54,7 @@ function About() {
         <p><strong>Наши ценности</strong> — это бесконечное любопытство, жажда знаний и желание делиться ими. Мы верим, что великие программисты не просто пишут код, они раздвигают границы возможного, создавая что-то уникальное и полезное. Вдохновленные новыми вызовами, мы растем с каждым проектом и каждым успешным запуском.</p>
     </div>
     <div class="about-image-second">
-        <img src={ImageAbout} alt="ImageAbout" width={"100%"} height={450} />
+        <img src={ImageAbout2} alt="ImageAbout2" width={"100%"} height={450} />
     </div>
    </div>
 
