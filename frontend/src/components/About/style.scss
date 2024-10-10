@@ -14,14 +14,14 @@
         justify-content: space-between;
         gap: 100px;
 
-
         img {
             max-width: 100%;
-            object-fit:fill;
+            object-fit: fill;
         }
 
         .info {
             margin-top: 50px;
+
             p {
                 width: 100%;
                 margin-bottom: 30px;
@@ -30,7 +30,7 @@
             }
 
             .warning-btn {
-                padding: 15px 40px;
+                padding: 7px 25px;
                 font-size: 1em;
                 @include flex(row, center, center);
                 gap: 10px;
@@ -43,6 +43,7 @@
         }
     }
 }
+
 .second-about-page-wrapper {
     display: flex;
     align-items: center;
@@ -50,67 +51,95 @@
     padding: 70px;
     color: #f0f0f0;
 }
-.second-about{
+
+.second-about {
     max-width: 65%;
     margin-right: 20px;
-}
-.second-about p{
-    width: 80%;
-    margin-bottom: 30px;
-    font-size: 1.1em;
-    color: lightgray;
-}
-.second-about h2 {
-    color: $warning;
-    padding-bottom: 20px;
-}
-.second-about img{
-    max-width: 80%;
-    object-fit:fill;
+
+    p {
+        width: 80%;
+        margin-bottom: 30px;
+        font-size: 1.1em;
+        color: lightgray;
+    }
+
+    h2 {
+        color: $warning;
+        padding-bottom: 20px;
+        font-size: 1.3em;
+    }
+
+    img {
+        max-width: 80%;
+        object-fit: fill;
+        margin-top: 20px;
+    }
 }
 
 .languages-section {
-    margin-top: 150px;
-  }
-  
-  .languages-section h2 {
-    font-size: 26px;
-    margin-bottom: 20px;
-    color: $warning;
-    text-align: center;
-  }
-  
-  .languages-grid {
+    margin-top: 50px;
+}
+
+.languages-grid {
     display: flex;
-    margin-top: 10px;
-    gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
-  }
-  
-  .language-card {
+    gap: 20px;
+}
+
+.language-card {
     background-color: #333;
     border-radius: 12px;
     padding: 40px;
     font-size: 22px;
     color: snow;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s;
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .language-card.large-card {
     width: 200px;
     height: 200px;
-  }
-  
-  .language-card:hover {
-    transform: scale(1.05);
-  }
-  
+    perspective: 1000px;
+    background-size: cover;
+    background-position: center;
+}
+
+.language-card:hover {
+    transform: rotateY(15deg) rotateX(15deg) scale(1.15);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+}
+
+.python {
+    background-image: url('../../assets/images/python.png');
+}
+
+.javascript {
+    background-image: url('../../assets/images/js.png');
+}
+
+.django {
+    background-image: url('../../assets/images/django.webp');
+}
+
+.rest {
+    background-image: url('../../assets/images/rest.png');
+}
+
+.react {
+    background-image: url('../../assets/images/react.png');
+}
+
+
+.languages-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: $warning;
+    text-align: center;
+}
+
+
 
 
 @media (max-width: $xx-large-screen) {
