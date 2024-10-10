@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-5jk^(e*x4^0b10szbh65^80%fr-seen%*hgqr48_7g8$kki^8s
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -226,3 +228,7 @@ DJOSER = {
     "USER_CREATE_PASSWORD_RETYPE": True, # We can use this to make user retype the password
     # "LOGIN_FIELD": "email", # We can use email or username for login
 }
+
+SECURE_SSL_REDIRECT=False
+SESSION_COOKIE_SECURE=False
+CSRF_COOKIE_SECURE=False
