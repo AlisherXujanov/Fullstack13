@@ -5,7 +5,7 @@ from .usecases import add_to_favorites_fn, remove_from_favorites_fn
 from .serializers import NFTsSerializer, CommentsSerializer
 from .models import NFTComments, NFTs
 from django.shortcuts import get_object_or_404
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
 
 # API = Application Programming Interface
@@ -31,12 +31,18 @@ class SingleNFTsView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = NFTsSerializer
     
     
-    
 class NFTCommentsCreateView(generics.ListCreateAPIView):
     # ListCreateAPIView: GET, POST
-    permission_classes = [IsAuthenticated]
     queryset = NFTComments.objects.all()
     serializer_class = CommentsSerializer
+    
+    
+    
+class SingleCommentView(generics.RetrieveUpdateDestroyAPIView):
+    # RetrieveUpdateDestroyAPIView: GET, PUT, DELETE
+    queryset = NFTComments.objects.all()
+    serializer_class = CommentsSerializer
+    
     
     
 class ToggleLikeApiView(APIView):
