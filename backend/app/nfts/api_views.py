@@ -2,8 +2,8 @@ from rest_framework import status, generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .usecases import add_to_favorites_fn, remove_from_favorites_fn
-from .serializers import NFTsSerializer
-from .models import NFTs
+from .serializers import NFTsSerializer, CommentsSerializer
+from .models import NFTComments, NFTs
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
@@ -30,6 +30,13 @@ class SingleNFTsView(generics.RetrieveUpdateDestroyAPIView):
     queryset = NFTs.objects.all()
     serializer_class = NFTsSerializer
     
+    
+    
+class NFTCommentsCreateView(generics.ListCreateAPIView):
+    # ListCreateAPIView: GET, POST
+    permission_classes = [IsAuthenticated]
+    queryset = NFTComments.objects.all()
+    serializer_class = CommentsSerializer
     
     
 class ToggleLikeApiView(APIView):

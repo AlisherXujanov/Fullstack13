@@ -190,7 +190,6 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 
 
 
-
 LANGUAGE_CODE = 'en' # This is the default language
 LANGUAGES = (
     ('en', _("English")),

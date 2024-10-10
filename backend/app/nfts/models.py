@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+from users.models import Profile
 
 
 class NFTs(models.Model):
@@ -24,7 +25,6 @@ class NFTs(models.Model):
     def __str__(self) -> str:
         return self.name
     
-    
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         img = Image.open(self.image.path)
@@ -33,3 +33,24 @@ class NFTs(models.Model):
             img.thumbnail(output_size)
             img.save(self.image.path)
 
+
+class NFTComments(models.Model):
+    nft = models.ForeignKey(NFTs, on_delete=models.CASCADE, related_name='comments')
+    user_profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    content = models.TextField()
+    likes = models.ManyToManyField(User, related_name='liked_comments', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    # parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    
+
+    def __str__(self) -> str:
+        return f"{self.user_profile.user.username}'s comment on - {self.nft.name}"
+
+    class Meta:
+        verbose_name = 'NFT Comment'
+        verbose_name_plural = 'NFT Comments'
+        ordering = ['-created_at']
+
+
+    

@@ -27,6 +27,7 @@ from users.api_views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('apis/', api_views.hello_world),
+    path('apis/nft-comments', NFTCommentsCreateView.as_view()),
     path('apis/products', NFTListCreateView.as_view()),
     path('apis/products/<int:pk>/', SingleNFTsView.as_view()),
     path('apis/products/toggle-like/<int:pk>/', ToggleLikeApiView.as_view()),
