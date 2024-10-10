@@ -19,7 +19,7 @@ from rest_framework.views import APIView
 
 class NFTListCreateView(generics.ListCreateAPIView):
     # ListCreateAPIView: GET, POST
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     queryset = NFTs.objects.all()
     serializer_class = NFTsSerializer
     

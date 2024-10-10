@@ -4,18 +4,6 @@ from users.serializers import ProfileSerializer
 
 DISCOUNT_IN_PERCENT = 10
 
-class NFTsSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(read_only=True)
-    # price_in_discount = serializers.SerializerMethodField(method_name='price_after_discount')
-    
-    class Meta:
-        model = NFTs
-        fields = ["id", "name", "price", "description", "image", "owner", "liked_by"]
-        
-    # def price_after_discount(self, obj:NFTs):
-    #     discount_price = obj.price - (obj.price * DISCOUNT_IN_PERCENT / 100)
-    #     return f'${discount_price} - ({DISCOUNT_IN_PERCENT}% discount)'
-
 
 class CommentsSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
@@ -28,6 +16,22 @@ class CommentsSerializer(serializers.ModelSerializer):
     
     
 
+class NFTsSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    related_comments = serializers.SerializerMethodField(method_name='get_comments')
+    # price_in_discount = serializers.SerializerMethodField(method_name='price_after_discount')
+    
+    class Meta:
+        model = NFTs
+        fields = ["id", "name", "price", "description", "image", "owner", "liked_by", "related_comments"]
+        
+    def get_comments(self, obj:NFTComments):
+        comments = NFTComments.objects.filter(nft=obj)
+        return CommentsSerializer(comments, many=True).data
+        
+    # def price_after_discount(self, obj:NFTs):
+    #     discount_price = obj.price - (obj.price * DISCOUNT_IN_PERCENT / 100)
+    #     return f'${discount_price} - ({DISCOUNT_IN_PERCENT}% discount)'
 
 
 
