@@ -223,11 +223,18 @@ REST_FRAMEWORK = {
 #         'rest_framework.authentication.SessionAuthentication',
 #     ]
 
+DOMAIN = '127.0.0.1:8000'
+SITE_NAME = 'NFTs'
 DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': 'auth/users/reset_password_confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'auth/users/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': {},
     "USER_ID_FIELD": "username", # We use username for login
     "USER_CREATE_PASSWORD_RETYPE": True, # We can use this to make user retype the password
     # "LOGIN_FIELD": "email", # We can use email or username for login
 }
+
 
 SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = False

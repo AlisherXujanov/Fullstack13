@@ -28,6 +28,7 @@ function Contacts() {
 
   useEffect(() => {
     document.title = "Contacts";
+    console.clear()
   }, []);
 
   function setInputValueIntoState(e) {

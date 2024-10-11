@@ -853,7 +853,20 @@ urlpatterns = [
 ]
 ```
 
-# 
+# Reset Password
+
+```python
+DOMAIN = '127.0.0.1:8000'
+SITE_NAME = 'NFTs'
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': 'auth/users/reset_password_confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'auth/users/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': {},
+    ...
+}
+```
+
 #
 #
 # 
