@@ -75,8 +75,7 @@ def get_last_message_between(request, user: User, companion: User) -> str:
         elif current_day-1 == last_msg["day"] and current_month == last_msg["month"] and current_year == last_msg["year"]:
             time = 'Yesterday'
         else:
-            time = f"{last_msg['day']}.{str(last_msg['month']).zfill(2)}.{
-                last_msg['year']}"
+            time = f"{last_msg['day']}.{str(last_msg['month']).zfill(2)}.{last_msg['year']}"
 
     return {
         "time": time if len(chat_messages) > 0 else False,

@@ -35,7 +35,7 @@ function ProductDetails(props) {
     }
 
     async function getProduct() {
-        const URL = BASE_URL_APIS + "products/" + id
+        const URL = "https://alisherkhujanov.pythonanywhere.com/apis/" + "products/" + id
         let response = await fetch(URL, {
             headers: {
                 Authorization: "Token " + getTokenFromLS()
