@@ -1,7 +1,7 @@
 import "./style.scss"
 import Heading from "../common/Heading"
-import ImageAbout from "../../assets/images/programmer.png"
-import ImageAbout2 from "../../assets/images/programmer2.png"
+import ImageAbout from "../../assets/images/programmer.jpg"
+import ImageAbout2 from "../../assets/images/programmer2.jpg"
 import { TbLicense } from "react-icons/tb"
 import { useEffect } from 'react'
 import Lycence from "../../assets/images/certificates/second.png"
