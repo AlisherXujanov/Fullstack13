@@ -92,7 +92,6 @@
     .content_navigate_container_for_link {
       &:hover {
         transition: 0s;
-        border: 1px solid transparent;
         border-radius: 20px;
         background: linear-gradient(to right, #ff56bb, #ff8f77);
         color: snow;
