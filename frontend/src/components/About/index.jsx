@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import Lycence from "../../assets/images/certificates/second.png"
 import { useContext } from "react"
 import { globalContext } from "../../store/index.js"
-
+import EmailTest from "../EmailTest.jsx"
 
 function About() {
   const state = useContext(globalContext)
@@ -19,6 +19,8 @@ function About() {
   return (
     <main className="about-page-wrapper">
       <Heading size={1.4}>О нас</Heading>
+
+      <EmailTest />
 
       <div className="content-wrapper">
         <img src={ImageAbout} alt="ImageAbout" width={"100%"} height={450} />

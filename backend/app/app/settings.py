@@ -228,6 +228,7 @@ SITE_NAME = 'NFTs'
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'auth/users/reset_password_confirm/{uid}/{token}',
     'ACTIVATION_URL': 'auth/users/activate/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'auth/users/reset_username_confirm/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {},
     "USER_ID_FIELD": "username", # We use username for login
