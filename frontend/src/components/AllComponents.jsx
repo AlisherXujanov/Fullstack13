@@ -11,6 +11,7 @@ import Contacts from './Contacts'
 import BlogDetails from "./Blog/BlogDetails";
 import HOC from "./HOC.jsx"
 import Profile from "./Profile";
+import Faq from "./Faq/index.jsx"
 
 const ControlledProducts = HOC(Products)
 const ControlledProductDetails = HOC(ProductDetails)
@@ -27,6 +28,7 @@ function AllComponents() {
                 <Route path="blog" element={<Blog />} />
                 <Route path="blog/:id" element={<BlogDetails />} />
                 <Route path="products" element={<ControlledProducts />} />
+                <Route path="faq" element={<Faq />} />
                 <Route path="products/:id" element={<ControlledProductDetails />} />
                 <Route path="contacts" element={<Contacts />} />
                 <Route path="profile" element={<ControllProfile/>}/>
