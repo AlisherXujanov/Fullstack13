@@ -2,6 +2,9 @@ import Heading from "../common/Heading";
 import "./style.scss";
 import firstImage from "../../assets/images/1.png";
 import secondImage from "../../assets/images/2.png";
+import thirdImage from "../../assets/images/3.png";
+import fourthImage from "../../assets/images/4.png";
+import fiveImage from "../../assets/images/5.png";
 import Member from "./Member";
 import { useEffect } from "react";
 
@@ -20,31 +23,43 @@ function Team(props) {
 
   return (
     <main className="team-page-wrapper">
-      <Heading size={1.2}>Наша команда</Heading>
 
       <div className="text-wrapper">
-        <p>
-        Наша команда
-          Мы — это группа профессионалов, объединённых общей целью: создавать качественные, инновационные и эффективные решения для наших клиентов. В команде собраны специалисты разных областей — от разработчиков и дизайнеров до маркетологов и проектных менеджеров. Каждый из нас вносит свой уникальный вклад, благодаря чему мы достигаем выдающихся результатов в наших проектах.
+        <div class="team-section">
+          <h2><Heading size={1.2}>Наша команда</Heading></h2>
+            <p class="team-intro">
+                Мы — это группа профессионалов, объединённых общей целью: создавать качественные, инновационные и эффективные решения для наших клиентов.
+                Каждый из нас вносит свой уникальный вклад, что позволяет нам достигать выдающихся результатов в наших проектах.
+            </p>
 
-          Почему мы?
-          Опыт и экспертиза: Каждый член нашей команды имеет глубокие знания в своей области, что позволяет нам справляться с задачами любой сложности.
-          Креативный подход: Мы не просто следуем трендам, мы их создаём, предлагая креативные и нестандартные решения для бизнеса.
-          Клиентоориентированность: Мы всегда учитываем потребности наших клиентов и стремимся превзойти их ожидания.
-          Работа в команде: Слаженная работа и обмен опытом внутри команды позволяют нам быстро адаптироваться к изменениям и оставаться на пике эффективности.
-          Мы гордимся тем, что каждый проект — это результат тесного сотрудничества между всеми членами команды, где каждый голос важен, а вклад каждого ценен.
-        </p>
+          <ul class="team-list">
+              <li>
+                  <h3>Опыт и экспертиза</h3>
+                  <p>Каждый член нашей команды имеет глубокие знания в своей области, что позволяет нам справляться с задачами любой сложности.</p>
+              </li>
+              <li>
+                  <h3>Креативный подход</h3>
+                  <p>Мы не просто следуем трендам, мы их создаём, предлагая нестандартные решения для бизнеса.</p>
+              </li>
+              <li>
+                  <h3>Клиентоориентированность</h3>
+                  <p>Мы всегда учитываем потребности наших клиентов и стремимся превзойти их ожидания.</p>
+              </li>
+              <li>
+                  <h3>Работа в команде</h3>
+                  <p>Слаженная работа и обмен опытом внутри команды позволяют нам адаптироваться к изменениям и оставаться эффективными.</p>
+              </li>
+          </ul>
+        </div> 
       </div>
 
 
       <div className={props.grayscale ? "all-members-wrapper grayscale" : "all-members-wrapper"}>
         <a href="https://github.com/AlisherXujanov"><Member name="Алишер Худжанов" title="CFO" image={firstImage} /></a>
         <a href="https://github.com/azim0nt"><Member name="Azim0nt" title="CEO" image={secondImage} /></a>  
-        <a href="https://github.com/Islom1214"><Member name="Эрджан Мусин" title="CFO" image={firstImage} /></a>
-        <Member name="Олжас Укенов" title="CEO" image={secondImage} />
-        <Member name="Эрджан Мусин" title="CFO" image={firstImage} />
-        <Member name="Олжас Укенов" title="CEO" image={secondImage} />
-
+        <a href="https://github.com/Islom1214"><Member name="Islom" title="CFO" image={thirdImage} /></a>
+        <Member name="Max Batmanbek" title="CEO" image={fourthImage} />
+        <Member name="Леша" title="CFO" image={fiveImage} />
       </div>
 
       <div className="section">
