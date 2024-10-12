@@ -20,7 +20,7 @@
                 background-color: $dark;
                 padding: 20px;
                 color: $light;
-                border: none;
+                border: 1px solid transparent;
                 outline: none;
 
                 &::placeholder {
@@ -29,7 +29,7 @@
                 }
 
                 &:focus {
-                    border: 1px solid $warning;
+                    border-color: $warning;
                     box-shadow: 1px 1px 5px $warning-t;
                     background-color: $warning-t;
                 }
@@ -49,6 +49,7 @@
         }
     }
 }
+
 .notification {
     position: fixed;
     top: 20px;
@@ -72,49 +73,57 @@
 @media (max-width: $xx-large-screen) {
     .consultation-wrapper {
         padding: 0 150px;
+
         form {
-            margin: 40px 80px ;
+            margin: 40px 80px;
         }
 
     }
 
 }
+
 @media (max-width: $x-large-screen) {
     .consultation-wrapper {
         padding: 0 100px;
+
         form {
-            margin: 25px 60px ;
-            }
+            margin: 25px 60px;
+        }
 
     }
 }
+
 @media (max-width: $large-screen) {
     .consultation-wrapper {
         padding: 0 50px;
+
         form {
-            margin: 15px 30px ;
+            margin: 15px 30px;
         }
 
     }
 
 }
+
 @media (max-width: $medium-screen) {
     .consultation-wrapper {
         padding: 0 30px;
+
         form {
-            margin: 10px 20px ;
-    }
+            margin: 10px 20px;
+        }
 
     }
 }
+
 @media (max-width: $small-screen) {
     .consultation-wrapper {
         padding: 0 20px;
         grid-template-columns: 1fr;
+
         form {
-            margin: 10px 15px ;
+            margin: 10px 15px;
         }
 
     }
 }
-
