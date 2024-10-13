@@ -1,11 +1,10 @@
 import "./authContent.scss"
 import Heading from '../common/Heading'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { toast } from 'react-toastify';
 import { fetchLogin } from "../../store/helpers";
-import { useContext } from "react"
 import { globalContext } from "../../store"
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Login(props) {
     const navigate = useNavigate()
@@ -39,13 +38,13 @@ function Login(props) {
             try {
                 let account = await fetchLogin(user)
                 toast.success("You have successfully logged in", { theme: "dark" })
-                state.dispatch({ type: "SET_USER", payload:account })
+                state.dispatch({ type: "SET_USER", payload: account })
                 navigate('/profile')
                 // TODO
                 // CREATE profile-page
                 // SET image of the user instead of his username
                 props.closeModal()
-            } catch(error) {
+            } catch (error) {
                 toast.error("User not found with provided credentials", { theme: "dark" })
             }
         }
@@ -95,7 +94,7 @@ function Login(props) {
 
     return (
         <div className="auth-content-wrapper">
-            <Heading size={1.2}>Login</Heading>
+            <Heading size={1.2}>Sign in</Heading>
 
 
             <form onSubmit={submit}>
@@ -135,8 +134,12 @@ function Login(props) {
                 </div>
                 <div className="form-control">
                     <button className='warning-btn'>
-                        Login
+                        Sign in
                     </button>
+
+                    <a href="#" className="forgot-password-link"
+                        onClick={() => props.setSection("passwordRecovery")}
+                    >Forgot password?</a>
                 </div>
             </form>
         </div>

@@ -1,37 +1,45 @@
-import Registration from './Registration.jsx';
-import Login from './Login.jsx';
-import { useState } from 'react';
+import { useState } from 'react'
+import Registration from './Registration.jsx'
+import Login from './Login.jsx'
+import PasswordRecovery from './PasswordRecovery.jsx'
 import './style.scss'
 
-
 function Authentication(props) {
-    const [isRegistred, setIsRegistred] = useState(true)
+    const [authSection, setAuthSection] = useState("login")
 
-    function setIsRegistered() {
-        setIsRegistred(true)
+    function setSection(section) {
+        setAuthSection(section)
     }
+
 
     return (
         <div id='authentication-wrapper'>
             <section className='content'>
                 <button className="close-btn" onClick={props.closeModal}>&times;</button>
                 {
-                    isRegistred ? 
-                        <Login closeModal={props.closeModal} /> 
-                            : <Registration setIsRegistered={setIsRegistered} />
+                    authSection == "passwordRecovery" ?
+                        <PasswordRecovery setSection={setSection} />
+                        :
+                        authSection == "register" ?
+                            <Registration setSection={setSection} />
+                            :
+                            <Login closeModal={props.closeModal} setSection={setSection} />
                 }
 
-                <p>
-                    <small>
-                        {isRegistred ? 'Don\'t have an account?' : 'Already have an account?'}
+                {
+                    ["register", "login"].includes(authSection) &&
+                    <p>
+                        <small>
+                            {authSection == "login" ? 'Don\'t have an account?' : 'Already have an account?'}
 
-                        <button style={{ cursor: 'pointer' }} className='toggle-auth'
-                            onClick={() => setIsRegistred(!isRegistred)}
-                        >
-                            {isRegistred ? 'Create an account' : 'Log in'}
-                        </button>
-                    </small>
-                </p>
+                            <button className='toggle-auth'
+                                onClick={() => setSection(authSection == "register" ? 'login' : 'register')}
+                            >
+                                {authSection == "login" ? 'Create an account' : 'Sign in'}
+                            </button>
+                        </small>
+                    </p>
+                }
             </section>
         </div>
     );
