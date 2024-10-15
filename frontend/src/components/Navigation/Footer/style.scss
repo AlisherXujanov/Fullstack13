@@ -2,7 +2,7 @@
 
 .footer-wrapper {
     footer.main-footer {
-        background-color: $dark-lighter;
+        background-color: black;
         padding: 50px 100px;
         @include grid(2, 20px);
 
@@ -83,162 +83,52 @@
     }
 }
 
-@media (max-width: $xx-large-screen) {
-    .footer-wrapper {
-        footer.main-footer {
-            padding: 37px 75px;
-        }
-
-    }
-
-}
-
-@media (max-width: $x-large-screen) {
-    .footer-wrapper {
-
-        footer.main-footer {
-            padding: 25px 50px;
-        }
-
-        .section {
-            padding: 25px 50px;
-
-            p {
-                width: 80%;
-            }
-        }
-    }
-
-}
-
-@media (max-width: $large-screen) {
-    .footer-wrapper {
-        gap: 10px;
-
-        footer.main-footer {
-            padding: 15px 30px;
-        }
-
-        .section {
-            padding: 15px 30px;
-
-            p {
-                width: 90%;
-            }
-        }
-    }
-
-}
-
-@media (max-width: $medium-screen) {
-    .footer-wrapper {
-        .section {
-            padding: 10px 20px;
-
-            p {
-                width: 90%;
-            }
-        }
-    }
-}
-
-@media (max-width: $small-screen) {
-    .footer-wrapper {
-        footer.main-footer {
-            padding: 50px 10px;
-            position: relative;
-
-            .left-side {
-                grid-template-columns: 1fr;
-
-                .footer-links {
-                    position: relative;
-                    left: 30px;
-                }
-            }
-
-            .footer-social-media {
-                position: absolute;
-                right: 2px;
-                top: 35px;
-
-                span {
-                    margin: 0 5px;
-                }
-            }
-        }
-
-        .section {
-            padding: 50px 10px;
-
-            p {
-                width: 100%;
-            }
-        }
-    }
-
-}
-
-.footer-wrapper {
-  background-color: #222;
-  padding: 20px;
-  color: #fff;
-  font-family: Arial, sans-serif;
-}
-  
 .main-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(row, space-between, center);
 }
-  
+
 .left-side {
-  display: flex;
-  flex-direction: column;
+  @include flex(column);
 }
-  
+
 .heading-wrapper {
   margin-bottom: 10px;
 }
-  
+
 .footer-links {
-  display: flex;
-  justify-content: space-between;
+  @include flex(row, space-between);
   width: 100%;
 }
-  
+
 .footer-links .left,
 .footer-links .right {
-  display: flex;
-  flex-direction: column;
+  @include flex(column);
 }
-  
+
 .footer-links span {
   cursor: pointer;
   color: #bbb;
   margin: 5px 0;
   transition: color 0.3s ease;
+
+  &:hover {
+    color: #fff;
+  }
 }
-  
-.footer-links span:hover {
-  color: #fff;
-}
-  
+
 .footer-social-media {
-  display: flex;
-  gap: 15px;
+  @include flex(row, flex-start, flex-start, 15px);
 }
-  
+
 .footer-social-media .social-icon {
   color: #fff;
   font-size: 1.5em;
   transition: color 0.3s ease;
+
+  &:hover {
+    color: #f76b1a;
+  }
 }
-  
-.footer-social-media .social-icon:hover {
-  color: #f76b1a; 
-}
-  
 
 .modal-overlay {
   position: fixed;
@@ -247,68 +137,57 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(row, center, center);
   z-index: 999;
   opacity: 0;
-  animation: fadeIn 0.3s forwards; 
+  animation: fadeIn 0.3s forwards;
 }
 
 .modal-content {
-  background-color: #2e2e2e;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 500px;
-  width: 100%;
+  padding: 40px;
+  border-radius: 15px;
+  background-color: $dark-lighter;
+  max-width: 800px; 
+  width: 90%;  
   text-align: center;
   color: #fff;
   transform: translateY(-50px);
   opacity: 0;
   animation: slideIn 0.3s forwards;
-}
 
-.modal-content h2 {
-  margin-bottom: 10px;
-  font-size: 24px;
-  color: #f76b1a;
-}
+  h2 {
+    margin-bottom: 20px;
+    font-size: 28px;  
+    color: #f76b1a;
+  }
 
-.modal-content p {
-  margin-bottom: 20px;
-  font-size: 16px;
-  color: #bbb;
+  p {
+    margin-bottom: 30px;
+    font-size: 18px; 
+    color: #bbb;
+  }
 }
 
 .modal-buttons {
-  display: flex;
-  justify-content: space-between;
-  
+  @include flex(row, center);
 }
 
 .modal-content button,
 .nav-button {
-   background-color: #111;
-   color: #fff;
-   padding: 10px 20px;
-   border: none;
-   border-radius: 5px;
-   font-size: 16px;
-   font-family:sans-serif;
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-   text-transform: uppercase;
-   letter-spacing: 1px;
-   cursor: pointer;
-   box-shadow: 0 0 15px rgba(255, 128, 0, 0.8), 0 0 20px rgba(255, 128, 0, 0.5);
-   transition: all 0.3s ease;
-}
+  background-color: #111;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
 
-.modal-content button:hover,
-.nav-button:hover {
+  &:hover {
     background-color: #ff8000;
-    box-shadow: 0 0 25px rgba(255, 128, 0, 1), 0 0 35px rgba(255, 128, 0, 0.8);
+  }
 }
 
 @keyframes fadeIn {
@@ -359,6 +238,95 @@
   }
 }
 
+@media (max-width: 1600px) {
+  .footer-wrapper {
+      footer.main-footer {
+          padding: 37px 75px;
+      }
+  }
+}
+
+@media (max-width: 1350px) {
+  .footer-wrapper {
+      footer.main-footer {
+          padding: 25px 50px;
+      }
+
+      .section {
+          padding: 25px 50px;
+
+          p {
+              width: 80%;
+          }
+      }
+  }
+}
+
+@media (max-width: 1100px) {
+  .footer-wrapper {
+      gap: 10px;
+
+      footer.main-footer {
+          padding: 15px 30px;
+      }
+
+      .section {
+          padding: 15px 30px;
+
+          p {
+              width: 90%;
+          }
+      }
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-wrapper {
+      .section {
+          padding: 10px 20px;
+
+          p {
+              width: 90%;
+          }
+      }
+  }
+}
+
+@media (max-width: 750px) {
+  .footer-wrapper {
+      footer.main-footer {
+          padding: 50px 10px;
+          position: relative;
+
+          .left-side {
+              grid-template-columns: 1fr;
+
+              .footer-links {
+                  position: relative;
+                  left: 30px;
+              }
+          }
+
+          .footer-social-media {
+              position: absolute;
+              right: 2px;
+              top: 35px;
+
+              span {
+                  margin: 0 5px;
+              }
+          }
+      }
+
+      .section {
+          padding: 50px 10px;
+
+          p {
+              width: 100%;
+          }
+      }
+  }
+}
 // $xx-large-screen: 1600px;
 // $x-large-screen: 1350px;
 // $large-screen: 1100px;

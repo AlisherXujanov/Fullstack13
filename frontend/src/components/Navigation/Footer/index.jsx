@@ -24,9 +24,6 @@ const Modal = ({ show, onClose, title, content, link }) => {
         <p>{content}</p>
         <div className="modal-buttons">
           <button onClick={handleClose}>Закрыть</button>
-          <NavLink to={link} onClick={handleClose} className="nav-button">
-            Перейти
-          </NavLink>
         </div>
       </div>
     </div>
@@ -51,37 +48,32 @@ function Footer() {
           </div>
           <div className="footer-links">
             <div className="left">
-              <span onClick={() => handleLinkClick("О нас", "Наша команда Fullstack – это не просто коллектив, это настоящий отряд героев, готовых покорять любые инвестиционные вершины. Глава Алишер всегда держит руку на пульсе, давая стратегические указания, а AkerFer и Ойбеки без устали оптимизируют и масштабируют. Когда ночь спускается на код, на помощь приходит Batman — никто не знает, когда он спит, но все знают, что он спасет проект в самый неожиданный момент. ", "/")}>
-                О нас
-              </span>
-              <span onClick={() => handleLinkClick("Команда", "Мы — команда опытных программистов, увлеченных созданием инновационных решений и совершенствованием цифрового мира. Наш коллектив состоит из специалистов с разнообразным опытом в разработке веб-приложений, мобильных приложений, баз данных и многого другого. Мы гордимся нашим подходом к работе: используем новейшие технологии, стремимся к постоянному обучению и следуем принципам качественного кода.", "/team")}>
-                Команда
-              </span>
-              <span onClick={() => handleLinkClick("Блог", "Добро пожаловать в наш блог программистов! Здесь мы делимся опытом, идеями и новыми знаниями из мира разработки. Мы пишем статьи, которые будут полезны как начинающим разработчикам, так и опытным специалистам. Темы нашего блога охватывают широкий спектр технологий: от веб-разработки и мобильных приложений до работы с базами данных, DevOps и искусственного интеллекта.", "/blog")}>
-                Блог
-              </span>
-              <span onClick={() => handleLinkClick("Продукты", "Наши продукты — это результат объединения креативности, технического мастерства и страсти к инновациям. Мы создаем программные решения, которые помогают бизнесам и пользователям достигать своих целей быстрее и эффективнее. Наша команда программистов разрабатывает разнообразные продукты — от веб- и мобильных приложений до сложных корпоративных систем и автоматизированных инструментов.", "/products")}>
-                Продукты
-              </span>
-              <span onClick={() => handleLinkClick("Контакты", "Свяжитесь с нами.", "/contacts")}>
-                Контакты
-              </span>
+            <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>О нас</NavLink>
+              <NavLink to="/team" className={({ isActive }) => isActive ? "active" : ""}>Команда</NavLink>
+              <NavLink to="/blog" className={({ isActive }) => isActive ? "active" : ""}>Блог</NavLink>
+              <NavLink to="/products" className={({ isActive }) => isActive ? "active" : ""}>Продукты</NavLink>
+              <NavLink to="/contacts" className={({ isActive }) => isActive ? "active" : ""}>Контакты</NavLink>
             </div>
             <div className="right">
               <span onClick={() => handleLinkClick("Terms and conditions", "Правила и условия использования.", "/terms")}>
                 Terms and conditions
               </span>
-
-<span onClick={() => handleLinkClick("Privacy policy", "Политика конфиденциальности.", "/privacy")}>
+           <span onClick={() => handleLinkClick("Privacy policy", "Политика конфиденциальности.", "/privacy")}>
                 Privacy policy
               </span>
             </div>
           </div>
         </div>
         <div className="footer-social-media">
-          <span><FaFacebookF className="social-icon facebook" /></span>
-          <span><FaInstagram className="social-icon instagram" /></span>
-          <span><FaTwitter className="social-icon twitter" /></span>
+        <span>
+            <FaFacebookF className="facebook" />
+          </span>
+          <span>
+            <FaInstagram className="instagram" />
+          </span>
+          <span>
+            <FaTwitter className="twitter" />
+          </span>
         </div>
       </footer>
 
