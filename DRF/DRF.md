@@ -876,8 +876,8 @@ EMAIL_USE_SSL = False
 
 DOMAIN = 'http://frontend-domain.com'
 SITE_NAME = 'SITE_NAME'
-EMAIL_SUBJECT_PREFIX = 'SITE_NAME'
-DEFAULT_FROM_EMAIL = 'SITE_NAME <noreply@SITE_NAME.com>'
+# EMAIL_SUBJECT_PREFIX = 'SITE_NAME'
+# DEFAULT_FROM_EMAIL = 'SITE_NAME <noreply@SITE_NAME.com>'
 
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'auth/users/reset_password_confirm/{uid}/{token}',

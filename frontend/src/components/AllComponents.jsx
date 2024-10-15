@@ -12,6 +12,8 @@ import BlogDetails from "./Blog/BlogDetails";
 import HOC from "./HOC.jsx"
 import Profile from "./Profile";
 import Faq from "./Faq/index.jsx"
+import ActivateAccount from "./account/ActivateAccount"
+import ResetPassword from "./account/ResetPassword"
 
 const ControlledProducts = HOC(Products)
 const ControlledProductDetails = HOC(ProductDetails)
@@ -33,6 +35,10 @@ function AllComponents() {
                 <Route path="contacts" element={<Contacts />} />
                 <Route path="profile" element={<ControllProfile/>}/>
                 <Route path="*" element={<NoPage />} />
+
+
+                <Route path="auth/users/activate/:uid/:token" element={<ActivateAccount />} />
+                <Route path="auth/users/reset_password_confirm/:uid/:token" element={<ResetPassword />} />
             </Route>
         </Routes>
     );

@@ -46,7 +46,7 @@ function Registration(props) {
                 }
             } else {
                 toast.success("Account successfully created. Now You can log in!", { theme: 'dark' })
-                props.setSection("isRegistered")
+                props.setSection("login")
             }
         }
         catch (error) {

@@ -18,7 +18,7 @@ function Authentication(props) {
                 <button className="close-btn" onClick={props.closeModal}>&times;</button>
                 {
                     authSection == "passwordRecovery" ?
-                        <PasswordRecovery setSection={setSection} />
+                        <PasswordRecovery setSection={setSection} closeModal={props.closeModal} />
                         :
                         authSection == "register" ?
                             <Registration setSection={setSection} />

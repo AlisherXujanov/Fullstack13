@@ -2,11 +2,13 @@ import "./authContent.scss"
 import Heading from '../common/Heading'
 import { useState, useContext } from 'react'
 import { toast } from 'react-toastify';
-import { globalContext } from "../../store"
+import { useNavigate } from "react-router-dom";
+import { BASE_AUTH_URL, globalContext } from "../../store"
 
 
 function PasswordRecovery(props) {
     const state = useContext(globalContext)
+    const navigate = useNavigate()
     const [form, setForm] = useState({
         email: "",
         emailError: ""
@@ -14,7 +16,29 @@ function PasswordRecovery(props) {
 
     function submit(e) {
         e.preventDefault();
-        console.log("submit")
+        const URL = BASE_AUTH_URL + "users/reset_password/"
+        try {
+            fetch(URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email: form.email })
+            })
+                .then(response => {
+                    if (response.status == 204) {
+                        toast.success("We have sent an email confirmation to your address", {theme:"dark"})
+                        e.target.reset()
+                        props.closeModal()
+                        navigate('/')
+                    } else {
+                        toast.error("Ooops...!  Something went wrong.", {theme:"dark"})
+                    }
+                })
+        }
+        catch (e) {
+            console.log(e)
+        }
     }
 
     function goToLogin() {

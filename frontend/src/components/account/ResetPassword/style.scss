@@ -1,0 +1,23 @@
+@import "../../../assets/styles/settings";
+
+.reset-password-wrapper {
+    padding: 20px 500px;
+    margin: 50px;
+
+    form {
+        background-color: $dark-lighter;
+        padding: 100px;
+    }
+
+    @media (max-width: $xx-large-screen) {
+        padding: 20px 200px;
+    }
+
+    @media (max-width: $large-screen) {
+        padding: 20px 100px;
+    }
+
+    @media (max-width: $small-screen) {
+        padding: 20px;
+    }
+}

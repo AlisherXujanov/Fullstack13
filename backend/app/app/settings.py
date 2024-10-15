@@ -230,7 +230,7 @@ REST_FRAMEWORK = {
 #         'rest_framework.authentication.SessionAuthentication',
 #     ]
 
-DOMAIN = 'http://localhost:5173'
+DOMAIN = 'localhost:5173'
 SITE_NAME = 'NFTs'
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'auth/users/reset_password_confirm/{uid}/{token}',
