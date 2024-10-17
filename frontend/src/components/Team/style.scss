@@ -2,7 +2,6 @@
 
 .team-page-wrapper {
     overflow-x: hidden;
-    margin: 100px 0 50px 0;
 
     .heading-wrapper {
         margin-top: 10px;
@@ -18,11 +17,22 @@
         align-items: center;
 
         .team-section {
-            background-color: #1e1e1e;
             padding: 50px;
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            --s: 140px;
+            --c1: #2e2e2e;
+            --c2: #1e1e1e;
+            --_g: #0000 52%, var(--c1) 54% 57%, #0000 59%;
+            background:
+                radial-gradient(farthest-side at -33.33% 50%, var(--_g)) 0 calc(var(--s)/2),
+                radial-gradient(farthest-side at 50% 133.33%, var(--_g)) calc(var(--s)/2) 0,
+                radial-gradient(farthest-side at 133.33% 50%, var(--_g)),
+                radial-gradient(farthest-side at 50% -33.33%, var(--_g)),
+                var(--c2);
+            background-size: calc(var(--s)/4.667) var(--s), var(--s) calc(var(--s)/4.667);
+
             margin: 50px auto;
-            max-width: 900px;
+            max-width: 170vh;
             border-radius: 10px;
         }
 
@@ -46,7 +56,7 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 50px;
 
             li {
                 display: flex;
@@ -90,61 +100,65 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-          
-            .modal-content {
-              background-color: #1e1e1e;
-              max-height: 90vh;
-              padding: 30px;
-              border-radius: 10px;
-              width: 90%;
-              max-width: 600px;
-              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-              color: #fff;
-              position: relative;
-              text-align: center;
 
-          
-              h2 {
-                margin-top: 0;
-                font-size: 1.8em;
+            .modal-content {
+                background-color: #1e1e1e;
+                max-height: 90vh;
+                padding: 30px;
+                border-radius: 10px;
+                width: 90%;
+                max-width: 600px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
                 color: #fff;
-              }
-          
-              p {
-                font-size: 1em;
-                color: #bbb;
-                line-height: 1.6;
-                margin: 15px 0;
-              }
-              img{
-                width: 100%;
-                height: 600px;
-              }
-              a:hover{
-                color: $warning;
-              }
-              a:active{
-                transform: scale(0.8);
-              }
-          
-              .close {
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                font-size: 1.5em;
-                cursor: pointer;
-                color: #fff;
-          
-                &:hover {
-                  color: $warning;
-                  transform: scale(1.5);
+                position: relative;
+                text-align: center;
+
+
+                h2 {
+                    margin-top: 0;
+                    font-size: 1.8em;
+                    color: #fff;
                 }
-                &:active {
-                  transform: scale(0.8);
+
+                p {
+                    font-size: 1em;
+                    color: #bbb;
+                    line-height: 1.6;
+                    margin: 15px 0;
                 }
-              }
+
+                img {
+                    width: 100%;
+                    height: 600px;
+                }
+
+                a:hover {
+                    color: $warning;
+                }
+
+                a:active {
+                    transform: scale(0.8);
+                }
+
+                .close {
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                    font-size: 1.5em;
+                    cursor: pointer;
+                    color: #fff;
+
+                    &:hover {
+                        color: $warning;
+                        transform: scale(1.5);
+                    }
+
+                    &:active {
+                        transform: scale(0.8);
+                    }
+                }
             }
-          }
+        }
 
         .all-members-wrapper {
             @include flex(row, space-evenly, center);
@@ -153,11 +167,12 @@
 
             .member-wrapper {
                 text-align: center;
-                
+
 
                 img {
                     width: 210px;
                     height: 210px;
+                    object-fit: cover;
                     border-radius: 50%;
                     cursor: pointer;
                 }
@@ -169,6 +184,7 @@
                         filter: grayscale(100%);
                         margin: 20px;
                     }
+
                     &:hover {
                         transform: scale(1.05);
                     }

@@ -8,15 +8,16 @@ import { toast } from 'react-toastify'
 
 function ResetPassword() {
     const { uid, token } = useParams()
+    const [isLoading, setIsLoading] = useState(false)
     const [form, setForm] = useState({
         password: "",
         password_conf: "",
     })
-    const navigate = useNavigate() 
+    const navigate = useNavigate()
 
     function submit(e) {
         e.preventDefault();
-
+        setIsLoading(true)
         if (form.password != form.password_conf) {
             toast.error("Passwords do not match...", { theme: "dark" })
             return
@@ -31,7 +32,8 @@ function ResetPassword() {
             })
                 .then(response => {
                     if (response.status === 204) {
-                        toast.success("Successfully changed password! You can login now.", {theme:"dark"})
+                        toast.success("Successfully changed password! You can login now.", { theme: "dark" })
+                        setIsLoading(false)
                         e.target.reset()
                         navigate('/')
                         return
@@ -42,7 +44,7 @@ function ResetPassword() {
                     for (let error_key in data) {
                         let error_list_of_key = data[error_key]
                         for (let err of error_list_of_key) {
-                            toast.error(err, {theme:'dark'})
+                            toast.error(err, { theme: 'dark' })
                         }
                     }
                 })
@@ -59,29 +61,38 @@ function ResetPassword() {
 
     return (
         <div className="reset-password-wrapper auth-content-wrapper">
-            <Heading size={1.2}>Enter new password</Heading>
+            {isLoading && (<div className="hollow-dots-spinner">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+            </div>)}
+            {!isLoading && (
+                <>
+                    <Heading size={1.2}>Enter new password</Heading>
 
-            <form onSubmit={submit}>
-                <div className="form-control">
-                    <label htmlFor="new_password">New password</label>
-                    <input
-                        type="password" id="password" placeholder='New password' name='password'
-                        onChange={handleState}
-                    />
-                </div>
-                <div className="form-control">
-                    <label htmlFor="new_password_conf">Confirm new password</label>
-                    <input
-                        type="password" id="new_password_conf" placeholder='Confirm new password' name='password_conf'
-                        onChange={handleState}
-                    />
+                    <form onSubmit={submit}>
+                        <div className="form-control">
+                            <label htmlFor="new_password">New password</label>
+                            <input
+                                type="password" id="password" placeholder='New password' name='password'
+                                onChange={handleState}
+                            />
+                        </div>
+                        <div className="form-control">
+                            <label htmlFor="new_password_conf">Confirm new password</label>
+                            <input
+                                type="password" id="new_password_conf" placeholder='Confirm new password' name='password_conf'
+                                onChange={handleState}
+                            />
 
-                </div>
+                        </div>
 
-                <div className="form-control">
-                    <button type="submit" className="warning-btn">Submit</button>
-                </div>
-            </form>
+                        <div className="form-control">
+                            <button type="submit" className="warning-btn">Submit</button>
+                        </div>
+                    </form>
+                </>
+            )}
         </div>
     );
 }
