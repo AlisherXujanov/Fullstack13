@@ -3,10 +3,10 @@ import Heading from "../common/Heading";
 import "./style.scss";
 import firstImage from "../../assets/images/1.png";
 import secondImage from "../../assets/images/2.png";
-import thirdImage from "../../assets/images/3.png";
-import fourthImage from "../../assets/images/4.png";
+import thirdImage from "../../assets/images/3.webp";
+import fourthImage from "../../assets/images/4.webp";
 import fiveImage from "../../assets/images/5.png";
-import sixImage from "../../assets/images/6.png";
+import sixImage from "../../assets/images/6.webp";
 import Member from "./Member";
 
 function Team(props) {
