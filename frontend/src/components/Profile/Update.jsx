@@ -82,7 +82,7 @@ function Update(props) {
     }
 
     function validate({ name, value }) {
-        const usernamePattern = /^[a-zA-Z0-9_]{1,10}$/
+        const usernamePattern = /^[a-zA-Z0-9_]{1,20}$/
         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
         let error_msg = ''

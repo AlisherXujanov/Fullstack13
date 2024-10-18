@@ -65,10 +65,12 @@ header {
                     .content {
                         display: inline-block;
                         position: absolute;
+                        z-index: 10;
                         width: 160px;
                         bottom: -35px;
                         left: 0;
                         display: none;
+                        text-align: center;
 
                         button {
                             position: relative;

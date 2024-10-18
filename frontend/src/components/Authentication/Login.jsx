@@ -69,7 +69,7 @@ function Login(props) {
         // immediateFeedbackOnError
         // STEPS:
         // 1. Create patterns
-        const usernamePattern = /^[a-zA-Z0-9_]{1,10}$/
+        const usernamePattern = /^[a-zA-Z0-9_]{1,20}$/
         const passwordPattern = /^[a-zA-Z0-9_$&]{5,}$/
 
         // 2. Check if the value matches the pattern
