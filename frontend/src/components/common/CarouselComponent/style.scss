@@ -2,7 +2,6 @@
 
 .carousel-section {
     position: relative;
-    margin-top: 50px;
 
     .inner-carousel-info {
         position: absolute;
@@ -190,7 +189,6 @@
 
 @media (max-width: $small-screen) {
     .carousel-section {
-        height: 450px;
 
         .slider-wrapper {
             .slide {
