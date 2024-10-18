@@ -16,10 +16,10 @@ import ActivateAccount from "./account/ActivateAccount"
 import ResetPassword from "./account/ResetPassword"
 import ProductComments from "./Products/ProductComments";
 
-const ControlledProducts = HOC(Products)
-const ControlledProductDetails = HOC(ProductDetails)
+const ControlledProducts = HOC(Products, true)
+const ControlledProductDetails = HOC(ProductDetails, true)
 const ControllProfile = HOC(Profile)
-const ControlledProductComments = HOC(ProductComments)
+const ControlledProductComments = HOC(ProductComments, true)
 
 function AllComponents() {
     const location = useLocation();

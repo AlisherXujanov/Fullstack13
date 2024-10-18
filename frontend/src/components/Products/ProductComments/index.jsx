@@ -4,6 +4,7 @@ import { BASE_AUTH_URL, globalContext } from "../../../store";
 import Heading from "../../common/Heading";
 import "./style.scss"
 import axios from "axios";
+import { fetchProducts } from "../../../store/helpers";
 
 function ProductComments() {
     const state = useContext(globalContext)
@@ -13,9 +14,10 @@ function ProductComments() {
     useEffect(() => {
         let result = state.products?.find(p => p.id === parseInt(id))
         setProduct(result)
-        getProfiles()
-    }, [state])
-
+        if (product && result && result.related_comments?.length > 0) {
+            getProfiles()
+        }
+    }, [state.products])
 
     async function getProfiles() {
         let ids_set = new Set()
@@ -23,7 +25,7 @@ function ProductComments() {
             ids_set.add(comm.user_profile)
         })
         const TOKEN = localStorage.getItem("token")
-        const data = JSON.stringify({ profiles: ids_set })
+        const data = JSON.stringify({ profiles: Array.from(ids_set) })
         let response = await axios.post(BASE_AUTH_URL + "users/profile", data, {
             headers: {
                 "Authorization": `Token ${TOKEN}`

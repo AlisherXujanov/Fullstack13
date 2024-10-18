@@ -16,6 +16,8 @@ class ProfileView(APIView):
 
     def post(self, request):
         ids = request.body
+        # TODO: get profiles from ids
+        return Response({"success": request.body}, status=200)
 
 
 
