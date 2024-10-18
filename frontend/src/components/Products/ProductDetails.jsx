@@ -35,8 +35,8 @@ function ProductDetails(props) {
     }
 
     async function getProduct() {
-        let product = state.products?.find(p => p.id === parseInt(id))
-        setProduct(product)
+        let result = state.products?.find(p => p.id === parseInt(id))
+        setProduct(result)
     }
 
     function updateProduct() {
@@ -56,7 +56,7 @@ function ProductDetails(props) {
             fetch(BASE_URL_APIS + `products/${id}/`, { method: "DELETE" })
                 .then(res => {
                     if (res.ok) {
-                        toast.success(product.name + " deleted successfully", { theme: 'dark' })
+                        toast.success(product?.name + " deleted successfully", { theme: 'dark' })
                         showDeleteDialog(null, true)
                         navigate("/products")
                     }
@@ -68,8 +68,8 @@ function ProductDetails(props) {
     }
 
     function formattedContent() {
-        if (product.description == null) { return "" }
-        return product.description.split(". ").map(item => {
+        if (product?.description == null) { return "" }
+        return product?.description.split(". ").map(item => {
             return item + ".<br>"
         })
     }
@@ -81,10 +81,10 @@ function ProductDetails(props) {
                 <p className="intro">
                     Продукты / {product?.name?.split(" ").slice(0, 3).join(" ")}
                 </p>
-                <Heading size={1}>{product.name}</Heading>
+                <Heading size={1}>{product?.name}</Heading>
 
 
-                {product.owner == state.profile.user?.id &&
+                {product?.owner == state.profile.user?.id &&
                     <div className="edit-buttons">
                         <button className="warning-btn update-btn" onClick={updateProduct}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" className="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -101,8 +101,8 @@ function ProductDetails(props) {
                         {showDialog &&
                             <div className="deletion-dialog">
                                 <div className="content">
-                                    <h1>Delete {product.name}</h1>
-                                    <p>Are you sure to delete {product.name} ?</p>
+                                    <h1>Delete {product?.name}</h1>
+                                    <p>Are you sure to delete {product?.name} ?</p>
                                     <div className="confirm-dialog-buttons">
                                         <button className="warning-btn delete-btn" onClick={fetchDelete}>Yes</button>
                                         <button className="warning-btn update-btn" onClick={(e) => { showDeleteDialog(e, true) }}>No</button>
@@ -123,14 +123,14 @@ function ProductDetails(props) {
 
 
                 <div className="image-wrapper">
-                    <img src={product.image} alt="Product image" />
+                    <img src={product?.image} alt="Product image" />
                     <p className="content"><span dangerouslySetInnerHTML={{ __html: formattedContent() }} /></p>
                 </div>
                 <p className="content-content2">
-                    {product.description}
+                    {product?.description}
                 </p>
                 <p className="content-content3">
-                    {product.description}
+                    {product?.description}
                 </p>
 
                 <div className="documents">
