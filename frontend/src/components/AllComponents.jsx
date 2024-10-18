@@ -14,10 +14,12 @@ import Profile from "./Profile";
 import Faq from "./Faq/index.jsx"
 import ActivateAccount from "./account/ActivateAccount"
 import ResetPassword from "./account/ResetPassword"
+import ProductComments from "./Products/ProductComments";
 
 const ControlledProducts = HOC(Products)
 const ControlledProductDetails = HOC(ProductDetails)
 const ControllProfile = HOC(Profile)
+const ControlledProductComments = HOC(ProductComments)
 
 function AllComponents() {
     const location = useLocation();
@@ -30,6 +32,7 @@ function AllComponents() {
                 <Route path="blog" element={<Blog />} />
                 <Route path="blog/:id" element={<BlogDetails />} />
                 <Route path="products" element={<ControlledProducts />} />
+                <Route path="comments/:id" element={<ControlledProductComments />} />
                 <Route path="faq" element={<Faq />} />
                 <Route path="products/:id" element={<ControlledProductDetails />} />
                 <Route path="contacts" element={<Contacts />} />

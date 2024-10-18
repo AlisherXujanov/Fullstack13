@@ -35,6 +35,7 @@ export default function withAuthCheck(Component) {
         }
         async function fetchEverything() {
             const data = await fetchProducts()
+            console.log(data)
             state.dispatch({ type: "SET_PRODUCTS", payload: data })
             // ---------------------------------------------------
             let account = await getUserProfile()

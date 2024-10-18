@@ -14,6 +14,9 @@ class ProfileView(APIView):
         serializer = ProfileSerializer(profile)
         return Response(serializer.data)
 
+    def post(self, request):
+        ids = request.body
+
 
 
 class UpdateProfileView(APIView):

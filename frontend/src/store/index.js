@@ -14,6 +14,7 @@ const initialState = {
     products: [],
     showModal: false,
     authModalOpened: false,
+    loaded: true,
 }
 
 

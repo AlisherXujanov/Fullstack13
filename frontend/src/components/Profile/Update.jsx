@@ -38,9 +38,9 @@ function Update(props) {
                 username: profileState.username,
                 email: profileState.email,
                 first_name: profileState.first_name,
-                last_name: profileState.first_name,
+                last_name: profileState.last_name,
             },
-            bio: profileState.first_name,
+            bio: profileState.bio,
         }
         try {
             const TOKEN = localStorage.getItem('token')

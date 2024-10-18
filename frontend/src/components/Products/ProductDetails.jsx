@@ -25,7 +25,7 @@ function ProductDetails(props) {
         goToTopSmoothly()
         getProduct()
         document.title = "Product: " + product?.name
-    }, [])
+    }, [state])
 
     function goToTopSmoothly() {
         window.scrollTo({
@@ -35,14 +35,8 @@ function ProductDetails(props) {
     }
 
     async function getProduct() {
-        const URL = "https://alisherkhujanov.pythonanywhere.com/apis/" + "products/" + id
-        let response = await fetch(URL, {
-            headers: {
-                Authorization: "Token " + getTokenFromLS()
-            }
-        })
-        let data = await response.json()
-        setProduct(data)
+        let product = state.products?.find(p => p.id === parseInt(id))
+        setProduct(product)
     }
 
     function updateProduct() {

@@ -19,6 +19,11 @@
 
         p {
             margin: 20px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical;
         }
     }
 
