@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 function Login(props) {
     const navigate = useNavigate()
     const state = useContext(globalContext)
-
+    const [isLoading, setIsLoading] = useState(false)
 
     const [loginState, setLoginState] = useState({
         username: "",
@@ -36,8 +36,10 @@ function Login(props) {
             return
         } else {
             try {
+                setIsLoading(true)
                 let account = await fetchLogin(user)
                 toast.success("You have successfully logged in", { theme: "dark" })
+                setIsLoading(false)
                 state.dispatch({ type: "SET_USER", payload: account })
                 navigate('/profile')
                 // TODO
@@ -45,6 +47,7 @@ function Login(props) {
                 // SET image of the user instead of his username
                 props.closeModal()
             } catch (error) {
+                setIsLoading(false)
                 toast.error("User not found with provided credentials", { theme: "dark" })
             }
         }
@@ -96,7 +99,11 @@ function Login(props) {
         <div className="auth-content-wrapper">
             <Heading size={1.2}>Sign in</Heading>
 
-
+            {isLoading && (<div className="loading-content"><div className="hollow-dots-spinner">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+            </div></div>)}
             <form onSubmit={submit}>
                 <div className="form-control">
                     <label htmlFor="name">Username or e-mail</label>
@@ -133,9 +140,7 @@ function Login(props) {
                     }
                 </div>
                 <div className="form-control">
-                    <button className='warning-btn'>
-                        Sign in
-                    </button>
+                    <button className='warning-btn'>Sign in</button>
 
                     <a href="#" className="forgot-password-link"
                         onClick={() => props.setSection("passwordRecovery")}

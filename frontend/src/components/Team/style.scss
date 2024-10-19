@@ -60,8 +60,9 @@
 
             li {
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: space-between;
+                flex-direction: column;
                 padding: 15px;
                 background-color: #2a2a2a;
                 border-left: 5px solid $warning;
