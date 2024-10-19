@@ -6,6 +6,8 @@ import { registerNewUser } from "../../store/helpers.js"
 
 
 function Registration(props) {
+    const [isLoading, setIsLoading] = useState(false)
+
     const [regState, setRegState] = useState({
         username: '',
         email: '',
@@ -36,6 +38,7 @@ function Registration(props) {
             re_password: regState.re_password
         }
         try {
+            setIsLoading(true)
             let response = await registerNewUser(newUser)
             let status_code = response.status
             let data = await response.json()
@@ -43,13 +46,17 @@ function Registration(props) {
             if (status_code == 400) {
                 for (let key in data) {
                     toast.error(String(data[key]), { theme: 'dark' })
+                    setIsLoading(false)
+
                 }
             } else {
+                setIsLoading(false)
                 toast.success("Account successfully created. Now You can log in!", { theme: 'dark' })
                 props.setSection("login")
             }
         }
         catch (error) {
+            setIsLoading(false)
             toast.error(error, { theme: 'dark' })
         }
         finally {
@@ -103,7 +110,11 @@ function Registration(props) {
     return (
         <div className="auth-content-wrapper">
             <Heading size={1.2}>Sign up</Heading>
-
+            {isLoading && (<div className="loading-content"><div className="hollow-dots-spinner">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+            </div></div>)}
             <form onSubmit={submit}>
                 <div className="form-control">
                     <label htmlFor="name">Username</label>

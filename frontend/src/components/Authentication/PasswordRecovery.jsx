@@ -8,6 +8,7 @@ import { BASE_AUTH_URL, globalContext } from "../../store"
 
 function PasswordRecovery(props) {
     const state = useContext(globalContext)
+    const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
     const [form, setForm] = useState({
         email: "",
@@ -16,6 +17,7 @@ function PasswordRecovery(props) {
 
     function submit(e) {
         e.preventDefault();
+        setIsLoading(true)
         const URL = BASE_AUTH_URL + "users/reset_password/"
         try {
             fetch(URL, {
@@ -28,10 +30,12 @@ function PasswordRecovery(props) {
                 .then(response => {
                     if (response.status == 204) {
                         toast.success("We have sent an email confirmation to your address", {theme:"dark"})
+                        setIsLoading(false)
                         e.target.reset()
                         props.closeModal()
                         navigate('/')
                     } else {
+                        setIsLoading(false)
                         toast.error("Ooops...!  Something went wrong.", {theme:"dark"})
                     }
                 })
@@ -71,7 +75,11 @@ function PasswordRecovery(props) {
             <Heading size={1.2}>Recover password</Heading>
 
             <button className="go-back-btn" onClick={goToLogin}>&lt;</button>
-
+            {isLoading && (<div className="loading-content"><div className="hollow-dots-spinner">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+            </div></div>)}
             <form onSubmit={submit}>
                 <div className="form-control">
                     <label htmlFor="email">Email</label>

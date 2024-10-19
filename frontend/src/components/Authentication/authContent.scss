@@ -126,4 +126,15 @@
             padding-top: 10px;
         }
     }
+    .loading-content{
+        position: absolute;
+        width: 120%;
+        height: 143%;
+        left: -40px;
+        top: -40px;
+        background-color: #00000069;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
