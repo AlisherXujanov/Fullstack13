@@ -7,29 +7,30 @@ import { useEffect } from 'react'
 import Lycence from "../../assets/images/certificates/second.png"
 import { useContext } from "react"
 import { globalContext } from "../../store/index.js"
+import { useTranslation } from "react-i18next";
+
+
 
 function About() {
   const state = useContext(globalContext)
-
+  const {t} = useTranslation()
   useEffect(() => {
     document.title = "About Us";
   }, []);
 
   return (
     <main className="about-page-wrapper">
-      <Heading size={1.4}>О нас</Heading>
+      <Heading size={1.4}>{t('navigation.about-us')}</Heading>
 
       <div className="content-wrapper">
         <img src={ImageAbout} alt="ImageAbout" width={"100%"} height={450} />
 
         <div className="info">
-          <p>Наша команда Fullstack – это не просто коллектив, это настоящий отряд героев, готовых покорять любые инвестиционные вершины. Глава Алишер всегда держит руку на пульсе, давая стратегические указания, а AkerFer и Ойбеки без устали оптимизируют и масштабируют. Когда ночь спускается на код, на помощь приходит Batman — никто не знает, когда он спит, но все знают, что он спасет проект в самый неожиданный момент. </p>
-          <p>Кореец всегда в деле, кодит с такой скоростью, что иногда за ним даже не успевает клавиатура. А когда нужно найти сложное решение — тут на сцену выходит Главный мозг: он видит все, как в «Матрице», и находит выход из любой ситуации. Ятолькочтопришел — настоящий мастер неожиданных решений: пришел, увидел, написал код и оставил всех в шоке. А Egypt всегда на передовой, как настоящий египетский герой, готовый сразиться с любыми багами.
-            И конечно, Шерка — наш загадочный талисман, который, кажется, всегда знает что-то важное, но никогда не говорит заранее, держит интригу до последнего.
-          </p>
-          <p>Мы, Fullstack, создаем такие решения, что даже компьютерные вирусы обходят нас стороной. Вместе мы не просто работаем — мы завоевываем новые рубежи в мире IT и инвестиций... с легкостью и хорошим настроением!</p>
+          <p>{t('about-us.info.0')}</p>
+          <p>{t('about-us.info.1')}</p>
+          <p>{t('about-us.info.2')}</p>
           <a className="warning-btn" href={Lycence} download={"Lycence"} style={{ display: "inline-block" }}>
-            <TbLicense /> Лицензии
+            <TbLicense /> {t('about-us.licenses')}
           </a>
 
         </div>

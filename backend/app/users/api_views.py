@@ -3,8 +3,8 @@ from .serializers import ProfileSerializer, UserSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-import json
 from rest_framework import generics
+import json
 
 # JWT: JSON Web Token
 
@@ -16,8 +16,10 @@ class ProfileView(APIView):
 
     def post(self, request):
         ids = request.body
-        # TODO: get profiles from ids
-        return Response({"success": request.body}, status=200)
+        profile_ids = json.loads(ids)['profiles']
+        profiles = Profile.objects.filter(id__in=profile_ids)
+        serializer = ProfileSerializer(profiles, many=True)
+        return Response({"profiles": serializer.data}, status=200)
 
 
 

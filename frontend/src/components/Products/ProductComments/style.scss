@@ -4,4 +4,33 @@
 
 .comments-page-wrapper {
     padding: 50px 200px;
+
+    .all-related-comments {
+        margin-top: 50px;
+        @include flex(column, flex-start, flex-start, 10px);
+
+        .comment-item {
+            background-color: $warning-t;
+            padding: 3px 10px;
+            border-radius: 10px;
+            @include flex(row, center, flex-start, 3px);
+
+
+            .owner-image {
+                border-radius: 50%;
+                display: inline-block;
+                margin-right: 5px;
+                width: 35px;
+                height: 35px;
+                padding: 0;
+            }
+
+            .comment-text {
+                position: relative;
+                bottom: 12px;
+                color: $warning;
+            }
+        }
+
+    }
 }

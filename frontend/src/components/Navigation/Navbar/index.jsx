@@ -5,12 +5,22 @@ import { useContext } from "react";
 import { globalContext } from "../../../store";
 import { fetchLogout } from "../../../store/helpers";
 import { toast } from "react-toastify";
-
+import { useState } from 'react'
+import { useTranslation } from "react-i18next";
 import "./style.scss";
 
 function Navbar() {
   const state = useContext(globalContext);
   const navigate = useNavigate();
+  const { t, i18n: { changeLanguage, language } } = useTranslation()
+  const [currentLanguage, setCurrentLanguage] = useState(language)
+
+  const handleChangeLanguage = () => {
+    const newLanguage = currentLanguage === 'en' ? 'ru' : 'en'
+    setCurrentLanguage(newLanguage)
+    changeLanguage(newLanguage)
+  }
+
 
   function closeModal() {
     state.dispatch({ type: "SET_AUTH_MODAL", payload: false });
@@ -39,31 +49,32 @@ function Navbar() {
             to="about"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            О нас
+            {t("navigation.about-us")}
           </NavLink>
           <NavLink
             to="team"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            Команда
+            {t('navigation.team')}
           </NavLink>
           <NavLink
             to="blog"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            Блог
+            {t('navigation.blog')}
           </NavLink>
           <NavLink
             to="products"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            Продукты
+            {t('navigation.products')}
           </NavLink>
           <NavLink
             to="contacts"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            Контакты
+            {t('navigation.contacts')}
+
           </NavLink>
           <NavLink
             to="faq"
@@ -100,9 +111,9 @@ function Navbar() {
               ) : null}
             </div>
           )}
-          <a href="#">
-            <u>Рус</u>
-          </a>
+          <button className="warning-btn" onClick={handleChangeLanguage}>
+            {currentLanguage}
+          </button>
         </div>
       </div>
     </div>

@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useState, useContext, useEffect } from 'react'
-import { BASE_AUTH_URL, globalContext } from "../../../store";
+import { BASE_URL, BASE_AUTH_URL, globalContext } from "../../../store";
 import Heading from "../../common/Heading";
 import "./style.scss"
 import axios from "axios";
-import { fetchProducts } from "../../../store/helpers";
 
 function ProductComments() {
     const state = useContext(globalContext)
     const [product, setProduct] = useState([])
+    const [owners, setOwners] = useState([])
     const { id } = useParams()
 
     useEffect(() => {
@@ -31,11 +31,17 @@ function ProductComments() {
                 "Authorization": `Token ${TOKEN}`
             }
         })
-        console.log(response)
         if (response.status === 200) {
-            return response.data
+            console.log(response.data?.profiles)
+            setOwners(response.data?.profiles)
         }
         return false
+    }
+
+    function getOwnerImage(user_profile) {
+        let profile = owners.find(p => p.id === user_profile)
+        const imageURL = BASE_URL + profile?.image.slice(1)
+        return imageURL
     }
 
 
@@ -43,13 +49,21 @@ function ProductComments() {
         <div className="comments-page-wrapper">
             <Heading size={1.2}>Comments of {product?.name}</Heading>
 
-            {product && product.related_comments?.map((comm, index) => {
-                return (
-                    <div key={index}>
-                        <h2>{comm.content}</h2>
-                    </div>
-                )
-            })}
+            <div className="all-related-comments">
+                {product && product.related_comments?.map((comm, index) => {
+                    return (
+                        <div className="comment-item" key={index}>
+                            <p>
+                                {
+                                    comm.user_profile && getOwnerImage(comm.user_profile) &&
+                                    <img className="owner-image" src={getOwnerImage(comm.user_profile)} />
+                                }
+                                <span className="comment-text">{comm.content}</span>
+                            </p>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     );
 }
