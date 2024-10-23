@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Heading from "../../common/Heading";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
@@ -14,6 +14,22 @@ const Modal = ({ show, onClose, title, content, link }) => {
       onClose();
     }, 300);
   };
+
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.key === "Escape") {
+        handleClose();
+      }
+    };
+
+    if (show) {
+      window.addEventListener("keydown", handleEsc);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [show]);
 
   if (!show && !isClosing) return null;
 

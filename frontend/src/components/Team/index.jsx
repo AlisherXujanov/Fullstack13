@@ -34,6 +34,22 @@ function Team(props) {
     setModalOpen(false);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isModalOpen]);
+
   return (
     <main className="team-page-wrapper">
       <div className="text-wrapper">
