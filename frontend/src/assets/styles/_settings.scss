@@ -97,3 +97,7 @@ $link-color: #007bff;
         opacity: 0;
     }
 }
+
+%base-height{
+    min-height: 100vh;
+}
