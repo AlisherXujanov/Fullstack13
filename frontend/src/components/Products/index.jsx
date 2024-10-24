@@ -8,11 +8,11 @@ import { getTokenFromLS, fetchProducts } from "../../store/helpers"
 import ModalComponent from "../common/ModalComponent"
 import ProductForm from "../common/ProductForm"
 import { toast } from "react-toastify"
-
+import {useTranslation} from 'react-i18next'
 
 function Products() {
     const state = useContext(globalContext)
-
+    const {t} = useTranslation()
     useEffect(() => {
         document.title = "Products";
     }, [])
@@ -44,12 +44,12 @@ function Products() {
 
     return (
         <main className="products-page-wrapper">
-            <Heading size={1.2}>Products</Heading>
-            <button className="warning-btn create-btn" onClick={openModal}>Create new product</button>
+            <Heading size={1.2}>{t('products.title')}</Heading>
+            <button className="warning-btn create-btn" onClick={openModal}>{t('products.create_new')}</button>
 
             {state.showModal &&
                 <div className="create-form-modal-wrapper">
-                    <ModalComponent title="Create new product">
+                    <ModalComponent title={t('products.create_new')}>
                         <ProductForm />
                     </ModalComponent>
                 </div>
@@ -78,17 +78,17 @@ function Products() {
                                     </Link>
 
                                     <Link to={"/products/" + product.id} className="products-info">
-                                        <button className="warning-btn">Подробнее</button>
+                                        <button className="warning-btn">{t('products.read-more')}</button>
                                     </Link>
 
                                     <Link to={"/comments/" + product.id} className="product-comments">
-                                        <span>{product.related_comments.length}</span> Комментарии <span className="arrow-right">&gt;</span>
+                                        <span>{product.related_comments.length}</span> {t('products.comments')} <span className="arrow-right">&gt;</span>
                                     </Link>
                                 </ProductsInfo>
                             </div>
                         )
                     })
-                    : <h2>Нет продуктов</h2>
+                    : <h2>{t('products.no-products')}</h2>
                 }
             </div>
             <h2>

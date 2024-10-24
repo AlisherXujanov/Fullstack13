@@ -53,36 +53,104 @@
                 }
             }
         },
-        "team":{
-            "title":"Our team",
-            "desc":"We are a group of professionals united by a common goal: to create high-quality, innovative and effective solutions for our clients. Each of us makes a unique contribution, which allows us to achieve outstanding results in our projects.",
-            "content":{
-                "item-1":{
-                    "title":"Experience and expertise",
-                    "desc":"Each member of our team has deep knowledge in their field, which allows us to cope with tasks of any complexity."
+        "team": {
+            "title": "Our team",
+            "desc": "We are a group of professionals united by a common goal: to create high-quality, innovative and effective solutions for our clients. Each of us makes a unique contribution, which allows us to achieve outstanding results in our projects.",
+            "content": {
+                "item-1": {
+                    "title": "Experience and expertise",
+                    "desc": "Each member of our team has deep knowledge in their field, which allows us to cope with tasks of any complexity."
                 },
-                "item-2":{
-                    "title":"Creative approach",
-                    "desc":"We don’t just follow trends, we create them, offering non-standard solutions for business."
+                "item-2": {
+                    "title": "Creative approach",
+                    "desc": "We don’t just follow trends, we create them, offering non-standard solutions for business."
                 },
-                "item-3":{
-                    "title":"Customer focus",
-                    "desc":"We always take into account the needs of our customers and strive to exceed their expectations."
+                "item-3": {
+                    "title": "Customer focus",
+                    "desc": "We always take into account the needs of our customers and strive to exceed their expectations."
                 },
-                "item-4":{
-                    "title":"Teamwork",
-                    "desc":"Coordinated work and exchange of experience within the team allow us to adapt to changes and remain effective."
+                "item-4": {
+                    "title": "Teamwork",
+                    "desc": "Coordinated work and exchange of experience within the team allow us to adapt to changes and remain effective."
                 }
             },
-            "supporters-partners":"Supporters and Partners"
+            "supporters-partners": "Supporters and Partners"
         },
-        "consultation":{
-            "fullname":"Full name",
+        "consultation": {
+            "fullname": "Full name",
+            "email": "Email",
+            "phone": "Phone",
+            "message": "Message",
+            "get-consultation": "Get a consultation",
+            "notification": "Message sent successfully"
+        },
+        "products": {
+            "title": "Products",
+            "create_new": "Create new product",
+            "read-more": "Read more",
+            "comments": "Comments",
+            "no-products": "No products",
+            "delete":["Delete","Are you sure to delete", "Yes", "No"],
+            "product":"Product",
+            "form":{
+                "name":{
+                    "title":"Name of the product",
+                    "name":"Name"
+                },
+                "price":{
+                    "title":"Price of the product",
+                    "name":"Price"
+                },
+                "image":{
+                    "title":"Image of the product",
+                    "name":"Image"
+                },
+                "desc":{
+                    "title":"Description of the product",
+                    "name":"Description"
+                }
+            },
+            "update-product":"Update product"
+        },
+        "contacts":{
+            "title":"Contacts",
+            "question":"Ask us any question",
             "email":"Email",
+            "legal-address":"Legal address",
+            "name":"Name",
             "phone":"Phone",
-            "message":"Message",
-            "get-consultation":"Get a consultation",
-            "notification":"Message sent successfully"
+            "subscribe":"Subscribe",
+            "office":"Office in Samarkand",
+            "your-location":"Your location"
+
+
+        },
+        "faq":{
+            "title":"Frequently asked questions",
+            "desc":"Here, you`ll find answers to the most commonly asked questions about our products, services, and policies.",
+            "input":"Search your ask",
+            "general":"General",
+            "nft-product":"NFT Product",
+            "payment":"Payment",
+            "content":{
+                "item-1":{
+                    "title":"What is an NFT marketplace?",
+                    "desc":"An NFT marketplace is a platform that allows users to buy, sell, and trade non-fungible tokens (NFTs).NFTs are unique digital assets that can represent anything from artwork and collectibles to in-game items and virtual real estate."
+                },
+                "item-2":{
+                    "title":"How does buying an NFT work?",
+                    "desc":"Buying an NFT involves creating an account on a marketplace, connecting a digital wallet, and then purchasing the NFT using cryptocurrency."
+                },
+                "item-3":{
+                    "title":"What are the benefits of owning an NFT?",
+                    "desc":"Owning an NFT can provide benefits such as proof of ownership, the potential for value appreciation, and exclusive access to certain content or experiences."
+                },
+                "item-4":{
+                    "title":"Are there any risks associated with buying NFTs?",
+                    "desc":"Yes, buying NFTs carries risks such as market volatility, potential scams, and the lack of regulation in the NFT space."
+                }
+            }
+
         }
     }
 }
