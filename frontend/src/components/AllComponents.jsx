@@ -11,10 +11,15 @@ import Contacts from './Contacts'
 import BlogDetails from "./Blog/BlogDetails";
 import HOC from "./HOC.jsx"
 import Profile from "./Profile";
+import Faq from "./Faq/index.jsx"
+import ActivateAccount from "./account/ActivateAccount"
+import ResetPassword from "./account/ResetPassword"
+import ProductComments from "./Products/ProductComments";
 
-const ControlledProducts = HOC(Products)
-const ControlledProductDetails = HOC(ProductDetails)
+const ControlledProducts = HOC(Products, true)
+const ControlledProductDetails = HOC(ProductDetails, true)
 const ControllProfile = HOC(Profile)
+const ControlledProductComments = HOC(ProductComments, true)
 
 function AllComponents() {
     const location = useLocation();
@@ -27,10 +32,16 @@ function AllComponents() {
                 <Route path="blog" element={<Blog />} />
                 <Route path="blog/:id" element={<BlogDetails />} />
                 <Route path="products" element={<ControlledProducts />} />
+                <Route path="comments/:id" element={<ControlledProductComments />} />
+                <Route path="faq" element={<Faq />} />
                 <Route path="products/:id" element={<ControlledProductDetails />} />
                 <Route path="contacts" element={<Contacts />} />
                 <Route path="profile" element={<ControllProfile/>}/>
                 <Route path="*" element={<NoPage />} />
+
+
+                <Route path="auth/users/activate/:uid/:token" element={<ActivateAccount />} />
+                <Route path="auth/users/reset_password_confirm/:uid/:token" element={<ResetPassword />} />
             </Route>
         </Routes>
     );

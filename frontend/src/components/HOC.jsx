@@ -4,7 +4,7 @@ import { getTokenFromLS, getUserProfile, fetchProducts } from '../store/helpers.
 import { globalContext } from '../store'
 import { toast } from 'react-toastify'
 
-export default function withAuthCheck(Component) {
+export default function withAuthCheck(Component, getProducts=false) {
     return function AuthenticatedComponent(props) {
         const state = useContext(globalContext)
         const navigate = useNavigate()
@@ -16,6 +16,7 @@ export default function withAuthCheck(Component) {
                 console.clear()
                 return
             }
+            state.dispatch({type:"SET_LOADED", payload: false})
             let response = getUserProfile()
             if (response == false) {
                 sendToAuth()
@@ -23,6 +24,7 @@ export default function withAuthCheck(Component) {
                 return
             }
             fetchEverything()
+            state.dispatch({type:"SET_LOADED", payload: true})
         }, [navigate])
 
         function sendToAuth() {
@@ -34,8 +36,11 @@ export default function withAuthCheck(Component) {
             state.dispatch({ type: "SET_USER", payload: {} })
         }
         async function fetchEverything() {
-            const data = await fetchProducts()
-            state.dispatch({ type: "SET_PRODUCTS", payload: data })
+            if (getProducts) {
+                const data = await fetchProducts()
+                state.dispatch({ type: "SET_PRODUCTS", payload: data })
+                console.log(data)
+            }
             // ---------------------------------------------------
             let account = await getUserProfile()
             state.dispatch({ type: "SET_USER", payload: account })

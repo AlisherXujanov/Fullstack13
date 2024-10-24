@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from django.utils.translation import gettext_lazy as _
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -187,9 +188,15 @@ LOGIN_URL = 'account_login'
 LOGOUT_URL = 'account_logout'
 SIGNUP_REDIRECT_URL = 'landing_page'
 SIGNUP_URL = 'account_signup'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
+# WE CAN FIND EMAIL credentials in https://myaccount.google.com/apppasswords
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
+EMAIL_HOST = 'smtp.gmail.com' 
+EMAIL_PORT = 587  
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = True
 
 
 LANGUAGE_CODE = 'en' # This is the default language
@@ -223,16 +230,25 @@ REST_FRAMEWORK = {
 #         'rest_framework.authentication.SessionAuthentication',
 #     ]
 
-DOMAIN = '127.0.0.1:8000'
+DOMAIN = 'localhost:5173'
 SITE_NAME = 'NFTs'
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'auth/users/reset_password_confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'auth/users/reset_username_confirm/{uid}/{token}',
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'USERNAME_RESET_CONFIRM_RETYPE': True,
     'ACTIVATION_URL': 'auth/users/activate/{uid}/{token}',
-    'SEND_ACTIVATION_EMAIL': True,
-    'SERIALIZERS': {},
     "USER_ID_FIELD": "username", # We use username for login
     "USER_CREATE_PASSWORD_RETYPE": True, # We can use this to make user retype the password
+    'SEND_ACTIVATION_EMAIL': True,  # If we want to send an activation email
     # "LOGIN_FIELD": "email", # We can use email or username for login
+
+    # Redefining the serializers
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.UserCreateSerializer',  # This is the serializer for creating a user
+        'user': 'users.serializers.UserCreateSerializer',         # This is the serializer for the user
+        'user_delete': 'djoser.serializers.UserDeleteSerializer', # This is the serializer for deleting a user
+    },
 }
 
 

@@ -16,13 +16,19 @@ export default function App() {
   return (
     <BrowserRouter>
       <Suspense fallback={<LoadingSpinner />}>
-        <div className="toast-wrapper">
-          <ToastContainer />
-        </div>
+        {state.loaded ?
+          <>
+            <div className="toast-wrapper">
+              <ToastContainer />
+            </div>
 
-        <globalContext.Provider value={state}>
-          <AllComponents />
-        </globalContext.Provider>
+            <globalContext.Provider value={state}>
+              <AllComponents />
+            </globalContext.Provider>
+          </>
+          :
+          <LoadingSpinner />
+        }
       </Suspense>
     </BrowserRouter>
   );

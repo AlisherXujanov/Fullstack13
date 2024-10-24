@@ -1579,8 +1579,14 @@ LOGIN_URL = 'account_login'
 LOGOUT_URL = 'account_logout'
 SIGNUP_REDIRECT_URL = 'home'
 SIGNUP_URL = 'account_signup'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-ACCOUNT_EMAIL_VERIFICATION = "none"
+
+# WE CAN FIND EMAIL credentials in https://myaccount.google.com/apppasswords
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
+EMAIL_HOST = 'smtp.gmail.com' 
+EMAIL_PORT = 587  
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = True
 ```
 
 
@@ -1686,6 +1692,7 @@ The library for extracting secret key from .env file is called python-decouple
 from decouple import config
 # in the settings file to import anything from .env file
 # we use <config> instead of <os.environ.get>
+# ex: SECRET_KEY = config('SECRET_KEY')
 # =============================================================
 ```
 

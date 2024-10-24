@@ -856,14 +856,46 @@ urlpatterns = [
 # Reset Password
 
 ```python
-DOMAIN = '127.0.0.1:8000'
-SITE_NAME = 'NFTs'
+# WE CAN FIND EMAIL credentials in https://mailtrap.io/home
+
+LOGIN_REDIRECT_URL = 'landing_page'
+LOGIN_URL = 'account_login'
+LOGOUT_URL = 'account_logout'
+SIGNUP_REDIRECT_URL = 'landing_page'
+SIGNUP_URL = 'account_signup'
+ACCOUNT_EMAIL_VERIFICATION = "none"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com' 
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+
+
+DOMAIN = 'http://frontend-domain.com'
+SITE_NAME = 'SITE_NAME'
+# EMAIL_SUBJECT_PREFIX = 'SITE_NAME'
+# DEFAULT_FROM_EMAIL = 'SITE_NAME <noreply@SITE_NAME.com>'
+
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'auth/users/reset_password_confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'auth/users/reset_username_confirm/{uid}/{token}',
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'USERNAME_RESET_CONFIRM_RETYPE': True,
     'ACTIVATION_URL': 'auth/users/activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
-    'SERIALIZERS': {},
-    ...
+    "USER_ID_FIELD": "username", # We use username for login
+    "USER_CREATE_PASSWORD_RETYPE": True, # We can use this to make user retype the password
+    # "LOGIN_FIELD": "email", # We can use email or username for login
+
+    # Redefining the serializers
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.UserCreateSerializer',  # This is the serializer for creating a user
+        'user': 'users.serializers.UserCreateSerializer',         # This is the serializer for the user
+        'user_delete': 'djoser.serializers.UserDeleteSerializer', # This is the serializer for deleting a user
+    },
 }
 ```
 

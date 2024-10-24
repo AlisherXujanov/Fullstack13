@@ -8,7 +8,6 @@ import Lycence from "../../assets/images/certificates/second.png"
 import { useContext } from "react"
 import { globalContext } from "../../store/index.js"
 
-
 function About() {
   const state = useContext(globalContext)
 

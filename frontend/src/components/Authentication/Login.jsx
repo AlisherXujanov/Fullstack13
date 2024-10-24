@@ -1,16 +1,15 @@
 import "./authContent.scss"
 import Heading from '../common/Heading'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { toast } from 'react-toastify';
 import { fetchLogin } from "../../store/helpers";
-import { useContext } from "react"
 import { globalContext } from "../../store"
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Login(props) {
     const navigate = useNavigate()
     const state = useContext(globalContext)
-
+    const [isLoading, setIsLoading] = useState(false)
 
     const [loginState, setLoginState] = useState({
         username: "",
@@ -37,15 +36,18 @@ function Login(props) {
             return
         } else {
             try {
+                setIsLoading(true)
                 let account = await fetchLogin(user)
                 toast.success("You have successfully logged in", { theme: "dark" })
-                state.dispatch({ type: "SET_USER", payload:account })
+                setIsLoading(false)
+                state.dispatch({ type: "SET_USER", payload: account })
                 navigate('/profile')
                 // TODO
                 // CREATE profile-page
                 // SET image of the user instead of his username
                 props.closeModal()
-            } catch(error) {
+            } catch (error) {
+                setIsLoading(false)
                 toast.error("User not found with provided credentials", { theme: "dark" })
             }
         }
@@ -70,7 +72,7 @@ function Login(props) {
         // immediateFeedbackOnError
         // STEPS:
         // 1. Create patterns
-        const usernamePattern = /^[a-zA-Z0-9_]{1,10}$/
+        const usernamePattern = /^[a-zA-Z0-9_]{1,20}$/
         const passwordPattern = /^[a-zA-Z0-9_$&]{5,}$/
 
         // 2. Check if the value matches the pattern
@@ -95,9 +97,13 @@ function Login(props) {
 
     return (
         <div className="auth-content-wrapper">
-            <Heading size={1.2}>Login</Heading>
+            <Heading size={1.2}>Sign in</Heading>
 
-
+            {isLoading && (<div className="loading-content"><div className="hollow-dots-spinner">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+            </div></div>)}
             <form onSubmit={submit}>
                 <div className="form-control">
                     <label htmlFor="name">Username or e-mail</label>
@@ -134,9 +140,11 @@ function Login(props) {
                     }
                 </div>
                 <div className="form-control">
-                    <button className='warning-btn'>
-                        Login
-                    </button>
+                    <button className='warning-btn'>Sign in</button>
+
+                    <a href="#" className="forgot-password-link"
+                        onClick={() => props.setSection("passwordRecovery")}
+                    >Forgot password?</a>
                 </div>
             </form>
         </div>

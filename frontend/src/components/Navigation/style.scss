@@ -65,10 +65,12 @@ header {
                     .content {
                         display: inline-block;
                         position: absolute;
+                        z-index: 10;
                         width: 160px;
                         bottom: -35px;
                         left: 0;
                         display: none;
+                        text-align: center;
 
                         button {
                             position: relative;
@@ -110,7 +112,7 @@ header {
         border-radius: 10px;
         position: absolute;
         right: 40px;
-        top: 15px;
+        top: 35px;
         display: none;
         z-index: 11;
     }
@@ -166,6 +168,12 @@ header {
                 top: 0;
                 z-index: 10;
                 display: none;
+
+                .auth {
+                    .logged-in-menu {
+                        bottom: 8px;
+                    }
+                }
             }
         }
 

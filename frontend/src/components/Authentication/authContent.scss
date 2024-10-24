@@ -2,6 +2,29 @@
 
 .profile-form-wrapper,
 .auth-content-wrapper {
+    position: relative;
+
+    .go-back-btn {
+        position: absolute;
+        top: -30px;
+        left: -32px;
+        cursor: pointer;
+        border-radius: 50%;
+        border: 2px outset $dark;
+        width: 25px;
+        height: 25px;
+        font-size: 1.1em;
+        font-weight: bold;
+        padding: 0;
+        background-color: $dark;
+        color: $warning;
+        @include flex(row, center, center, 0);
+
+        &:active {
+            border-style: inset;
+        }
+    }
+
     form {
         .form-control {
             margin-bottom: 20px;
@@ -59,6 +82,8 @@
         }
 
         button {
+            cursor: pointer;
+
             &:active {
                 transform: scale(0.9);
             }
@@ -70,6 +95,20 @@
                 font-size: 0.8em;
                 font-style: italic;
                 text-align: center;
+            }
+        }
+
+        .forgot-password-link {
+            text-align: right;
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: $link-color;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+
+            &:hover {
+                text-decoration: underline;
             }
         }
     }
@@ -86,5 +125,16 @@
         form {
             padding-top: 10px;
         }
+    }
+    .loading-content{
+        position: absolute;
+        width: 120%;
+        height: 143%;
+        left: -40px;
+        top: -40px;
+        background-color: #00000069;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

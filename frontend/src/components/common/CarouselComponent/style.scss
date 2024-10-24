@@ -2,15 +2,18 @@
 
 .carousel-section {
     position: relative;
-    margin-top: 50px;
 
     .inner-carousel-info {
         position: absolute;
         z-index: 5;
-        max-width: 500px;
+        width: 700px;
+        max-width: 700px;
         min-width: 200px;
-        top: 25%;
-        left: 10%;
+        top: 20%;
+        left: 5%;
+        background-color: rgb(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
 
         h1 {
             font-size: 2em;
@@ -19,6 +22,11 @@
 
         p {
             margin: 20px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical;
         }
     }
 
@@ -141,9 +149,20 @@
 @media (max-width: $medium-screen) {
     .carousel-section {
         .inner-carousel-info {
+            width: 400px;
+            max-width: 400px;
             font-size: small;
             top: 10%;
             left: 5%;
+
+            p {
+                -webkit-line-clamp: 4;
+            }
+
+            button {
+                padding: 2px 5px;
+                font-size: 8px;
+            }
         }
 
         .slider-wrapper {
@@ -170,7 +189,6 @@
 
 @media (max-width: $small-screen) {
     .carousel-section {
-        height: 450px;
 
         .slider-wrapper {
             .slide {
@@ -197,11 +215,12 @@
         }
 
         .inner-carousel-info {
-            height: 150px;
             width: 70vw;
             overflow: auto;
             background-color: rgb(0, 0, 0, 0.3);
             padding: 10px;
+            top: 5%;
+            left: 5%;
 
             &::-webkit-scrollbar {
                 background-color: transparent;
@@ -211,11 +230,6 @@
             &::-webkit-scrollbar-thumb {
                 width: 5px;
                 border: 1px solid $warning-t;
-            }
-
-            button {
-                padding: 4px 10px;
-                font-size: 10px;
             }
         }
     }

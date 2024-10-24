@@ -80,6 +80,10 @@ function Products() {
                                     <Link to={"/products/" + product.id} className="products-info">
                                         <button className="warning-btn">Подробнее</button>
                                     </Link>
+
+                                    <Link to={"/comments/" + product.id} className="product-comments">
+                                        <span>{product.related_comments.length}</span> Комментарии <span className="arrow-right">&gt;</span>
+                                    </Link>
                                 </ProductsInfo>
                             </div>
                         )

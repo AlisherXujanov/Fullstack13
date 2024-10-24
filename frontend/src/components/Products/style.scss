@@ -20,11 +20,13 @@
       position: absolute;
       right: 50px;
       top: 0;
-      .likes_count{
+
+      .likes_count {
         padding: 2px 8px;
         border-radius: 50%;
         background-color: #272628;
       }
+
       svg {
         width: 40px;
         height: 40px;
@@ -97,11 +99,28 @@
           }
         }
       }
+
+      .product-comments {
+        display: inline-block;
+        position: absolute;
+        right: 50px;
+        bottom: -50px;
+        color: $warning;
+        padding-bottom: 5px;
+        border-bottom: 1px solid $warning;
+
+        .arrow-right {
+          display: inline-block;
+          margin-left: 20px;
+        }
+      }
     }
 
     .image-wrapper {
       width: 50%;
+      height: 350px;
       float: right;
+      overflow: hidden;
 
       mask-image: linear-gradient(to right, #43414800, #43414880, #434148);
       mask-position: center;
