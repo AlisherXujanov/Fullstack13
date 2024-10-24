@@ -1,7 +1,9 @@
 @import "../../assets/styles/settings";
 
 .products-page-wrapper {
+  @extend %base-height;
   padding: 50px 100px;
+  
   position: relative;
 
   .create-btn {

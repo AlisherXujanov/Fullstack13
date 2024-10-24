@@ -1,6 +1,8 @@
 @import '../../assets//styles/settings';
 
 .contacts-page-wrapper {
+  @extend %base-height;
+
     background-color: $dark-lighter;
     padding: 50px 100px;
 

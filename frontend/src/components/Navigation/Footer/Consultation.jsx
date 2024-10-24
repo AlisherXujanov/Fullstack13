@@ -2,8 +2,9 @@ import { useState } from 'react'
 import "./consultation.scss"
 import Wallpaper from "../../../assets/images/consultation-wallpaper.png"
 import emailjs from 'emailjs-com'
-
+import {useTranslation} from 'react-i18next'
 function Consultation(props) {
+    const {t} = useTranslation()
     const [consultationForm, setConsultationForm] = useState({
         name: '',
         email: '',
@@ -57,7 +58,7 @@ function Consultation(props) {
                         id='consultation-person-fullname' 
                         type="text" 
                         name="name" 
-                        placeholder='Full name' 
+                        placeholder={t('consultation.fullname')} 
                         value={consultationForm.name} 
                         onChange={handleChange}
                     />
@@ -68,7 +69,7 @@ function Consultation(props) {
                             id='consultation-person-email' 
                             type="email" 
                             name="email" 
-                            placeholder='Email' 
+                            placeholder={t('consultation.email')}
                             value={consultationForm.email} 
                             onChange={handleChange}
                         />
@@ -78,7 +79,7 @@ function Consultation(props) {
                             id='consultation-person-phone' 
                             type="tel" 
                             name="phone" 
-                            placeholder='Phone' 
+                            placeholder={t('consultation.phone')}
                             value={consultationForm.phone} 
                             onChange={handleChange}
                         />
@@ -88,19 +89,19 @@ function Consultation(props) {
                     <textarea 
                         id="consultation-person-message" 
                         name="message" 
-                        placeholder="Message" 
+                        placeholder={t('consultation.message')}
                         value={consultationForm.message} 
                         onChange={handleChange}
                     />
                 </div>
                 <div className="form-control">
-                    <button className='warning-btn'>Получить консультацию</button>
+                    <button className='warning-btn'>{t('consultation.get-consultation')}</button>
                 </div>
             </form>
 
             {showNotification && (
                 <div className="notification">
-                    Сообщение успешно отправлено!
+                    {t('consultation.notification')}!
                 </div>
             )}
 

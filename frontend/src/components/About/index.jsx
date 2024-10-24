@@ -38,9 +38,9 @@ function About() {
 
       <div className="second-about-page-wrapper">
         <div className="second-about">
-          <h2>Миссия и Ценности</h2>
-          <p><strong>Наша миссия</strong> — покорять просторы веб-программирования, превращая строки кода в искусные решения. Мы стремимся не просто изучать языки программирования, а мастерски ими владеть, создавая веб-приложения, которые станут неотъемлемой частью цифрового мира. Вместе мы строим мост между идеями и их воплощением, применяя передовые технологии и неизменную страсть к развитию.</p>
-          <p><strong>Наши ценности</strong> — это бесконечное любопытство, жажда знаний и желание делиться ими. Мы верим, что великие программисты не просто пишут код, они раздвигают границы возможного, создавая что-то уникальное и полезное. Вдохновленные новыми вызовами, мы растем с каждым проектом и каждым успешным запуском.</p>
+          <h2>{t('about-us.mission-values.title')}</h2>
+          <p><strong>{t('about-us.mission-values.mission.title')}</strong> — {t('about-us.mission-values.mission.desc')}</p>
+          <p><strong>{t('about-us.mission-values.values.title')}</strong> — {t('about-us.mission-values.values.desc')}</p>
         </div>
         <div className="about-image-second">
           <img src={ImageAbout2} alt="ImageAbout2" />
@@ -48,7 +48,7 @@ function About() {
       </div>
 
       <div className="languages-section">
-        <h2>Наша команда Fullstack изучает следующие языки и фреймворки:</h2>
+        <h2>{t('about-us.stack')}:</h2>
         <div className="languages-grid">
           <div className="language-card python"></div>
           <div className="language-card javascript"></div>
