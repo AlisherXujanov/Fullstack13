@@ -48,7 +48,7 @@ function Footer() {
           </div>
           <div className="footer-links">
             <div className="left">
-            <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>О нас</NavLink>
+              <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>О нас</NavLink>
               <NavLink to="/team" className={({ isActive }) => isActive ? "active" : ""}>Команда</NavLink>
               <NavLink to="/blog" className={({ isActive }) => isActive ? "active" : ""}>Блог</NavLink>
               <NavLink to="/products" className={({ isActive }) => isActive ? "active" : ""}>Продукты</NavLink>
@@ -58,14 +58,14 @@ function Footer() {
               <span onClick={() => handleLinkClick("Terms and conditions", "Правила и условия использования.", "/terms")}>
                 Terms and conditions
               </span>
-           <span onClick={() => handleLinkClick("Privacy policy", "Политика конфиденциальности.", "/privacy")}>
+              <span onClick={() => handleLinkClick("Privacy policy", "Политика конфиденциальности.", "/privacy")}>
                 Privacy policy
               </span>
             </div>
           </div>
         </div>
         <div className="footer-social-media">
-        <span>
+          <span>
             <FaFacebookF className="facebook" />
           </span>
           <span>
@@ -77,7 +77,7 @@ function Footer() {
         </div>
       </footer>
 
-      <Modal 
+      <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
         title={modalContent.title}
