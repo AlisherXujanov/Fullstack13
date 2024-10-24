@@ -2,7 +2,7 @@
 
 .footer-wrapper {
     footer.main-footer {
-        background-color: black;
+        background-color: #111;
         padding: 50px 100px;
         @include grid(2, 20px);
 
@@ -294,39 +294,69 @@
 
 @media (max-width: 750px) {
   .footer-wrapper {
-      footer.main-footer {
-          padding: 50px 10px;
-          position: relative;
+    footer.main-footer {
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      width: 100%;
+    }
 
-          .left-side {
-              grid-template-columns: 1fr;
+    .heading-wrapper {
+      margin-bottom: 10px;
+    }
 
-              .footer-links {
-                  position: relative;
-                  left: 30px;
-              }
-          }
+    .heading-wrapper h1 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
 
-          .footer-social-media {
-              position: absolute;
-              right: 2px;
-              top: 35px;
+    .left-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      width: 100%;
+    }
 
-              span {
-                  margin: 0 5px;
-              }
-          }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 0;
+    }
+
+    .footer-links .left,
+    .footer-links .right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 5px 0;
+    }
+
+    .footer-social-media {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      width: 100%;
+      
+      span {
+        margin: 0 5px;
       }
+    }
+  }
 
-      .section {
-          padding: 50px 10px;
-
-          p {
-              width: 100%;
-          }
-      }
+  .section {
+    padding: 20px 10px;
+    
+    p {
+      width: 100%;
+    }
   }
 }
+
 // $xx-large-screen: 1600px;
 // $x-large-screen: 1350px;
 // $large-screen: 1100px;
