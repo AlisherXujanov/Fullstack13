@@ -16,20 +16,19 @@ import CompanyBlog from "./CompanyBlog";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import {  BASE_URL_APIS } from "../../store";
+import { BASE_URL_APIS } from "../../store";
 
 import { useTranslation } from "react-i18next";
-
 
 function LandingPage() {
   const [currentProduct, setCurrentProduct] = useState({
     name: "",
     description: "",
   });
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   useEffect(() => {
     document.title = "Home";
-    const URL =  BASE_URL_APIS + "products";
+    const URL = BASE_URL_APIS + "products";
     const fetchProducts = async () => {
       const token = localStorage.getItem("token");
       try {
@@ -71,14 +70,13 @@ function LandingPage() {
     <main className="landing-page-wrapper">
       <div className="landing-carousel-wrapper">
         <CarouselComponent images={images} blurred={true}>
-          <h1>{currentProduct.name || t('landing-page.hedge-fund')}</h1>
-          <p>
-            {currentProduct.description ||
-             t('landing-page.description')}
-          </p>
-          <button className="warning-btn">
-            <Link to={`products/${currentProduct.id}`}>{t('landing-page.read-more')}</Link>
-          </button>
+          <h1>{currentProduct.name || t("landing-page.hedge-fund")}</h1>
+          <p>{currentProduct.description || t("landing-page.description")}</p>
+          <Link to={`products/${currentProduct.id}`}>
+            <button className="warning-btn">
+              {t("landing-page.read-more")}
+            </button>
+          </Link>
         </CarouselComponent>
       </div>
 
