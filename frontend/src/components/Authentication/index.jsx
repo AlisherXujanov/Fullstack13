@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Registration from './Registration.jsx'
 import Login from './Login.jsx'
 import PasswordRecovery from './PasswordRecovery.jsx'
@@ -11,6 +11,19 @@ function Authentication(props) {
         setAuthSection(section)
     }
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') {
+                props.closeModal();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [props.closeModal]);
 
     return (
         <div id='authentication-wrapper'>
