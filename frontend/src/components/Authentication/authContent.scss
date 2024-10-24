@@ -46,7 +46,6 @@
         button {
             width: 100%;
             margin: 5px 0;
-            border: 2px solid transparent;
             padding: 15px 20px;
             outline: none;
             background-color: $dark;
@@ -126,7 +125,8 @@
             padding-top: 10px;
         }
     }
-    .loading-content{
+
+    .loading-content {
         position: absolute;
         width: 120%;
         height: 143%;

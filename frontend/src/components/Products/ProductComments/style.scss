@@ -32,5 +32,60 @@
             }
         }
 
+
+        .create-comment-section-wrapper {
+            margin-top: 150px;
+            width: 100%;
+
+            form {
+                .form-control {
+                    margin-bottom: 20px;
+
+                    * {
+                        margin: 5px 0;
+                    }
+                }
+
+                textarea,
+                button {
+                    width: 100%;
+                    margin: 5px 0;
+                    padding: 15px 20px;
+                    outline: none;
+                    background-color: $dark;
+                    border: 1px solid transparent;
+                    color: snow;
+                    background-color: $dark-lighter;
+
+                    &::placeholder {
+                        color: darkgray;
+                        font-size: 0.8em;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        border: 1px solid $warning;
+                        box-shadow:
+                            1px 1px 30px $warning-t,
+                            -1px -1px 30px $warning-t,
+                            inset 0 1px 30px $warning-t,
+                            inset 0 -1px 30px $warning-t;
+                    }
+                }
+
+                textarea {
+                    resize: vertical;
+                    transition: 0s;
+                }
+
+                button {
+                    cursor: pointer;
+
+                    &:active {
+                        transform: scale(0.9);
+                    }
+                }
+            }
+        }
     }
 }

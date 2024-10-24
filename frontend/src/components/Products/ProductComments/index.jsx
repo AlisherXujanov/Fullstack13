@@ -4,6 +4,7 @@ import { BASE_URL, BASE_AUTH_URL, globalContext } from "../../../store";
 import Heading from "../../common/Heading";
 import "./style.scss"
 import axios from "axios";
+import CreateCommentForm from "./CreateCommentForm.jsx";
 
 function ProductComments() {
     const state = useContext(globalContext)
@@ -12,11 +13,7 @@ function ProductComments() {
     const { id } = useParams()
 
     useEffect(() => {
-        let result = state.products?.find(p => p.id === parseInt(id))
-        setProduct(result)
-        if (product && result && result.related_comments?.length > 0) {
-            getProfiles()
-        }
+        fetchEverything()
     }, [state.products])
 
     async function getProfiles() {
@@ -44,6 +41,13 @@ function ProductComments() {
         return imageURL
     }
 
+    function fetchEverything() {
+        let result = state.products?.find(p => p.id === parseInt(id))
+        setProduct(result)
+        if (product && result && result.related_comments?.length > 0) {
+            getProfiles()
+        }
+    }
 
     return (
         <div className="comments-page-wrapper">
@@ -63,6 +67,10 @@ function ProductComments() {
                         </div>
                     )
                 })}
+                <CreateCommentForm 
+                    product={product} 
+                    fetchProductsFn={fetchEverything} 
+                />
             </div>
         </div>
     );
