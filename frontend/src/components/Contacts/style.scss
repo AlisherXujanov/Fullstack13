@@ -23,6 +23,15 @@
                     color: lightgray;
                     width: 80%;
                 }
+                li{
+                    position: relative;
+                    padding: 10px;
+                    svg {
+                    margin: 8px;
+                    position: absolute;
+                    right: 450px;
+                }
+                }
             }
         }
 
