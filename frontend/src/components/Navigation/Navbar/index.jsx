@@ -1,26 +1,43 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Heading from "../../common/Heading";
 import Authentication from "../../Authentication";
-import { useContext } from "react";
-import { globalContext } from "../../../store";
-import { fetchLogout } from "../../../store/helpers";
+import { useEffect, useContext } from "react";
+import { BASE_URL, globalContext } from "../../../store";
+import { getUserProfile, fetchLogout } from "../../../store/helpers";
 import { toast } from "react-toastify";
-import { useState } from 'react'
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./style.scss";
 
 function Navbar() {
   const state = useContext(globalContext);
   const navigate = useNavigate();
-  const { t, i18n: { changeLanguage, language } } = useTranslation()
-  const [currentLanguage, setCurrentLanguage] = useState(language)
+  const [, setIsLoading] = useState(false);
+  const [profile, setProfile] = useState();
 
-  const handleChangeLanguage = () => {
-    const newLanguage = currentLanguage === 'en' ? 'ru' : 'en'
-    setCurrentLanguage(newLanguage)
-    changeLanguage(newLanguage)
+  useEffect(() => {
+    fetchGetUserProfile();
+  }, []);
+  async function fetchGetUserProfile(profilePictureUpdate = false) {
+    if (!profilePictureUpdate) {
+      setIsLoading(true);
+    }
+    const userData = await getUserProfile();
+    setIsLoading(false);
+    setProfile(userData);
   }
 
+  const {
+    t,
+    i18n: { changeLanguage, language },
+  } = useTranslation();
+  const [currentLanguage, setCurrentLanguage] = useState(language);
+
+  const handleChangeLanguage = () => {
+    const newLanguage = currentLanguage === "en" ? "ru" : "en";
+    setCurrentLanguage(newLanguage);
+    changeLanguage(newLanguage);
+  };
 
   function closeModal() {
     state.dispatch({ type: "SET_AUTH_MODAL", payload: false });
@@ -55,26 +72,25 @@ function Navbar() {
             to="team"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            {t('navigation.team')}
+            {t("navigation.team")}
           </NavLink>
           <NavLink
             to="blog"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            {t('navigation.blog')}
+            {t("navigation.blog")}
           </NavLink>
           <NavLink
             to="products"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            {t('navigation.products')}
+            {t("navigation.products")}
           </NavLink>
           <NavLink
             to="contacts"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            {t('navigation.contacts')}
-
+            {t("navigation.contacts")}
           </NavLink>
           <NavLink
             to="faq"
@@ -88,7 +104,14 @@ function Navbar() {
           {state.profile?.user?.username ? (
             <div className="logged-in-menu">
               <Link to="profile">
-                <h4>{state.profile?.user?.username}</h4>
+                <h4>
+                  <img
+                    src={BASE_URL + profile?.image}
+                    alt=""
+                    className="profile-img-in-navbar"
+                  />
+                  {state.profile?.user?.username}
+                </h4>
               </Link>
               <div className="content">
                 <button className="warning-btn" onClick={logout}>
