@@ -1,64 +1,65 @@
 @import "../../../assets/styles/settings";
 
 .modal-component-wrapper {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  background-color: #3c35267e;
+  backdrop-filter: blur(5px);
+  @include flex(row, center, center);
+
+  .modal-content {
+    background-color: $dark-lighter;
+    color: $light;
+    border-radius: 10px;
+    padding: 30px 10px 20px 10px;
+    max-width: 600px;
     width: 100%;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 9999;
-    background-color: #3c35267e;
-    backdrop-filter: blur(5px);
-    @include flex(row, center, center);
+    margin: 0 15px;
+    text-align: center;
+    height: 80vh;
+    overflow: hidden;
+    .modal-header {
+      padding: 20px;
+      position: relative;
 
-
-    .modal-content {
-        background-color: $dark-lighter;
-        color: $light;
-        border-radius: 10px;
-        padding: 30px 10px 20px 10px;
-        max-width: 600px;
-        width: 100%;
-        margin: 0 15px;
-        text-align: center;
-        height: 80vh;
-        overflow: hidden;
-        .modal-header {
-            padding: 20px;
-            position: relative;
-            
-            .close-modal {
-                @include flex(row, center, center);
-                width: 25px;
-                height: 25px;
-                border-radius: 50%;
-                cursor: pointer;
-                background-color: rgb(100, 0, 0);
-                color: $light;
-                position: absolute;
-                top: -20px;
-                right: 0;
-                font-size: 1.2em;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            }
+      .close-modal {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        top: -20px;
+        right: 0;
+        border: 2px outset $dark;
+        border-radius: 50%;
+        background-color: $dark;
+        color: $warning;
+        font-size: 1.5em;
+        padding: 0;
+        cursor: pointer;
+        @include flex(row, center, center, 0);
+        &:active {
+          border-style: inset;
         }
-        
-        .modal-body {
-            padding: 20px;
-            overflow-y: scroll;
-            height: calc(80vh - 101px);
-            .form-wrapper{
-                form{
-                    .form-control{
-                        textarea{
-                            resize: vertical;
-                            transition: 0s;
-                        }
-                    }
-                }
-            }
-        }
+      }
     }
+
+    .modal-body {
+      padding: 20px;
+      overflow-y: scroll;
+      height: calc(80vh - 101px);
+      .form-wrapper {
+        form {
+          .form-control {
+            textarea {
+              resize: vertical;
+              transition: 0s;
+            }
+          }
+        }
+      }
+    }
+  }
 }
-
-
