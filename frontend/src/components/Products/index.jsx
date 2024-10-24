@@ -1,20 +1,22 @@
-import "./style.scss";
-import Heading from "../common/Heading";
-import ProductsInfo from "./ProductsInfo";
-import { Link } from "react-router-dom";
-import { useEffect, useContext } from "react";
-import { globalContext, BASE_URL_APIS } from "../../store";
-import { getTokenFromLS, fetchProducts } from "../../store/helpers";
-import ModalComponent from "../common/ModalComponent";
-import ProductForm from "../common/ProductForm";
-import { toast } from "react-toastify";
+import "./style.scss"
+import Heading from "../common/Heading"
+import ProductsInfo from "./ProductsInfo"
+import { Link } from "react-router-dom"
+import { useEffect, useContext } from 'react'
+import { globalContext, BASE_URL_APIS } from "../../store"
+import { getTokenFromLS, fetchProducts } from "../../store/helpers"
+import ModalComponent from "../common/ModalComponent"
+import ProductForm from "../common/ProductForm"
+import { toast } from "react-toastify"
+import {useTranslation} from 'react-i18next'
 
 function Products() {
   const state = useContext(globalContext);
+  const {t} = useTranslation()
 
   useEffect(() => {
-    document.title = "Products";
-  }, []);
+      document.title = "Products";
+  }, [])
 
   function openModal(e) {
     state.dispatch({ type: "SET_SHOW_MODAL", payload: true });
