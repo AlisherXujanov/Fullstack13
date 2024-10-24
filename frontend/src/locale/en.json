@@ -124,6 +124,33 @@
             "your-location":"Your location"
 
 
+        },
+        "faq":{
+            "title":"Frequently asked questions",
+            "desc":"Here, you`ll find answers to the most commonly asked questions about our products, services, and policies.",
+            "input":"Search your ask",
+            "general":"General",
+            "nft-product":"NFT Product",
+            "payment":"Payment",
+            "content":{
+                "item-1":{
+                    "title":"What is an NFT marketplace?",
+                    "desc":"An NFT marketplace is a platform that allows users to buy, sell, and trade non-fungible tokens (NFTs).NFTs are unique digital assets that can represent anything from artwork and collectibles to in-game items and virtual real estate."
+                },
+                "item-2":{
+                    "title":"How does buying an NFT work?",
+                    "desc":"Buying an NFT involves creating an account on a marketplace, connecting a digital wallet, and then purchasing the NFT using cryptocurrency."
+                },
+                "item-3":{
+                    "title":"What are the benefits of owning an NFT?",
+                    "desc":"Owning an NFT can provide benefits such as proof of ownership, the potential for value appreciation, and exclusive access to certain content or experiences."
+                },
+                "item-4":{
+                    "title":"Are there any risks associated with buying NFTs?",
+                    "desc":"Yes, buying NFTs carries risks such as market volatility, potential scams, and the lack of regulation in the NFT space."
+                }
+            }
+
         }
     }
 }
