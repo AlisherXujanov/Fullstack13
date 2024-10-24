@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom"
 import { globalContext, BASE_URL_APIS } from "../../../store"
 import { toast } from "react-toastify"
 import { fetchProducts, getTokenFromLS } from "../../../store/helpers.js"
+import {useTranslation} from 'react-i18next'
 
 function ProductForm(props) {
+    const {t} = useTranslation()
     const navigate = useNavigate()
     const state = useContext(globalContext)
     const [form, setForm] = useState({
@@ -138,18 +140,18 @@ function ProductForm(props) {
         <div className="form-wrapper">
             <form onSubmit={submit}>
                 <div className="form-control">
-                    <label htmlFor="prod-name">Name of the product</label>
+                    <label htmlFor="prod-name">{t('products.form.name.title')}</label>
                     <input id="prod-name" type="text"
-                        placeholder="Name" name='name'
+                        placeholder={t('products.form.name.title')} name='name'
                         onChange={handleFormInfo}
                         value={form.name}
                         required
                     />
                 </div>
                 <div className="form-control">
-                    <label htmlFor="prod-price">Price of the product</label>
+                    <label htmlFor="prod-price">{t('products.form.price.title')}</label>
                     <input id="prod-price" type="number"
-                        placeholder="Price" name='price'
+                        placeholder={t('products.form.price.name')} name='price'
                         onChange={handleFormInfo}
                         value={form.price}
                         required
@@ -157,7 +159,7 @@ function ProductForm(props) {
                 </div>
                 <div className={form.image || props.product?.image ? "form-control row" : "form-control"}>
                     <div>
-                        <label htmlFor="prod-image">Image of the product</label>
+                        <label htmlFor="prod-image">{t('products.form.image.title')}</label>
                         <input id="prod-image" type="file"
                             name='image'
                             onChange={handleFormInfo}
@@ -170,12 +172,12 @@ function ProductForm(props) {
                     }
                 </div>
                 <div className="form-control">
-                    <label htmlFor="prod-desc">Description of the product</label>
+                    <label htmlFor="prod-desc">{t('products.form.desc.title')}</label>
                     <textarea
                         id="prod-desc"
                         rows={5}
                         name="description"
-                        placeholder="Description"
+                        placeholder={t('products.form.desc.name')}
                         onChange={handleFormInfo}
                         value={form.description}
                         required
@@ -183,7 +185,7 @@ function ProductForm(props) {
                 </div>
                 <div className="form-control">
                     <button type="submit" className="warning-btn">
-                        {props.updateMode ? "Update" : "Create"} product
+                        {props.updateMode ? "Update" : "Create"} {t('products.product')}
                     </button>
                 </div>
             </form>

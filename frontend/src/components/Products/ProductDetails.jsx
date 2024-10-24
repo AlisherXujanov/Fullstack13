@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from 'react'
 import { BASE_URL_APIS, globalContext } from "../../store"
 import { getTokenFromLS } from "../../store/helpers"
 import Heading from "../common/Heading"
+import {useTranslation} from 'react-i18next'
 
 import { IoDocumentTextOutline } from "react-icons/io5"
 import { MdDownloadForOffline } from "react-icons/md"
@@ -15,6 +16,7 @@ import ProductForm from "../common/ProductForm"
 import { toast } from "react-toastify"
 
 function ProductDetails(props) {
+    const {t} = useTranslation()
     const { id } = useParams()
     const [product, setProduct] = useState({})
     const [showDialog, setShowDialog] = useState(false)
@@ -79,7 +81,7 @@ function ProductDetails(props) {
         <>
             <div className="product-details-wrapper">
                 <p className="intro">
-                    Продукты / {product?.name?.split(" ").slice(0, 3).join(" ")}
+                    {t('products.title')} / {product?.name?.split(" ").slice(0, 3).join(" ")}
                 </p>
                 <Heading size={1}>{product?.name}</Heading>
 
@@ -101,11 +103,11 @@ function ProductDetails(props) {
                         {showDialog &&
                             <div className="deletion-dialog">
                                 <div className="content">
-                                    <h1>Delete {product?.name}</h1>
-                                    <p>Are you sure to delete {product?.name} ?</p>
+                                    <h1>{t('products.delete.0')} {product?.name}</h1>
+                                    <p>{t('products.delete.1')} {product?.name} ?</p>
                                     <div className="confirm-dialog-buttons">
-                                        <button className="warning-btn delete-btn" onClick={fetchDelete}>Yes</button>
-                                        <button className="warning-btn update-btn" onClick={(e) => { showDeleteDialog(e, true) }}>No</button>
+                                        <button className="warning-btn delete-btn" onClick={fetchDelete}>{t('products.delete.2')}</button>
+                                        <button className="warning-btn update-btn" onClick={(e) => { showDeleteDialog(e, true) }}>{t('products.delete.3')}</button>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +115,7 @@ function ProductDetails(props) {
 
                         {state.showModal &&
                             <div className="update-form-modal-wrapper">
-                                <ModalComponent title="Update product">
+                                <ModalComponent title={t('products.update-product')}>
                                     <ProductForm updateMode={true} product={product} />
                                 </ModalComponent>
                             </div>

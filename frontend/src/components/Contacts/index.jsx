@@ -5,7 +5,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import MapComponent from "../common/MapComponent";
 import { useNavigate } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 // RULE
 // 1. Import any hook from 'react'
 //    ex:   import { useState } from 'react';
@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 //                 You must use only this function but not other ones!
 
 function Contacts() {
+  const {t} = useTranslation()
   const navigate = useNavigate();
   const [state, setState] = useState({
     name: "",
@@ -46,20 +47,20 @@ function Contacts() {
 
   return (
     <main className="contacts-page-wrapper">
-      <Heading size={1}>Контакты</Heading>
+      <Heading size={1}>{t('contacts.title')}</Heading>
 
       <div className="row">
         <div className="left">
           <div className="info">
-            <h3>Задайте нам любой вопрос</h3>
+            <h3>{t('contacts.question')}</h3>
             <p>+7 701 776 24 20</p>
           </div>
           <div className="info">
-            <h3>Электронная почта</h3>
+            <h3>{t('contacts.email')}</h3>
             <p>client@fonte.kz</p>
           </div>
           <div className="info">
-            <h3>Юридический адрес</h3>
+            <h3>{t('contacts.legal-address')}</h3>
             <p>
               050040/A15E3H4, проспект Аль-Фараби, 77/7​, 10 этаж, Алматы,
               Казахстан Z05T3D0, проспект Мангилик Ел, 55/20, Офисы 345-346,
@@ -74,7 +75,7 @@ function Contacts() {
               <input
                 onChange={setInputValueIntoState}
                 type="text"
-                placeholder="Name"
+                placeholder={t('contacts.name')}
                 name="name"
                 value={state.name}
                 pattern="^[a-zA-Z_ ]+$"
@@ -84,7 +85,7 @@ function Contacts() {
               <input
                 onChange={setInputValueIntoState}
                 type="email"
-                placeholder="Email"
+                placeholder={t('contacts.email')}
                 name="email"
                 value={state.email}
               />
@@ -95,12 +96,12 @@ function Contacts() {
                 inputProps={{ required: true, name: "phone" }}
                 country={"uzb"}
                 onChange={(val) => setState({ ...state, phone: val })}
-                placeholder="Phone"
+                placeholder={t('contacts.phone')}
                 value={state.phone}
               />
             </div>
             <div className="form-control">
-              <button className="warning-btn">Подписаться</button>
+              <button className="warning-btn">{t('contacts.subscribe')}</button>
             </div>
           </form>
         </div>
@@ -108,11 +109,11 @@ function Contacts() {
 
       <div className="maps">
         <div className="item">
-          <Heading size={2}>Офис в Самарканде</Heading>
+          <Heading size={2}>{t('contacts.office')}</Heading>
           <MapComponent coords={office_coordinates} />
         </div>
         <div className="item">
-          <Heading size={2}>Ваша местоположение</Heading>
+          <Heading size={2}>{t('contacts.your-location')}</Heading>
           <MapComponent />
         </div>
       </div>
