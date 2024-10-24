@@ -3,7 +3,7 @@ import Heading from "../../common/Heading";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import "./style.scss";
-
+import {useTranslation} from 'react-i18next'
 const Modal = ({ show, onClose, title, content, link }) => {
   const [isClosing, setIsClosing] = useState(false);
 
@@ -31,6 +31,7 @@ const Modal = ({ show, onClose, title, content, link }) => {
 };
 
 function Footer() {
+  const {t} = useTranslation()
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({ title: "", content: "", link: "" });
 
@@ -48,11 +49,11 @@ function Footer() {
           </div>
           <div className="footer-links">
             <div className="left">
-            <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>О нас</NavLink>
-              <NavLink to="/team" className={({ isActive }) => isActive ? "active" : ""}>Команда</NavLink>
-              <NavLink to="/blog" className={({ isActive }) => isActive ? "active" : ""}>Блог</NavLink>
-              <NavLink to="/products" className={({ isActive }) => isActive ? "active" : ""}>Продукты</NavLink>
-              <NavLink to="/contacts" className={({ isActive }) => isActive ? "active" : ""}>Контакты</NavLink>
+            <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>{t('navigation.about-us')}</NavLink>
+              <NavLink to="/team" className={({ isActive }) => isActive ? "active" : ""}>{t('navigation.team')}</NavLink>
+              <NavLink to="/blog" className={({ isActive }) => isActive ? "active" : ""}>{t('navigation.blog')}</NavLink>
+              <NavLink to="/products" className={({ isActive }) => isActive ? "active" : ""}>{t('navigation.products')}</NavLink>
+              <NavLink to="/contacts" className={({ isActive }) => isActive ? "active" : ""}>{t('navigation.contacts')}</NavLink>
             </div>
            <div className="right">
               <span className="Terms" onClick={() => handleLinkClick(`Terms and conditions", "

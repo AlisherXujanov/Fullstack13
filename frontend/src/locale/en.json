@@ -7,14 +7,82 @@
             "products": "Products",
             "contacts": "Contacts"
         },
-        "landing-page":{
-            "hedge-fund":"Hedge fund",
-            "description":"A classic choice for professional investors with given moderate risk parameters. Based on investing in S&P 500 index securities with diversification across 11 economic sectors.",
-            "read-more":"Read more"
+        "landing-page": {
+            "hedge-fund": "Hedge fund",
+            "description": "A classic choice for professional investors with given moderate risk parameters. Based on investing in S&P 500 index securities with diversification across 11 economic sectors.",
+            "read-more": "Read more"
         },
-        "about-us":{
-            "info":["Our Fullstack team is not just a team, it is a real squad of heroes ready to conquer any investment peaks. The head Alisher always keeps his finger on the pulse, giving strategic instructions, and AkerFer and Oybeki tirelessly optimize and scale. When night falls on the code, Batman comes to the rescue - no one knows when he sleeps, but everyone knows that he will save the project at the most unexpected moment.","The Korean is always on the go, coding at such a speed that sometimes even the keyboard can't keep up with him. And when you need to find a complex solution, the Main Brain comes on stage: it sees everything like in The Matrix and finds a way out of any situation. IJustCame is a true master of unexpected solutions: he came, saw, wrote the code and left everyone in shock. And Egypt is always at the forefront, like a real Egyptian hero, ready to fight any bugs. And of course, Sherka is our mysterious talisman, who always seems to know something important, but never says anything in advance, keeping the intrigue until the very end.","We, Fullstack, create solutions that even computer viruses avoid. Together we do more than just work — we conquer new frontiers in the world of IT and investment... with ease and good humor!"],
-            "licenses":"Licenses"
+        "about-us": {
+            "info": [
+                "Our Fullstack team is not just a team, it is a real squad of heroes ready to conquer any investment peaks. The head Alisher always keeps his finger on the pulse, giving strategic instructions, and AkerFer and Oybeki tirelessly optimize and scale. When night falls on the code, Batman comes to the rescue - no one knows when he sleeps, but everyone knows that he will save the project at the most unexpected moment.",
+                "The Korean is always on the go, coding at such a speed that sometimes even the keyboard can't keep up with him. And when you need to find a complex solution, the Main Brain comes on stage: it sees everything like in The Matrix and finds a way out of any situation. IJustCame is a true master of unexpected solutions: he came, saw, wrote the code and left everyone in shock. And Egypt is always at the forefront, like a real Egyptian hero, ready to fight any bugs. And of course, Sherka is our mysterious talisman, who always seems to know something important, but never says anything in advance, keeping the intrigue until the very end.",
+                "We, Fullstack, create solutions that even computer viruses avoid. Together we do more than just work — we conquer new frontiers in the world of IT and investment... with ease and good humor!"
+            ],
+            "licenses": "Licenses",
+            "mission-values": {
+                "title": "Mission and Values",
+                "mission": {
+                    "title": "Our mission",
+                    "desc": "conquer the web programming world by turning lines of code into ingenious solutions. We strive not only to learn programming languages, but to master them by creating web applications that will become an integral part of the digital world. Together, we build a bridge between ideas and their implementation, applying cutting-edge technologies and an unwavering passion for development."
+                },
+                "values": {
+                    "title": "Our values",
+                    "desc": "is endless curiosity, a thirst for knowledge and a desire to share it. We believe that great programmers don’t just write code, they push the boundaries of what’s possible, creating something unique and useful. Inspired by new challenges, we grow with every project and every successful launch."
+                }
+            },
+            "stack": "Our Fullstack team is learning the following languages ​​and frameworks"
+        },
+        "values": {
+            "title": "Our values",
+            "content": {
+                "item-1": {
+                    "title": "Stability",
+                    "desc": "Preservation of clients' capital is a priority over profitability - every decision is balanced, thought out and assessed."
+                },
+                "item-2": {
+                    "title": "Sustainability",
+                    "desc": "Sustainability is at the core of our business model. From identifying and evaluating emerging business opportunities to consistently developing our projects and reallocating capital into new opportunities."
+                },
+                "item-3": {
+                    "title": "Team",
+                    "desc": "The Fullstack team is the foundation of success. Each employee of the Company is a valuable asset in the fund's work process. Our goal is to create such a working atmosphere and conditions that will allow each employee to fully reveal their potential to achieve maximum results."
+                },
+                "item-4": {
+                    "title": "Reputation",
+                    "desc": "Responsibility and ethics are the basis of our activities. Activities within the framework of best practices (Corporate Code of Ethics and Standards of Professional Conduct) allow us to offer clients higher quality investment products that meet the high requirements and expectations of the most demanding clients."
+                }
+            }
+        },
+        "team":{
+            "title":"Our team",
+            "desc":"We are a group of professionals united by a common goal: to create high-quality, innovative and effective solutions for our clients. Each of us makes a unique contribution, which allows us to achieve outstanding results in our projects.",
+            "content":{
+                "item-1":{
+                    "title":"Experience and expertise",
+                    "desc":"Each member of our team has deep knowledge in their field, which allows us to cope with tasks of any complexity."
+                },
+                "item-2":{
+                    "title":"Creative approach",
+                    "desc":"We don’t just follow trends, we create them, offering non-standard solutions for business."
+                },
+                "item-3":{
+                    "title":"Customer focus",
+                    "desc":"We always take into account the needs of our customers and strive to exceed their expectations."
+                },
+                "item-4":{
+                    "title":"Teamwork",
+                    "desc":"Coordinated work and exchange of experience within the team allow us to adapt to changes and remain effective."
+                }
+            },
+            "supporters-partners":"Supporters and Partners"
+        },
+        "consultation":{
+            "fullname":"Full name",
+            "email":"Email",
+            "phone":"Phone",
+            "message":"Message",
+            "get-consultation":"Get a consultation",
+            "notification":"Message sent successfully"
         }
     }
 }

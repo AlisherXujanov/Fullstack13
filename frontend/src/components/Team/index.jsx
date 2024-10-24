@@ -8,8 +8,10 @@ import fourthImage from "../../assets/images/4.webp";
 import fiveImage from "../../assets/images/5.png";
 import sixImage from "../../assets/images/6.webp";
 import Member from "./Member";
+import { useTranslation } from "react-i18next";
 
 function Team(props) {
+  const {t} = useTranslation()
   function goToTopSmoothly() {
     window.scrollTo({
       top: 0,
@@ -39,30 +41,28 @@ function Team(props) {
       <div className="text-wrapper">
         <div className="team-section">
           <h2>
-            <Heading size={1.2}>Наша команда</Heading>
+            <Heading size={1.2}>{t('team.title')}</Heading>
           </h2>
           <p className="team-intro">
-            Мы — это группа профессионалов, объединённых общей целью: создавать качественные, инновационные и
-            эффективные решения для наших клиентов. Каждый из нас вносит свой уникальный вклад, что позволяет нам
-            достигать выдающихся результатов в наших проектах.
+          {t('team.desc')}
           </p>
 
           <ul className="team-list">
             <li>
-              <h3>Опыт и экспертиза</h3>
-              <p>Каждый член нашей команды имеет глубокие знания в своей области, что позволяет нам справляться с задачами любой сложности.</p>
+              <h3>{t('team.content.item-1.title')}</h3>
+              <p>{t('team.content.item-1.desc')}</p>
             </li>
             <li>
-              <h3>Креативный подход</h3>
-              <p>Мы не просто следуем трендам, мы их создаём, предлагая нестандартные решения для бизнеса.</p>
+            <h3>{t('team.content.item-2.title')}</h3>
+            <p>{t('team.content.item-2.desc')}</p>
             </li>
             <li>
-              <h3>Клиентоориентированность</h3>
-              <p>Мы всегда учитываем потребности наших клиентов и стремимся превзойти их ожидания.</p>
+            <h3>{t('team.content.item-3.title')}</h3>
+            <p>{t('team.content.item-3.desc')}</p>
             </li>
             <li>
-              <h3>Работа в команде</h3>
-              <p>Слаженная работа и обмен опытом внутри команды позволяют нам адаптироваться к изменениям и оставаться эффективными.</p>
+            <h3>{t('team.content.item-4.title')}</h3>
+            <p>{t('team.content.item-4.desc')}</p>
             </li>
           </ul>
         </div>
@@ -128,7 +128,7 @@ function Team(props) {
       </div>
 
       <div className="section">
-        <Heading size={1.2}>Сторонники и Партнеры</Heading>
+        <Heading size={1.2}>{t('team.supporters-partners')}</Heading>
         <br />
         <div className="infos">
           <h2>SeedBox</h2>
