@@ -26,6 +26,7 @@ header {
         .menu {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding-left: 100px;
 
             .nav-links {
@@ -37,7 +38,6 @@ header {
                     outline: none;
                     padding: 10px 0;
                     margin: 0 20px;
-
 
                     &.active {
                         color: $warning;
@@ -58,8 +58,16 @@ header {
                     cursor: pointer;
 
                     h4 {
-                        text-shadow: 1px 1px 1px $warning,
-                            -1px -1px 1px $warning;
+                        display: flex;
+                        align-items: center;
+                        gap: 13px;
+                        text-shadow: 1px 1px 1px $warning, -1px -1px 1px $warning;
+
+                        .profile-img-in-navbar {
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                        }
                     }
 
                     .content {
@@ -75,6 +83,7 @@ header {
                         button {
                             position: relative;
                             top: 10px;
+                            @include flex(row, center, center, 10px);
                         }
                     }
 
@@ -200,10 +209,6 @@ header {
     }
 
     @media (max-width: $small-screen) {
-        .nav-wrapper {
-            padding: 20px;
-        }
-
         #burger-menu-toggler:checked+.nav-wrapper>.menu {
             width: 100%;
         }
