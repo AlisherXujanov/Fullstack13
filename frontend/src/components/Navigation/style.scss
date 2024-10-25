@@ -200,6 +200,10 @@ header {
     }
 
     @media (max-width: $small-screen) {
+        .nav-wrapper {
+            padding: 20px;
+        }
+
         #burger-menu-toggler:checked+.nav-wrapper>.menu {
             width: 100%;
         }

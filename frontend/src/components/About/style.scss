@@ -9,8 +9,6 @@
         padding: 0 100px;
     }
 
-
-
     .content-wrapper {
 
         .info {
@@ -40,9 +38,7 @@
             float: left;
             margin-right: 15px;
             width: 400px;
-            height: 450px;
-            padding: 1em;
-
+            height: 350px;
             filter: grayscale(50%);
 
 
@@ -52,13 +48,10 @@
         }
     }
 
-
     .second-about-page-wrapper {
         margin-top: 100px;
 
         .second-about {
-            margin-right: 20px;
-
             p {
                 margin-bottom: 30px;
                 font-size: 1.1em;
@@ -82,11 +75,8 @@
             &:hover {
                 filter: none;
             }
-
-
         }
     }
-
 
     .languages-section {
         margin: 100px 0 50px 0;
@@ -96,6 +86,12 @@
             margin: 20px 0;
             color: $warning;
             text-align: center;
+        }
+
+        &::before {
+            content: '';
+            display: table;
+            clear: both;
         }
 
         .languages-grid {
@@ -163,9 +159,7 @@
 @media (max-width: $x-large-screen) {
     .about-page-wrapper {
         .content-wrapper {
-            padding: 0 50px;
             grid-template-columns: 1fr 2fr;
-
 
             .info {
                 p {
@@ -173,7 +167,6 @@
                 }
             }
         }
-
     }
 }
 
@@ -193,8 +186,12 @@
         padding: 0;
         margin: 0;
 
-        .content-wrapper {
+        .heading-wrapper {
+            padding: 0 50px;
+            margin-top: 20px;
+        }
 
+        .content-wrapper {
             padding: 0 50px;
             gap: 20px;
             grid-template-columns: 1fr 1fr;
@@ -210,24 +207,48 @@
         .second-about-page-wrapper {
             padding: 0 50px;
         }
-
-
-
     }
 }
 
 @media (max-width: $small-screen) {
     .about-page-wrapper {
+        .heading-wrapper {
+            padding: 0 20px;
+            margin-top: 20px;
+        }
 
         .content-wrapper {
             padding: 0 20px;
             gap: 20px;
             grid-template-columns: 1fr;
 
-
         }
 
+        .second-about-page-wrapper {
+            padding: 0 20px;
+        }
 
+        .second-about-page-wrapper,
+        .content-wrapper {
+            img {
+                float: none;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        }
 
+        .languages-section {
+            .languages-grid {
+                width: 100%;
+                justify-content: space-around;
+                gap: 0;
+
+                .language-card {
+                    width: 4 0px;
+                    height: 4 0px;
+                }
+            }
+        }
     }
 }
