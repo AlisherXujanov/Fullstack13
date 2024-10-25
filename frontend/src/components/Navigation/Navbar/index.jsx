@@ -1,12 +1,12 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Heading from "../../common/Heading";
 import Authentication from "../../Authentication";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { BASE_URL, globalContext } from "../../../store";
 import { getUserProfile, fetchLogout } from "../../../store/helpers";
 import { toast } from "react-toastify";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import Arrowdown from "../../../assets/icons/arrowdown.svg";
 import "./style.scss";
 
 function Navbar() {
@@ -14,10 +14,12 @@ function Navbar() {
   const navigate = useNavigate();
   const [, setIsLoading] = useState(false);
   const [profile, setProfile] = useState();
+  const [isOpen, setIsOpen] = useState(false); // Состояние для выпадающего списка
 
   useEffect(() => {
     fetchGetUserProfile();
   }, []);
+
   async function fetchGetUserProfile(profilePictureUpdate = false) {
     if (!profilePictureUpdate) {
       setIsLoading(true);
@@ -50,6 +52,9 @@ function Navbar() {
     toast.success("You have successfully logged out", { theme: "dark" });
   }
 
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev); // Переключаем состояние выпадающего списка
+  };
   return (
     <div className="nav-wrapper">
       <div className="logo">
@@ -103,21 +108,27 @@ function Navbar() {
         <div className="auth">
           {state.profile?.user?.username ? (
             <div className="logged-in-menu">
-              <Link to="profile">
-                <h4>
-                  <img
-                    src={BASE_URL + profile?.image}
-                    alt=""
-                    className="profile-img-in-navbar"
-                  />
-                  {state.profile?.user?.username}
-                </h4>
-              </Link>
-              <div className="content">
-                <button className="warning-btn" onClick={logout}>
-                  Выйти
-                </button>
-              </div>
+              <h4 onClick={toggleDropdown}>
+                <img
+                  src={BASE_URL + profile?.image}
+                  alt=""
+                  className="profile-img-in-navbar"
+                />
+                {state.profile?.user?.username}
+                <img src={Arrowdown} alt="" className="arrow-dropdown" />
+              </h4>
+              {isOpen && (
+                <div className="dropdown-content">
+                  <Link to="profile" className="dropdown-item">
+                    <button className=" dropdown-item">Profile</button>
+                  </Link>
+                  <Link className="dropdown-item">
+                    <button className="dropdown-item" onClick={logout}>
+                      Выйти
+                    </button>
+                  </Link>
+                </div>
+              )}
             </div>
           ) : (
             <div className="logged-out-menu">
@@ -129,9 +140,9 @@ function Navbar() {
               >
                 Войти
               </button>
-              {state.authModalOpened ? (
+              {state.authModalOpened && (
                 <Authentication closeModal={closeModal} />
-              ) : null}
+              )}
             </div>
           )}
           <button className="warning-btn" onClick={handleChangeLanguage}>
