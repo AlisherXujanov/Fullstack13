@@ -1,7 +1,7 @@
 @import '../../assets//styles/settings';
 
 .contacts-page-wrapper {
-  @extend %base-height;
+    @extend %base-height;
 
     background-color: $dark-lighter;
     padding: 50px 100px;
@@ -23,6 +23,24 @@
                     color: lightgray;
                     width: 80%;
                 }
+
+                li {
+                    position: relative;
+                    padding: 10px;
+
+                    strong {
+                        fill: $warning;
+                        color: $warning;
+
+                        svg {
+                            margin: 8px;
+                            position: relative;
+                            top: 12px;
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                }
             }
         }
 
@@ -41,6 +59,11 @@
                         background-color: $dark;
                         border: 2px solid transparent;
                         padding: 20px;
+
+                        &.form-control {
+                            // tel number input
+                            padding: 20px 40px;
+                        }
 
                         &:hover {
                             border-color: $warning;

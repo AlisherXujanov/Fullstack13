@@ -90,67 +90,74 @@
             "read-more": "Read more",
             "comments": "Comments",
             "no-products": "No products",
-            "delete":["Delete","Are you sure to delete", "Yes", "No"],
-            "product":"Product",
-            "form":{
-                "name":{
-                    "title":"Name of the product",
-                    "name":"Name"
+            "delete": [
+                "Delete",
+                "Are you sure to delete",
+                "Yes",
+                "No"
+            ],
+            "product": "Product",
+            "form": {
+                "name": {
+                    "title": "Name of the product",
+                    "name": "Name"
                 },
-                "price":{
-                    "title":"Price of the product",
-                    "name":"Price"
+                "price": {
+                    "title": "Price of the product",
+                    "name": "Price"
                 },
-                "image":{
-                    "title":"Image of the product",
-                    "name":"Image"
+                "image": {
+                    "title": "Image of the product",
+                    "name": "Image"
                 },
-                "desc":{
-                    "title":"Description of the product",
-                    "name":"Description"
+                "desc": {
+                    "title": "Description of the product",
+                    "name": "Description"
                 }
             },
-            "update-product":"Update product"
+            "update-product": "Update product"
         },
-        "contacts":{
-            "title":"Contacts",
-            "question":"Ask us any question",
-            "email":"Email",
-            "legal-address":"Legal address",
-            "name":"Name",
-            "phone":"Phone",
-            "subscribe":"Subscribe",
-            "office":"Office in Samarkand",
-            "your-location":"Your location"
-
-
+        "contacts": {
+            "title": "Contacts",
+            "get-in-touch": "Get in touch with us",
+            "intro": "Thank you for visiting our website! We value your feedback, questions, and any inquiries you may have. Whether you're a customer, business partner, or just curious, feel free to reach out using the contact methods below. We're committed to providing exceptional service and timely responses.",
+            "reach-out": "How to reach us",
+            "customer-support": "Customer support",
+            "customer-support-info": "For all general inquiries, product information, or support-related questions, our dedicated customer support team is available to assist you.",
+            "email": "Email",
+            "name": "Name",
+            "phone": "Phone",
+            "live-chat": "Live chat",
+            "available": "Available Mon-Fri",
+            "subscribe": "Subscribe",
+            "office-in-sam": "Office in Samarkand",
+            "your-location": "Your location"
         },
-        "faq":{
-            "title":"Frequently asked questions",
-            "desc":"Here, you`ll find answers to the most commonly asked questions about our products, services, and policies.",
-            "input":"Search your ask",
-            "general":"General",
-            "nft-product":"NFT Product",
-            "payment":"Payment",
-            "content":{
-                "item-1":{
-                    "title":"What is an NFT marketplace?",
-                    "desc":"An NFT marketplace is a platform that allows users to buy, sell, and trade non-fungible tokens (NFTs).NFTs are unique digital assets that can represent anything from artwork and collectibles to in-game items and virtual real estate."
+        "faq": {
+            "title": "Frequently asked questions",
+            "desc": "Here, you`ll find answers to the most commonly asked questions about our products, services, and policies.",
+            "input": "Search your ask",
+            "general": "General",
+            "nft-product": "NFT Product",
+            "payment": "Payment",
+            "content": {
+                "item-1": {
+                    "title": "What is an NFT marketplace?",
+                    "desc": "An NFT marketplace is a platform that allows users to buy, sell, and trade non-fungible tokens (NFTs).NFTs are unique digital assets that can represent anything from artwork and collectibles to in-game items and virtual real estate."
                 },
-                "item-2":{
-                    "title":"How does buying an NFT work?",
-                    "desc":"Buying an NFT involves creating an account on a marketplace, connecting a digital wallet, and then purchasing the NFT using cryptocurrency."
+                "item-2": {
+                    "title": "How does buying an NFT work?",
+                    "desc": "Buying an NFT involves creating an account on a marketplace, connecting a digital wallet, and then purchasing the NFT using cryptocurrency."
                 },
-                "item-3":{
-                    "title":"What are the benefits of owning an NFT?",
-                    "desc":"Owning an NFT can provide benefits such as proof of ownership, the potential for value appreciation, and exclusive access to certain content or experiences."
+                "item-3": {
+                    "title": "What are the benefits of owning an NFT?",
+                    "desc": "Owning an NFT can provide benefits such as proof of ownership, the potential for value appreciation, and exclusive access to certain content or experiences."
                 },
-                "item-4":{
-                    "title":"Are there any risks associated with buying NFTs?",
-                    "desc":"Yes, buying NFTs carries risks such as market volatility, potential scams, and the lack of regulation in the NFT space."
+                "item-4": {
+                    "title": "Are there any risks associated with buying NFTs?",
+                    "desc": "Yes, buying NFTs carries risks such as market volatility, potential scams, and the lack of regulation in the NFT space."
                 }
             }
-
         }
     }
 }
