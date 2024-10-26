@@ -28,7 +28,7 @@ header {
             justify-content: space-between;
             align-items: center;
             padding-left: 100px;
-
+            
             .nav-links {
 
                 a,
@@ -139,7 +139,7 @@ header {
         }
     }
 
-    @media (max-width: $medium-screen) {
+    @media (max-width: 1000px) {
 
         .burger-menu-wrapper,
         #burger-menu-toggler {
