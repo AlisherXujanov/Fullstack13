@@ -7,6 +7,8 @@
     .heading-wrapper,
     .content-wrapper {
         padding: 0 100px;
+        transform: translateX(-150%);
+        animation: ani 1s forwards;
     }
 
     .content-wrapper {
@@ -141,6 +143,16 @@
             }
         }
     }
+
+    @keyframes ani {
+        0% {
+            transform: translateX(-150%);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
 }
 
 
@@ -252,3 +264,21 @@
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

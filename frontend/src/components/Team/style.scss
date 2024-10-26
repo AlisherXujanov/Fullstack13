@@ -129,8 +129,8 @@
                 }
 
                 img {
-                    width: 100%;
-                    height: 600px;
+                    width: 50%;
+                    height: 300px;
                 }
 
                 a:hover {
@@ -142,20 +142,22 @@
                 }
 
                 .close {
+                    width: 25px;
+                    height: 25px;
                     position: absolute;
                     top: 15px;
                     right: 15px;
+                    border: 2px outset $dark;
+                    border-radius: 50%;
+                    background-color: $dark;
+                    color: $warning;
                     font-size: 1.5em;
+                    padding: 0;
                     cursor: pointer;
-                    color: #fff;
-
-                    &:hover {
-                        color: $warning;
-                        transform: scale(1.5);
-                    }
+                    @include flex(row, center, center, 0);
 
                     &:active {
-                        transform: scale(0.8);
+                        border-style: inset;
                     }
                 }
             }
@@ -213,7 +215,9 @@
             }
         }
     }
+
 }
+
 
 /* Медиазапросы */
 @media (max-width: $xx-large-screen) {}
