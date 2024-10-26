@@ -129,8 +129,8 @@
                 }
 
                 img {
-                    width: 100%;
-                    height: 600px;
+                    width: 50%;
+                    height: 300px;
                 }
 
                 a:hover {
@@ -145,14 +145,15 @@
                     position: absolute;
                     top: 15px;
                     right: 15px;
-                    font-size: 1.5em;
+                    border-radius: 50%;
+                    background-color: $dark;
                     cursor: pointer;
-                    color: #fff;
-
-                    &:hover {
-                        color: $warning;
-                        transform: scale(1.5);
-                    }
+                    color: $warning;
+                    width: 25px;
+                    height: 25px;
+                    padding: 0;
+                    font-size: 1.5em;
+                    @include flex(row, center, center, 0);
 
                     &:active {
                         transform: scale(0.8);
@@ -213,7 +214,9 @@
             }
         }
     }
+    
 }
+
 
 /* Медиазапросы */
 @media (max-width: $xx-large-screen) {}
