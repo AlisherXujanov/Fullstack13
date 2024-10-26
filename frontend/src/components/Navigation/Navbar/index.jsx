@@ -115,7 +115,7 @@ function Navbar() {
                   className="profile-img-in-navbar"
                 />
                 {state.profile?.user?.username}
-                <img src={Arrowdown} alt="" className="arrow-dropdown" />
+                <img src={Arrowdown} alt="" className="arrow-drop-down" />
               </h4>
               {isOpen && (
                 <div className="dropdown-content">
